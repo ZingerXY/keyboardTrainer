@@ -5,9 +5,6 @@
 
 Авторы:
 Сергей https://github.com/SveTi4
-<<<<<<< HEAD
-Виталий https://github.com/ZingerXY
-=======
 Евгений https://github.com/EvgeniyKorshov
+Виталий https://github.com/ZingerXY
 
->>>>>>> add_author_name
