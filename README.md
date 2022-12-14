@@ -7,4 +7,5 @@
 Сергей https://github.com/SveTi4
 Евгений https://github.com/EvgeniyKorshov
 Виталий https://github.com/ZingerXY
+Владислав https://github.com/SHALFY007
 
