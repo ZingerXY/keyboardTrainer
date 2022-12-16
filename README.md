@@ -9,3 +9,4 @@
 Виталий https://github.com/ZingerXY
 Анастасия https://github.com/AnastasiyaVi
 Ирина https://github.com/irdolgopolova
+Владислав https://github.com/SHALFY007
