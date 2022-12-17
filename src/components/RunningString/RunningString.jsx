@@ -27,7 +27,6 @@ const RunningString = () => {
             console.log(startWord.substring(1))
         }
         */
-        console.log(startWord[1])
         if (startWord.length < 1) { //Проверяет, закончилось ли слово
             //generateWord()
         } else {
@@ -43,7 +42,6 @@ const RunningString = () => {
             event.preventDefault();
             CurrectInput(); // Вызывает метод с логикой
           } else {
-            console.log(stringId.current)
           }
         };
     

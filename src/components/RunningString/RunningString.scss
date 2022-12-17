@@ -10,7 +10,7 @@
     border: 8px solid rgba(0, 168, 118, 0.6);
     border-radius: 8px;
     box-sizing: border-box;
-    
+    margin-bottom: 6.063rem;
     
 }
 .input-text {
@@ -31,9 +31,10 @@
     padding-bottom: 20px;
     padding-left: 20px;
     box-sizing: border-box;
+    white-space: pre;
 }
 .start-string {
-    
+    white-space: pre;
     color: #000000;
     
 }
