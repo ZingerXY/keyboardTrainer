@@ -38,3 +38,23 @@
     color: #000000;
     
 }
+
+.shake {
+    
+    animation: shake 0.5s;
+    animation-iteration-count: 1;
+    animation-duration: .8s;
+}
+  
+ 
+  @keyframes shake {
+    0%, 50%, 100% {
+    transform: rotate(0deg);
+    }
+    10%, 30% {
+    transform: rotate(-1deg);
+    }
+    20%, 40% {
+    transform: rotate(1deg);
+    }
+}

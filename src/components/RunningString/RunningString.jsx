@@ -38,10 +38,15 @@ const RunningString = () => {
       };
       useEffect(() => { //Отслеживает нажатие на кнопку
         const keyDownHandler = event => {
+        // stringId.current.classList.add('shake')
           if (event.key === startWord[0]) { //Проверяет, верно ли пользователь нажал на кнопку
             event.preventDefault();
             CurrectInput(); // Вызывает метод с логикой
           } else {
+            stringId.current.classList.add('shake') // Трясет строку в случае, если введено неправильное значение
+            setTimeout(()=> {
+                stringId.current.classList.remove('shake') //Убирает класс анимации
+            }, 800)
           }
         };
     
