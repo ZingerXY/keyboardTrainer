@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Arimo';
+    src: url('../../fonts/Arimo-Regular.ttf');
+}
+.running-string {
+    display: flex;
+    background:  rgb(255, 255, 255);
+    min-width: 75rem;
+    height: 5rem;
+    border: 8px solid rgba(0, 168, 118, 0.6);
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin-bottom: 6.063rem;
+    
+}
+.input-text {
+    font-family: 'Arimo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 41px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+}
+.end-string {
+    background: rgba(0, 168, 118, 0.6);
+    color: #000000;
+    opacity: .68;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    box-sizing: border-box;
+    white-space: pre;
+}
+.start-string {
+    white-space: pre;
+    color: #000000;
+    
+}
+
+.shake {
+    
+    animation: shake 0.5s;
+    animation-iteration-count: 1;
+    animation-duration: .8s;
+}
+  
+ 
+  @keyframes shake {
+    0%, 50%, 100% {
+    transform: rotate(0deg);
+    }
+    10%, 30% {
+    transform: rotate(-1deg);
+    }
+    20%, 40% {
+    transform: rotate(1deg);
+    }
+}
