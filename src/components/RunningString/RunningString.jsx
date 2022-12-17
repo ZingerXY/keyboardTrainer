@@ -3,10 +3,12 @@ import './RunningString.scss'
 import {useState, useEffect, createRef} from 'react'
 
 const RunningString = () => {
-    const [startWord, setStartWord] = useState('йцуке фывап ячсм');
-    const [endWord, setEndWord] = useState(' ')
-    const stringId = createRef()
+    const [startWord, setStartWord] = useState('йцуке фывап ячсм'); //Слово, которое надо набрать
+    const [endWord, setEndWord] = useState('') // Набранное слово
+    const stringId = createRef() // Генерирует Ref для строки (Понадобиться для добавления стилей при неправильном вводе)
 
+    /*
+    Тестовый метод для генерации новых слов
     const generateWord = () => {
         let word = ''
         const alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
@@ -16,36 +18,39 @@ const RunningString = () => {
 
         setEndWord('')
         setStartWord(word)
-    }
+    }*/
 
-    const CurrectInput = () => {
-        if ( startWord[1] == ' ') {
+    const CurrectInput = () => { //Логика при правильном вводе
+        /*
+        Проверял, почему пробел не отображается
+        if ( startWord[1] == ' ') { 
             console.log(startWord.substring(1))
         }
+        */
         console.log(startWord[1])
-        if (startWord.length <= 1) {
-            generateWord()
+        if (startWord.length < 1) { //Проверяет, закончилось ли слово
+            //generateWord()
         } else {
             startWord.substring(1)
-            setStartWord(startWord => startWord.substring(1))
-            setEndWord(word => word +startWord[0])
+            setStartWord(startWord => startWord.substring(1)) //Обновляет значение startWord
+            setEndWord(word => word +startWord[0]) //Обновляет значение endWord
     
         }
       };
-      useEffect(() => {
+      useEffect(() => { //Отслеживает нажатие на кнопку
         const keyDownHandler = event => {
-          if (event.key === startWord[0]) {
+          if (event.key === startWord[0]) { //Проверяет, верно ли пользователь нажал на кнопку
             event.preventDefault();
-            CurrectInput();
+            CurrectInput(); // Вызывает метод с логикой
           } else {
-            
+            console.log(stringId.current)
           }
         };
     
-        document.addEventListener('keydown', keyDownHandler);
+        document.addEventListener('keydown', keyDownHandler); // Добавляет слушатель события при нажатии
     
         return () => {
-          document.removeEventListener('keydown', keyDownHandler);
+          document.removeEventListener('keydown', keyDownHandler); // Убирает слушатель события при нажатии
         };
       }, [startWord]);
     return (
