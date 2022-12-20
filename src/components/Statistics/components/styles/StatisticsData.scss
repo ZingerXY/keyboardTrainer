@@ -1,0 +1,93 @@
+
+.statistics-data {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.statistics {
+    &-header {
+        font-family: 'Arimo';
+        font-weight: 400;
+        font-size: 48px;
+        line-height: 55px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        
+        color: #000000;
+        
+        
+        font-style: normal;
+    }
+    &-part {
+        margin-top: 40px;
+        min-width: 427px;
+        margin-bottom: 60px;
+    }
+    &-mini {
+        display: flex;
+        justify-content: space-between;
+    }
+    &-mini-title {
+
+        font-family: 'Arimo';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 23px;
+        
+        /* identical to box height */
+        
+        color: #000000;
+
+
+    }
+    &-mini-value {
+        font-family: 'Arimo';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 23px;
+        
+        /* identical to box height */
+        
+        color: #000000;
+
+
+    }
+    
+}
+.statistics-draw {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    &-part {
+        max-width: 1000px;
+        margin-top: 56px;
+    }
+    &-selection {
+        display: flex;
+        width: 520px;
+        justify-content: space-between;
+    }
+    &-btn {
+        width: 160px;
+        height: 42px;
+        border: 2px solid #006D4C;
+        border-bottom: none;
+        border-radius: 8px 8px 0px 0px;
+    }
+    &-graph {
+        width: 1000px;
+        height: 328px;
+        border: 2px solid #006D4C;
+    }
+}
+.opened {
+    background: rgba(0, 168, 118, 0.1);
+}
