@@ -3,7 +3,7 @@ import './RunningString.scss'
 import { useState, useEffect, createRef } from 'react'
 
 const RunningString = () => {
-  const [startWord, setStartWord] = useState('йцуке фывап ячсм'); //Слово, которое надо набрать
+  const [startWord, setStartWord] = useState('пример текста пример текста пример текста пример текста'); //Слово, которое надо набрать
   const [endWord, setEndWord] = useState('') // Набранное слово
   const stringId = createRef() // Генерирует Ref для строки (Понадобиться для добавления стилей при неправильном вводе)
 
@@ -33,6 +33,11 @@ const RunningString = () => {
       startWord.substring(1)
       setStartWord(startWord => startWord.substring(1)) //Обновляет значение startWord
       setEndWord(word => word + startWord[0]) //Обновляет значение endWord
+
+      if (endWord.length > 30) {
+        // console.log(endWord.length)
+        setEndWord(word => word.slice(1)) //Убирает первый символ endWord
+      }
 
     }
   };
