@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './Header.scss'
 const Header = () => {
   return (
@@ -15,7 +16,10 @@ const Header = () => {
         {/* пока временно для демо версии */}
         <div className="nav_links">
           <h2 className="nav_links_title">Задания</h2>
-          <h2 className="nav_links_title">Статистика</h2>
+          <Link to='/statistics' className="nav_link_route">
+            <h2 className="nav_links_title">Статистика</h2>
+          </Link>
+          
           <h2 className="nav_links_title">Выйти</h2>
         </div>
       </div>
