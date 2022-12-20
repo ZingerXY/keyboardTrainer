@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../Home/Home";
 import Tasks from "../Tasks/Tasks";
+import Statistics from "../Statistics/Statistics";
 
 const Router = () => {
     return (
@@ -10,6 +11,7 @@ const Router = () => {
             </Route>
             <Route path="/tasks" element={<Tasks />}></Route>
             <Route path="/statistic"></Route>
+            <Route path="/statistics" element={<Statistics/>}></Route>
         </Routes>
     )
 }

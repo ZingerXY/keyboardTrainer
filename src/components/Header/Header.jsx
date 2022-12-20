@@ -17,6 +17,7 @@ const Header = () => {
 
         {/* пока временно для демо версии */}
         <div className="nav_links">
+
           <Link to={"/tasks"} className="nav_links_title">Задания</Link>
           <Link to={"/stats"} className="nav_links_title">Статистика</Link>
           <Link to={"/rating"} className="nav_links_title">Рейтинг</Link>
