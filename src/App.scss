@@ -9,10 +9,13 @@ $shadow: rgba(0, 168, 118, 0.2);
 }
 
 .App {
-  height: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .Main-part {
+  flex-grow: 1;
   background-color: #fff;
   min-height: 70vh;
   display: flex;
