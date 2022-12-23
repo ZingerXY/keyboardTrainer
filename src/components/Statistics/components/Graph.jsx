@@ -6,20 +6,24 @@ const Graph = () => {
     const [activeBtn, setActiveBtn] = useState(0);
 
     const setDraw = (e) => {
-        if (activeBtn) {
+        console.log(e.target.tagName)
+        if (activeBtn && e.target.tagName == "BUTTON") {
             activeBtn.classList.remove(GraphStyles.opened)
+            console.log(e.target.parentElement)
             setActiveBtn(e.target)
             e.target.classList.add(GraphStyles.opened)
         } else {
-            e.target.classList.add(GraphStyles.opened)
-            setActiveBtn(e.target)
+            console.log(e.target.parentElement)
+            if (activeBtn) activeBtn.classList.remove(GraphStyles.opened)
+            e.target.parentElement.classList.add(GraphStyles.opened)
+            setActiveBtn(e.target.parentElement)
         }
         
     }
     return (
         <div className={GraphStyles.statistics_draw_part}>
                 <div className={GraphStyles.statistics_draw_selection}>
-                    <button className={GraphStyles.statistics_draw_btn} onClick={setDraw}>
+                    <button className={GraphStyles.statistics_draw_btn } onClick={setDraw}>
                         <span className={GraphStyles.statistics_draw_btn_txt}>
                         Скорость
                         </span>
