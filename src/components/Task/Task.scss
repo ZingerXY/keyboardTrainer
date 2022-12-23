@@ -1,0 +1,67 @@
+$green: #00A876;
+$shadow: rgba(0, 168, 118, 0.2);
+
+
+.task-page {
+    color: black;
+    font-family: 'Arimo';
+}
+
+.task-card {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 77px;
+    // align-items: baseline;
+}
+
+.task-title {
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 74px;
+    padding-bottom: 54px;
+}
+
+.task-type_title {
+    padding-bottom: 10px;
+}
+
+.task-info {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.task-info span {
+    font-weight: 400;
+    padding-left: 20px;
+    position: absolute;
+    left: 200px;
+}
+
+.task-card_rightpart {
+    display: flex;
+    gap: 44px;
+    padding-top: 15px;
+}
+
+.task-type {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+}
+
+.task-type_title_item {
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.fa-circle {
+    color: rgba(0, 168, 118, 0.1);
+    padding-right: 8px;
+}
+
+.fa-circle:nth-of-type(-n+2) {
+    color: $green;
+}

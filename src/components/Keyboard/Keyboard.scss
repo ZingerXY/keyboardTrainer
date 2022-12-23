@@ -1,11 +1,132 @@
 $green: #00A876;
 $shadow: rgba(0, 168, 118, 0.2);
-
+$orange-key: rgba(225, 175, 174, 1);
+$yello-key: rgba(226, 224, 173, 1);
+$green-key: rgba(173, 227, 176, 1);
+$blue-key: rgba(173, 226, 222, 1);
+$pink-key: rgba(223, 173, 226, 1);
+$purple-key: rgba(175, 175, 225, 1);
 
 .Keyboard {
 
+    display: flex;
+    justify-content: center;
+    font-family: 'Arimo';
+    align-items: end;
+}
 
-    &-img {
-        pointer-events: none;
+.hand {
+    user-select: none;
+}
+
+.keyboard-base {
+    max-width: 1085px;
+    padding: 20px;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: repeat(30, 23px);
+    grid-template-rows: repeat(5, 43px);
+    grid-gap: 5px;
+    user-select: none;
+}
+
+
+.key {
+
+    border: 2px solid black;
+    border-radius: 8px;
+    grid-column: span 2;
+    font-size: 22px;
+    text-align: center;
+    padding-top: 8px;
+}
+
+.key:hover {
+    border: 2px solid #eeeeee;
+
+}
+
+.key-words {
+    font-size: 14px;
+    padding-top: 12px;
+}
+
+.key-or {
+    background-color: $orange-key;
+}
+
+.key-ye {
+    background-color: $yello-key;
+}
+
+.key-gr {
+    background-color: $green-key;
+}
+
+.key-bl {
+    background-color: $blue-key;
+}
+
+.key-pi {
+    background-color: $pink-key;
+}
+
+
+.delete {
+    grid-column: span 4;
+
+}
+
+.tab {
+    grid-column: span 3;
+
+}
+
+.backslash {
+    grid-column: span 3;
+
+}
+
+.capslock {
+    grid-column: span 4;
+
+}
+
+.return {
+    grid-column: span 4;
+
+}
+
+.leftshift {
+    grid-column: span 5;
+
+}
+
+.rightshift {
+    grid-column: span 5;
+
+}
+
+.ctrl {
+    grid-column: span 3;
+
+}
+
+
+.nonstyle {
+    color: none;
+    background-color: none;
+    opacity: 0;
+    border: none;
+
+    & :hover {
+        border: none;
     }
+}
+
+
+.space {
+    grid-column: span 13;
+    background-color: $purple-key;
+
 }
