@@ -63,7 +63,7 @@ const RunningString = () => {
   }, [startWord]);
   return (
     <div className="container">
-      <p className="demo-task">ДЕМО-ЗАДАНИЕ</p>
+
       <div className="running-string" ref={stringId}>
         <div className="input-text end-string">{endWord}</div>
         <div className="input-text start-string">{startWord}</div>
