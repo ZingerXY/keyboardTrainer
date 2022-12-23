@@ -15,12 +15,10 @@ const Header = () => {
 
         {/* пока временно для демо версии */}
         <div className="nav_links">
-          <h2 className="nav_links_title">Задания</h2>
-          <Link to='/statistics' className="nav_link_route">
-            <h2 className="nav_links_title">Статистика</h2>
-          </Link>
-          
-          <h2 className="nav_links_title">Выйти</h2>
+          <Link to={"/tasks"} className="nav_links_title">Задания</Link>
+          <Link to={"/stats"} className="nav_links_title">Статистика</Link>
+          <Link to={"/rating"} className="nav_links_title">Рейтинг</Link>
+          <Link to={"/quit"} className="nav_links_title">Выйти</Link>
         </div>
       </div>
 
