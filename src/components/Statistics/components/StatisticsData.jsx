@@ -1,22 +1,22 @@
 import React  from "react";
-import './styles/StatisticsData.scss'
+import DataStyle from './styles/StatisticsData.module.scss'
 
 const StatisticsData = () => {
     return (
-        <div className="statistics-data">
-            <h1 className="statistics-header">Общие данные</h1>
-            <div className="statistics-part">
-                <div className="statistics-mini">
-                    <h3 className="statistics-mini-title">Среднее количество ошибок</h3>
-                    <h4 className="statistics-mini-value">10 знаков</h4>
+        <div className={DataStyle.statistics_data}>
+            <h1 className={DataStyle.statistics_header}>Общие данные</h1>
+            <div className={DataStyle.statistics_part}>
+                <div className={DataStyle.statistics_mini}>
+                    <h3 className={DataStyle.statistics_mini_title}>Среднее количество ошибок</h3>
+                    <h4 className={DataStyle.statistics_mini_value}>10 знаков</h4>
                 </div>
-                <div className="statistics-mini">
-                    <h3 className="statistics-mini-title">Средняя скорость</h3>
-                    <h4 className="statistics-mini-value">400 зн/мин</h4>
+                <div className={DataStyle.statistics_mini}>
+                    <h3 className={DataStyle.statistics_mini_title}>Средняя скорость</h3>
+                    <h4 className={DataStyle.statistics_mini_value}>400 зн/мин</h4>
                 </div>
-                <div className="statistics-mini">
-                    <h3 className="statistics-mini-title">Аккуратность</h3>
-                    <h4 className="statistics-mini-value">99.99%</h4>
+                <div className={DataStyle.statistics_mini}>
+                    <h3 className={DataStyle.statistics_mini_title}>Аккуратность</h3>
+                    <h4 className={DataStyle.statistics_mini_value}>99.99%</h4>
                 </div>
             </div>
         </div>
