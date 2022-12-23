@@ -1,5 +1,5 @@
 
-.statistics-data {
+.statistics_data {
     max-width: 1200px;
     display: flex;
     flex-direction: column;
@@ -7,7 +7,7 @@
 
 }
 .statistics {
-    &-header {
+    &_header {
         font-family: 'Arimo';
         font-weight: 400;
         font-size: 48px;
@@ -21,16 +21,16 @@
         
         font-style: normal;
     }
-    &-part {
+    &_part {
         margin-top: 40px;
         min-width: 427px;
         margin-bottom: 60px;
     }
-    &-mini {
+    &_mini {
         display: flex;
         justify-content: space-between;
     }
-    &-mini-title {
+    &_mini_title {
 
         font-family: 'Arimo';
         font-style: normal;
@@ -44,7 +44,7 @@
 
 
     }
-    &-mini-value {
+    &_mini_value {
         font-family: 'Arimo';
         font-style: normal;
         font-weight: 400;
