@@ -6,7 +6,7 @@ const Keyboard = () => {
         <div className='Keyboard'>
             {/* <img src='./img/Клавиатура.png' alt="Клавиатура" className="Keyboard-img"/> */}
             <div className="hand">
-                <img src='./img/hand-left.jpg' alt="hand" />
+                <img src='./img/hand-left.svg' alt="hand" />
             </div>
             <div class="keyboard-base">
                 <div class="key key-or">ё</div>
@@ -72,7 +72,7 @@ const Keyboard = () => {
 
             </div>
             <div className="hand">
-                <img src='./img/hand-right.jpg' alt="hand" />
+                <img src='./img/hand-right.svg' alt="hand" />
             </div>
         </div>
     )

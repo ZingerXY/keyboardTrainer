@@ -12,9 +12,12 @@ $purple-key: rgba(175, 175, 225, 1);
     display: flex;
     justify-content: center;
     font-family: 'Arimo';
-    align-items: center;
+    align-items: end;
 }
 
+.hand {
+    user-select: none;
+}
 
 .keyboard-base {
     max-width: 1085px;
@@ -24,6 +27,7 @@ $purple-key: rgba(175, 175, 225, 1);
     grid-template-columns: repeat(30, 23px);
     grid-template-rows: repeat(5, 43px);
     grid-gap: 5px;
+    user-select: none;
 }
 
 
