@@ -1,8 +1,8 @@
 import React from "react"
 import './Task.scss'
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import RunningString from "../RunningString/RunningString";
 import Keyboard from "../Keyboard/Keyboard";
-import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Task = () => {
     return (
