@@ -21,6 +21,14 @@
         border: 2px solid #006D4C;
         border-bottom: none;
         border-radius: 8px 8px 0px 0px;
+        cursor: pointer;
+        transition: background-color .3s;
+
+        &:hover {
+            background-color: rgba(0, 168, 118, 0.1);
+            
+            
+        }
 
         &_txt {
             font-family: 'Arimo';
