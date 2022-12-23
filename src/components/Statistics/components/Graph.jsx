@@ -7,8 +7,8 @@ const Graph = () => {
 
     const setDraw = (e) => {
         console.log(e.target.tagName)
-        if (activeBtn && e.target.tagName == "BUTTON") {
-            activeBtn.classList.remove(GraphStyles.opened)
+        if (e.target.tagName == "BUTTON") {
+            if (activeBtn) activeBtn.classList.remove(GraphStyles.opened)
             console.log(e.target.parentElement)
             setActiveBtn(e.target)
             e.target.classList.add(GraphStyles.opened)
