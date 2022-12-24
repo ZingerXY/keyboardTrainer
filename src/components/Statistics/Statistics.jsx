@@ -1,6 +1,6 @@
 import React from "react";
-import StatisticsData from "./components/StatisticsData";
-import Graph from "./components/Graph";
+import StatisticsData from "../StatisticsData/StatisticsData";
+import Graph from "../Graph/Graph";
 
 const Statistics = () => {
     return (

@@ -1,5 +1,5 @@
 import React  from "react";
-import DataStyle from './styles/StatisticsData.module.scss'
+import DataStyle from './StatisticsData.module.scss'
 
 const StatisticsData = () => {
     return (

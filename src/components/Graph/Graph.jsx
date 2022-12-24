@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import GraphStyles from './styles/Graph.module.scss'
+import GraphStyles from './Graph.module.scss'
 
 const Graph = () => {
 
