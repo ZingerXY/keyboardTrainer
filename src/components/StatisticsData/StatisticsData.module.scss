@@ -1,0 +1,118 @@
+.statistics_data {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.statistics {
+    &_header {
+        font-family: 'Arimo';
+        font-weight: 400;
+        font-size: 48px;
+        line-height: 55px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        
+        color: #000000;
+        
+        
+        font-style: normal;
+    }
+    &_part {
+        margin-top: 40px;
+        min-width: 427px;
+        margin-bottom: 60px;
+        display: flex;
+    }
+    &_mini_left {
+        width: 326px;
+        min-height: 109px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    &_mini_right {
+        min-height: 109px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    &_mini_title {
+
+        font-family: 'Arimo';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 23px;
+        
+        /* identical to box height */
+        
+        color: #000000;
+
+
+    }
+    &_mini_value {
+        font-family: 'Arimo';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 23px;
+        
+        /* identical to box height */
+        
+        color: #000000;
+
+
+    }
+    
+}
+
+.statistics_draw {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    &_part {
+        max-width: 1000px;
+        margin-top: 56px;
+    }
+    &_selection {
+        display: flex;
+        width: 520px;
+        justify-content: space-between;
+    }
+    &_btn {
+        width: 160px;
+        height: 42px;
+        border: 2px solid #006D4C;
+        border-bottom: none;
+        border-radius: 8px 8px 0px 0px;
+        cursor: pointer;
+        // transition: color .3s;
+
+
+        &_txt {
+            font-family: 'Arimo';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 23px;
+            align-items: center;
+            text-align: center;
+            
+            color: #000000;
+        }
+    }
+    &_graph {
+        width: 1000px;
+        height: 328px;
+        border: 2px solid #006D4C;
+    }
+}
+.opened {
+    background: rgba(0, 168, 118, 0.1);
+}
