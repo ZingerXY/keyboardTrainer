@@ -55,6 +55,7 @@ $shadow: rgba(0, 168, 118, 0.2);
     user-select: none;
     line-height: 60px;
     gap: 40px;
+
     &_title {
         font-weight: 400;
         font-size: 20px;
@@ -64,4 +65,12 @@ $shadow: rgba(0, 168, 118, 0.2);
             color: $green;
         }
     }
+
 }
+
+.nav_link_route {
+    color: #00A876 !important;
+}
+
+
+
