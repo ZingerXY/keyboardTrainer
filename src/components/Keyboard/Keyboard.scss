@@ -10,21 +10,28 @@ $purple-key: rgba(175, 175, 225, 1);
 .Keyboard {
 
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     font-family: 'Arimo';
     align-items: end;
 }
 
 .hand {
     user-select: none;
+    padding: 0 10px;
+
+    &_img {
+        max-width: 100%;
+    }
 }
 
+
 .keyboard-base {
-    max-width: 1085px;
-    padding: 20px;
+    max-width: 1200px;
+    min-width: 750px;
+    padding: 2px;
     border-radius: 8px;
     display: grid;
-    grid-template-columns: repeat(30, 23px);
+    grid-template-columns: repeat(30, 1fr);
     grid-template-rows: repeat(5, 43px);
     grid-gap: 5px;
     user-select: none;
@@ -32,13 +39,15 @@ $purple-key: rgba(175, 175, 225, 1);
 
 
 .key {
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 2px solid black;
     border-radius: 8px;
     grid-column: span 2;
     font-size: 22px;
     text-align: center;
-    padding-top: 8px;
+    padding: 5px 12px;
 }
 
 .key:hover {
@@ -48,7 +57,7 @@ $purple-key: rgba(175, 175, 225, 1);
 
 .key-words {
     font-size: 14px;
-    padding-top: 12px;
+    // padding-top: 12px;
 }
 
 .key-or {
@@ -131,4 +140,128 @@ $purple-key: rgba(175, 175, 225, 1);
     grid-column: span 13;
     background-color: $purple-key;
 
+}
+
+// @media (max-width: 1170px) {
+
+
+//     .keyboard-base {
+//         grid-template-columns: repeat(30, 20px);
+//         grid-template-rows: repeat(5, 40px);
+//         grid-gap: 4px;
+//     }
+
+//     .key {
+//         font-size: 19px;
+//     }
+
+//     .key-words {
+//         font-size: 11px;
+//     }
+
+
+// }
+
+@media (max-width: 900px) {
+    .Keyboard {
+        justify-content: center;
+    }
+
+    .hand {
+        display: none;
+    }
+}
+
+@media (max-width: 765px) {
+    .keyboard-base {
+        min-width: 100px;
+        gap: 4px;
+    }
+
+    .key {
+        font-size: 19px;
+        // padding: 8px 5px 0 5px;
+    }
+
+    .key-words {
+        font-size: 11px;
+        // padding: 13px 0 0 0;
+    }
+}
+
+@media (max-width: 514px) {
+    .keyboard-base {
+        grid-template-rows: repeat(5, 28px);
+    }
+
+    .key {
+        font-size: 15px;
+        padding: 2px 4px 0 4px;
+    }
+
+    .key-words {
+        font-size: 8px;
+        // padding: 12px 0 0 0;
+    }
+}
+
+// @media (max-width: 694px) {
+//     .keyboard-base {
+//         grid-template-columns: repeat(30, 13px);
+//         grid-template-rows: repeat(5, 33px);
+//         grid-gap: 4px;
+//     }
+
+//     .key {
+//         font-size: 15px;
+//         padding-top: 6px;
+//     }
+
+//     .key-words {
+//         font-size: 9px;
+
+//     }
+// }
+
+// @media (max-width: 553px) {
+//     .keyboard-base {
+//         grid-template-columns: repeat(30, 10px);
+//         grid-template-rows: repeat(5, 30px);
+//         grid-gap: 3px;
+//     }
+
+//     .key {
+//         font-size: 14px;
+//         padding-top: 6px;
+//     }
+
+//     .key-words {
+//         font-size: 9px;
+
+//     }
+// }
+
+// @media (min-width: 375.01px) and (max-width: 465px) {
+//     .keyboard-base {
+//         grid-template-columns: repeat(30, 8px);
+//         grid-template-rows: repeat(5, 28px);
+//         grid-gap: 3px;
+//     }
+
+//     .key {
+//         font-size: 14px;
+//         padding-top: 6px;
+//     }
+
+//     .key-words {
+//         font-size: 8px;
+
+//     }
+
+// }
+
+@media (max-width: 375px) {
+    .Keyboard {
+        display: none;
+    }
 }

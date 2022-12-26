@@ -6,13 +6,17 @@ import Keyboard from "../Keyboard/Keyboard";
 
 const Task = () => {
     return (
-        <div className="task-page">
+        <div className="task-page container">
+            <div className="warning-dispay">
+                <div className="warning-dispay_title">Внимание</div>
+                <div className="warning-dispay_text">Выполнение задания недоступно с мобильной версии браузера.</div>
+            </div>
             <div className="task-card">
                 <div className="task-card_leftpart">
                     <div className="task-title">Задание <span className="task-title_number">#1</span></div>
-                    <div className="task-info">Количество ошибок:<span className="task-info_mistakes">0</span></div>
-                    <div className="task-info">Текущая скорость:<span className="task-info_speed">0 зн/мин</span></div>
-                    <div className="task-info">Время:<span className="task-info_time">00:00</span></div>
+                    <div className="task-info"><p>Количество ошибок:</p><span className="task-info_mistakes">0</span></div>
+                    <div className="task-info"><p>Текущая скорость:</p><span className="task-info_speed">0</span></div>
+                    <div className="task-info"><p>Время:</p><span className="task-info_time">00:00</span></div>
                 </div>
                 <div className="task-card_rightpart">
                     <div className="task-type">
