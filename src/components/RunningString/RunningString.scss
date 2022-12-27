@@ -22,7 +22,7 @@ $shadow: rgba(0, 168, 118, 0.2);
 .running-string {
     display: flex;
     background: rgb(255, 255, 255);
-    min-width: 75rem;
+    min-width: 100%;
     height: 5rem;
     border: 8px solid rgba(0, 168, 118, 0.6);
     border-radius: 8px;
@@ -84,5 +84,22 @@ $shadow: rgba(0, 168, 118, 0.2);
     20%,
     40% {
         transform: rotate(1deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .running-string {
+        min-width: 100%;
+        height: 100%;
+    }
+
+    .input-text {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 375px) {
+    .running-string {
+        display: none;
     }
 }
