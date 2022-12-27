@@ -46,6 +46,8 @@ const Graph = () => {
                          id={GraphStyles.graph_max} src="./img/Frame 32.png" alt="graph" />
                     <img className={GraphStyles.statistics_draw_graph_img}
                          id={GraphStyles.graph_middle} src="./img/Frame 32(1).png" alt="graph" />
+                    <img className={GraphStyles.statistics_draw_graph_img}
+                         id={GraphStyles.graph_mini} src="./img/Frame 32(3).png" alt="graph" />     
                 </div>
             </div>
         </div>

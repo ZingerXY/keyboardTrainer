@@ -67,12 +67,16 @@
     &_middle {
         display: none;
     }
+    &_mini {
+        display: none;
+    }
 }
 .opened {
     background: rgba(0, 168, 118, 0.1);
 }
-
-@media (max-width: 768px) {
+// 768
+// Отображение от 768 до 999 некорректно, поэтому оставляю больший показатель
+@media (max-width: 999px) {
     .statistics_draw {
         &_header {
             font-size: 36px;
@@ -89,6 +93,51 @@
             display: none;
         }
         &_middle {
+            display: block;
+        }
+        &_mini {
+            display: none;
+        }
+    }
+}
+
+// 375
+// Отображение от 375 до 738 некорректно, поэтому оставляю больший показатель
+@media (max-width: 738px) {
+    .statistics_draw {
+        &_header {
+            font-size: 28px;
+            line-height: 32px;
+        }
+        &_part {
+            margin-top: 20px;
+        }
+        &_graph {
+            margin: 0 auto;
+            max-width: 316px;
+            height: 273px;
+            border: 2px solid #006D4C;
+        }
+        &_selection {
+            width: 315px;
+        }
+        &_btn {
+            width: 105px;
+            height: 42px;
+            &_txt {
+                font-size: 16px;
+                line-height: 18px;
+            }
+        }
+    }
+    #graph {
+        &_max {
+            display: none;
+        }
+        &_middle {
+            display: none;
+        }
+        &_mini {
             display: block;
         }
     }
