@@ -28,13 +28,12 @@
     }
     &_mini_left {
         width: 326px;
-        min-height: 109px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
     &_mini_right {
-        min-height: 109px;
+        height: 109px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -79,6 +78,7 @@
     &_part {
         max-width: 1000px;
         margin-top: 56px;
+        margin-bottom: 60px;
     }
     &_selection {
         display: flex;
@@ -115,4 +115,35 @@
 }
 .opened {
     background: rgba(0, 168, 118, 0.1);
+}
+
+@media (max-width: 768px) {
+    .statistics {
+        &_header {
+            font-weight: 400;
+            font-size: 36px;
+            line-height: 41px;
+        }
+        &_part {
+            margin-top: 38px;
+            min-width: 417px;
+            margin-bottom: 67px;
+            display: flex;
+        }
+        &_mini_left {
+            height: 91x;
+        }
+        &_mini_right {
+            height: 91px;
+        }
+        &_mini_title {
+            font-size: 18px;
+            line-height: 21px;
+    
+        }
+        &_mini_value {
+            font-size: 18px;
+            line-height: 21px;
+        }
+    }
 }

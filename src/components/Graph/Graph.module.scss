@@ -5,7 +5,18 @@
     flex-direction: column;
     align-items: center;
 
-
+    &_header {
+        font-family: 'Arimo';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 48px;
+        line-height: 55px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        
+        color: #000000;
+    }
     &_part {
         max-width: 1000px;
         margin-top: 56px;
@@ -43,11 +54,42 @@
         }
     }
     &_graph {
-        width: 1000px;
+        max-width: 1000px;
         height: 328px;
         border: 2px solid #006D4C;
+    }
+    
+}
+#graph {
+    &_max {
+
+    }
+    &_middle {
+        display: none;
     }
 }
 .opened {
     background: rgba(0, 168, 118, 0.1);
+}
+
+@media (max-width: 768px) {
+    .statistics_draw {
+        &_header {
+            font-size: 36px;
+            line-height: 41px;
+        }
+        &_graph {
+            max-width: 740px;
+            height: 328px;
+            border: 2px solid #006D4C;
+        }
+    }
+    #graph {
+        &_max {
+            display: none;
+        }
+        &_middle {
+            display: block;
+        }
+    }
 }
