@@ -1,0 +1,84 @@
+
+.card {
+  width: 360px;
+  height: 180px;
+  background: #FFFFFF;
+  -webkit-box-shadow: 2px 4px 8px 4px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 2px 4px 8px 4px rgba(34, 60, 80, 0.2);
+  box-shadow: 2px 4px 8px 4px rgba(34, 60, 80, 0.2);
+  border-radius: 8px;
+  margin-bottom: 29px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.card-head {
+  height: 95px;
+  padding: 12px 13px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  &_base {
+    background: rgba(0, 168, 118, 0.1);
+  }
+  &_words {
+    background: rgba(11, 95, 165, 0.1);
+  }
+  &_punctuation {
+    background: rgba(255, 89, 0, 0.1);
+  }
+  &_numbers {
+    background: rgba(255, 148, 0, 0.1);
+  }
+}
+.card-name {
+  font-size: 60px;
+  line-height: 70px;
+  color: #000000;
+}
+.card-type {
+  border: 1px solid #006D4C;
+  border-radius: 8px;
+  padding: 4px;
+  min-width: 100px;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  color: #FFFFFF;
+  &_base {
+    background: #00A876;
+  }
+  &_words {
+    background: #0B5FA5;
+  }
+  &_punctuation {
+    background: #FF5900;
+  }
+  &_numbers {
+    background: #FF9400;
+  }
+}
+.card-bottom {
+  padding: 12px 13px;
+}
+.card-level {
+  font-size: 20px;
+  line-height: 23px;
+  color: #000000;
+  margin-bottom: 10px;
+}
+.card-level-box {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+}
+.level-point {
+  background: rgba(0, 168, 118, 0.1);
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  margin-right: 8px;
+}
+.level-active {
+  background: #00A876;
+}
