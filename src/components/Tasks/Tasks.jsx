@@ -86,7 +86,7 @@ const Tasks = () => {
   } else {
     return (
       <div className="tasks-page">
-        <div className="tasks-container container">
+        <div className="container tasks-container">
           <form action="#" id="filters-form" onChange={handleStates}>
             <h4 className="filters-title">Тип задания</h4>
             <div id="brands">

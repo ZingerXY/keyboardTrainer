@@ -5,11 +5,11 @@ $shadow: rgba(0, 168, 118, 0.2);
 .tasks-page {
     color: black;
     font-family: 'Arimo';
-    width: 100%;
+    width: 100vw;
     height: 100%;
 }
 .tasks-container {
-    max-width: 1146px;
+    max-width: 1146px !important;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -209,6 +209,4 @@ $shadow: rgba(0, 168, 118, 0.2);
         color: #333333;
         z-index: -1;
     }
-}
-    padding: 0 2%;
 }
