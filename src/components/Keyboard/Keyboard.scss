@@ -57,7 +57,6 @@ $purple-key: rgba(175, 175, 225, 1);
 
 .key-words {
     font-size: 14px;
-    // padding-top: 12px;
 }
 
 .key-or {
@@ -142,25 +141,6 @@ $purple-key: rgba(175, 175, 225, 1);
 
 }
 
-// @media (max-width: 1170px) {
-
-
-//     .keyboard-base {
-//         grid-template-columns: repeat(30, 20px);
-//         grid-template-rows: repeat(5, 40px);
-//         grid-gap: 4px;
-//     }
-
-//     .key {
-//         font-size: 19px;
-//     }
-
-//     .key-words {
-//         font-size: 11px;
-//     }
-
-
-// }
 
 @media (max-width: 900px) {
     .Keyboard {
@@ -180,12 +160,10 @@ $purple-key: rgba(175, 175, 225, 1);
 
     .key {
         font-size: 19px;
-        // padding: 8px 5px 0 5px;
     }
 
     .key-words {
         font-size: 11px;
-        // padding: 13px 0 0 0;
     }
 }
 
@@ -201,64 +179,10 @@ $purple-key: rgba(175, 175, 225, 1);
 
     .key-words {
         font-size: 8px;
-        // padding: 12px 0 0 0;
+
     }
 }
 
-// @media (max-width: 694px) {
-//     .keyboard-base {
-//         grid-template-columns: repeat(30, 13px);
-//         grid-template-rows: repeat(5, 33px);
-//         grid-gap: 4px;
-//     }
-
-//     .key {
-//         font-size: 15px;
-//         padding-top: 6px;
-//     }
-
-//     .key-words {
-//         font-size: 9px;
-
-//     }
-// }
-
-// @media (max-width: 553px) {
-//     .keyboard-base {
-//         grid-template-columns: repeat(30, 10px);
-//         grid-template-rows: repeat(5, 30px);
-//         grid-gap: 3px;
-//     }
-
-//     .key {
-//         font-size: 14px;
-//         padding-top: 6px;
-//     }
-
-//     .key-words {
-//         font-size: 9px;
-
-//     }
-// }
-
-// @media (min-width: 375.01px) and (max-width: 465px) {
-//     .keyboard-base {
-//         grid-template-columns: repeat(30, 8px);
-//         grid-template-rows: repeat(5, 28px);
-//         grid-gap: 3px;
-//     }
-
-//     .key {
-//         font-size: 14px;
-//         padding-top: 6px;
-//     }
-
-//     .key-words {
-//         font-size: 8px;
-
-//     }
-
-// }
 
 @media (max-width: 375px) {
     .Keyboard {
