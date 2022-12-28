@@ -82,3 +82,27 @@
 .level-active {
   background: #00A876;
 }
+
+@media (max-width: 840px) {
+  .card-name {
+    font-size: 48px;
+  }
+  .card-level {
+    font-size: 20px;
+    line-height: 23px;
+  }
+  .level-point {
+    width: 20px;
+    height: 20px;
+  }
+  .card {
+      width: 48%;
+      min-height: 158px;
+  }
+}
+@media (max-width: 640px) {
+  .card {
+    width: 100%;
+    margin-bottom: 37px;
+  }
+}

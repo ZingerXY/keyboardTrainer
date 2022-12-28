@@ -88,33 +88,37 @@ const Tasks = () => {
       <div className="tasks-page">
         <div className="container tasks-container">
           <form action="#" id="filters-form" onChange={handleStates}>
-            <h4 className="filters-title">Тип задания</h4>
-            <div id="brands">
-              <div className="filters-checkbox">
-                <input type="checkbox" className="filters-checkbox_custom" id="base" checked={base} onChange={() => setBase(!base)}/>
-                <label htmlFor="base">Базовые уроки</label>
-              </div>
-              <div className="filters-checkbox">
-                <input type="checkbox" className="filters-checkbox_custom" id="words" checked={words} onChange={() => setWords(!words)}/>
-                <label htmlFor="words"> Слова</label>
-              </div>
-              <div className="filters-checkbox">
-                <input type="checkbox" className="filters-checkbox_custom" id="punctuation" checked={punctuation} onChange={() => setPunctuation(!punctuation)}/>
-                <label htmlFor="punctuation"> Знаки препинания</label>
-              </div>
-              <div className="filters-checkbox">
-                <input type="checkbox" className="filters-checkbox_custom" id="numbers" checked={numAndSymbols} onChange={() => setNumAndSymbols(!numAndSymbols)}/>
-                <label htmlFor="numbers"> Цифры и символы</label>
+            <div className="form-checkboxs">
+              <h4 className="filters-title">Тип задания</h4>
+              <div id="brands">
+                <div className="filters-checkbox">
+                  <input type="checkbox" className="filters-checkbox_custom" id="base" checked={base} onChange={() => setBase(!base)}/>
+                  <label htmlFor="base">Базовые уроки</label>
+                </div>
+                <div className="filters-checkbox">
+                  <input type="checkbox" className="filters-checkbox_custom" id="words" checked={words} onChange={() => setWords(!words)}/>
+                  <label htmlFor="words"> Слова</label>
+                </div>
+                <div className="filters-checkbox">
+                  <input type="checkbox" className="filters-checkbox_custom" id="punctuation" checked={punctuation} onChange={() => setPunctuation(!punctuation)}/>
+                  <label htmlFor="punctuation"> Знаки препинания</label>
+                </div>
+                <div className="filters-checkbox">
+                  <input type="checkbox" className="filters-checkbox_custom" id="numbers" checked={numAndSymbols} onChange={() => setNumAndSymbols(!numAndSymbols)}/>
+                  <label htmlFor="numbers"> Цифры и символы</label>
+                </div>
               </div>
             </div>
-            <h4 className="filters-title">Сортировка</h4>
-            <div className="__select" data-state="" onClick={selectOpen}>
-              <div className="__select__title">{sort.text}</div>
-              <div className="__select__content" >
-                <input id="singleSelect0" className="__select__input" type="radio" name="singleSelect" defaultChecked={true}/>
-                <label htmlFor="singleSelect0" tabIndex="0" className="__select__label" data-value="desc" onClick={selectChange}>Сначала легкие</label>
-                <input id="singleSelect1" className="__select__input" type="radio" name="singleSelect"/>
-                <label htmlFor="singleSelect1" tabIndex="0" className="__select__label" data-value="asc" onClick={selectChange}>Сначала сложные</label>
+            <div className="form-selector">
+              <h4 className="filters-title">Сортировка</h4>
+              <div className="__select" data-state="" onClick={selectOpen}>
+                <div className="__select__title">{sort.text}</div>
+                <div className="__select__content" >
+                  <input id="singleSelect0" className="__select__input" type="radio" name="singleSelect" defaultChecked={true}/>
+                  <label htmlFor="singleSelect0" tabIndex="0" className="__select__label" data-value="desc" onClick={selectChange}>Сначала легкие</label>
+                  <input id="singleSelect1" className="__select__input" type="radio" name="singleSelect"/>
+                  <label htmlFor="singleSelect1" tabIndex="0" className="__select__label" data-value="asc" onClick={selectChange}>Сначала сложные</label>
+                </div>
               </div>
             </div>
           </form>
