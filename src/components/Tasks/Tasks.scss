@@ -26,7 +26,7 @@ $shadow: rgba(0, 168, 118, 0.2);
     color: black;
     padding-bottom: 15px;
 }
-.filters-title:not(:first-of-type) {
+.form-selector {
     margin-top: 61px;
 }
 .filters-checkbox {
@@ -208,5 +208,76 @@ $shadow: rgba(0, 168, 118, 0.2);
         top: -50px;
         color: #333333;
         z-index: -1;
+    }
+}
+@media (max-width: 1240px) {
+    .tasks-container {
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+
+}
+@media (max-width: 1040px) {
+    .tasks-container {
+        padding-left: 5%;
+        padding-right: 5%;
+        flex-direction: column;
+    }
+    .form-selector {
+        margin-top: 0;
+    }
+    .form-checkboxs {
+        margin-right: 10%;
+    }
+    #filters-form {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 41px;
+    }
+    .cards-box {
+        margin: 0 auto;
+    }
+}
+@media (max-width: 840px) {
+    .cards-box {
+        width:100%;
+    }
+    #filters-form {
+        justify-content: flex-start;
+    }
+}
+@media (max-width: 840px) {
+    #filters-form {
+        justify-content: space-between;
+    }
+    .form-checkboxs {
+        width: 50%;
+        margin: 0;
+    }
+    .form-selector {
+        width: 50%;
+    }
+    .__select {
+        width: 100%;
+    }
+}
+@media (max-width: 640px) {
+    #filters-form {
+        margin-bottom: 62px;
+    }
+    .cards-box {
+        flex-direction: column;
+        align-content: center;
+    }
+    .filters-title {
+        font-size: 16px;
+    }
+    .filters-checkbox {
+        font-size: 14px;
+    }
+    .filters-checkbox_custom + label::before {
+        width: 14px;
+        height: 14px;
     }
 }

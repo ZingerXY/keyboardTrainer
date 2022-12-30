@@ -15,7 +15,7 @@ const Card = (props) => {
         <div className={"card-type card-type_" + props.type}>{props.typeName}</div>
       </div>
       <div className="card-bottom">
-        <p className="card-level">Сложность {props.level}</p>
+        <p className="card-level">Сложность</p>
         <ul className="card-level-box">
           {levelArr.map((el, id)=>(
             el === 1
