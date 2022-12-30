@@ -26,7 +26,7 @@ $shadow: rgba(0, 168, 118, 0.2);
     color: black;
     padding-bottom: 15px;
 }
-.filters-title:not(:first-of-type) {
+.form-selector {
     margin-top: 61px;
 }
 .filters-checkbox {
@@ -215,12 +215,16 @@ $shadow: rgba(0, 168, 118, 0.2);
         padding-left: 2%;
         padding-right: 2%;
     }
+
 }
 @media (max-width: 1040px) {
     .tasks-container {
         padding-left: 5%;
         padding-right: 5%;
         flex-direction: column;
+    }
+    .form-selector {
+        margin-top: 0;
     }
     .form-checkboxs {
         margin-right: 10%;
