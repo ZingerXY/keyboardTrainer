@@ -21,6 +21,8 @@ const Graph = () => {
         
     }
     return (
+    <div className={GraphStyles.statistics_draw}>
+        <h1 className={GraphStyles.statistics_draw_header}>Графики</h1>
         <div className={GraphStyles.statistics_draw_part}>
                 <div className={GraphStyles.statistics_draw_selection}>
                     <button className={GraphStyles.statistics_draw_btn } onClick={setDraw}>
@@ -40,10 +42,15 @@ const Graph = () => {
                         </button>
                 </div>
                 <div className={GraphStyles.statistics_draw_graph}>
-                    <img src="./img/Frame 32.png" alt="graph" />
+                    <img className={GraphStyles.statistics_draw_graph_img}
+                         id={GraphStyles.graph_max} src="./img/Frame 32.png" alt="graph" />
+                    <img className={GraphStyles.statistics_draw_graph_img}
+                         id={GraphStyles.graph_middle} src="./img/Frame 32(1).png" alt="graph" />
+                    <img className={GraphStyles.statistics_draw_graph_img}
+                         id={GraphStyles.graph_mini} src="./img/Frame 32(3).png" alt="graph" />     
                 </div>
             </div>
-        
+        </div>
     )
 }
 

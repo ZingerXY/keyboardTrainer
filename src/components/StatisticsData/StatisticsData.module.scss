@@ -28,13 +28,12 @@
     }
     &_mini_left {
         width: 326px;
-        min-height: 109px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
     &_mini_right {
-        min-height: 109px;
+        height: 109px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -79,6 +78,7 @@
     &_part {
         max-width: 1000px;
         margin-top: 56px;
+        margin-bottom: 60px;
     }
     &_selection {
         display: flex;
@@ -115,4 +115,68 @@
 }
 .opened {
     background: rgba(0, 168, 118, 0.1);
+}
+// 768
+// Отображение от 768 до 999 некорректно, поэтому оставляю больший показатель
+@media (max-width: 999px) {
+    .statistics {
+        &_header {
+            font-weight: 400;
+            font-size: 36px;
+            line-height: 41px;
+        }
+        &_part {
+            margin-top: 38px;
+            min-width: 417px;
+            margin-bottom: 67px;
+            display: flex;
+        }
+        &_mini_left {
+            height: 91x;
+        }
+        &_mini_right {
+            height: 91px;
+        }
+        &_mini_title {
+            font-size: 18px;
+            line-height: 21px;
+    
+        }
+        &_mini_value {
+            font-size: 18px;
+            line-height: 21px;
+        }
+    }
+}
+
+// 375
+// Отображение от 375 до 738 некорректно, поэтому оставляю больший показатель
+@media (max-width: 738px) {
+    .statistics {
+        &_header {
+            font-size: 28px;
+            line-height: 32px;
+        }
+        &_part {
+            margin-top: 20px;
+            min-width: 314px;
+            margin-bottom: 60px;
+        }
+        &_mini_left {
+            height: 70px;
+            width: 242px;
+        }
+        &_mini_right {
+            height: 70px;
+        }
+        &_mini_title {
+            font-size: 16px;
+            line-height: 18px;
+    
+        }
+        &_mini_value {
+            font-size: 16px;
+            line-height: 18px;
+        }
+    }
 }

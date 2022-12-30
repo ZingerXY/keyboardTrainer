@@ -5,7 +5,18 @@
     flex-direction: column;
     align-items: center;
 
-
+    &_header {
+        font-family: 'Arimo';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 48px;
+        line-height: 55px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        
+        color: #000000;
+    }
     &_part {
         max-width: 1000px;
         margin-top: 56px;
@@ -43,11 +54,91 @@
         }
     }
     &_graph {
-        width: 1000px;
+        max-width: 1000px;
         height: 328px;
         border: 2px solid #006D4C;
+    }
+    
+}
+#graph {
+    &_max {
+
+    }
+    &_middle {
+        display: none;
+    }
+    &_mini {
+        display: none;
     }
 }
 .opened {
     background: rgba(0, 168, 118, 0.1);
+}
+// 768
+// Отображение от 768 до 999 некорректно, поэтому оставляю больший показатель
+@media (max-width: 999px) {
+    .statistics_draw {
+        &_header {
+            font-size: 36px;
+            line-height: 41px;
+        }
+        &_graph {
+            max-width: 740px;
+            height: 328px;
+            border: 2px solid #006D4C;
+        }
+    }
+    #graph {
+        &_max {
+            display: none;
+        }
+        &_middle {
+            display: block;
+        }
+        &_mini {
+            display: none;
+        }
+    }
+}
+
+// 375
+// Отображение от 375 до 738 некорректно, поэтому оставляю больший показатель
+@media (max-width: 738px) {
+    .statistics_draw {
+        &_header {
+            font-size: 28px;
+            line-height: 32px;
+        }
+        &_part {
+            margin-top: 20px;
+        }
+        &_graph {
+            margin: 0 auto;
+            max-width: 316px;
+            height: 273px;
+            border: 2px solid #006D4C;
+        }
+        &_selection {
+            width: 315px;
+        }
+        &_btn {
+            width: 105px;
+            height: 42px;
+            &_txt {
+                font-size: 16px;
+                line-height: 18px;
+            }
+        }
+    }
+    #graph {
+        &_max {
+            display: none;
+        }
+        &_middle {
+            display: none;
+        }
+        &_mini {
+            display: block;
+        }
+    }
 }
