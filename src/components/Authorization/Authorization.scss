@@ -1,0 +1,124 @@
+$shadow: rgba(0, 168, 118, 0.2);
+.Xmark{
+    display: grid;
+    justify-content: end;
+}
+.content
+{
+    font-family: 'Arimo';
+}
+.form
+{
+    text-align: center;
+}
+form
+{
+   
+    
+    display: grid;  
+    justify-content: center;
+    align-items:center;
+}
+.margin
+{
+    margin:10px;
+}
+.window
+{
+    padding: 20px;
+    max-height: 600px;
+    max-width: 600px;
+    
+    margin: 0 auto ;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    -webkit-box-shadow: 0px 0px 18px 11px $shadow;
+    -moz-box-shadow: 0px 0px 18px 11px $shadow;
+    box-shadow: 0px 0px 18px 11px $shadow;
+}
+
+a {
+    
+    color: #00A876;
+    text-decoration: none;
+}
+a:hover {
+    color:  #14523F;
+}
+
+a:active {
+    color:  #006D4C;
+}
+.reg-text
+{
+    
+    margin-top: 10px;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: rgba(0, 168, 118, 1);
+
+
+}
+input{
+    height: 32px;
+    width: 300px;
+    border: 0px;
+    border-bottom: 2px solid #207E62;
+
+
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: left;
+
+}
+.reg-black
+{
+font-weight: 400;
+font-size: 18px;
+line-height: 21px;
+
+color: #000000;
+}
+.btn 
+{
+  
+    height: 50px;
+    width: 225px;
+    border-radius: 8px;
+
+    background:linear-gradient(0deg, #00A876, #00A876);
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #FFFFFF;
+
+}
+
+.btn:hover {
+    background: linear-gradient(0deg, #14523F, #14523F);
+}
+
+.btn:active {
+    background: linear-gradient(0deg, #006D4C, #006D4C),
+    linear-gradient(0deg, #FFFFFF, #FFFFFF);
+}
+.input-text
+{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(32, 126, 98, 1);
+
+
+}
