@@ -3,6 +3,7 @@ import './Task.scss'
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import RunningString from "../RunningString/RunningString";
 import Keyboard from "../Keyboard/Keyboard";
+import {KeyboardWrapper} from "../KeyboardWrapper";
 
 const Task = () => {
     return (
@@ -33,8 +34,7 @@ const Task = () => {
                     </div>
                 </div>
             </div>
-            <RunningString />
-            <Keyboard />
+            <KeyboardWrapper/>
         </div>
     )
 }
