@@ -2,7 +2,7 @@ import React from "react"
 import './RunningString.scss'
 import { useState, useEffect, createRef } from 'react'
 
-const RunningString = () => {
+const RunningString = ({setCurrentLetter, setPrevLetter}) => {
   const [startWord, setStartWord] = useState('пример текста пример текста пример текста пример текста'); //Слово, которое надо набрать
   const [endWord, setEndWord] = useState('') // Набранное слово
   const stringId = createRef() // Генерирует Ref для строки (Понадобиться для добавления стилей при неправильном вводе)
@@ -30,6 +30,7 @@ const RunningString = () => {
     if (startWord.length < 1) { //Проверяет, закончилось ли слово
       //generateWord()
     } else {
+      setPrevLetter(startWord.substring(0, 1))
       startWord.substring(1)
       setStartWord(startWord => startWord.substring(1)) //Обновляет значение startWord
       setEndWord(word => word + startWord[0]) //Обновляет значение endWord
@@ -42,6 +43,7 @@ const RunningString = () => {
     }
   };
   useEffect(() => { //Отслеживает нажатие на кнопку
+    setCurrentLetter(startWord.substring(0, 1))
     const keyDownHandler = event => {
       // stringId.current.classList.add('shake')
       if (event.key === startWord[0]) { //Проверяет, верно ли пользователь нажал на кнопку
@@ -61,6 +63,7 @@ const RunningString = () => {
       document.removeEventListener('keydown', keyDownHandler); // Убирает слушатель события при нажатии
     };
   }, [startWord]);
+
   return (
     <div className="container">
 

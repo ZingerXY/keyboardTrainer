@@ -18,6 +18,7 @@ $purple-key: rgba(175, 175, 225, 1);
 .hand {
     user-select: none;
     padding: 0 10px;
+    position: relative;
 
     &_img {
         max-width: 100%;
@@ -59,6 +60,109 @@ $purple-key: rgba(175, 175, 225, 1);
     font-size: 14px;
 }
 
+.lh_finger_little,
+.lh_finger_ring,
+.lh_finger_middle,
+.lh_finger_idx,
+.rh_finger_little,
+.rh_finger_ring,
+.rh_finger_middle,
+.rh_finger_idx,
+.rh_finger_thumb {
+    position: absolute;
+    transition: all .12s;
+}
+
+.lh_finger_little {
+    top: 15%;
+    left: 10%;
+    width: 11%;
+    height: 27%;
+    transform: rotate(-20deg);
+    opacity: .9;
+    border-radius: 12px 14px 0 0;
+}
+
+.lh_finger_ring {
+    top: 3%;
+    left: 29%;
+    width: 11%;
+    height: 35%;
+    transform: rotate(3deg);
+    opacity: .8;
+    border-radius: 12px 14px 8px 0;
+}
+
+.lh_finger_middle {
+    top: 0;
+    left: 43%;
+    width: 11%;
+    height: 37%;
+    transform: rotate(9deg);
+    opacity: .8;
+    border-radius: 12px 14px 0 0;
+}
+
+.lh_finger_idx {
+    top: 6%;
+    left: 59%;
+    width: 12%;
+    height: 34%;
+    transform: rotate(20.5deg);
+    opacity: .8;
+    border-radius: 14px 16px 0 0;
+}
+
+.rh_finger_idx {
+    top: 6.5%;
+    left: 30%;
+    width: 11%;
+    height: 34%;
+    transform: rotate(-20deg);
+    opacity: .8;
+    border-radius: 12px 12px 0 0;
+}
+
+.rh_finger_middle {
+    top: -0.5%;
+    left: 46%;
+    width: 12%;
+    height: 38%;
+    transform: rotate(-9deg);
+    opacity: .8;
+    border-radius: 12px 12px 0 0;
+}
+
+.rh_finger_ring {
+    top: 3%;
+    left: 60.5%;
+    width: 11%;
+    height: 34%;
+    transform: rotate(-2.5deg);
+    opacity: .8;
+    border-radius: 12px 12px 0 0;
+}
+
+.rh_finger_little {
+    top: 14.5%;
+    left: 79%;
+    width: 11.5%;
+    height: 27%;
+    transform: rotate(21deg);
+    opacity: .8;
+    border-radius: 12px 12px 0 0;
+}
+
+.rh_finger_thumb {
+    top: 40%;
+    left: 15%;
+    width: 12%;
+    height: 27%;
+    transform: rotate(-50deg);
+    opacity: .8;
+    border-radius: 12px 40px 0 0;
+}
+
 .key-or {
     background-color: $orange-key;
 }
@@ -77,6 +181,10 @@ $purple-key: rgba(175, 175, 225, 1);
 
 .key-pi {
     background-color: $pink-key;
+}
+
+.key-space {
+    background-color: $purple-key;
 }
 
 
@@ -138,7 +246,6 @@ $purple-key: rgba(175, 175, 225, 1);
 .space {
     grid-column: span 13;
     background-color: $purple-key;
-
 }
 
 
