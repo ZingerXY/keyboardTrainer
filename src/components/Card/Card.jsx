@@ -1,5 +1,6 @@
 import React from "react";
 import "./Card.scss"
+
 const Card = (props) => {
   let levelArr = [0, 0, 0, 0, 0];
   for (let i = 0; i < props.level; i++) {

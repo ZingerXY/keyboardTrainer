@@ -1,14 +1,10 @@
 import React from "react";
-import RunningString from "../RunningString/RunningString";
-import Keyboard from "../Keyboard/Keyboard";
+import {KeyboardWrapper} from "../KeyboardWrapper";
 
 const Home = () => {
-    return (
-        <div className="home-page">
-            <RunningString />
-            <Keyboard />
-        </div>
-    )
+  return <div className="home-page">
+    <KeyboardWrapper/>
+  </div>
 }
 
 export default Home
