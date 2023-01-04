@@ -83,6 +83,10 @@ $shadow: rgba(0, 168, 118, 0.2);
     color: #00A876 !important;
 }
 
+.burger_button {
+    display: none;
+}
+
 .burger_list {
     display: none;
 }
@@ -112,6 +116,10 @@ $shadow: rgba(0, 168, 118, 0.2);
         max-width: 767px;
     }
 
+    .logo_name {
+        display: none;
+    }
+
     .nav {
         padding: 0 48px;
 
@@ -121,6 +129,10 @@ $shadow: rgba(0, 168, 118, 0.2);
     }
 
     .burger {
+        &_button {
+            display: block;
+        }
+
         &_list {
             display: flex;
             flex-direction: column;
