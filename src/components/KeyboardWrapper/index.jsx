@@ -2,7 +2,9 @@ import React, {useEffect, useState} from "react";
 import RunningString from "../RunningString/RunningString";
 import Keyboard from "../Keyboard/Keyboard";
 
-export const KeyboardWrapper = () => {
+export const KeyboardWrapper = ({
+    setNumberOfMistakes
+  }) => {
   const [prevLetter, setPrevLetter] = useState("")
   const [currentLetter, setCurrentLetter] = useState("")
 
@@ -64,6 +66,7 @@ export const KeyboardWrapper = () => {
 
   return <>
     <RunningString
+      setNumberOfMistakes={setNumberOfMistakes}
       setCurrentLetter={setCurrentLetter}
       setPrevLetter={setPrevLetter}
     />

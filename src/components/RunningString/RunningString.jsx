@@ -2,7 +2,11 @@ import React from "react"
 import './RunningString.scss'
 import { useState, useEffect, createRef } from 'react'
 
-const RunningString = ({setCurrentLetter, setPrevLetter}) => {
+const RunningString = ({
+    setNumberOfMistakes,
+    setCurrentLetter, 
+    setPrevLetter
+  }) => {
   const [startWord, setStartWord] = useState('пример текста пример текста пример текста пример текста'); //Слово, которое надо набрать
   const [endWord, setEndWord] = useState('') // Набранное слово
   const stringId = createRef() // Генерирует Ref для строки (Понадобиться для добавления стилей при неправильном вводе)
@@ -50,6 +54,9 @@ const RunningString = ({setCurrentLetter, setPrevLetter}) => {
         event.preventDefault();
         CurrectInput(); // Вызывает метод с логикой
       } else {
+        setNumberOfMistakes(prevNumber => {
+          return prevNumber + 1;
+        })
         stringId.current.classList.add('shake') // Трясет строку в случае, если введено неправильное значение
         setTimeout(() => {
           stringId.current.classList.remove('shake') //Убирает класс анимации
