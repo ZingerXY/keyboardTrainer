@@ -1,7 +1,16 @@
 const defaultState = {
-    text: 'first'
+    count: 0
 }
 
 export const DataReducer = (state=defaultState, action) => {
-    return state
+    switch(action.type){
+        case 'ADD_UNCORRECT':
+            return action
+            break;
+    
+        default:
+            return state
+            break;
+    }
+    
 }

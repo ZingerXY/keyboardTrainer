@@ -4,8 +4,11 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import RunningString from "../RunningString/RunningString";
 import Keyboard from "../Keyboard/Keyboard";
 import {KeyboardWrapper} from "../KeyboardWrapper";
+import { useSelector } from "react-redux";
 
 const Task = () => {
+    const value = useSelector((state) => state.DataReducer)
+console.log(value)
     return (
         <div className="task-page container">
             <div className="warning-dispay">
@@ -15,7 +18,7 @@ const Task = () => {
             <div className="task-card">
                 <div className="task-card_leftpart">
                     <div className="task-title">Задание <span className="task-title_number">#1</span></div>
-                    <div className="task-info"><p>Количество ошибок:</p><span className="task-info_mistakes">0</span></div>
+                    <div className="task-info"><p>Количество ошибок:</p><span className="task-info_mistakes">{value.count}</span></div>
                     <div className="task-info"><p>Текущая скорость:</p><span className="task-info_speed">0</span></div>
                     <div className="task-info"><p>Время:</p><span className="task-info_time">00:00</span></div>
                 </div>
