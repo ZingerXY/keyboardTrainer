@@ -54,9 +54,11 @@ const RunningString = ({
         event.preventDefault();
         CurrectInput(); // Вызывает метод с логикой
       } else {
-        setNumberOfMistakes(prevNumber => {
-          return prevNumber + 1;
-        })
+        if(setNumberOfMistakes){
+          setNumberOfMistakes(prevNumber => {
+            return prevNumber + 1;
+          })
+        }
         stringId.current.classList.add('shake') // Трясет строку в случае, если введено неправильное значение
         setTimeout(() => {
           stringId.current.classList.remove('shake') //Убирает класс анимации
