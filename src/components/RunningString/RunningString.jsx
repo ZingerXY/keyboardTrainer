@@ -1,35 +1,26 @@
 import React from "react"
 import './RunningString.scss'
-import { useState, useEffect, createRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { useDispatch } from "react-redux"
 
 const RunningString = ({setCurrentLetter, setPrevLetter}) => {
+  const dispatch = useDispatch();
   const [startWord, setStartWord] = useState('пример текста пример текста пример текста пример текста'); //Слово, которое надо набрать
   const [endWord, setEndWord] = useState('') // Набранное слово
-  const stringId = createRef() // Генерирует Ref для строки (Понадобиться для добавления стилей при неправильном вводе)
-
-  /*
-  Тестовый метод для генерации новых слов
-  const generateWord = () => {
-      let word = ''
-      const alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
-
-      for( let i=0; i < 5; i++ )
-      word += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-
-      setEndWord('')
-      setStartWord(word)
-  }*/
+  const [correct, setCorrect] = useState(0)
+  const [unCorrect, setUnCorrect] = useState(0) //Количество неправильных вводов
+  const stringId = useRef(null) // Генерирует Ref для строки (Понадобиться для добавления стилей при неправильном вводе)
+  const [timer, setTimer] = useState(0);
+  const [seconds, setSeconds] = useState(0)
+  const [minutes, setMinutes] = useState(0)
 
   const CurrectInput = () => { //Логика при правильном вводе
-    /*
-    Проверял, почему пробел не отображается
-    if ( startWord[1] == ' ') { 
-        console.log(startWord.substring(1))
-    }
-    */
-    if (startWord.length < 1) { //Проверяет, закончилось ли слово
+    setCorrect(cur => cur+1)
+    if (startWord.length === 1) { //Проверяет, закончилось ли слово
       //generateWord()
-    } else {
+      clearInterval(timer);
+      setTimer(0)
+    } 
       setPrevLetter(startWord.substring(0, 1))
       startWord.substring(1)
       setStartWord(startWord => startWord.substring(1)) //Обновляет значение startWord
@@ -40,17 +31,49 @@ const RunningString = ({setCurrentLetter, setPrevLetter}) => {
         setEndWord(word => word.slice(1)) //Убирает первый символ endWord
       }
 
-    }
+    
   };
+
+  const createTimer = () => {
+    setTimer(setInterval(() => {
+      if (seconds < 60) {
+      setSeconds(s => s+1)
+      } else {
+        
+        setSeconds(s => s+1)
+      }
+    }, 1000))
+  }
   useEffect(() => { //Отслеживает нажатие на кнопку
     setCurrentLetter(startWord.substring(0, 1))
+    console.log(seconds)
+    dispatch(
+      { type: 'UPDATE_TIME', seconds, minutes}
+      )
+      dispatch({
+        type: 'ADD_UNCORRECT', count: unCorrect
+      })
+      dispatch({
+        type: 'ADD_CORRECT', correct: correct
+      })
+    if (seconds === 60) {
+      setMinutes(m => m+1)
+      setSeconds(0)
+      clearInterval(timer)
+      createTimer()
+    }
     const keyDownHandler = event => {
-      // stringId.current.classList.add('shake')
+      if (timer === 0) {
+        createTimer()
+      }
       if (event.key === startWord[0]) { //Проверяет, верно ли пользователь нажал на кнопку
         event.preventDefault();
         CurrectInput(); // Вызывает метод с логикой
       } else {
+        event.preventDefault()
         stringId.current.classList.add('shake') // Трясет строку в случае, если введено неправильное значение
+        setUnCorrect(unCorrect => unCorrect + 1);
+
         setTimeout(() => {
           stringId.current.classList.remove('shake') //Убирает класс анимации
         }, 800)
@@ -62,7 +85,7 @@ const RunningString = ({setCurrentLetter, setPrevLetter}) => {
     return () => {
       document.removeEventListener('keydown', keyDownHandler); // Убирает слушатель события при нажатии
     };
-  }, [startWord]);
+  }, [startWord, unCorrect, seconds]);
 
   return (
     <div className="container">
