@@ -2,6 +2,19 @@ $shadow: rgba(0, 168, 118, 0.2);
 .Xmark{
     display: grid;
     justify-content: end;
+    
+}
+.X{
+    margin: 10px;
+    &:hover
+    {
+        cursor: pointer;
+    }
+}
+
+.input
+{
+    outline: none;
 }
 .content
 {
@@ -26,10 +39,10 @@ form
 }
 .window
 {
-    padding: 20px;
-    max-height: 600px;
-    max-width: 600px;
     
+    min-height: 600px;
+    width: 800px;
+    border-radius: 10px;
     margin: 0 auto ;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -39,56 +52,95 @@ form
     box-shadow: 0px 0px 18px 11px $shadow;
 
 
-    @media screen and (min-width: 1024px) {
-        width: 600px;
-      }
-    @media screen and (min-width: 768px) {
-        width: 600px;
-      }
-      @media screen and (min-width: 667px) {
-        width: 600px;
-      }
-     
+        @media screen and (width: 768px)
+        {
+        max-width: 600px;
+        
+        }
+        @media screen and (width: 667px)
+        {
+            max-width: 600px;
+           
+        }
+        @media screen and (width: 375px)
+        {
+        max-width: 360px;
+        
+        }
+        
 }
 
 a {
     
     color: #00A876;
     text-decoration: none;
-}
-a:hover {
-    color:  #14523F;
+    &:hover
+    {
+        color:  #14523F;
+    }
+    &:active
+    {
+        color:  #006D4C;
+    }
 }
 
-a:active {
-    color:  #006D4C;
-}
+
+
 .reg-text
 {
-    
     margin-top: 10px;
     font-size: 36px;
     font-weight: 700;
-    line-height: 41px;
+    line-height: 48px;
     letter-spacing: 0em;
     text-align: center;
     color: rgba(0, 168, 118, 1);
-
-
+    @media screen and (width: 768px) 
+        {
+            font-size: 36px;
+            line-height: 41px;
+        }
+        @media screen and (width: 667px) 
+        {
+            font-size: 36px;
+            line-height: 41px;
+        }
+        @media screen and (width: 375px) 
+        {
+            font-size: 24px;
+            line-height: 27px;
+        }
 }
 input{
     height: 32px;
-    width: 300px;
+    width: 400px;
     border: 0px;
     border-bottom: 2px solid #207E62;
 
 
-    font-size: 22px;
+    font-size: 26px;
     font-weight: 400;
-    line-height: 25px;
+    line-height: 30px;
     letter-spacing: 0em;
     text-align: left;
-
+        @media screen and (width: 768px)
+        {
+            width: 340px;
+            font-size: 22px;
+            line-height: 25px;
+        }
+        @media screen and (width: 667px)
+        {
+            width: 340px;
+            font-size: 22px;
+            line-height: 25px;
+        }
+        @media screen and (width: 375px)
+        {
+            font-size: 22px;
+            line-height: 25px;
+            width: 340px;
+        }
 }
 .reg-black
 {
@@ -113,26 +165,42 @@ color: #000000;
     letter-spacing: 0em;
     text-align: center;
     color: #FFFFFF;
-
-}
-
-.btn:hover {
+&:hover
+{
+    cursor: pointer;
     background: linear-gradient(0deg, #14523F, #14523F);
 }
-
-.btn:active {
+&:active
+{
     background: linear-gradient(0deg, #006D4C, #006D4C),
-    linear-gradient(0deg, #FFFFFF, #FFFFFF);
+    linear-gradient(0deg, #FFFFFF, #FFFFFF); 
 }
+}
+
+
 .input-text
 {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
-    line-height: 18px;
+    line-height: 20px;
     letter-spacing: 0em;
     text-align: left;
     color: rgba(32, 126, 98, 1);
 
-
+    @media screen and (width: 768px)
+    {
+        font-size: 16px;
+        line-height: 18px;
+    }
+    @media screen and (width: 667px)
+    {
+        font-size: 16px;
+        line-height: 18px;
+    }
+    @media screen and (width: 375px)
+    {
+        font-size: 16px;
+        line-height: 18px;
+    }
 }
 
