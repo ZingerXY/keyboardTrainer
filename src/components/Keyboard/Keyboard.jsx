@@ -57,7 +57,7 @@ const Keyboard = ({
     { name: 'ж', value: 'ж', classNames: 'key key-gr' },
     { name: 'э', value: 'э', classNames: 'key key-gr' },
     { name: 'Enter', value: '', classNames: 'key key-words return' },
-    { name: 'Shift', value: '', classNames: 'key key-words leftshift' },
+    { name: 'Shift ', value: '', classNames: 'key key-words leftshift' },
     { name: 'я', value: 'я', classNames: 'key key-or' },
     { name: 'ч', value: 'ч', classNames: 'key key-ye' },
     { name: 'с', value: 'с', classNames: 'key key-gr' },
@@ -70,12 +70,12 @@ const Keyboard = ({
     { name: '.', value: '.', classNames: 'key key-gr' },
     { name: 'Shift', value: '', classNames: 'key key-words rightshift' },
     { name: 'Ctrl', value: '', classNames: 'key key-words ctrl' },
-    { name: '', value: '', classNames: 'key key-words nonstyle' },
-    { name: 'Alt', value: '', classNames: 'key key-words ctrl' },
+    { name: '`', value: '', classNames: 'key key-words nonstyle' },
+    { name: 'Alt ', value: '', classNames: 'key key-words ctrl' },
     { name: 'Space', value: ' ', classNames: 'key key-words space' },
     { name: 'Alt', value: '', classNames: 'key key-words ctrl' },
     { name: '', value: '', classNames: 'key key-words ctrl nonstyle' },
-    { name: 'Ctrl', value: 'Ctrl', classNames: 'key key-words ctrl' },
+    { name: 'Ctrl ', value: '', classNames: 'key key-words ctrl' },
   ];
   const checkKeyIsActive = (name, value) => {
     //Если текущий символ в верхнем регистре, подсвечиваем шифт
