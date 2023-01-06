@@ -16,8 +16,14 @@ $shadow: rgba(0, 168, 118, 0.2);
     display: flex;
     align-items: center;
 }
-.footer_text {
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 23px;
+
+.footer {
+    padding: 0 20px;
+
+    &_text {
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 23px;
+        text-align: center;
+    }
 }

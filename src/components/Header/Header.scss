@@ -6,7 +6,9 @@ $shadow: rgba(0, 168, 118, 0.2);
     margin: 0 auto;
     font-family: 'Arimo';
 }
-
+.header-container {
+    height: 100%;
+}
 .App-header {
     width: 100%;
     min-height: 100px;
@@ -17,6 +19,7 @@ $shadow: rgba(0, 168, 118, 0.2);
 }
 
 .nav {
+    box-sizing: content-box;
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -28,27 +31,32 @@ $shadow: rgba(0, 168, 118, 0.2);
     color: $green;
     user-select: none;
 }
+
 .logo_img {
     width: 57px;
     height: 80px;
     padding-right: 6px;
     box-sizing: unset;
+
     & img {
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
 }
+
 .logo_name {
     padding-top: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
 .logo_name_item {
     font-size: 20px;
     line-height: 19px;
 }
+
 .logo_title {
     font-size: 8.4px;
     line-height: 10px;
@@ -65,6 +73,7 @@ $shadow: rgba(0, 168, 118, 0.2);
         font-size: 20px;
         color: black;
         cursor: pointer;
+
         &:hover {
             color: $green;
         }
@@ -76,5 +85,96 @@ $shadow: rgba(0, 168, 118, 0.2);
     color: #00A876 !important;
 }
 
+.burger_button {
+    display: none;
+}
 
+.burger_list {
+    display: none;
+}
 
+.hidden {
+    display: none;
+}
+
+@media (max-width: 1240px) {
+    .header-container {
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+}
+
+// media 1024px
+@media (min-width:768px) and (max-width:1024px) {
+    .header-container {
+        max-width: 1024px;
+    }
+    .nav {
+
+        &_links {
+            gap: 20px;
+        }
+    }
+}
+
+//media 767px
+@media (max-width:767px) {
+    .container {
+        max-width: 767px;
+    }
+
+    .logo_name {
+        display: none;
+    }
+
+    .nav {
+        padding: 0 5%;
+
+        &_links {
+            display: none;
+        }
+    }
+
+    .burger {
+        &_button {
+            display: block;
+        }
+
+        &_list {
+            display: flex;
+            flex-direction: column;
+            list-style-type: none;
+            position: absolute;
+            left: 0;
+            top: 100px;
+            width: 100%;
+            text-align: center;
+        }
+
+        &_links {
+            font-weight: 400;
+            font-size: 20px;
+            color: black;
+            cursor: pointer;
+            padding: 15px;
+            background-color: #FFFFFF;
+            border-bottom: 1px solid $green;
+
+            &:hover {
+                color: $green;
+            }
+        }
+
+        &_button {
+            cursor: pointer;
+
+            & svg {
+                fill: black;
+
+                &:hover {
+                    fill: $green;
+                }
+            }
+        }
+    }
+}
