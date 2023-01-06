@@ -155,6 +155,8 @@ $red: #FF5900;
 
     .profile-box {
         flex-direction: column;
+        justify-content: normal;
+        height: auto;
     }
 
     .profile-label,
@@ -175,13 +177,25 @@ $red: #FF5900;
     }
 
     .profile-form_box {
-        margin: 28px 0;
+        margin: 36px 0;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
     .profile-title {
-        margin: 0 0 90px;
+        margin: 0 0 20px;
+    }
+
+    .profile-form_btn-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-form {
+        .btn-default {
+            margin: 12px 0 0 0;
+        }
     }
 }

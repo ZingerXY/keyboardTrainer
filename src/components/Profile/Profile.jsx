@@ -68,12 +68,14 @@ const Profile = () => {
                                         <input type="password" name="password" className="profile-user_info-input" />
                                     </label>
 
-                                    <button onClick={switchIsChange} type="submit" className="profile-form_btn btn">
-                                        Сохранить
-                                    </button>
-                                    <button onClick={switchIsChange} className="profile-form_btn btn btn-default">
-                                        Отмена
-                                    </button>
+                                    <div className="profile-form_btn-group">
+                                        <button onClick={switchIsChange} type="submit" className="profile-form_btn btn">
+                                            Сохранить
+                                        </button>
+                                        <button onClick={switchIsChange} className="profile-form_btn btn btn-default">
+                                            Отмена
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
                         )}
