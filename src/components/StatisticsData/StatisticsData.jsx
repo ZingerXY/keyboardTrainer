@@ -15,8 +15,6 @@ useEffect(() => {
     }
 }, [time.seconds])
 useEffect(() => {
-    console.log(correct)
-    console.log(count)
     if (correct != 0) {
         setCare(Math.floor(correct/(count+correct)*100))
     }

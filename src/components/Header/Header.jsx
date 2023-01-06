@@ -9,7 +9,6 @@ const Header = () => {
 
   function toggleVisible() {
     visible ? setVisible(false) : setVisible(true);
-    console.log(visible);
   }
 
 
