@@ -79,11 +79,11 @@ const Keyboard = ({
   ];
   const checkKeyIsActive = (name, value) => {
     //Если текущий символ в верхнем регистре, подсвечиваем шифт
-    if (name === 'Shift' && currentKey.trim()) {
+    if (name === 'Shift' && currentKey?.trim()) {
       return currentKey === currentKey.toUpperCase()
     }
 
-    return currentKey.toLowerCase() === value
+    return currentKey?.toLowerCase() === value
   }
   return (
     <div className='Keyboard'>
