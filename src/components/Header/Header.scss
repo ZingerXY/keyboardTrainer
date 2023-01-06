@@ -6,7 +6,9 @@ $shadow: rgba(0, 168, 118, 0.2);
     margin: 0 auto;
     font-family: 'Arimo';
 }
-
+.header-container {
+    height: 100%;
+}
 .App-header {
     width: 100%;
     min-height: 100px;
@@ -17,11 +19,11 @@ $shadow: rgba(0, 168, 118, 0.2);
 }
 
 .nav {
+    box-sizing: content-box;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 120px;
 }
 
 .nav_logo {
@@ -95,14 +97,19 @@ $shadow: rgba(0, 168, 118, 0.2);
     display: none;
 }
 
+@media (max-width: 1240px) {
+    .header-container {
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+}
+
 // media 1024px
 @media (min-width:768px) and (max-width:1024px) {
-    .container {
+    .header-container {
         max-width: 1024px;
     }
-
     .nav {
-        padding: 0 64px;
 
         &_links {
             gap: 20px;
@@ -121,7 +128,7 @@ $shadow: rgba(0, 168, 118, 0.2);
     }
 
     .nav {
-        padding: 0 48px;
+        padding: 0 5%;
 
         &_links {
             display: none;
