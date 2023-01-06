@@ -1,9 +1,16 @@
-import {combineReducers, createStore} from "redux";
-import { DataReducer } from "./reducers/DataReducer";
-import { TimeReducer } from "./reducers/TimeReducer";
-const rootReducer = combineReducers({
-    DataReducer,
-    TimeReducer,
-})
+import { configureStore } from "@reduxjs/toolkit";
+import TimeReducer from "./time/reducer";
+import DataReducer from "./data/reducer";
 
-export const store = createStore(rootReducer)
+const store = configureStore({
+    reducer: {
+        TimeReducer,
+        DataReducer,
+    },
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+          serializableCheck: false,
+      }),
+});
+
+export default store;

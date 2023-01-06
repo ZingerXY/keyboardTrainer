@@ -2,6 +2,8 @@ import React from "react"
 import './RunningString.scss'
 import { useState, useEffect, useRef } from 'react'
 import { useDispatch } from "react-redux"
+import {update_time} from "../../store/time/reducer";
+import {add_correct, add_uncorrect} from "../../store/data/reducer";
 
 const RunningString = ({setCurrentLetter, setPrevLetter}) => {
   const dispatch = useDispatch();
@@ -46,15 +48,11 @@ const RunningString = ({setCurrentLetter, setPrevLetter}) => {
   }
   useEffect(() => { //Отслеживает нажатие на кнопку
     setCurrentLetter(startWord.substring(0, 1))
-    dispatch(
-      { type: 'UPDATE_TIME', seconds, minutes}
-      )
-      dispatch({
-        type: 'ADD_UNCORRECT', count: unCorrect
-      })
-      dispatch({
-        type: 'ADD_CORRECT', correct: correct
-      })
+
+    dispatch(update_time({seconds, minutes}))
+    dispatch(add_uncorrect(unCorrect))
+    dispatch(add_correct(correct))
+
     if (seconds === 60) {
       setMinutes(m => m+1)
       setSeconds(0)
