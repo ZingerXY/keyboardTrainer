@@ -48,7 +48,7 @@ const RunningString = ({setCurrentLetter, setPrevLetter}) => {
   }
   useEffect(() => { //Отслеживает нажатие на кнопку
     setCurrentLetter(startWord.substring(0, 1))
-    console.log(seconds)
+
     dispatch(update_time({seconds, minutes}))
     dispatch(add_uncorrect(unCorrect))
     dispatch(add_correct(correct))
