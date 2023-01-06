@@ -1,0 +1,206 @@
+$shadow: rgba(0, 168, 118, 0.2);
+.Xmark{
+    display: grid;
+    justify-content: end;
+    
+}
+.X{
+    margin: 10px;
+    &:hover
+    {
+        cursor: pointer;
+    }
+}
+
+.input
+{
+    outline: none;
+}
+.content
+{
+    font-family: 'Arimo';
+    
+}
+.form
+{
+    text-align: center;
+}
+form
+{
+   
+    
+    display: grid;  
+    justify-content: center;
+    align-items:center;
+}
+.margin
+{
+    margin:10px;
+}
+.window
+{
+    
+   min-height: 500px;
+    width: 800px;
+    border-radius: 10px;
+    margin: 0 auto ;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    -webkit-box-shadow: 0px 0px 18px 11px $shadow;
+    -moz-box-shadow: 0px 0px 18px 11px $shadow;
+    box-shadow: 0px 0px 18px 11px $shadow;
+
+
+        @media screen and (width: 768px)
+        {
+        max-width: 600px;
+        min-height: 460px;
+        }
+        @media screen and (width: 667px)
+        {
+            max-width: 600px;
+            min-height: 460px;
+        }
+        @media screen and (width: 375px)
+        {
+        max-width: 360px;
+        min-height: 460px;
+        }
+        
+}
+
+a {
+    
+    color: #00A876;
+    text-decoration: none;
+    &:hover
+    {
+        color:  #14523F;
+    }
+    &:active
+    {
+        color:  #006D4C;
+    }
+}
+
+
+
+.reg-text
+{
+    margin-top: 10px;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: rgba(0, 168, 118, 1);
+    @media screen and (width: 768px) 
+        {
+            font-size: 36px;
+            line-height: 41px;
+        }
+        @media screen and (width: 667px) 
+        {
+            font-size: 36px;
+            line-height: 41px;
+        }
+        @media screen and (width: 375px) 
+        {
+            font-size: 24px;
+            line-height: 27px;
+        }
+}
+input{
+    height: 32px;
+    width: 400px;
+    border: 0px;
+    border-bottom: 2px solid #207E62;
+
+
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+        @media screen and (width: 768px)
+        {
+            width: 340px;
+            font-size: 22px;
+            line-height: 25px;
+        }
+        @media screen and (width: 667px)
+        {
+            width: 340px;
+            font-size: 22px;
+            line-height: 25px;
+        }
+        @media screen and (width: 375px)
+        {
+            font-size: 22px;
+            line-height: 25px;
+            width: 340px;
+        }
+}
+.reg-black
+{
+font-weight: 400;
+font-size: 18px;
+line-height: 21px;
+
+color: #000000;
+}
+.btn 
+{
+  
+    height: 50px;
+    width: 225px;
+    border-radius: 8px;
+
+    background:linear-gradient(0deg, #00A876, #00A876);
+
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: #FFFFFF;
+&:hover
+{
+    cursor: pointer;
+    background: linear-gradient(0deg, #14523F, #14523F);
+}
+&:active
+{
+    background: linear-gradient(0deg, #006D4C, #006D4C),
+    linear-gradient(0deg, #FFFFFF, #FFFFFF); 
+}
+}
+
+
+.input-text
+{
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(32, 126, 98, 1);
+
+    @media screen and (width: 768px)
+    {
+        font-size: 16px;
+        line-height: 18px;
+    }
+    @media screen and (width: 667px)
+    {
+        font-size: 16px;
+        line-height: 18px;
+    }
+    @media screen and (width: 375px)
+    {
+        font-size: 16px;
+        line-height: 18px;
+    }
+}
+
