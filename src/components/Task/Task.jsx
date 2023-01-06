@@ -37,11 +37,11 @@ const Task = () => {
                     </div>
                     <div className="task-type">
                         <div className="task-type_title">Сложность</div>
-                        <i class="fa fa-solid fa-circle"></i>
-                        <i class="fa fa-solid fa-circle"></i>
-                        <i class="fa fa-solid fa-circle"></i>
-                        <i class="fa fa-solid fa-circle"></i>
-                        <i class="fa fa-solid fa-circle"></i>
+                        <i className="fa fa-solid fa-circle"></i>
+                        <i className="fa fa-solid fa-circle"></i>
+                        <i className="fa fa-solid fa-circle"></i>
+                        <i className="fa fa-solid fa-circle"></i>
+                        <i className="fa fa-solid fa-circle"></i>
                     </div>
                 </div>
             </div>

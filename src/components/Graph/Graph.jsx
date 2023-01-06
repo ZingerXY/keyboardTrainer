@@ -9,8 +9,6 @@ import {data as speedGraphData} from './graphData/speedGraph';
 
 const Graph = () => {
 
-    const [activeBtn, setActiveBtn] = useState(0);
-
     return (
     <div className={GraphStyles.statistics_draw}>
         <h1 className={GraphStyles.statistics_draw_header}>Графики</h1>
