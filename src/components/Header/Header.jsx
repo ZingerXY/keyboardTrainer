@@ -21,6 +21,7 @@ const Header = () => {
           <Link to={"/tasks"} className="nav_links_title">Задания</Link>
           <Link to={"/stats"} className="nav_links_title">Статистика</Link>
           <Link to={"/rating"} className="nav_links_title">Рейтинг</Link>
+          <Link to={"/profile"} className="nav_links_title">Профиль</Link>
           <Link to={"/quit"} className="nav_links_title">Выйти</Link>
         </div>
       </nav>
