@@ -18,7 +18,7 @@ const Header = () => {
         <nav className="nav">
           <Link to={"/"} className="nav_logo">
             <div className="logo_img">
-              <img className="logo" src="./img/Logo.svg" alt="logo" />
+              <img className="logo" src="/img/Logo.svg" alt="logo" />
             </div>
             <div className="logo_name">
               <h1 className="logo_name_item">KANGAROO</h1>
@@ -39,10 +39,10 @@ const Header = () => {
             </svg>
           </div>
           <div className={visible ? "burger_list" : "hidden"}>
-            <Link to={"/tasks"} className="nav_links_title">Задания</Link>
-            <Link to={"/stats/speed"} className="nav_links_title">Статистика</Link>
-            <Link to={"/rating"} className="nav_links_title">Рейтинг</Link>
-            <Link to={"/quit"} className="nav_links_title">Выйти</Link>
+            <Link to={"/tasks"} className="burger_links">Задания</Link>
+            <Link to={"/stats/speed"} className="burger_links">Статистика</Link>
+            <Link to={"/rating"} className="burger_links">Рейтинг</Link>
+            <Link to={"/quit"} className="burger_links">Выйти</Link>
           </div>
         </nav>
       </div>
