@@ -46,16 +46,9 @@ const RunningString = ({ setCurrentLetter, setPrevLetter, startWord, setStartWor
   }
   useEffect(() => { //Отслеживает нажатие на кнопку
     setCurrentLetter(startWord.substring(0, 1))
-    console.log(seconds)
-    dispatch(
-      { type: 'UPDATE_TIME', seconds, minutes }
-    )
-    dispatch({
-      type: 'ADD_UNCORRECT', count: unCorrect
-    })
-    dispatch({
-      type: 'ADD_CORRECT', correct: correct
-    })
+    dispatch(update_time({ seconds, minutes }))
+    dispatch(add_uncorrect(unCorrect))
+    dispatch(add_correct(correct))
     if (seconds === 60) {
       setMinutes(m => m + 1)
       setSeconds(0)
