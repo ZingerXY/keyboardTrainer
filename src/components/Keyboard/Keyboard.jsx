@@ -86,8 +86,7 @@ const Keyboard = ({
     return currentKey?.toLowerCase() === value
   }
   return (
-    <div className='Keyboard'>
-      {/* <img src='./img/Клавиатура.png' alt="Клавиатура" className="Keyboard-img"/> */}
+    <div className='Keyboard container'>
       <div className="hand">
         <img className="hand_img" src='./img/hand-left.svg' alt="hand" />
         <div className={`lh_finger_little ${lhfl_active ? "key-or" : ""}`}></div>
