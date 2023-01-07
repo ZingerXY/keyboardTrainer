@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import RunningString from "../RunningString/RunningString";
 import Keyboard from "../Keyboard/Keyboard";
 
 export const KeyboardWrapper = () => {
+  const [startWord, setStartWord] = useState('пример текста пример текста пример текста пример текста');
   const [prevLetter, setPrevLetter] = useState("")
   const [currentLetter, setCurrentLetter] = useState("")
 
@@ -66,6 +67,7 @@ export const KeyboardWrapper = () => {
     <RunningString
       setCurrentLetter={setCurrentLetter}
       setPrevLetter={setPrevLetter}
+      startWord={startWord} setStartWord={setStartWord}
     />
     <Keyboard
       lhfl_active={lhfl_active}
@@ -77,6 +79,7 @@ export const KeyboardWrapper = () => {
       rhfm_active={rhfm_active}
       rhfi_active={rhfi_active}
       rhft_active={rhft_active}
+      startWord={startWord}
     />
   </>
 }
