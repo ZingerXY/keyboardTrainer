@@ -78,7 +78,9 @@ $shadow: rgba(0, 168, 118, 0.2);
             color: $green;
         }
     }
-
+    &_title-active{
+        color: $green !important;
+    }
 }
 
 .nav_link_route {

@@ -4,6 +4,8 @@ import Home from "../Home/Home";
 import Tasks from "../Tasks/Tasks";
 import Statistics from "../Statistics/Statistics";
 import Rating from "../Rating/Rating";
+import Registration from "../Registration/Registration";
+import Authorization from "../Authorization/Authorization";
 
 const Router = () => {
     return (
@@ -13,6 +15,8 @@ const Router = () => {
             <Route path="/tasks" element={<Tasks />}></Route>
             <Route path="/stats/*" element={<Statistics/>}></Route>
             <Route path="/rating" element={<Rating />}></Route>
+            <Route path="/authorization" element={<Authorization />}></Route>
+            <Route path="/registration" element={<Registration />}></Route>
         </Routes>
     )
 }
