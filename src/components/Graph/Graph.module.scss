@@ -34,11 +34,12 @@
         border-radius: 8px 8px 0px 0px;
         cursor: pointer;
         transition: background-color .3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         &:hover {
             background-color: rgba(0, 168, 118, 0.1);
-            
-            
         }
 
         &_txt {
@@ -54,9 +55,11 @@
         }
     }
     &_graph {
-        max-width: 1000px;
+        width: 1000px;
         height: 328px;
         border: 2px solid #006D4C;
+        margin-bottom: 150px;
+        padding: 25px 10px;
     }
     
 }
@@ -86,6 +89,7 @@
             max-width: 740px;
             height: 328px;
             border: 2px solid #006D4C;
+            margin-bottom: 55px;
         }
     }
     #graph {
@@ -117,6 +121,7 @@
             max-width: 316px;
             height: 273px;
             border: 2px solid #006D4C;
+            margin-bottom: 20px;
         }
         &_selection {
             width: 315px;

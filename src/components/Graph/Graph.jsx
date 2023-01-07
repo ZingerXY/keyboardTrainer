@@ -1,53 +1,63 @@
 import React, { useState } from "react";
-import GraphStyles from './Graph.module.scss'
+import GraphStyles from './Graph.module.scss';
+import TheGraph from "./TheGraph";
+import { NavLink, Link } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import {data as accuracyGraphData} from './graphData/accuracyGraph';
+import {data as errorGraphData} from './graphData/errorGraph';
+import {data as speedGraphData} from './graphData/speedGraph';
 
 const Graph = () => {
 
-    const [activeBtn, setActiveBtn] = useState(0);
-
-    const setDraw = (e) => {
-        console.log(e.target.tagName)
-        if (e.target.tagName == "BUTTON") {
-            if (activeBtn) activeBtn.classList.remove(GraphStyles.opened)
-            console.log(e.target.parentElement)
-            setActiveBtn(e.target)
-            e.target.classList.add(GraphStyles.opened)
-        } else {
-            console.log(e.target.parentElement)
-            if (activeBtn) activeBtn.classList.remove(GraphStyles.opened)
-            e.target.parentElement.classList.add(GraphStyles.opened)
-            setActiveBtn(e.target.parentElement)
-        }
-        
-    }
     return (
     <div className={GraphStyles.statistics_draw}>
         <h1 className={GraphStyles.statistics_draw_header}>Графики</h1>
         <div className={GraphStyles.statistics_draw_part}>
                 <div className={GraphStyles.statistics_draw_selection}>
-                    <button className={GraphStyles.statistics_draw_btn } onClick={setDraw}>
+                    <NavLink 
+                        className={({ isActive }) =>
+                            `${GraphStyles.statistics_draw_btn} + ${isActive ? `${GraphStyles.opened}` : ''}`
+                        }
+                        to={"/stats/speed"}
+                    >
                         <span className={GraphStyles.statistics_draw_btn_txt}>
                         Скорость
                         </span>
-                        </button>
-                    <button className={GraphStyles.statistics_draw_btn} onClick={setDraw}>
+                    </NavLink>
+                    <NavLink 
+                        className={({ isActive }) =>
+                            `${GraphStyles.statistics_draw_btn} + ${isActive ? `${GraphStyles.opened}` : ''}`
+                        }
+                        to={"/stats/accuracy"}
+                    >
                         <span className={GraphStyles.statistics_draw_btn_txt}>
                         Аккуратность
                         </span>
-                        </button>
-                    <button className={GraphStyles.statistics_draw_btn} onClick={setDraw}>
+                    </NavLink>
+                    <NavLink 
+                        className={({ isActive }) =>
+                            `${GraphStyles.statistics_draw_btn} + ${isActive ? `${GraphStyles.opened}` : ''}`
+                        }
+                        to={"/stats/errors"}
+                    >
                         <span className={GraphStyles.statistics_draw_btn_txt}>
                         Ошибки
                         </span>
-                        </button>
+                    </NavLink>
                 </div>
                 <div className={GraphStyles.statistics_draw_graph}>
-                    <img className={GraphStyles.statistics_draw_graph_img}
-                         id={GraphStyles.graph_max} src="./img/Frame 32.png" alt="graph" />
-                    <img className={GraphStyles.statistics_draw_graph_img}
-                         id={GraphStyles.graph_middle} src="./img/Frame 32(1).png" alt="graph" />
-                    <img className={GraphStyles.statistics_draw_graph_img}
-                         id={GraphStyles.graph_mini} src="./img/Frame 32(3).png" alt="graph" />     
+                    <Routes>
+                        <Route path="/speed" element={
+                            <TheGraph data={speedGraphData}/>
+                        } />
+                        <Route path="/accuracy" element={
+                            <TheGraph data={accuracyGraphData}/>
+                        } />
+                        <Route path="/errors" element={
+                            <TheGraph data={errorGraphData}/>
+                        } />
+                    </Routes >
+                    
                 </div>
             </div>
         </div>

@@ -56,6 +56,11 @@ $purple-key: rgba(175, 175, 225, 1);
 
 }
 
+.key.active {
+    box-shadow: 0 0 10px $green;
+    border: solid $green;
+}
+
 .key-words {
     font-size: 14px;
 }
