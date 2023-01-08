@@ -68,7 +68,7 @@ const Header = () => {
               onClick={() => setVisible(!visible)}
             >Задания</NavLink>
             <NavLink 
-              to={"/stats/speed"}
+              to={"/stats"}
               className={({ isActive }) => 
                 `burger_links${isActive ? ' nav_links_title-active' : ''}`
               }

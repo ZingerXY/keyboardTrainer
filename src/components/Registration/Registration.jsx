@@ -1,7 +1,7 @@
 import React from "react";
 import './Registration.scss';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark} from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faXmark} from "@fortawesome/free-solid-svg-icons";
 
 const Registration = () => {
   return (
@@ -9,7 +9,7 @@ const Registration = () => {
       <div className="window"> 
         <div className="Xmark">
           <div className="X">
-            <FontAwesomeIcon  icon={faXmark} color="#00A876"  size="1x"/>
+            {/*<FontAwesomeIcon  icon={faXmark} color="#00A876"  size="1x"/>*/}
           </div>
         </div>
         <div className="form">
