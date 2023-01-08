@@ -2,8 +2,8 @@ import React from "react"
 import './RunningString.scss'
 import { useState, useEffect, useRef } from 'react'
 import { useDispatch } from "react-redux"
-import { update_time } from "../../store/time/reducer";
-import { add_correct, add_uncorrect } from "../../store/data/reducer";
+import { update_time } from "../../store/time/timeSlice";
+import { add_correct, add_uncorrect } from "../../store/data/dataSlice";
 
 const RunningString = ({ setCurrentLetter, setPrevLetter, startWord, setStartWord }) => {
   const dispatch = useDispatch();

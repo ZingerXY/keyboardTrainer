@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import TimeReducer from "./time/reducer";
-import DataReducer from "./data/reducer";
+import TimeReducer from "./time/timeSlice";
+import DataReducer from "./data/dataSlice";
 
 const store = configureStore({
     reducer: {

@@ -32,7 +32,7 @@ export const options = {
   maintainAspectRatio: false
 };
 
-const TheGraph = ({data}) => {
+const Graph = ({data}) => {
   return (
     <Line 
       options={options}
@@ -41,4 +41,4 @@ const TheGraph = ({data}) => {
   );
 }
 
-export default TheGraph;
+export default Graph;

@@ -1,11 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "../Home/Home";
-import Tasks from "../Tasks/Tasks";
-import Statistics from "../Statistics/Statistics";
-import Rating from "../Rating/Rating";
-import Registration from "../Registration/Registration";
-import Authorization from "../Authorization/Authorization";
+
+import Home from "./Home/Home";
+import Tasks from "./Tasks/Tasks";
+import Rating from "./Rating/Rating";
+import Statistics from "./Statistics/Statistics";
+import Registration from "./Registration/Registration";
+import Authorization from "./Authorization/Authorization";
+
 
 const Router = () => {
     return (
