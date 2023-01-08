@@ -2,12 +2,11 @@ import React from "react"
 import './RunningString.scss'
 import { useState, useEffect, useRef } from 'react'
 import { useDispatch } from "react-redux"
-import {update_time} from "../../store/time/reducer";
-import {add_correct, add_uncorrect} from "../../store/data/reducer";
+import { update_time } from "../../store/time/reducer";
+import { add_correct, add_uncorrect } from "../../store/data/reducer";
 
 const RunningString = ({ setCurrentLetter, setPrevLetter, startWord, setStartWord }) => {
   const dispatch = useDispatch();
-  //const [startWord, setStartWord] = useState('пример текста пример текста пример текста пример текста'); //Слово, которое надо набрать
   const [endWord, setEndWord] = useState('') // Набранное слово
   const [correct, setCorrect] = useState(0)
   const [unCorrect, setUnCorrect] = useState(0) //Количество неправильных вводов
@@ -19,7 +18,6 @@ const RunningString = ({ setCurrentLetter, setPrevLetter, startWord, setStartWor
   const CurrectInput = () => { //Логика при правильном вводе
     setCorrect(cur => cur + 1)
     if (startWord.length === 1) { //Проверяет, закончилось ли слово
-      //generateWord()
       clearInterval(timer);
       setTimer(0)
     }
@@ -29,7 +27,6 @@ const RunningString = ({ setCurrentLetter, setPrevLetter, startWord, setStartWor
     setEndWord(word => word + startWord[0]) //Обновляет значение endWord
 
     if (endWord.length > 30) {
-      // console.log(endWord.length)
       setEndWord(word => word.slice(1)) //Убирает первый символ endWord
     }
 
