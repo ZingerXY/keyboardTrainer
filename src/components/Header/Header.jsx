@@ -42,6 +42,7 @@ const Header = () => {
             <Link to={"/tasks"} className="burger_links">Задания</Link>
             <Link to={"/stats/speed"} className="burger_links">Статистика</Link>
             <Link to={"/rating"} className="burger_links">Рейтинг</Link>
+            <Link to={"/profile"} className="burger_links">Профиль</Link>
             <Link to={"/quit"} className="burger_links">Выйти</Link>
           </div>
         </nav>

@@ -1,4 +1,7 @@
 $green: #00A876;
+$white: #FFFFFF;
+$deep_green: #006D4C;
+$dark_green: #14523F ;
 $shadow: rgba(0, 168, 118, 0.2);
 
 
@@ -23,4 +26,51 @@ $shadow: rgba(0, 168, 118, 0.2);
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: black;
+  overflow: auto;
+}
+
+.btn {
+  width: 100%;
+  max-width: 200px;
+  height: 43px;
+  box-sizing: border-box;
+
+  background: $green;
+  border: 2px solid $deep_green;
+  border-radius: 8px;
+
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  color: $white;
+
+  &:hover {
+    background: $deep_green;
+    border: 2px solid $dark_green;
+  }
+
+  &:active {
+    background: $white;
+    border: 2px solid $deep_green;
+    color: $deep_green;
+  }
+}
+
+.btn-default {
+  background: $white;
+  border: 2px solid $deep_green;
+  color: $deep_green;
+
+  &:hover {
+    color: $white;
+    background: $deep_green;
+    border: 2px solid $dark_green;
+  }
+
+  &:active {
+    background: $white;
+    border: 2px solid $deep_green;
+    color: $deep_green;
+  }
 }
