@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react"
 import './Task.scss'
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import {KeyboardWrapper} from "../KeyboardWrapper";
+import { KeyboardWrapper } from "../KeyboardWrapper";
 import { useSelector } from "react-redux";
+import WarningDisplay from "../WarningDisplay/WarningDisplay"
 
 const Task = () => {
-    const {count, correct} = useSelector((state) => state.DataReducer)
-    const {seconds, minutes} = useSelector((state) => state.TimeReducer)
+    const { count, correct } = useSelector((state) => state.DataReducer)
+    const { seconds, minutes } = useSelector((state) => state.TimeReducer)
     const [result, setResult] = useState(0)
 
     useEffect(() => {
@@ -19,10 +20,7 @@ const Task = () => {
 
     return (
         <div className="task-page container">
-            <div className="warning-dispay">
-                <div className="warning-dispay_title">Внимание</div>
-                <div className="warning-dispay_text">Выполнение задания недоступно с мобильной версии браузера.</div>
-            </div>
+            <WarningDisplay />
             <div className="task-card">
                 <div className="task-card_leftpart">
                     <div className="task-title">Задание <span className="task-title_number">#1</span></div>
@@ -45,7 +43,7 @@ const Task = () => {
                     </div>
                 </div>
             </div>
-            <KeyboardWrapper/>
+            <KeyboardWrapper />
         </div>
     )
 }
