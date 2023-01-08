@@ -1,5 +1,5 @@
 import React from "react";
-import "./Card.scss"
+import Style from "./Card.module.scss";
 
 const Card = (props) => {
   let levelArr = [0, 0, 0, 0, 0];
@@ -10,18 +10,18 @@ const Card = (props) => {
     props.state(true);
   };
   return (
-    <div className="card" key={props.myKey} onClick={handlerClick}>
-      <div className={"card-head card-head_" + props.type}>
-        <div className="card-name">{props.name}</div>
-        <div className={"card-type card-type_" + props.type}>{props.typeName}</div>
+    <div className={`${Style["card"]}`} key={props.myKey} onClick={handlerClick}>
+      <div className={`${Style["card-head"]} ${Style["card-head_" + props.type]}`}>
+        <div className={`${Style["card-name"]}`}>{props.name}</div>
+        <div className={`${Style["card-type"]} ${Style["card-type_" + props.type]}`}>{props.typeName}</div>
       </div>
-      <div className="card-bottom">
-        <p className="card-level">Сложность</p>
-        <ul className="card-level-box">
+      <div className={`${Style["card-bottom"]}`}>
+        <p className={`${Style["card-level"]}`}>Сложность</p>
+        <ul className={`${Style["card-level-box"]}`}>
           {levelArr.map((el, id)=>(
             el === 1
-            ? <li key={id} className="level-point level-active"></li>
-            : <li key={id} className="level-point"></li>
+            ? <li key={id} className={`${Style["level-point"]} ${Style["level-active"]}`}></li>
+            : <li key={id} className={`${Style["level-point"]}`}></li>
           ))
           }
         </ul>
