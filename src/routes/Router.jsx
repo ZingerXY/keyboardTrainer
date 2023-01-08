@@ -7,6 +7,7 @@ import Rating from "./Rating/Rating";
 import Statistics from "./Statistics/Statistics";
 import Registration from "./Registration/Registration";
 import Authorization from "./Authorization/Authorization";
+import Profile from "./Profile/Profile";
 
 
 const Router = () => {
@@ -19,6 +20,7 @@ const Router = () => {
             <Route path="/rating" element={<Rating />}></Route>
             <Route path="/authorization" element={<Authorization />}></Route>
             <Route path="/registration" element={<Registration />}></Route>
+            <Route path="/profile" element={<Profile />}></Route>
         </Routes>
     )
 }
