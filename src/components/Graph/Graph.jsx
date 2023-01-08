@@ -18,7 +18,7 @@ const Graph = () => {
                         className={({ isActive }) =>
                             `${GraphStyles.statistics_draw_btn} + ${isActive ? `${GraphStyles.opened}` : ''}`
                         }
-                        to={location.pathname === '/stats' ? '' : 'speed'}
+                        to={location.pathname === '/stats' ? '' : '/stats/'}
                     >
                         <span className={GraphStyles.statistics_draw_btn_txt}>
                         Скорость
