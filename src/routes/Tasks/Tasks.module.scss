@@ -18,7 +18,7 @@ $shadow: rgba(0, 168, 118, 0.2);
     padding-top: 50px;
 }
 
-#filters-form {
+.filters-form {
     width: 230px;
 }
 
@@ -172,7 +172,7 @@ $shadow: rgba(0, 168, 118, 0.2);
 
 .__select__content {
     position: absolute;
-    top: 20px;
+    top: 100%;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -263,7 +263,7 @@ $shadow: rgba(0, 168, 118, 0.2);
         margin-right: 10%;
     }
 
-    #filters-form {
+    .filters-form {
         display: flex;
         justify-content: center;
         width: 100%;
@@ -280,7 +280,7 @@ $shadow: rgba(0, 168, 118, 0.2);
         width: 100%;
     }
 
-    #filters-form {
+    .filters-form {
         justify-content: flex-start;
     }
 }

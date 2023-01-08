@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import './Tasks.scss'
+import Style from "./Tasks.module.scss";
 import Task from "../../components/Task/Task"
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Card from "../../components/Card/Card";
@@ -66,7 +66,7 @@ const Tasks = () => {
   };
 
   const selectOpen = () => {
-    const selectSingle = document.querySelector('.__select');
+    const selectSingle = document.querySelector(`.${Style["__select"]}`);
     if ('active' === selectSingle.getAttribute('data-state')) {
       selectSingle.setAttribute('data-state', '');
     } else {
@@ -74,7 +74,7 @@ const Tasks = () => {
     }
   };
   const selectChange = (event) => {
-    const selectSingle = document.querySelector('.__select');
+    const selectSingle = document.querySelector(`.${Style["__select"]}`);
     setSort(()=>({value: event.target.getAttribute('data-value'), text: event.target.textContent}));
     selectSingle.setAttribute('data-state', '');
   };
@@ -85,44 +85,44 @@ const Tasks = () => {
     );
   } else {
     return (
-      <div className="tasks-page">
-        <div className="container tasks-container">
-          <form action="#" id="filters-form" onChange={handleStates}>
-            <div className="form-checkboxs">
-              <h4 className="filters-title">Тип задания</h4>
-              <div id="brands">
-                <div className="filters-checkbox">
-                  <input type="checkbox" className="filters-checkbox_custom" id="base" checked={base} onChange={() => setBase(!base)}/>
+      <div className={`${Style["tasks-page"]}`}>
+        <div className={`container ${Style["tasks-container"]}`}>
+          <form action="#" className={`${Style["filters-form"]}`} onChange={handleStates}>
+            <div className={`${Style["form-checkboxs"]}`}>
+              <h4 className={`${Style["filters-title"]}`}>Тип задания</h4>
+              <div>
+                <div className={`${Style["filters-checkbox"]}`}>
+                  <input type="checkbox" className={`${Style["filters-checkbox_custom"]}`} id="base" checked={base} onChange={() => setBase(!base)}/>
                   <label htmlFor="base">Базовые уроки</label>
                 </div>
-                <div className="filters-checkbox">
-                  <input type="checkbox" className="filters-checkbox_custom" id="words" checked={words} onChange={() => setWords(!words)}/>
+                <div className={`${Style["filters-checkbox"]}`}>
+                  <input type="checkbox" className={`${Style["filters-checkbox_custom"]}`} id="words" checked={words} onChange={() => setWords(!words)}/>
                   <label htmlFor="words"> Слова</label>
                 </div>
-                <div className="filters-checkbox">
-                  <input type="checkbox" className="filters-checkbox_custom" id="punctuation" checked={punctuation} onChange={() => setPunctuation(!punctuation)}/>
+                <div className={`${Style["filters-checkbox"]}`}>
+                  <input type="checkbox" className={`${Style["filters-checkbox_custom"]}`} id="punctuation" checked={punctuation} onChange={() => setPunctuation(!punctuation)}/>
                   <label htmlFor="punctuation"> Знаки препинания</label>
                 </div>
-                <div className="filters-checkbox">
-                  <input type="checkbox" className="filters-checkbox_custom" id="numbers" checked={numAndSymbols} onChange={() => setNumAndSymbols(!numAndSymbols)}/>
+                <div className={`${Style["filters-checkbox"]}`}>
+                  <input type="checkbox" className={`${Style["filters-checkbox_custom"]}`} id="numbers" checked={numAndSymbols} onChange={() => setNumAndSymbols(!numAndSymbols)}/>
                   <label htmlFor="numbers"> Цифры и символы</label>
                 </div>
               </div>
             </div>
-            <div className="form-selector">
-              <h4 className="filters-title">Сортировка</h4>
-              <div className="__select" data-state="" onClick={selectOpen}>
-                <div className="__select__title">{sort.text}</div>
-                <div className="__select__content" >
-                  <input id="singleSelect0" className="__select__input" type="radio" name="singleSelect" defaultChecked={true}/>
-                  <label htmlFor="singleSelect0" tabIndex="0" className="__select__label" data-value="desc" onClick={selectChange}>Сначала легкие</label>
-                  <input id="singleSelect1" className="__select__input" type="radio" name="singleSelect"/>
-                  <label htmlFor="singleSelect1" tabIndex="0" className="__select__label" data-value="asc" onClick={selectChange}>Сначала сложные</label>
+            <div className={`${Style["form-selector"]}`}>
+              <h4 className={`${Style["form-selector"]}`}>Сортировка</h4>
+              <div className={`${Style["__select"]}`} data-state="" onClick={selectOpen}>
+                <div className={`${Style["__select__title"]}`}>{sort.text}</div>
+                <div className={`${Style["__select__content"]}`}>
+                  <input id="singleSelect0" className={`${Style["__select__input"]}`} type="radio" name="singleSelect" defaultChecked={true}/>
+                  <label htmlFor="singleSelect0" tabIndex="0" className={`${Style["__select__label"]}`} data-value="desc" onClick={selectChange}>Сначала легкие</label>
+                  <input id="singleSelect1" className={`${Style["__select__input"]}`} type="radio" name="singleSelect"/>
+                  <label htmlFor="singleSelect1" tabIndex="0" className={`${Style["__select__label"]}`} data-value="asc" onClick={selectChange}>Сначала сложные</label>
                 </div>
               </div>
             </div>
           </form>
-          <div className="cards-box">
+          <div className={`${Style["cards-box"]}`}>
             {tasksOutputObj.map((el) => (<Card {...el} key={el.id} myKey={el.id} state={setTaskActive}/>))}
           </div>
         </div>
