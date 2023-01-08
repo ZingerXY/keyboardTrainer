@@ -1,10 +1,10 @@
 import React from "react";
-import './Footer.scss'
+import Style from "./Footer.module.scss";
 const Footer = () => {
   return (
-    <footer className="App-footer">
-      <div className="footer container">
-        <p className={"footer_text"}>2022&nbsp;&mdash; Дипломный проект &laquo;Клавиатурный&nbsp;тренажер&raquo;</p>
+    <footer className={`${Style["App-footer"]}`}>
+      <div className={`${Style["footer"]} container`}>
+        <p className={`${Style["footer_text"]}`}>2022&nbsp;&mdash; Дипломный проект &laquo;Клавиатурный&nbsp;тренажер&raquo;</p>
       </div>
     </footer>
   );

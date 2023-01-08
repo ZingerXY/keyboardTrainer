@@ -1,10 +1,10 @@
 import React from "react";
-import './WarningDisplay.scss'
+import Style from "./WarningDisplay.module.scss";
 
 const WarningDisplay = () => {
-  return <div className="warning-dispay">
-    <div className="warning-dispay_title">Внимание</div>
-    <div className="warning-dispay_text">Выполнение задания недоступно с мобильной версии браузера.</div>
+  return <div className={`${Style["warning-dispay"]}`}>
+    <div className={`${Style["warning-dispay_title"]}`}>Внимание</div>
+    <div className={`${Style["warning-dispay_text"]}`}>Выполнение задания недоступно с мобильной версии браузера.</div>
   </div>
 }
 
