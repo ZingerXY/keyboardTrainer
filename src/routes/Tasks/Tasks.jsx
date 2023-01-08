@@ -1,8 +1,8 @@
 import React, { useState} from 'react';
 import './Tasks.scss'
-import Task from "../Task/Task"
+import Task from "../../components/Task/Task"
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import Card from "../Card/Card";
+import Card from "../../components/Card/Card";
 
 const Tasks = () => {
   const tasksInputObj = [

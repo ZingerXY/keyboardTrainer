@@ -1,7 +1,7 @@
 import React from "react";
-import { KeyboardWrapper } from "../KeyboardWrapper";
+import { KeyboardWrapper } from "../../components/KeyboardWrapper";
 import './Home.scss'
-import WarningDisplay from "../WarningDisplay/WarningDisplay"
+import WarningDisplay from "../../components/WarningDisplay/WarningDisplay"
 
 const Home = () => {
   return <div className="home-page">

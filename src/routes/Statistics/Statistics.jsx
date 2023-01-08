@@ -1,12 +1,12 @@
 import React from "react";
-import StatisticsData from "../StatisticsData/StatisticsData";
-import Graph from "../Graph/Graph";
+import StatisticsData from "../../components/StatisticsData/StatisticsData";
+import GraphComponent from "../../components/GraphComponent/GraphComponent";
 
 const Statistics = () => {
     return (
         <div className="statistics">
             <StatisticsData />
-            <Graph />
+            <GraphComponent />
         </div>
     )
 }

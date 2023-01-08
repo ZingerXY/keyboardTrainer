@@ -1,9 +1,18 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+<<<<<<< Updated upstream:src/components/Router/Router.jsx
 import Home from "../Home/Home";
 import Tasks from "../Tasks/Tasks";
 import Statistics from "../Statistics/Statistics";
 import Rating from "../Rating/Rating";
+=======
+import Home from "./Home/Home";
+import Tasks from "./Tasks/Tasks";
+import Statistics from "./Statistics/Statistics";
+import Rating from "./Rating/Rating";
+import Registration from "./Registration/Registration";
+import Authorization from "./Authorization/Authorization";
+>>>>>>> Stashed changes:src/routes/Router.jsx
 
 const Router = () => {
     return (
