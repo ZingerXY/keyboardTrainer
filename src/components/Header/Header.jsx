@@ -35,7 +35,7 @@ const Header = () => {
               }
             >Задания</NavLink>
             <NavLink 
-              to={"/stats/speed"}
+              to={"/stats"}
               className={({ isActive }) => 
                 `nav_links_title${isActive ? ' nav_links_title-active' : ''}`
               }
@@ -53,6 +53,7 @@ const Header = () => {
               }
             >Выйти</NavLink>
           </div>
+          
           <div className="burger_button" onClick={toggleVisible}>
             <svg width="32" height="23" viewBox="0 0 32 23" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M0 23V20.31H32V23H0ZM0 12.76V10.07H32V12.76H0ZM0 2.69V0H32V2.69H0Z" />

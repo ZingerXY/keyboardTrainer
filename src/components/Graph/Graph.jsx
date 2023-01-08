@@ -18,7 +18,7 @@ const Graph = () => {
                         className={({ isActive }) =>
                             `${GraphStyles.statistics_draw_btn} + ${isActive ? `${GraphStyles.opened}` : ''}`
                         }
-                        to={"/stats/speed"}
+                        to={"/stats"}
                     >
                         <span className={GraphStyles.statistics_draw_btn_txt}>
                         Скорость
@@ -47,7 +47,7 @@ const Graph = () => {
                 </div>
                 <div className={GraphStyles.statistics_draw_graph}>
                     <Routes>
-                        <Route path="/speed" element={
+                        <Route path="/" element={
                             <TheGraph data={speedGraphData}/>
                         } />
                         <Route path="/accuracy" element={
