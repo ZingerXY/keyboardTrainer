@@ -273,6 +273,10 @@ $shadow: rgba(0, 168, 118, 0.2);
 }
 
 @media (max-width: 840px) {
+    .filters-form {
+        justify-content: space-between;
+    }
+
     .tasks-container {
         padding-top: 72px;
     }
@@ -283,12 +287,6 @@ $shadow: rgba(0, 168, 118, 0.2);
 
     .filters-form {
         justify-content: flex-start;
-    }
-}
-
-@media (max-width: 840px) {
-    .filters-form {
-        justify-content: space-between;
     }
 
     .form-checkboxs {
