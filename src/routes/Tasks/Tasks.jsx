@@ -110,7 +110,7 @@ const Tasks = () => {
               </div>
             </div>
             <div className={`${Style["form-selector"]}`}>
-              <h4 className={`${Style["form-selector"]}`}>Сортировка</h4>
+              <h4 className={`${Style["filters-title"]}`}>Сортировка</h4>
               <div className={`${Style["__select"]}`} data-state="" onClick={selectOpen}>
                 <div className={`${Style["__select__title"]}`}>{sort.text}</div>
                 <div className={`${Style["__select__content"]}`}>

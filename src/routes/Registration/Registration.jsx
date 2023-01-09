@@ -5,15 +5,15 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Registration = () => {
   return (
-    <div className={`content`}>
+    <div className={`container ${Style["container"]}`}>
       <div className={`${Style["window"]}`}> 
         <div className={`${Style["Xmark"]}`}>
           <div className={`${Style["X"]}`}>
             <FontAwesomeIcon  icon={faXmark} color="#00A876"  size="1x"/>
           </div>
         </div>
-        <div className={`${Style["form"]}`}>
-          <form>
+        <div >
+          <form className={`${Style["form"]}`}>
               <label>
                 <p className={`${Style["reg-text"]} ${Style["margin"]}`}> РЕГИСТРАЦИЯ</p>
                 <p className={`${Style["input-text"]} ${Style["margin"]}`}>ИМЯ:</p> 

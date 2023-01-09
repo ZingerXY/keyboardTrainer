@@ -14,8 +14,7 @@ $shadow: rgba(0, 168, 118, 0.2);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-right: 30px;
-    padding-top: 50px;
+    padding-top: 103px;
 }
 
 .filters-form {
@@ -42,6 +41,8 @@ $shadow: rgba(0, 168, 118, 0.2);
     &_custom {
         position: absolute;
         opacity: 0;
+        width: auto;
+        height: auto;
     }
 
     &_custom+label {
@@ -239,19 +240,13 @@ $shadow: rgba(0, 168, 118, 0.2);
         color: #333333;
     }
 }
-
-@media (max-width: 1240px) {
+@media (min-width: 1240px) {
     .tasks-container {
-        padding-left: 2%;
         padding-right: 2%;
     }
-
 }
-
 @media (max-width: 1040px) {
     .tasks-container {
-        padding-left: 5%;
-        padding-right: 5%;
         flex-direction: column;
     }
 
@@ -276,6 +271,9 @@ $shadow: rgba(0, 168, 118, 0.2);
 }
 
 @media (max-width: 840px) {
+    .tasks-container {
+        padding-top: 72px;
+    }
     .cards-box {
         width: 100%;
     }
@@ -286,7 +284,7 @@ $shadow: rgba(0, 168, 118, 0.2);
 }
 
 @media (max-width: 840px) {
-    #filters-form {
+    .filters-form {
         justify-content: space-between;
     }
 
@@ -305,8 +303,12 @@ $shadow: rgba(0, 168, 118, 0.2);
 }
 
 @media (max-width: 640px) {
-    #filters-form {
+    .filters-form {
         margin-bottom: 62px;
+    }
+    
+    .tasks-container {
+        padding-top: 44px;
     }
 
     .cards-box {
