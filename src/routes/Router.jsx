@@ -8,6 +8,7 @@ import Statistics from "./Statistics/Statistics";
 import Registration from "./Registration/Registration";
 import Authorization from "./Authorization/Authorization";
 import Profile from "./Profile/Profile";
+import {NotFound} from "./NotFound";
 
 
 const Router = () => {
@@ -21,6 +22,7 @@ const Router = () => {
             <Route path="/authorization" element={<Authorization />}></Route>
             <Route path="/registration" element={<Registration />}></Route>
             <Route path="/profile" element={<Profile />}></Route>
+            <Route path="/*" element={<NotFound />}></Route>
         </Routes>
     )
 }
