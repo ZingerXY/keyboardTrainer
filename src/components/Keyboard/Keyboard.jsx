@@ -98,7 +98,7 @@ const Keyboard = ({
         {keybordButtons.map(
           ({ name, value, classNames }) => <div
             key={name}
-            className={`${checkKeyIsActive(name, value) ? 'active' : ''} ${classNames}`}>
+            className={`${checkKeyIsActive(name, value) ? Style["active"] : ''} ${classNames}`}>
             {name}
           </div>)
         }
