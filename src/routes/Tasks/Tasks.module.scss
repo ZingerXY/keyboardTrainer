@@ -240,11 +240,13 @@ $shadow: rgba(0, 168, 118, 0.2);
         color: #333333;
     }
 }
+
 @media (min-width: 1240px) {
     .tasks-container {
         padding-right: 2%;
     }
 }
+
 @media (max-width: 1040px) {
     .tasks-container {
         flex-direction: column;
@@ -274,6 +276,7 @@ $shadow: rgba(0, 168, 118, 0.2);
     .tasks-container {
         padding-top: 72px;
     }
+
     .cards-box {
         width: 100%;
     }
@@ -306,7 +309,7 @@ $shadow: rgba(0, 168, 118, 0.2);
     .filters-form {
         margin-bottom: 62px;
     }
-    
+
     .tasks-container {
         padding-top: 44px;
     }

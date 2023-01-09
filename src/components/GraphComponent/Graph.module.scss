@@ -1,4 +1,3 @@
-
 .statistics_draw {
     max-width: 1200px;
     display: flex;
@@ -14,18 +13,21 @@
         display: flex;
         align-items: center;
         text-align: center;
-        
+
         color: #000000;
     }
+
     &_part {
         max-width: 1000px;
         margin-top: 56px;
     }
+
     &_selection {
         display: flex;
         width: 520px;
         justify-content: space-between;
     }
+
     &_btn {
         width: 160px;
         height: 42px;
@@ -50,10 +52,11 @@
             line-height: 23px;
             align-items: center;
             text-align: center;
-            
+
             color: #000000;
         }
     }
+
     &_graph {
         width: 1000px;
         height: 328px;
@@ -61,22 +64,25 @@
         margin-bottom: 150px;
         padding: 25px 10px;
     }
-    
-}
-#graph {
-    &_max {
 
-    }
+}
+
+#graph {
+    &_max {}
+
     &_middle {
         display: none;
     }
+
     &_mini {
         display: none;
     }
 }
+
 .opened {
     background: rgba(0, 168, 118, 0.1);
 }
+
 // 768
 // Отображение от 768 до 999 некорректно, поэтому оставляю больший показатель
 @media (max-width: 999px) {
@@ -85,6 +91,7 @@
             font-size: 36px;
             line-height: 41px;
         }
+
         &_graph {
             max-width: 740px;
             height: 328px;
@@ -92,13 +99,16 @@
             margin-bottom: 55px;
         }
     }
+
     #graph {
         &_max {
             display: none;
         }
+
         &_middle {
             display: block;
         }
+
         &_mini {
             display: none;
         }
@@ -113,9 +123,11 @@
             font-size: 28px;
             line-height: 32px;
         }
+
         &_part {
             margin-top: 20px;
         }
+
         &_graph {
             margin: 0 auto;
             max-width: 316px;
@@ -123,25 +135,31 @@
             border: 2px solid #006D4C;
             margin-bottom: 20px;
         }
+
         &_selection {
             width: 315px;
         }
+
         &_btn {
             width: 105px;
             height: 42px;
+
             &_txt {
                 font-size: 16px;
                 line-height: 18px;
             }
         }
     }
+
     #graph {
         &_max {
             display: none;
         }
+
         &_middle {
             display: none;
         }
+
         &_mini {
             display: block;
         }

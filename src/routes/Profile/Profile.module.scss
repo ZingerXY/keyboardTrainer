@@ -68,7 +68,7 @@ $red: #FF5900;
     }
 }
 
-.profile-form_box{
+.profile-form_box {
     width: 100%;
     max-width: 456px;
     margin: 0 0 0 60px;
@@ -98,8 +98,7 @@ $red: #FF5900;
     color: $grey;
 }
 
-.profile-data
-.fa-circle {
+.profile-data .fa-circle {
     color: $black;
 
     &:not(:first-child) {
@@ -152,21 +151,25 @@ $red: #FF5900;
     .profile-page {
         margin-top: 90px;
     }
+
     .profile-title {
         font-size: 48px;
         line-height: 55px;
     }
-    
+
 }
+
 @media (max-width: 600px) {
     .profile-page {
         margin-top: 50px;
     }
+
     .profile-box {
         flex-direction: column;
         justify-content: normal;
         height: auto;
     }
+
     .profile-avatar_img {
         height: 172px;
     }

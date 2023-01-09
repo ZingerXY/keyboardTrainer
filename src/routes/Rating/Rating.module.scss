@@ -6,17 +6,20 @@
   width: 100%;
   height: 100%;
 }
+
 .rating-title {
   text-align: center;
   font-size: 64px;
   line-height: 70px;
   margin-bottom: 63px;
 }
+
 .rating-box {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .rating-item {
   background: #FFFFFF;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
@@ -27,6 +30,7 @@
   display: grid;
   grid-template-columns: 150px 1fr 150px;
 }
+
 .rating-position {
   display: flex;
   justify-content: center;
@@ -34,12 +38,14 @@
   font-size: 24px;
   line-height: 26px;
 }
+
 .rating-name {
   display: flex;
   align-items: center;
   font-size: 18px;
   line-height: 22px;
 }
+
 .rating-stats {
   display: flex;
   flex-direction: column;
@@ -48,25 +54,31 @@
   font-size: 16px;
   line-height: 18px;
 }
+
 .rating-percent {
   margin-bottom: 8px;
 }
-.rating-item_first, .rating-item_p {
+
+.rating-item_first,
+.rating-item_p {
   padding-left: 10px;
   padding-right: 10px;
   box-sizing: content-box;
 }
+
 .rating-item_first {
   height: 100px;
   background: rgba(255, 148, 0, 0.1);
   grid-template-columns: 150px 1fr 156px;
   margin-bottom: 40px;
-  & > .rating-position {
+
+  &>.rating-position {
     font-size: 36px;
     line-height: 26px;
     color: #FFFFFF;
     position: relative;
     z-index: 0;
+
     &:after {
       position: absolute;
       display: block;
@@ -79,74 +91,94 @@
       z-index: -1;
     }
   }
-  & > .rating-name {
+
+  &>.rating-name {
     font-size: 24px;
     line-height: 26px;
   }
-  & > .rating-stats {
+
+  &>.rating-stats {
     font-size: 24px;
     line-height: 26px;
   }
 }
+
 .rating-item_p {
   background: rgba(0, 168, 118, 0.1);
 
 }
+
 @media (max-width: 870px) {
   .rating-page {
     padding-top: 70px;
   }
+
   .rating-container {
     padding-left: 5%;
     padding-right: 5%;
   }
+
   .rating-title {
     font-size: 36px;
     line-height: 70px;
   }
+
   .rating-item {
     width: 100%;
   }
 }
+
 @media (max-width: 600px) {
   .rating-page {
     padding-top: 60px;
   }
+
   .rating-title {
     font-size: 28px;
     line-height: 40px;
     margin-bottom: 20px;
   }
+
   .rating-item {
     width: 90%;
     height: 60px;
     grid-template-columns: 60px 1fr 110px;
-    &, .rating-item_first, .rating-item_p {
-      & > .rating-title {
+
+    &,
+    .rating-item_first,
+    .rating-item_p {
+      &>.rating-title {
         font-size: 28px;
         line-height: 40px;
       }
-      & > .rating-position {
+
+      &>.rating-position {
         font-size: 16px;
         line-height: 22px;
       }
-      & > .rating-name {
+
+      &>.rating-name {
         font-size: 16px;
         line-height: 22px;
       }
-      & > .rating-stats {
+
+      &>.rating-stats {
         font-size: 16px;
         line-height: 18px;
       }
-      & > .rating-percent {
+
+      &>.rating-percent {
         margin-bottom: 4px;
       }
     }
+
     &_first {
       margin-bottom: 20px;
-      & > .rating-position {
+
+      &>.rating-position {
         font-size: 24px;
         line-height: 26px;
+
         &:after {
           width: 40px;
           height: 40px;
