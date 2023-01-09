@@ -27,62 +27,68 @@ const Header = () => {
 
           {/* пока временно для демо версии */}
           <div className={`${Style["nav_links"]}`}>
-            <NavLink 
+            <NavLink
               to={"/tasks"}
-              className={({ isActive }) => 
-              `${Style["nav_links_title"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
+              className={({ isActive }) =>
+                `${Style["nav_links_title"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
               }
             >Задания</NavLink>
-            <NavLink 
+            <NavLink
               to={"/stats"}
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 `${Style["nav_links_title"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
               }
             >Статистика</NavLink>
-            <NavLink 
+            <NavLink
               to={"/rating"}
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 `${Style["nav_links_title"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
               }
             >Рейтинг</NavLink>
-            <NavLink 
+            <NavLink
+              to={"/profile"}
+              className={({ isActive }) =>
+                `${Style["nav_links_title"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
+              }
+            >Профиль</NavLink>
+            <NavLink
               to={"/quit"}
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 `${Style["nav_links_title"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
               }
             >Выйти</NavLink>
           </div>
-          
+
           <div className={`${Style["burger_button"]}`} onClick={toggleVisible}>
             <svg width="32" height="23" viewBox="0 0 32 23" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M0 23V20.31H32V23H0ZM0 12.76V10.07H32V12.76H0ZM0 2.69V0H32V2.69H0Z" />
             </svg>
           </div>
           <div className={visible ? `${Style["burger_list"]}` : `${Style["hidden"]}`}>
-            <NavLink 
+            <NavLink
               to={"/tasks"}
-              className={({ isActive }) => 
-              `${Style["burger_links"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
+              className={({ isActive }) =>
+                `${Style["burger_links"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
               }
               onClick={() => setVisible(!visible)}
             >Задания</NavLink>
-            <NavLink 
+            <NavLink
               to={"/stats"}
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 `${Style["burger_links"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
               }
               onClick={() => setVisible(!visible)}
             >Статистика</NavLink>
-            <NavLink 
+            <NavLink
               to={"/rating"}
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 `${Style["burger_links"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
               }
               onClick={() => setVisible(!visible)}
             >Рейтинг</NavLink>
-            <NavLink 
+            <NavLink
               to={"/quit"}
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 `${Style["burger_links"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
               }
               onClick={() => setVisible(!visible)}
