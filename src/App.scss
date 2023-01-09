@@ -4,15 +4,14 @@ $deep_green: #006D4C;
 $dark_green: #14523F ;
 $shadow: rgba(0, 168, 118, 0.2);
 
-
 .container {
-  max-width: 1140px;
+  max-width: 1200px;
   margin: 0 auto;
   font-family: 'Arimo';
 }
 
 .App {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -23,7 +22,7 @@ $shadow: rgba(0, 168, 118, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: calc(10px + 2vmin);
   color: black;
   overflow: auto;
@@ -44,6 +43,7 @@ $shadow: rgba(0, 168, 118, 0.2);
   line-height: 23px;
   text-align: center;
   color: $white;
+  cursor: pointer;
 
   &:hover {
     background: $deep_green;
@@ -72,5 +72,18 @@ $shadow: rgba(0, 168, 118, 0.2);
     background: $white;
     border: 2px solid $deep_green;
     color: $deep_green;
+  }
+}
+@media (max-width: 1240px) {
+  .container {
+    width: 100%;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+}
+@media (max-width: 800px) {
+  .container {
+    padding-left: 2%;
+    padding-right: 2%;
   }
 }

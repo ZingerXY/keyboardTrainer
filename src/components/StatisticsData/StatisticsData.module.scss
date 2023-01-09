@@ -5,8 +5,10 @@
     align-items: center;
 
 }
+
 .statistics {
     &_header {
+        padding-top: 100px;
         font-family: 'Arimo';
         font-weight: 400;
         font-size: 48px;
@@ -14,30 +16,34 @@
         display: flex;
         align-items: center;
         text-align: center;
-        
+
         color: #000000;
-        
-        
+
+
         font-style: normal;
     }
+
     &_part {
         margin-top: 40px;
         min-width: 427px;
         margin-bottom: 60px;
         display: flex;
     }
+
     &_mini_left {
         width: 326px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
+
     &_mini_right {
         height: 109px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
+
     &_mini_title {
 
         font-family: 'Arimo';
@@ -45,27 +51,28 @@
         font-weight: 700;
         font-size: 20px;
         line-height: 23px;
-        
+
         /* identical to box height */
-        
+
         color: #000000;
 
 
     }
+
     &_mini_value {
         font-family: 'Arimo';
         font-style: normal;
         font-weight: 400;
         font-size: 20px;
         line-height: 23px;
-        
+
         /* identical to box height */
-        
+
         color: #000000;
 
 
     }
-    
+
 }
 
 .statistics_draw {
@@ -80,11 +87,13 @@
         margin-top: 56px;
         margin-bottom: 60px;
     }
+
     &_selection {
         display: flex;
         width: 520px;
         justify-content: space-between;
     }
+
     &_btn {
         width: 160px;
         height: 42px;
@@ -103,45 +112,54 @@
             line-height: 23px;
             align-items: center;
             text-align: center;
-            
+
             color: #000000;
         }
     }
+
     &_graph {
         width: 1000px;
         height: 328px;
         border: 2px solid #006D4C;
     }
 }
+
 .opened {
     background: rgba(0, 168, 118, 0.1);
 }
+
 // 768
 // Отображение от 768 до 999 некорректно, поэтому оставляю больший показатель
 @media (max-width: 999px) {
     .statistics {
         &_header {
+            padding-top: 60px;
             font-weight: 400;
             font-size: 36px;
             line-height: 41px;
         }
+
         &_part {
             margin-top: 38px;
             min-width: 417px;
             margin-bottom: 67px;
             display: flex;
         }
+
         &_mini_left {
             height: 91x;
         }
+
         &_mini_right {
             height: 91px;
         }
+
         &_mini_title {
             font-size: 18px;
             line-height: 21px;
-    
+
         }
+
         &_mini_value {
             font-size: 18px;
             line-height: 21px;
@@ -157,23 +175,64 @@
             font-size: 28px;
             line-height: 32px;
         }
+
         &_part {
             margin-top: 20px;
             min-width: 314px;
             margin-bottom: 60px;
         }
+
         &_mini_left {
             height: 70px;
             width: 242px;
         }
+
         &_mini_right {
             height: 70px;
         }
+
         &_mini_title {
             font-size: 16px;
             line-height: 18px;
-    
+
         }
+
+        &_mini_value {
+            font-size: 16px;
+            line-height: 18px;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .statistics {
+        &_header {
+            padding-top: 50px;
+            font-size: 28px;
+            line-height: 32px;
+        }
+
+        &_part {
+            margin-top: 20px;
+            min-width: 314px;
+            margin-bottom: 60px;
+        }
+
+        &_mini_left {
+            height: 70px;
+            width: 242px;
+        }
+
+        &_mini_right {
+            height: 70px;
+        }
+
+        &_mini_title {
+            font-size: 16px;
+            line-height: 18px;
+
+        }
+
         &_mini_value {
             font-size: 16px;
             line-height: 18px;

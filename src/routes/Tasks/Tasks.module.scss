@@ -5,7 +5,7 @@ $shadow: rgba(0, 168, 118, 0.2);
 .tasks-page {
     color: black;
     font-family: 'Arimo';
-    width: 100vw;
+    width: 100%;
     height: 100%;
 }
 
@@ -14,11 +14,10 @@ $shadow: rgba(0, 168, 118, 0.2);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding-right: 30px;
-    padding-top: 50px;
+    padding-top: 103px;
 }
 
-#filters-form {
+.filters-form {
     width: 230px;
 }
 
@@ -42,6 +41,8 @@ $shadow: rgba(0, 168, 118, 0.2);
     &_custom {
         position: absolute;
         opacity: 0;
+        width: auto;
+        height: auto;
     }
 
     &_custom+label {
@@ -172,7 +173,7 @@ $shadow: rgba(0, 168, 118, 0.2);
 
 .__select__content {
     position: absolute;
-    top: 20px;
+    top: 100%;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -240,18 +241,14 @@ $shadow: rgba(0, 168, 118, 0.2);
     }
 }
 
-@media (max-width: 1240px) {
+@media (min-width: 1240px) {
     .tasks-container {
-        padding-left: 2%;
         padding-right: 2%;
     }
-
 }
 
 @media (max-width: 1040px) {
     .tasks-container {
-        padding-left: 5%;
-        padding-right: 5%;
         flex-direction: column;
     }
 
@@ -263,7 +260,7 @@ $shadow: rgba(0, 168, 118, 0.2);
         margin-right: 10%;
     }
 
-    #filters-form {
+    .filters-form {
         display: flex;
         justify-content: center;
         width: 100%;
@@ -276,18 +273,20 @@ $shadow: rgba(0, 168, 118, 0.2);
 }
 
 @media (max-width: 840px) {
+    .filters-form {
+        justify-content: space-between;
+    }
+
+    .tasks-container {
+        padding-top: 72px;
+    }
+
     .cards-box {
         width: 100%;
     }
 
-    #filters-form {
+    .filters-form {
         justify-content: flex-start;
-    }
-}
-
-@media (max-width: 840px) {
-    #filters-form {
-        justify-content: space-between;
     }
 
     .form-checkboxs {
@@ -305,8 +304,12 @@ $shadow: rgba(0, 168, 118, 0.2);
 }
 
 @media (max-width: 640px) {
-    #filters-form {
+    .filters-form {
         margin-bottom: 62px;
+    }
+
+    .tasks-container {
+        padding-top: 44px;
     }
 
     .cards-box {

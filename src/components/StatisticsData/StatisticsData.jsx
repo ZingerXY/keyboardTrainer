@@ -1,21 +1,21 @@
 import React from "react";
 import {useSelector} from "react-redux";
-import {useState, useEffect} from 'react'
-import DataStyle from './StatisticsData.module.scss'
+import {useState, useEffect} from "react";
+import DataStyle from "./StatisticsData.module.scss";
 
 const StatisticsData = () => {
-  const {count, correct} = useSelector((state) => state.DataReducer)
-  const {seconds} = useSelector((state) => state.TimeReducer)
-  const [result, setResult] = useState(0)
-  const [care, setCare] = useState(0)
+  const {count, correct} = useSelector((state) => state.DataReducer);
+  const {seconds} = useSelector((state) => state.TimeReducer);
+  const [result, setResult] = useState(0);
+  const [care, setCare] = useState(0);
   useEffect(() => {
     if (seconds !== 0) {
-      setResult(Math.floor(correct / (seconds / 60)))
+      setResult(Math.floor(correct / (seconds / 60)));
     }
   }, [seconds])
   useEffect(() => {
     if (correct !== 0) {
-      setCare(Math.floor(correct / (count + correct) * 100))
+      setCare(Math.floor(correct / (count + correct) * 100));
     }
   }, [])
 
