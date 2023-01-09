@@ -19,7 +19,7 @@ const Task = () => {
     }, [seconds])
 
     return (
-        <div className={`${Style["task-page"]} ${Style["container"]}`}>
+        <div className={`${Style["task-page"]} container`}>
             <WarningDisplay />
             <div className={`${Style["task-card"]}`}>
                 <div className={`${Style["task-card_leftpart"]}`}>
