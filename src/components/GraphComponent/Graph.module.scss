@@ -83,6 +83,14 @@
     background: rgba(0, 168, 118, 0.1);
 }
 
+@media (max-width: 1024px) {
+    .statistics_draw_part {
+        width: 100%;
+    }
+    .statistics_draw_graph {
+        width: 100%;
+    }
+}
 // 768
 // Отображение от 768 до 999 некорректно, поэтому оставляю больший показатель
 @media (max-width: 999px) {
@@ -93,7 +101,7 @@
         }
 
         &_graph {
-            max-width: 740px;
+            // max-width: 740px;
             height: 328px;
             border: 2px solid #006D4C;
             margin-bottom: 55px;
@@ -130,18 +138,18 @@
 
         &_graph {
             margin: 0 auto;
-            max-width: 316px;
+            // max-width: 316px;
             height: 273px;
             border: 2px solid #006D4C;
             margin-bottom: 20px;
         }
 
         &_selection {
-            width: 315px;
+            width: 315px;   
         }
 
         &_btn {
-            width: 105px;
+            width: 33%;
             height: 42px;
 
             &_txt {
@@ -162,6 +170,40 @@
 
         &_mini {
             display: block;
+        }
+    }
+}
+
+@media (max-width: 738px) {
+    .statistics_draw {
+        &_header {
+            font-size: 28px;
+            line-height: 32px;
+        }
+
+        &_part {
+            margin-top: 20px;
+        }
+
+        &_graph {
+            margin: 0 auto;
+            height: 273px;
+            border: 2px solid #006D4C;
+            margin-bottom: 20px;
+        }
+
+        &_selection {
+            width: 100%;   
+        }
+
+        &_btn {
+            width: 32%;
+            height: 42px;
+
+            &_txt {
+                font-size: 16px;
+                line-height: 18px;
+            }
         }
     }
 }
