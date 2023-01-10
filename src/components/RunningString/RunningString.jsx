@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux"
 import { update_time } from "../../store/time/timeSlice";
 import { add_correct, add_uncorrect } from "../../store/data/dataSlice";
 
-const RunningString = ({ setCurrentLetter, setPrevLetter, startWord, setStartWord }) => {
+const RunningString = ({ setCurrentLetter, setPrevLetter, startWord, setStartWord, setIsStringFinished }) => {
   const dispatch = useDispatch();
   const [endWord, setEndWord] = useState('') // Набранное слово
   const [correct, setCorrect] = useState(0)
@@ -15,11 +15,19 @@ const RunningString = ({ setCurrentLetter, setPrevLetter, startWord, setStartWor
   const [seconds, setSeconds] = useState(0)
   const [minutes, setMinutes] = useState(0)
 
+  const resetString = () => {
+    setStartWord('');
+    setEndWord('');
+    clearInterval(timer);
+    setTimer(0);
+    setIsStringFinished(true);
+  }
+
   const CurrectInput = () => { //Логика при правильном вводе
     setCorrect(cur => cur + 1)
     if (startWord.length === 1) { //Проверяет, закончилось ли слово
-      clearInterval(timer);
-      setTimer(0);
+      resetString();
+      return;
     }
     setPrevLetter(startWord.substring(0, 1));
     startWord.substring(1);
