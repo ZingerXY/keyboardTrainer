@@ -30,6 +30,15 @@ const RunningString = ({ setCurrentLetter, setPrevLetter, startWord, setStartWor
       setEndWord(word => word.slice(1)); //Убирает первый символ endWord
     }
   };
+  
+  const UncorrectInput = () => {
+    stringId.current.classList.add(Style["shake"]); // Трясет строку в случае, если введено неправильное значение
+        setUnCorrect(unCorrect => unCorrect + 1);
+
+        setTimeout(() => {
+          stringId.current.classList.remove(Style["shake"]); //Убирает класс анимации
+        }, 800)
+  }
 
   const createTimer = () => {
     setTimer(setInterval(() => {
@@ -42,12 +51,12 @@ const RunningString = ({ setCurrentLetter, setPrevLetter, startWord, setStartWor
     }, 1000))
   }
   useEffect(() => { //Отслеживает нажатие на кнопку
-    setCurrentLetter(startWord.substring(0, 1));
-    dispatch(update_time({ seconds, minutes }));
-    dispatch(add_uncorrect(unCorrect));
-    dispatch(add_correct(correct));
-
-
+    if (startWord) {
+      setCurrentLetter(startWord.substring(0, 1));
+      dispatch(update_time({ seconds, minutes }));
+      dispatch(add_uncorrect(unCorrect));
+      dispatch(add_correct(correct));
+    }
     if (seconds === 60) {
       setMinutes(m => m + 1);
       setSeconds(0);
@@ -63,12 +72,8 @@ const RunningString = ({ setCurrentLetter, setPrevLetter, startWord, setStartWor
         CurrectInput(); // Вызывает метод с логикой
       } else if (startWord.length !== 0) {
         event.preventDefault();
-        stringId.current.classList.add(Style["shake"]); // Трясет строку в случае, если введено неправильное значение
-        setUnCorrect(unCorrect => unCorrect + 1);
-
-        setTimeout(() => {
-          stringId.current.classList.remove(Style["shake"]); //Убирает класс анимации
-        }, 800)
+        UncorrectInput();
+        
       }
     };
 
