@@ -67,7 +67,9 @@ $red: #FF5900;
         color: $white;
     }
 }
-
+.profile-form_btn-group {
+    display: flex;
+}
 .profile-form_box {
     width: 100%;
     max-width: 456px;
