@@ -66,7 +66,7 @@ export const KeyboardWrapper = () => {
   }, [prevLetter])
 
   useEffect(() => {
-    setStartWord(generateStirng(10));
+    setStartWord(generateStirng(5));
     setIsStringFinished(false);
   }, [isStringFinished]);
 
