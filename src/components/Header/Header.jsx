@@ -45,9 +45,9 @@ const Header = () => {
                 `${Style["nav_links_title"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
               }
             >Рейтинг</NavLink>
-            <NavLink
+            <NavLink 
               to={"/profile"}
-              className={({ isActive }) =>
+              className={({ isActive }) => 
                 `${Style["nav_links_title"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
               }
             >Профиль</NavLink>
@@ -86,6 +86,12 @@ const Header = () => {
               }
               onClick={() => setVisible(!visible)}
             >Рейтинг</NavLink>
+            <NavLink 
+              to={"/profile"}
+              className={({ isActive }) => 
+                `${Style["burger_links"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
+              }
+            >Профиль</NavLink>
             <NavLink
               to={"/quit"}
               className={({ isActive }) =>
