@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import RunningString from "../RunningString/RunningString";
 import Keyboard from "../Keyboard/Keyboard";
+import { generateStirng } from '../../lib/wordsGenerator';
 
 export const KeyboardWrapper = () => {
-  const [startWord, setStartWord] = useState('пример текста пример текста пример текста пример текста');
+  const [startWord, setStartWord] = useState('');
   const [prevLetter, setPrevLetter] = useState("")
   const [currentLetter, setCurrentLetter] = useState("")
+  const [isStringFinished, setIsStringFinished] = useState(false);
 
   const [lhfl_active, set_lhfl_active] = useState(false) // left hand little finger
   const [lhfr_active, set_lhfr_active] = useState(false) // left hand ring finger
@@ -63,11 +65,18 @@ export const KeyboardWrapper = () => {
     }
   }, [prevLetter])
 
+  useEffect(() => {
+    setStartWord(generateStirng(5));
+    setIsStringFinished(false);
+  }, [isStringFinished]);
+
   return <>
     <RunningString
       setCurrentLetter={setCurrentLetter}
       setPrevLetter={setPrevLetter}
-      startWord={startWord} setStartWord={setStartWord}
+      startWord={startWord}
+      setStartWord={setStartWord}
+      setIsStringFinished={setIsStringFinished}
     />
     <Keyboard
       lhfl_active={lhfl_active}
