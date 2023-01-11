@@ -20,13 +20,18 @@ const RunningString = ({ setCurrentLetter, setPrevLetter, startWord, setStartWor
     setEndWord('');
     clearInterval(timer);
     setTimer(0);
+  }
+
+  const finish = () => {
+    resetString();
     setIsStringFinished(true);
   }
 
   const CurrectInput = () => { //Логика при правильном вводе
     setCorrect(cur => cur + 1)
+    console.log(correct)
     if (startWord.length === 1) { //Проверяет, закончилось ли слово
-      resetString();
+      finish();
       return;
     }
     setPrevLetter(startWord.substring(0, 1));
@@ -51,6 +56,7 @@ const RunningString = ({ setCurrentLetter, setPrevLetter, startWord, setStartWor
   const createTimer = () => {
     setTimer(setInterval(() => {
       if (seconds < 60) {
+        console.log(seconds);
         setSeconds(s => s + 1);
       } else {
 
@@ -94,7 +100,6 @@ const RunningString = ({ setCurrentLetter, setPrevLetter, startWord, setStartWor
 
   return (
     <div className={`container`}>
-
       <div className={`${Style["running-string"]}`} ref={stringId}>
         <div className={`${Style["input-text"]} ${Style["end-string"]}`}>{endWord}</div>
         <div className={`${Style["input-text"]} ${Style["start-string"]}`}>{startWord}</div>
