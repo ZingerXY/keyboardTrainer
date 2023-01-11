@@ -45,9 +45,9 @@ const Header = () => {
                 `${Style["nav_links_title"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
               }
             >Рейтинг</NavLink>
-            <NavLink 
+            <NavLink
               to={"/profile"}
-              className={({ isActive }) => 
+              className={({ isActive }) =>
                 `${Style["nav_links_title"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
               }
             >Профиль</NavLink>
