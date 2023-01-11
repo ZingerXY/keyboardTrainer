@@ -9,8 +9,8 @@ import ModalWindow from "./ModalWindow/ModalWindow";
 const Task = () => {
     const { count, correct } = useSelector((state) => state.DataReducer);
     const { seconds, minutes } = useSelector((state) => state.TimeReducer);
-    const [result, setResult] = useState(0);
-    const [isStringFinished, setIsStringFinished] = useState(false);
+    const [ result, setResult ] = useState(0);
+    const [ isStringFinished, setIsStringFinished ] = useState(false);
 
     useEffect(() => {
         if (seconds !== 0) {
