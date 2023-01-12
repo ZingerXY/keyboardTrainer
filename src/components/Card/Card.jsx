@@ -7,8 +7,10 @@ const Card = (props) => {
     levelArr[i] = 1;
   }
   const handlerClick = () => {
+    props.setTaskOption(props.type);
     props.state(true);
   };
+
   return (
     <div className={`${Style["card"]}`} key={props.myKey} onClick={handlerClick}>
       <div className={`${Style["card-head"]} ${Style["card-head_" + props.type]}`}>

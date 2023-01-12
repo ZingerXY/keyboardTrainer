@@ -4,33 +4,39 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import { KeyboardWrapper } from "../KeyboardWrapper";
 import { useSelector } from "react-redux";
 import WarningDisplay from "../WarningDisplay/WarningDisplay";
-import ModalWindow from "./ModalWindow/ModalWindow";
+import ModalWindow from "../ModalWindowForTestResult.jsx/ModalWindow";
 
-const Task = () => {
-    const { count, correct } = useSelector((state) => state.DataReducer);
+const Task = ({taskSettings}) => {
+    const { uncorrect, correct } = useSelector((state) => state.DataReducer);
     const { seconds, minutes } = useSelector((state) => state.TimeReducer);
-    const [ result, setResult ] = useState(0);
-    const [ isStringFinished, setIsStringFinished ] = useState(false);
+    const [typeSpeed, setTypeSpeed] = useState(0);
+    const [isStringFinished, setIsStringFinished] = useState(false);
 
     useEffect(() => {
         if (seconds !== 0) {
-            setResult(Math.floor(correct / (seconds / 60)));
+            setTypeSpeed(Math.floor(correct / (seconds / 60)));
         } else {
-            setResult(0);
+            setTypeSpeed(0);
         }
     }, [seconds])
 
+
     return (
         <>
-            {/* <ModalWindow/> */}
+            {isStringFinished && 
+                <ModalWindow
+                    setIsStringFinished={setIsStringFinished}
+                    typeSpeed={typeSpeed}
+                />
+            }
             <div className={`${Style["task-page"]} container`}>
                 <WarningDisplay />
                 <div className={`${Style["task-card"]}`}>
                     <div className={`${Style["task-card_leftpart"]}`}>
                         <div className={`${Style["task-title"]}`}>Задание <span className={`${Style["task-title_number"]}`}>#1</span></div>
-                        <div className={`${Style["task-info"]}`}><p>Количество ошибок:</p><span className={`${Style["task-info_mistakes"]}`}>{count}</span></div>
-                        <div className={`${Style["task-info"]}`}><p>Текущая скорость:</p><span className={`${Style["task-info_speed"]}`}>{result}</span></div>
-                        <div className={`${Style["task-info"]}`}><p>Время:</p><span className={`${Style["task-info_time"]}`}>{minutes}:{seconds}</span></div>
+                        <div className={`${Style["task-info"]}`}><p>Количество ошибок:</p><span className={`${Style["task-info_mistakes"]}`}>{uncorrect}</span></div>
+                        <div className={`${Style["task-info"]}`}><p>Текущая скорость:</p><span className={`${Style["task-info_speed"]}`}>{typeSpeed}</span></div>
+                        <div className={`${Style["task-info"]}`}><p>Время:</p><span className={`${Style["task-info_time"]}`}>{minutes}:{`${seconds < 10 ? '0' : ''}`}{seconds}</span></div>
                     </div>
                     <div className={`${Style["task-card_rightpart"]}`}>
                         <div className={`${Style["task-type"]}`}>
@@ -47,7 +53,11 @@ const Task = () => {
                         </div>
                     </div>
                 </div>
-                <KeyboardWrapper />
+                <KeyboardWrapper
+                    isStringFinished={isStringFinished}
+                    setIsStringFinished={setIsStringFinished}
+                    taskSettings={taskSettings}
+                />
             </div>
         </>
     )

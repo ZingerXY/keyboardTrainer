@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
-    count: 0,
+    uncorrect: 0,
     correct: 0
 }
 
@@ -10,7 +10,7 @@ const Reducer = createSlice({
     initialState,
     reducers: {
         add_uncorrect: (state, action) => {
-            state.count = action.payload
+            state.uncorrect = action.payload
         },
         add_correct: (state, action) => {
             state.correct = action.payload

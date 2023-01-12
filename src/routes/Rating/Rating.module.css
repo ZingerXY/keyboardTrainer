@@ -1,0 +1,209 @@
+.rating-page {
+  font-family: 'Arimo';
+  font-style: normal;
+  padding-top: 113px;
+  padding-bottom: 50px;
+  width: 100%;
+  height: 100%;
+}
+
+.rating-title {
+  text-align: center;
+  font-size: 64px;
+  line-height: 70px;
+  margin-bottom: 63px;
+}
+
+.rating-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.rating-item {
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  width: 800px;
+  height: 70px;
+  margin-bottom: 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 150px 1fr 150px;
+      grid-template-columns: 150px 1fr 150px;
+}
+
+.rating-position {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 24px;
+  line-height: 26px;
+}
+
+.rating-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.rating-stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.rating-percent {
+  margin-bottom: 8px;
+}
+
+.rating-item_first,
+.rating-item_p {
+  padding-left: 10px;
+  padding-right: 10px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+.rating-item_first {
+  height: 100px;
+  background: rgba(255, 148, 0, 0.1);
+  -ms-grid-columns: 150px 1fr 156px;
+      grid-template-columns: 150px 1fr 156px;
+  margin-bottom: 40px;
+}
+
+.rating-item_first > .rating-position {
+  font-size: 36px;
+  line-height: 26px;
+  color: #FFFFFF;
+  position: relative;
+  z-index: 0;
+}
+
+.rating-item_first > .rating-position:after {
+  position: absolute;
+  display: block;
+  width: 90px;
+  height: 90px;
+  content: "";
+  background: #FF9400;
+  border: 2px solid #BF8330;
+  border-radius: 100%;
+  z-index: -1;
+}
+
+.rating-item_first > .rating-name {
+  font-size: 24px;
+  line-height: 26px;
+}
+
+.rating-item_first > .rating-stats {
+  font-size: 24px;
+  line-height: 26px;
+}
+
+.rating-item_p {
+  background: rgba(0, 168, 118, 0.1);
+}
+
+@media (max-width: 870px) {
+  .rating-page {
+    padding-top: 70px;
+  }
+  .rating-title {
+    font-size: 36px;
+    line-height: 70px;
+  }
+  .rating-item {
+    width: 95%;
+  }
+}
+
+@media (max-width: 600px) {
+  .rating-page {
+    padding-top: 60px;
+  }
+  .rating-title {
+    font-size: 28px;
+    line-height: 40px;
+    margin-bottom: 20px;
+  }
+  .rating-item {
+    height: 60px;
+    -ms-grid-columns: 60px 1fr 110px;
+        grid-template-columns: 60px 1fr 110px;
+  }
+  .rating-item > .rating-title,
+  .rating-item .rating-item_first > .rating-title,
+  .rating-item .rating-item_p > .rating-title {
+    font-size: 28px;
+    line-height: 40px;
+  }
+  .rating-item > .rating-position,
+  .rating-item .rating-item_first > .rating-position,
+  .rating-item .rating-item_p > .rating-position {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .rating-item > .rating-name,
+  .rating-item .rating-item_first > .rating-name,
+  .rating-item .rating-item_p > .rating-name {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .rating-item > .rating-stats,
+  .rating-item .rating-item_first > .rating-stats,
+  .rating-item .rating-item_p > .rating-stats {
+    font-size: 16px;
+    line-height: 18px;
+  }
+  .rating-item > .rating-percent,
+  .rating-item .rating-item_first > .rating-percent,
+  .rating-item .rating-item_p > .rating-percent {
+    margin-bottom: 4px;
+  }
+  .rating-item_first {
+    margin-bottom: 20px;
+  }
+  .rating-item_first > .rating-position {
+    font-size: 24px;
+    line-height: 26px;
+  }
+  .rating-item_first > .rating-position:after {
+    width: 40px;
+    height: 40px;
+  }
+}
+/*# sourceMappingURL=Rating.module.css.map */

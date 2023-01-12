@@ -1,7 +1,7 @@
 import React from "react";
 import Style from "./Registration.module.scss";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Registration = () => {
   return (
@@ -9,7 +9,7 @@ const Registration = () => {
       <div className={`${Style["window"]}`}> 
         <div className={`${Style["Xmark"]}`}>
           <div className={`${Style["X"]}`}>
-            {/* <FontAwesomeIcon  icon={faXmark} color="#00A876"  size="1x"/> */}
+            <FontAwesomeIcon  icon={faXmark} color="#00A876"  size="1x"/>
           </div>
         </div>
         <div >
