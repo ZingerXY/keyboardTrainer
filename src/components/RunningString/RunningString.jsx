@@ -5,7 +5,13 @@ import { useDispatch } from "react-redux"
 import { update_time } from "../../store/time/timeSlice";
 import { add_correct, add_uncorrect } from "../../store/data/dataSlice";
 
-const RunningString = ({ setCurrentLetter, setPrevLetter, startWord, setStartWord, setIsStringFinished }) => {
+const RunningString = ({
+  setCurrentLetter,
+  setPrevLetter,
+  startWord,
+  setStartWord,
+  isStringFinished,
+  setIsStringFinished }) => {
   const dispatch = useDispatch();
   const [endWord, setEndWord] = useState('') // Набранное слово
   const [correct, setCorrect] = useState(0)
@@ -29,8 +35,8 @@ const RunningString = ({ setCurrentLetter, setPrevLetter, startWord, setStartWor
 
   const CurrectInput = () => { //Логика при правильном вводе
     setCorrect(cur => cur + 1)
-    console.log(correct)
     if (startWord.length === 1) { //Проверяет, закончилось ли слово
+      console.log(1);
       finish();
       return;
     }
@@ -56,47 +62,48 @@ const RunningString = ({ setCurrentLetter, setPrevLetter, startWord, setStartWor
   const createTimer = () => {
     setTimer(setInterval(() => {
       if (seconds < 60) {
-        console.log(seconds);
         setSeconds(s => s + 1);
       } else {
-
         setSeconds(s => s + 1);
       }
-    }, 1000))
+    }, 1000));
   }
   useEffect(() => { //Отслеживает нажатие на кнопку
-    if (startWord) {
-      setCurrentLetter(startWord.substring(0, 1));
-      dispatch(update_time({ seconds, minutes }));
-      dispatch(add_uncorrect(unCorrect));
-      dispatch(add_correct(correct));
-    }
-    if (seconds === 60) {
-      setMinutes(m => m + 1);
-      setSeconds(0);
-      clearInterval(timer);
-      createTimer();
-    }
-    const keyDownHandler = event => {
-      if (timer === 0) {
+    if(!isStringFinished){
+      if (startWord) {
+        setCurrentLetter(startWord.substring(0, 1));
+        dispatch(update_time({ seconds, minutes }));
+        dispatch(add_uncorrect(unCorrect));
+        dispatch(add_correct(correct));
+      }
+      if (seconds === 60) {
+        setMinutes(m => m + 1);
+        setSeconds(0);
+        clearInterval(timer);
         createTimer();
       }
-      if (event.key === startWord[0]) { //Проверяет, верно ли пользователь нажал на кнопку
-        event.preventDefault();
-        CurrectInput(); // Вызывает метод с логикой
-      } else if (startWord.length !== 0) {
-        event.preventDefault();
-        UncorrectInput();
-        
-      }
-    };
+      const keyDownHandler = event => {
+        if (timer === 0) {
+          createTimer();
+        }
+        if (event.key === startWord[0]) { //Проверяет, верно ли пользователь нажал на кнопку
+          event.preventDefault();
+          CurrectInput(); // Вызывает метод с логикой
+        } else if (startWord.length !== 0) {
+          event.preventDefault();
+          UncorrectInput();
+          
+        }
+      };
 
-    document.addEventListener('keydown', keyDownHandler); // Добавляет слушатель события при нажатии
 
-    return () => {
-      document.removeEventListener('keydown', keyDownHandler); // Убирает слушатель события при нажатии
-    };
-  }, [startWord, unCorrect, seconds]);
+      document.addEventListener('keydown', keyDownHandler); // Добавляет слушатель события при нажатии
+
+      return () => {
+        document.removeEventListener('keydown', keyDownHandler); // Убирает слушатель события при нажатии
+      };
+    }
+  }, [startWord, unCorrect, seconds, isStringFinished]);
 
   return (
     <div className={`container`}>

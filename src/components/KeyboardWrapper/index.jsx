@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import RunningString from "../RunningString/RunningString";
 import Keyboard from "../Keyboard/Keyboard";
-import { generateStirng } from '../../lib/wordsGenerator';
+import { generateStirng } from '../../lib/stringGenerators/index';
 
-export const KeyboardWrapper = () => {
+export const KeyboardWrapper = ({isStringFinished, setIsStringFinished, taskSettings}) => {
   const [startWord, setStartWord] = useState('');
   const [prevLetter, setPrevLetter] = useState("")
   const [currentLetter, setCurrentLetter] = useState("")
-  const [isStringFinished, setIsStringFinished] = useState(false);
 
   const [lhfl_active, set_lhfl_active] = useState(false) // left hand little finger
   const [lhfr_active, set_lhfr_active] = useState(false) // left hand ring finger
@@ -66,29 +65,33 @@ export const KeyboardWrapper = () => {
   }, [prevLetter])
 
   useEffect(() => {
-    setStartWord(generateStirng(5));
-    setIsStringFinished(false);
+    if (!isStringFinished){
+      setStartWord(generateStirng(taskSettings.type, taskSettings.amount));
+    }
   }, [isStringFinished]);
-
-  return <>
-    <RunningString
-      setCurrentLetter={setCurrentLetter}
-      setPrevLetter={setPrevLetter}
-      startWord={startWord}
-      setStartWord={setStartWord}
-      setIsStringFinished={setIsStringFinished}
-    />
-    <Keyboard
-      lhfl_active={lhfl_active}
-      lhfr_active={lhfr_active}
-      lhfm_active={lhfm_active}
-      lhfi_active={lhfi_active}
-      rhfl_active={rhfl_active}
-      rhfr_active={rhfr_active}
-      rhfm_active={rhfm_active}
-      rhfi_active={rhfi_active}
-      rhft_active={rhft_active}
-      startWord={startWord}
-    />
-  </>
+// 
+  return (
+    <>
+      <RunningString
+        setCurrentLetter={setCurrentLetter}
+        setPrevLetter={setPrevLetter}
+        startWord={startWord}
+        setStartWord={setStartWord}
+        isStringFinished={isStringFinished}
+        setIsStringFinished={setIsStringFinished}
+      />
+      <Keyboard
+        lhfl_active={lhfl_active}
+        lhfr_active={lhfr_active}
+        lhfm_active={lhfm_active}
+        lhfi_active={lhfi_active}
+        rhfl_active={rhfl_active}
+        rhfr_active={rhfr_active}
+        rhfm_active={rhfm_active}
+        rhfi_active={rhfi_active}
+        rhft_active={rhft_active}
+        startWord={startWord}
+      />
+    </>
+  )
 }

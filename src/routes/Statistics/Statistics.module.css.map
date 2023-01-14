@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,CAAC;EACR,KAAK,EAAE,IAAI;CACd",
+    "sources": [
+        "Statistics.module.scss"
+    ],
+    "names": [],
+    "file": "Statistics.module.css"
+}

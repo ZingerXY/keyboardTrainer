@@ -1,0 +1,101 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Arimo';
+}
+
+.App {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.Main-part {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  font-size: calc(10px + 2vmin);
+  color: black;
+  overflow: auto;
+}
+
+.btn {
+  width: 100%;
+  max-width: 200px;
+  height: 43px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #00A876;
+  border: 2px solid #006D4C;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #006D4C;
+  border: 2px solid #14523F;
+}
+
+.btn:active {
+  background: #FFFFFF;
+  border: 2px solid #006D4C;
+  color: #006D4C;
+}
+
+.btn-default {
+  background: #FFFFFF;
+  border: 2px solid #006D4C;
+  color: #006D4C;
+}
+
+.btn-default:hover {
+  color: #FFFFFF;
+  background: #006D4C;
+  border: 2px solid #14523F;
+}
+
+.btn-default:active {
+  background: #FFFFFF;
+  border: 2px solid #006D4C;
+  color: #006D4C;
+}
+
+@media (max-width: 1240px) {
+  .container {
+    width: 100%;
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+}
+/*# sourceMappingURL=App.css.map */
