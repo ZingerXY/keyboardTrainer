@@ -1,14 +1,19 @@
 import React from "react";
 import Style from "./Registration.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faXmark} from "@fortawesome/free-solid-svg-icons";
+import ModalWindow from "../../components/ModalWindow/ModalWindow";
 
-const Registration = () => {
+const RegistrationForm = ({onClose}) => {
+
   return (
     <div className={`container ${Style["container"]}`}>
       <div className={`${Style["window"]}`}> 
         <div className={`${Style["Xmark"]}`}>
-          <div className={`${Style["X"]}`}>
+          <div
+            onClick={() => onClose()}
+            className={`${Style["X"]}`}
+          >
             <FontAwesomeIcon  icon={faXmark} color="#00A876"  size="1x"/>
           </div>
         </div>
@@ -33,4 +38,15 @@ const Registration = () => {
   );
 };
 
-export default Registration
+const Registration = ({onClose}) => {
+
+  return (
+    <ModalWindow>
+      <RegistrationForm 
+        onClose={onClose}
+      />
+    </ModalWindow>
+  )
+}
+
+export default Registration;

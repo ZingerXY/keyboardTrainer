@@ -2,6 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import Style from "./Header.module.scss";
 import { useState } from "react";
+import Authorization from '../../routes/Authorization/Authorization';
 
 const Header = () => {
 
@@ -51,12 +52,13 @@ const Header = () => {
                 `${Style["nav_links_title"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
               }
             >Профиль</NavLink>
-            <NavLink
+            {/* <NavLink
               to={"/quit"}
               className={({ isActive }) =>
                 `${Style["nav_links_title"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
               }
-            >Выйти</NavLink>
+            >Выйти</NavLink> */}
+            <Authorization />
           </div>
 
           <div className={`${Style["burger_button"]}`} onClick={toggleVisible}>
@@ -92,13 +94,13 @@ const Header = () => {
                 `${Style["burger_links"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
               }
             >Профиль</NavLink>
-            <NavLink
+            {/* <NavLink
               to={"/quit"}
               className={({ isActive }) =>
                 `${Style["burger_links"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
               }
               onClick={() => setVisible(!visible)}
-            >Выйти</NavLink>
+            >Выйти</NavLink> */}
           </div>
         </nav>
       </div>
