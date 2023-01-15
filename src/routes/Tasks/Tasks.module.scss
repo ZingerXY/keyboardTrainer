@@ -101,7 +101,7 @@ $shadow: rgba(0, 168, 118, 0.2);
     width: 230px;
     height: 32px;
 
-    &[data-state="active"] {
+    &_active {
         .__select__title {
             &::before {
                 transform: translate(-3px, -50%) rotate(-45deg);
