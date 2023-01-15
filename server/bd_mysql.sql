@@ -31,9 +31,9 @@ DROP TABLE IF EXISTS `tasks`;
 CREATE TABLE `tasks` (
   `id` mediumint(8) NOT NULL auto_increment,
   `task` TEXT default NULL COMMENT 'задание', 
-  `difficulty` mediumint default NULL COMMENT 'сложность задания',
   `task_description` TEXT default NULL COMMENT 'описание задания', 
-  `stats_id` mediumint default NULL COMMENT 'статистика',  
+  `task_type` TEXT default NULL COMMENT 'тип задания',
+  `difficulty` mediumint default NULL COMMENT 'сложность задания',
   PRIMARY KEY (`id`)
 ) AUTO_INCREMENT=1;
 
@@ -41,59 +41,60 @@ DROP TABLE IF EXISTS `statistics`;
 
 CREATE TABLE `statistics` (
   `id` mediumint(8) NOT NULL auto_increment,
+  `player_id` mediumint(8) COMMENT 'айди игрока',
+  `task_id` mediumint(8) COMMENT 'айди задания',
   `time` mediumint default NULL COMMENT 'время потраченное на задание',
   `typed_characters` mediumint default NULL COMMENT 'набрано знаков',
   `number_of_errors` mediumint default NULL COMMENT 'Количество ошибок', 
-  `player_id` mediumint(8) COMMENT 'айди игрока',
+  
   PRIMARY KEY (`id`)
 ) AUTO_INCREMENT=1;
 
-
-INSERT INTO `statistics` (`time`,`typed_characters`,`number_of_errors`,`player_id`)
+INSERT INTO `statistics` (`time`,`typed_characters`,`number_of_errors`,`player_id`,`task_id`)
 VALUES
-  (1010,3,68,15),
-  (8843,13,39,18),
-  (6494,23,59,5),
-  (2028,13,5,7),
-  (3795,4,26,5),
-  (3197,22,42,16),
-  (4428,26,88,3),
-  (859,12,88,18),
-  (8222,26,28,7),
-  (4362,27,51,3),
-  (3803,22,89,17),
-  (4475,22,2,6),
-  (7459,5,99,19),
-  (2420,28,86,6),
-  (6098,25,21,7),
-  (5959,11,74,1),
-  (9839,4,18,16),
-  (7859,23,11,5),
-  (397,23,41,12),
-  (5700,5,66,17);
+  (1010,3,68,15,1),
+  (8843,13,39,18,2),
+  (6494,23,59,5,3),
+  (2028,13,5,7,4),
+  (3795,4,26,5,5),
+  (3197,22,42,16,6),
+  (4428,26,88,3,7),
+  (859,12,88,18,8),
+  (8222,26,28,7,9),
+  (4362,27,51,3,10),
+  (3803,22,89,17,11),
+  (4475,22,2,6,12),
+  (7459,5,99,19,13),
+  (2420,28,86,6,14),
+  (6098,25,21,7,15),
+  (5959,11,74,1,16),
+  (9839,4,18,16,17),
+  (7859,23,11,5,18),
+  (397,23,41,12,19),
+  (5700,5,66,17,20);
 
-INSERT INTO `tasks` (`task`,`difficulty`,`task_description`,`stats_id`)
+INSERT INTO `tasks` (`task`,`difficulty`,`task_description`,`task_type`)
 VALUES
-  ("rutrum magna.",5,"vitae nibh. Donec est mauris, rhoncus id, mollis nec, cursus a, enim. Suspendisse aliquet, sem ut",9),
-  ("et, rutrum eu, ultrices",5,"odio. Nam interdum enim non nisi. Aenean eget metus. In nec orci. Donec nibh. Quisque nonummy ipsum",15),
-  ("lectus pede, ultrices a,",4,"dui. Fusce aliquam, enim nec tempus scelerisque, lorem ipsum sodales purus, in molestie tortor nibh sit amet orci. Ut",15),
-  ("iaculis, lacus pede sagittis",3,"in aliquet lobortis, nisi nibh lacinia orci, consectetuer euismod est arcu ac orci. Ut semper pretium",9),
-  ("lacus. Quisque purus sapien, gravida",2,"nibh. Aliquam ornare, libero at auctor ullamcorper, nisl arcu iaculis enim, sit amet ornare lectus justo eu arcu. Morbi",2),
-  ("mauris sit amet lorem",4,"facilisis eget, ipsum. Donec sollicitudin adipiscing ligula. Aenean gravida nunc sed pede. Cum sociis",17),
-  ("malesuada ut, sem. Nulla",3,"posuere vulputate, lacus. Cras interdum. Nunc sollicitudin commodo ipsum. Suspendisse non leo.",9),
-  ("Suspendisse ac metus vitae",4,"sodales at, velit. Pellentesque ultricies dignissim lacus. Aliquam rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam",2),
-  ("a, dui. Cras",2,"vitae diam. Proin dolor. Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem tristique aliquet. Phasellus",16),
-  ("dolor. Fusce feugiat. Lorem",1,"dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id,",4),
-  ("In faucibus. Morbi vehicula. Pellentesque",4,"sapien. Nunc pulvinar arcu et pede. Nunc sed orci lobortis",13),
-  ("semper, dui",3,"consequat auctor, nunc nulla vulputate dui, nec tempus mauris erat eget ipsum. Suspendisse sagittis. Nullam vitae diam. Proin dolor.",5),
-  ("Nunc ullamcorper,",3,"et arcu imperdiet ullamcorper. Duis at lacus. Quisque purus sapien, gravida non, sollicitudin a, malesuada id, erat. Etiam vestibulum",5),
-  ("Curabitur massa. Vestibulum accumsan neque",3,"a, facilisis non, bibendum sed, est. Nunc laoreet lectus quis massa. Mauris vestibulum, neque",10),
-  ("lacinia vitae,",4,"Curabitur egestas nunc sed libero. Proin sed turpis nec mauris blandit",8),
-  ("consectetuer mauris",3,"luctus vulputate, nisi sem semper erat, in consectetuer ipsum nunc id enim.",9),
-  ("rutrum",4,"sem mollis dui, in sodales elit erat vitae risus. Duis a mi fringilla",14),
-  ("interdum enim non",3,"metus. In nec orci. Donec nibh. Quisque nonummy ipsum non arcu.",3),
-  ("dapibus quam",3,"vitae sodales nisi magna sed dui. Fusce aliquam, enim nec tempus scelerisque, lorem ipsum sodales",16),
-  ("neque vitae semper",4,"dolor. Donec fringilla. Donec feugiat metus sit amet ante. Vivamus non",16);
+  ("rutrum magna.",5,"vitae nibh. Donec est mauris, rhoncus id, mollis nec, cursus a, enim. Suspendisse aliquet, sem ut","База"),
+  ("et, rutrum eu, ultrices",5,"odio. Nam interdum enim non nisi. Aenean eget metus. In nec orci. Donec nibh. Quisque nonummy ipsum","Цифры"),
+  ("lectus pede, ultrices a,",4,"dui. Fusce aliquam, enim nec tempus scelerisque, lorem ipsum sodales purus, in molestie tortor nibh sit amet orci. Ut","Знаки"),
+  ("iaculis, lacus pede sagittis",3,"in aliquet lobortis, nisi nibh lacinia orci, consectetuer euismod est arcu ac orci. Ut semper pretium","Слова"),
+  ("lacus. Quisque purus sapien, gravida",2,"nibh. Aliquam ornare, libero at auctor ullamcorper, nisl arcu iaculis enim, sit amet ornare lectus justo eu arcu. Morbi","База"),
+  ("mauris sit amet lorem",4,"facilisis eget, ipsum. Donec sollicitudin adipiscing ligula. Aenean gravida nunc sed pede. Cum sociis","Цифры"),
+  ("malesuada ut, sem. Nulla",3,"posuere vulputate, lacus. Cras interdum. Nunc sollicitudin commodo ipsum. Suspendisse non leo.","Цифры"),
+  ("Suspendisse ac metus vitae",4,"sodales at, velit. Pellentesque ultricies dignissim lacus. Aliquam rutrum lorem ac risus. Morbi metus. Vivamus euismod urna. Nullam","Цифры"),
+  ("a, dui. Cras",2,"vitae diam. Proin dolor. Nulla semper tellus id nunc interdum feugiat. Sed nec metus facilisis lorem tristique aliquet. Phasellus","Цифры"),
+  ("dolor. Fusce feugiat. Lorem",1,"dictum sapien. Aenean massa. Integer vitae nibh. Donec est mauris, rhoncus id,","Цифры"),
+  ("In faucibus. Morbi vehicula. Pellentesque",4,"sapien. Nunc pulvinar arcu et pede. Nunc sed orci lobortis","Знаки"),
+  ("semper, dui",3,"consequat auctor, nunc nulla vulputate dui, nec tempus mauris erat eget ipsum. Suspendisse sagittis. Nullam vitae diam. Proin dolor.","Знаки"),
+  ("Nunc ullamcorper,",3,"et arcu imperdiet ullamcorper. Duis at lacus. Quisque purus sapien, gravida non, sollicitudin a, malesuada id, erat. Etiam vestibulum","Знаки"),
+  ("Curabitur massa. Vestibulum accumsan neque",3,"a, facilisis non, bibendum sed, est. Nunc laoreet lectus quis massa. Mauris vestibulum, neque","Слова"),
+  ("lacinia vitae,",4,"Curabitur egestas nunc sed libero. Proin sed turpis nec mauris blandit","Слова"),
+  ("consectetuer mauris",3,"luctus vulputate, nisi sem semper erat, in consectetuer ipsum nunc id enim.","Слова"),
+  ("rutrum",4,"sem mollis dui, in sodales elit erat vitae risus. Duis a mi fringilla","Слова"),
+  ("interdum enim non",3,"metus. In nec orci. Donec nibh. Quisque nonummy ipsum non arcu.","Слова"),
+  ("dapibus quam",3,"vitae sodales nisi magna sed dui. Fusce aliquam, enim nec tempus scelerisque, lorem ipsum sodales","База"),
+  ("neque vitae semper",4,"dolor. Donec fringilla. Donec feugiat metus sit amet ante. Vivamus non","База");
 
 INSERT INTO `users` (`username`,`email`,`password`,`created_at`)
 VALUES
@@ -121,5 +122,6 @@ VALUES
 ALTER TABLE `statistics`
 ADD CONSTRAINT `fk_player_id` FOREIGN KEY (`player_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
-ALTER TABLE `tasks`
-ADD CONSTRAINT `fk_stats_id` FOREIGN KEY (`stats_id`) REFERENCES `statistics` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `statistics`
+ADD CONSTRAINT `fk_task_id` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
