@@ -1,8 +1,9 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import Style from "./Tasks.module.scss";
 import Task from "../../components/Task/Task"
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Card from "../../components/Card/Card";
+import BasicPagination from "../../components/Pagination/Pagination"
 
 const Tasks = () => {
   const tasksInputObj = [
@@ -25,7 +26,7 @@ const Tasks = () => {
     // "howManyToGenerate": 10
     // },
     {
-      "id":3,
+      "id": 3,
       "level": 5,
       "typeName": "слова",
       "type": "words",
@@ -34,7 +35,7 @@ const Tasks = () => {
       "howManyToGenerate": 5
     },
     {
-      "id":4,
+      "id": 4,
       "level": 4,
       "typeName": "Знаки",
       "type": "punctuation",
@@ -43,7 +44,7 @@ const Tasks = () => {
       "howManyToGenerate": 7
     },
     {
-      "id":5,
+      "id": 5,
       "level": 3,
       "typeName": "Цифры",
       "type": "numbers",
@@ -54,27 +55,27 @@ const Tasks = () => {
   ];
   let tasksOutputObj = [];
 
-  const [ isTaskChosen, setIsTaskChosen] = useState(false);
+  const [isTaskChosen, setIsTaskChosen] = useState(false);
   const [taskOption, setTaskOption] = useState('')
-  const [ sort, setSort ] = useState({value: 'desc', text: 'Сначала легкие'});
-  const [ base, setBase] = useState(true);
-  const [ words, setWords] = useState(true);
-  const [ punctuation, setPunctuation] = useState(true);
-  const [ numAndSymbols, setNumAndSymbols] = useState(true);
+  const [sort, setSort] = useState({ value: 'desc', text: 'Сначала легкие' });
+  const [base, setBase] = useState(true);
+  const [words, setWords] = useState(true);
+  const [punctuation, setPunctuation] = useState(true);
+  const [numAndSymbols, setNumAndSymbols] = useState(true);
 
   const handleStates = () => {
     tasksOutputObj = [];
     if (base) {
-      tasksOutputObj = tasksOutputObj.concat(tasksInputObj.filter((el)=> (el.type === "base")));
+      tasksOutputObj = tasksOutputObj.concat(tasksInputObj.filter((el) => (el.type === "base")));
     }
     if (words) {
-      tasksOutputObj = tasksOutputObj.concat(tasksInputObj.filter((el)=> (el.type === "words")));
+      tasksOutputObj = tasksOutputObj.concat(tasksInputObj.filter((el) => (el.type === "words")));
     }
     if (punctuation) {
-      tasksOutputObj = tasksOutputObj.concat(tasksInputObj.filter((el)=> (el.type === "punctuation")));
+      tasksOutputObj = tasksOutputObj.concat(tasksInputObj.filter((el) => (el.type === "punctuation")));
     }
     if (numAndSymbols) {
-      tasksOutputObj = tasksOutputObj.concat(tasksInputObj.filter((el)=> (el.type === "numbers")));
+      tasksOutputObj = tasksOutputObj.concat(tasksInputObj.filter((el) => (el.type === "numbers")));
     }
     tasksOutputObj.sort((a, b) => {
       return sort.value === "desc" ? a.level - b.level : b.level - a.level;
@@ -91,7 +92,7 @@ const Tasks = () => {
   };
   const selectChange = (event) => {
     const selectSingle = document.querySelector(`.${Style["__select"]}`);
-    setSort(()=>({value: event.target.getAttribute('data-value'), text: event.target.textContent}));
+    setSort(() => ({ value: event.target.getAttribute('data-value'), text: event.target.textContent }));
     selectSingle.setAttribute('data-state', '');
   };
   handleStates();
@@ -115,19 +116,19 @@ const Tasks = () => {
               <h4 className={`${Style["filters-title"]}`}>Тип задания</h4>
               <div>
                 <div className={`${Style["filters-checkbox"]}`}>
-                  <input type="checkbox" className={`${Style["filters-checkbox_custom"]}`} id="base" checked={base} onChange={() => setBase(!base)}/>
+                  <input type="checkbox" className={`${Style["filters-checkbox_custom"]}`} id="base" checked={base} onChange={() => setBase(!base)} />
                   <label htmlFor="base">Базовые уроки</label>
                 </div>
                 <div className={`${Style["filters-checkbox"]}`}>
-                  <input type="checkbox" className={`${Style["filters-checkbox_custom"]}`} id="words" checked={words} onChange={() => setWords(!words)}/>
+                  <input type="checkbox" className={`${Style["filters-checkbox_custom"]}`} id="words" checked={words} onChange={() => setWords(!words)} />
                   <label htmlFor="words"> Слова</label>
                 </div>
                 <div className={`${Style["filters-checkbox"]}`}>
-                  <input type="checkbox" className={`${Style["filters-checkbox_custom"]}`} id="punctuation" checked={punctuation} onChange={() => setPunctuation(!punctuation)}/>
+                  <input type="checkbox" className={`${Style["filters-checkbox_custom"]}`} id="punctuation" checked={punctuation} onChange={() => setPunctuation(!punctuation)} />
                   <label htmlFor="punctuation"> Знаки препинания</label>
                 </div>
                 <div className={`${Style["filters-checkbox"]}`}>
-                  <input type="checkbox" className={`${Style["filters-checkbox_custom"]}`} id="numbers" checked={numAndSymbols} onChange={() => setNumAndSymbols(!numAndSymbols)}/>
+                  <input type="checkbox" className={`${Style["filters-checkbox_custom"]}`} id="numbers" checked={numAndSymbols} onChange={() => setNumAndSymbols(!numAndSymbols)} />
                   <label htmlFor="numbers"> Цифры и символы</label>
                 </div>
               </div>
@@ -137,9 +138,9 @@ const Tasks = () => {
               <div className={`${Style["__select"]}`} data-state="" onClick={selectOpen}>
                 <div className={`${Style["__select__title"]}`}>{sort.text}</div>
                 <div className={`${Style["__select__content"]}`}>
-                  <input id="singleSelect0" className={`${Style["__select__input"]}`} type="radio" name="singleSelect" defaultChecked={true}/>
+                  <input id="singleSelect0" className={`${Style["__select__input"]}`} type="radio" name="singleSelect" defaultChecked={true} />
                   <label htmlFor="singleSelect0" tabIndex="0" className={`${Style["__select__label"]}`} data-value="desc" onClick={selectChange}>Сначала легкие</label>
-                  <input id="singleSelect1" className={`${Style["__select__input"]}`} type="radio" name="singleSelect"/>
+                  <input id="singleSelect1" className={`${Style["__select__input"]}`} type="radio" name="singleSelect" />
                   <label htmlFor="singleSelect1" tabIndex="0" className={`${Style["__select__label"]}`} data-value="asc" onClick={selectChange}>Сначала сложные</label>
                 </div>
               </div>
@@ -147,7 +148,7 @@ const Tasks = () => {
           </form>
           <div className={`${Style["cards-box"]}`}>
             {tasksOutputObj.map((el) => (
-              <Card 
+              <Card
                 {...el}
                 key={el.id}
                 myKey={el.id}
@@ -156,6 +157,9 @@ const Tasks = () => {
               />
             ))}
           </div>
+        </div>
+        <div className={`${Style["Pagination"]} container`}>
+          <BasicPagination />
         </div>
       </div>
     )
