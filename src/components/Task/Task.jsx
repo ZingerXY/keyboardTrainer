@@ -4,7 +4,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import { KeyboardWrapper } from "../KeyboardWrapper";
 import { useSelector } from "react-redux";
 import WarningDisplay from "../WarningDisplay/WarningDisplay";
-import ModalWindow from "../ModalWindowForTestResult.jsx/ModalWindow";
+import ResultModalWindow from './ResultModalWindow.jsx/ResultModalWindow';
 
 const Task = ({taskSettings}) => {
     const { uncorrect, correct } = useSelector((state) => state.DataReducer);
@@ -24,7 +24,7 @@ const Task = ({taskSettings}) => {
     return (
         <>
             {isStringFinished && 
-                <ModalWindow
+                <ResultModalWindow
                     setIsStringFinished={setIsStringFinished}
                     typeSpeed={typeSpeed}
                 />

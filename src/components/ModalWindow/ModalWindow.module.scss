@@ -1,0 +1,29 @@
+@keyframes blurAnimation {
+  0% {
+    backdrop-filter: blur(0px);
+    background-color: rgba(0, 0, 0, 0);
+  } 100% {
+    backdrop-filter: blur(2px);
+    background-color: rgba(0, 0, 0, .5);
+  }
+}
+
+.component {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  z-index: 2;
+}
+
+.blur{
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  animation: blurAnimation 0.4s;
+  animation-fill-mode: forwards; 
+}

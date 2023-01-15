@@ -1,33 +1,36 @@
-import React from "react";
-import Style from "./Authorization.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark} from "@fortawesome/free-solid-svg-icons";
+import React, {useState} from 'react';
+import LogIn from '../LogIn/LogIn';
+import Registration from '../Registration/Registration';
 
 const Authorization = () => {
-  return (
-    <div className={`container ${Style["container"]}`}>
-      <div className={`${Style["window"]}`}> 
-        <div className={`${Style["Xmark"]}`}>
-          <div className={`${Style["X"]}`}>
-            <FontAwesomeIcon icon={faXmark} color="#00A876"  size="1x"/>
-          </div>
-        </div>
-        <div className={`${Style["form"]}`}>
-          <form className={`${Style["form"]}`}>
-            <label>
-            <p className={`${Style["reg-text"]} ${Style["margin"]}`}> АВТОРИЗАЦИЯ</p>
-            <p className={`${Style["input-text"]} ${Style["margin"]}`}>EMAIL:</p>
-            <input className={`${Style["margin"]} ${Style["input"]}`} type="email" name="email"  placeholder="test@test.ru"/>
-            <p className={`${Style["input-text"]} ${Style["margin"]}`}>ПАРОЛЬ:</p>
-            <input className={`${Style["margin"]} ${Style["input"]}`} type="password" name="password"  placeholder="12345678"/>
-            </label>
-            <p><input className={`${Style["btn"]} ${Style["margin"]}`} type="submit" value="ВХОД" /></p>
-          </form>
-          <p className={`${Style["reg-black"]} ${Style["margin"]}`}>Если у вас еще нет аккаунта <a href="#">зарегистрируйтесь в системе</a></p> 
-        </div>
-      </div>
-    </div>
-  );
-};
+  const [isLogInOpen, setIsLogInOpen] = useState(false);
+  const [isRegistrationOpen, setIsRegistrationOpen] = useState(false);
 
-export default Authorization
+  const goToRegistration = () => {
+    setIsLogInOpen(false)
+    setIsRegistrationOpen(true);
+  }
+
+  return (
+    <>
+      <button
+        onClick={() => setIsLogInOpen(true)}
+      >Войти</button>
+      {
+        isLogInOpen &&
+        <LogIn
+          onClose={() => setIsLogInOpen(false)}
+          goToRegistration={goToRegistration}
+        />
+      }
+      {
+        isRegistrationOpen &&
+        <Registration
+          onClose={() => setIsRegistrationOpen(false)}
+        />
+      }
+    </>
+  )
+}
+
+export default Authorization;

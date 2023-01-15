@@ -1,5 +1,13 @@
 $shadow: rgba(0, 168, 118, 0.2);
 
+.container {
+    z-index: 1;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .Xmark {
     display: grid;
     justify-content: end;
@@ -35,6 +43,7 @@ $shadow: rgba(0, 168, 118, 0.2);
 }
 
 .window {
+    background: white;
     min-height: 600px;
     width: 800px;
     border-radius: 10px;

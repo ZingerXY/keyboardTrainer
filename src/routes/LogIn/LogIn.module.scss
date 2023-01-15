@@ -1,5 +1,11 @@
 $shadow: rgba(0, 168, 118, 0.2);
-
+.container {
+    z-index: 1;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 .Xmark {
     display: grid;
     justify-content: end;
@@ -30,23 +36,26 @@ $shadow: rgba(0, 168, 118, 0.2);
 }
 
 .window {
-
+    background: white;
     min-height: 500px;
     width: 800px;
     border-radius: 10px;
     margin: 0 auto;
     margin-top: 10px;
     margin-bottom: 10px;
-
     -webkit-box-shadow: 0px 0px 18px 11px $shadow;
     -moz-box-shadow: 0px 0px 18px 11px $shadow;
     box-shadow: 0px 0px 18px 11px $shadow;
 }
 
-a {
-
+.redirect_button {
+    background: none;
+    border: none;
     color: #00A876;
     text-decoration: none;
+    cursor: pointer;
+    margin-left: 5px;
+    font-size: 1em;
 
     &:hover {
         color: #14523F;

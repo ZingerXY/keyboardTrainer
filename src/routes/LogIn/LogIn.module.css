@@ -1,3 +1,12 @@
+.container {
+  z-index: 1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
 .Xmark {
   display: -ms-grid;
   display: grid;
@@ -35,6 +44,7 @@
 }
 
 .window {
+  background: white;
   min-height: 500px;
   width: 800px;
   border-radius: 10px;
@@ -45,16 +55,21 @@
   box-shadow: 0px 0px 18px 11px rgba(0, 168, 118, 0.2);
 }
 
-a {
+.redirect_button {
+  background: none;
+  border: none;
   color: #00A876;
   text-decoration: none;
+  cursor: pointer;
+  margin-left: 5px;
+  font-size: 1em;
 }
 
-a:hover {
+.redirect_button:hover {
   color: #14523F;
 }
 
-a:active {
+.redirect_button:active {
   color: #006D4C;
 }
 
@@ -181,4 +196,4 @@ input {
     line-height: 18px;
   }
 }
-/*# sourceMappingURL=Authorization.module.css.map */
+/*# sourceMappingURL=LogIn.module.css.map */
