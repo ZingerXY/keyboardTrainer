@@ -14,7 +14,9 @@ $shadow: rgba(0, 168, 118, 0.2);
     z-index: 1;
     min-height: 93px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
 }
 
 .footer {
@@ -26,4 +28,25 @@ $shadow: rgba(0, 168, 118, 0.2);
         line-height: 23px;
         text-align: center;
     }
+}
+
+.socialicons_links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    padding-top: 10px;
+}
+
+.socialicons_link_item {
+    display: inline-block;
+}
+
+.socialicons_link_svg {
+
+    transition: 1s;
+}
+
+.socialicons_link_svg:hover {
+    transform: rotate(360deg);
 }

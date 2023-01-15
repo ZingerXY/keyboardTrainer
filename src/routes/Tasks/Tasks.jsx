@@ -3,6 +3,7 @@ import Style from "./Tasks.module.scss";
 import Task from "../../components/Task/Task"
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Card from "../../components/Card/Card";
+import BasicPagination from "../../components/Pagination/Pagination"
 
 const initialTasks = JSON.parse(JSON.stringify([
   {
@@ -142,6 +143,9 @@ const Tasks = () => {
           <div className={`${Style["cards-box"]}`}>
             {tasksOutputObj.map((el) => <Card {...el} key={el.id} myKey={el.id} state={setTaskActive}/>)}
           </div>
+        </div>
+        <div className={`${Style["Pagination"]} container`}>
+          <BasicPagination />
         </div>
       </div>
     )
