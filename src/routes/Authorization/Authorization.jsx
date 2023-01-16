@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import LogIn from '../LogIn/LogIn';
 import Registration from '../Registration/Registration';
+import Style from "./Authorization.module.scss";
 
 const Authorization = () => {
   const [isLogInOpen, setIsLogInOpen] = useState(false);
@@ -13,7 +14,7 @@ const Authorization = () => {
 
   return (
     <>
-      <button
+      <button className={`${Style["Authorization-button"]}`}
         onClick={() => setIsLogInOpen(true)}
       >Войти</button>
       {

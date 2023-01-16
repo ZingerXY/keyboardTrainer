@@ -1,0 +1,16 @@
+$green: #00A876;
+$shadow: rgba(0, 168, 118, 0.2);
+
+.Authorization-button {
+    border: none;
+    background-color: white;
+    font-weight: 400;
+    font-size: 20px;
+    color: black;
+    cursor: pointer;
+    padding: 15px;
+
+    &:hover {
+        color: $green;
+    }
+}
