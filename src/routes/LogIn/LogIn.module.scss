@@ -1,5 +1,6 @@
 $shadow: rgba(0, 168, 118, 0.2);
 .container {
+    width: 95vw;
     z-index: 1;
     position: fixed;
     top: 50%;
@@ -9,7 +10,6 @@ $shadow: rgba(0, 168, 118, 0.2);
 .Xmark {
     display: grid;
     justify-content: end;
-
 }
 
 .X {
@@ -173,8 +173,7 @@ input {
 
     .form {
         width: 100%;
-        padding-right: 5%;
-
+        padding-right: 2%;
         &>label {
             width: 85vw;
         }
