@@ -52,12 +52,6 @@ const Header = () => {
                 `${Style["nav_links_title"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
               }
             >Профиль</NavLink>
-            {/* <NavLink
-              to={"/quit"}
-              className={({ isActive }) =>
-                `${Style["nav_links_title"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
-              }
-            >Выйти</NavLink> */}
             <Authorization />
           </div>
 
@@ -94,13 +88,7 @@ const Header = () => {
                 `${Style["burger_links"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
               }
             >Профиль</NavLink>
-            {/* <NavLink
-              to={"/quit"}
-              className={({ isActive }) =>
-                `${Style["burger_links"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
-              }
-              onClick={() => setVisible(!visible)}
-            >Выйти</NavLink> */}
+            <Authorization />
           </div>
         </nav>
       </div>
