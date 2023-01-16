@@ -17,9 +17,9 @@ const ResultModalComponent = ({
         <div className={`${TaskStyle["task-info"]}`}><p>Количество ошибок:</p><span className={`${TaskStyle["task-info_mistakes"]}`}>{uncorrect}</span></div>
         <div className={`${TaskStyle["task-info"]}`}><p>Текущая скорость:</p><span className={`${TaskStyle["task-info_speed"]}`}>{typeSpeed}</span></div>
         <div className={`${TaskStyle["task-info"]}`}><p>Время:</p><span className={`${TaskStyle["task-info_time"]}`}>{minutes}:{`${seconds < 10 ? '0' : ''}`}{seconds}</span></div>
-        <button
+        <p className={`${TaskStyle["result-btn"]}`}
           onClick={() => setIsStringFinished(false)}
-        >Try again</button>
+        >Try again</p>
     </div>
   )
 }
