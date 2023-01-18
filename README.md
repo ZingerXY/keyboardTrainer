@@ -40,7 +40,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 ## API Сервера
 
 * `/api/tasks` - получить все задания
-* `/api/tasks/%id задания%` - получить зание по id
+* `/api/tasks/%id задания%` - получить задание по id
 
 * `/api/users` - получить всех пользователей
 * `/api/users/%id пользователя%` - получить пользователя по id
