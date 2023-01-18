@@ -1,5 +1,12 @@
 RewriteEngine On
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} /api*
+RewriteRule ^(.*)$ /server/public/index.php?$1 [L]
+
+RewriteEngine On
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteCond %{SCRIPT_FILENAME} /*
 RewriteRule ^(.*)$ /index.html?$1 [L]
+
