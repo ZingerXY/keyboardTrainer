@@ -1,14 +1,47 @@
 import React, { useState} from 'react';
 import Style from "./Profile.module.scss";
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import axios from 'axios';
 
 
 const Profile = () => {
+    const handleFileShow = () => {
+        axios
+            .get('http://localhost:8080/api/showAvatar')
+            .then(({ data }) => {
+                setImage(data);
+            })
+            .catch(() => {
+                setImage('./img/avatar_default.png');
+            })
+    }
+
     const [isChange, setIsChange] = useState(false);
+    const [image, setImage] = useState();
+    handleFileShow();
 
     const switchIsChange = (e) => {
         setIsChange(!isChange);
     }
+
+    const handleFileChange = (e) => {
+        if (!e.target.files && !e.target.files[0]) {
+            return;
+        }
+
+        let formData = new FormData();
+        formData.append("image", e.target.files[0]);
+
+        axios
+            .post('http://localhost:8080/api/saveAvatar', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+            .then(({data}) => {
+                handleFileShow();
+            })
+    };
 
     return (
         <div className={`${Style["profile-page"]}`}>
@@ -17,11 +50,22 @@ const Profile = () => {
 
                 <div className={`${Style["profile-box"]}`}>
                     <div className={`${Style["profile-avatar_box"]}`}>
-                        <img className={`${Style["profile-avatar_img"]}`} src="./img/avatar_default.png" />
-                        <button className={`${Style["profile-avatar_box-download_button"]}`}>
+                        <img
+                            className={`${Style["profile-avatar_img"]}`}
+                            src={image}
+                        />
+                        <input
+                            id="input__file"
+                            className={`${Style["profile-avatar_input"]}`}
+                            type="file"
+                            accept=".png"
+                            onChange={handleFileChange}
+                        />
+                        <label for="input__file" className={`${Style["profile-avatar_box-download_button"]}`}>
                             <i className={`fa-solid fa-arrow-up-from-bracket ${Style["fa-arrow-up-from-bracket"]}`}></i>
-                            Загрузить
-                        </button>
+                            <span>Загрузить</span>
+                        </label>
+
                     </div>
                     <div className={`${Style["profile-form_box"]}`}>
                         {!isChange ? (
