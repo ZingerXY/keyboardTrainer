@@ -16,7 +16,8 @@ class StatsController extends Controller
      */
     public function index()
     {
-        return StatsResource::collection(Statistics::all()) ; 
+        $statistics = Statistics::paginate(6);
+        return StatsResource::collection($statistics) ; 
     }
 
     /**
