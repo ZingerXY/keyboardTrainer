@@ -1,11 +1,11 @@
 import React from "react";
 import ModalWindow from "../../components/ModalWindow/ModalWindow";
-import {RegistrationForm} from "../../components/RegistrationForm/RegistrationForm";
+import {RegistrationFormWrapper} from "../../components/AuthorizationForms/RegistrationFormWrapper";
 
 const Registration = ({onClose}) => {
   return (
     <ModalWindow>
-      <RegistrationForm onClose={onClose}/>
+      <RegistrationFormWrapper onClose={onClose}/>
     </ModalWindow>
   )
 }
