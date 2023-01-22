@@ -15,7 +15,7 @@ class TasksController extends Controller
      */
     public function index()
     {
-        $tasks = Tasks::paginate(6);
+        $tasks = Tasks::paginate(10);
         return TasksResource::collection($tasks) ; 
     }
 
