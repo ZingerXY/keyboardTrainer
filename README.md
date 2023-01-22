@@ -23,8 +23,6 @@
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-<<<<<<< Updated upstream
-=======
 
 ## Деплой
 
@@ -51,4 +49,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 * `/api/stats/%id записи в стасистике%` - получить запись в стасистике по id
 
 * `api/tasks?page=%id страницы%` - получить страницу с заданиями
->>>>>>> Stashed changes
+
