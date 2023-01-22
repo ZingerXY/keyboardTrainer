@@ -4,6 +4,7 @@ import Task from "../../components/Task/Task"
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Card from "../../components/Card/Card";
 import BasicPagination from "../../components/Pagination/Pagination";
+import Selector from '../../components/Selector/Selector';
 
 const initialTasks = JSON.parse(JSON.stringify([
    // {
@@ -58,23 +59,13 @@ const Tasks = () => {
 
   const [taskOption, setTaskOption] = useState('');
   const [taskActive, setTaskActive] = useState(false);
-  const [sort, setSort] = useState({value: 'desc', text: 'Сначала легкие'});
+  const [sort, setSort] = useState('Сначала легкие');
   const [base, setBase] = useState(true);
   const [words, setWords] = useState(true);
   const [punctuation, setPunctuation] = useState(true);
   const [numAndSymbols, setNumAndSymbols] = useState(true);
-  const [selectState, setSelectState] = useState(true);
 
-  const selectOpen = () => {
-    setSelectState(!selectState)
-  }
-
-  const selectChange = (newValue, newText, e) => {
-    setSort({value: newValue, text: newText});
-    if (e) e.stopPropagation()
-  };
-
-  const sortTasks = (a, b) => sort.value === "desc" ? a.level - b.level : b.level - a.level
+  const sortTasks = (a, b) => sort === "Сначала легкие" ? a.level - b.level : b.level - a.level
 
   useEffect(() => {
     const filterTypes = []
@@ -101,11 +92,11 @@ const Tasks = () => {
       type: taskOption,
       amount: task.howManyToGenerate
     }
-    console.log(task, taskSettings);
 
     return (
       <Task
         taskSettings={taskSettings}
+        goToTasks={() => setTaskActive(false)}
       />
     );
   } else {
@@ -140,19 +131,11 @@ const Tasks = () => {
             </div>
             <div className={`${Style["form-selector"]}`}>
               <h4 className={`${Style["filters-title"]}`}>Сортировка</h4>
-              <div className={`${Style["__select"]} ${selectState ? Style["__select_active"] : ""}`}
-                   onClick={selectOpen}>
-                <div className={`${Style["__select__title"]}`}>{sort.text}</div>
-                <div className={`${Style["__select__content"]}`}>
-                  <input id="singleSelect0" className={`${Style["__select__input"]}`} type="radio" name="singleSelect"
-                         defaultChecked={true}/>
-                  <label htmlFor="singleSelect0" tabIndex="0" className={`${Style["__select__label"]}`}
-                         onClick={e => selectChange("desc", "Сначала легкие", e)}>Сначала легкие</label>
-                  <input id="singleSelect1" className={`${Style["__select__input"]}`} type="radio" name="singleSelect"/>
-                  <label htmlFor="singleSelect1" tabIndex="0" className={`${Style["__select__label"]}`}
-                         onClick={e => selectChange("asc", "Сначала сложные", e)}>Сначала сложные</label>
-                </div>
-              </div>
+              <Selector
+                fields={['Сначала легкие', 'Сначала сложные']}
+                onClickFunction={setSort}
+                heading={sort}
+              />
             </div>
           </form>
           <div className={`${Style["cards-box"]}`}>

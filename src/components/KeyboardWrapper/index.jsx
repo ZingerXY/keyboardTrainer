@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import RunningString from "../RunningString/RunningString";
 import Keyboard from "../Keyboard/Keyboard";
 import { generateStirng } from '../../lib/stringGenerators/index';
+import { useSelector } from "react-redux";
+
 
 export const KeyboardWrapper = ({isStringFinished, setIsStringFinished, taskSettings}) => {
   const [startWord, setStartWord] = useState('');
@@ -17,6 +19,7 @@ export const KeyboardWrapper = ({isStringFinished, setIsStringFinished, taskSett
   const [rhfm_active, set_rhfm_active] = useState(false) // right hand middle finger
   const [rhfi_active, set_rhfi_active] = useState(false) // right hand index finger
   const [rhft_active, set_rhft_active] = useState(false) // right hand thumb finger
+  const { language } = useSelector((state) => state.DataReducer);
 
   useEffect(() => {
     if (!currentLetter) return
@@ -66,10 +69,10 @@ export const KeyboardWrapper = ({isStringFinished, setIsStringFinished, taskSett
 
   useEffect(() => {
     if (!isStringFinished){
-      setStartWord(generateStirng(taskSettings.type, taskSettings.amount));
-    }
-  }, [isStringFinished]);
-// 
+      setStartWord(generateStirng(taskSettings.type, taskSettings.amount, language));
+    } 
+  }, [isStringFinished, language]);
+
   return (
     <>
       <RunningString

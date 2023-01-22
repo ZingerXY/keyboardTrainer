@@ -73,6 +73,23 @@
   color: #00A876;
 }
 
+.result-btn {
+  display: inline-block;
+  cursor: pointer;
+  background: #00A876;
+  border: 2px solid #006D4C;
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px 25px;
+  -webkit-transition: all 250ms;
+  transition: all 250ms;
+}
+
+.result-btn:hover {
+  background: #fff;
+  color: #006D4C;
+}
+
 @media (max-width: 768px) {
   .task-title {
     font-size: 32px;

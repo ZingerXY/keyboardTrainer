@@ -2,15 +2,36 @@ import React, { useEffect, useState } from "react"
 import Style from "./Task.module.scss";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { KeyboardWrapper } from "../KeyboardWrapper";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import WarningDisplay from "../WarningDisplay/WarningDisplay";
 import ResultModalWindow from './ResultModalWindow.jsx/ResultModalWindow';
+import Selector from '../../components/Selector/Selector';
+import { set_language, set_language_keys } from "../../store/data/dataSlice";
+import Button from '@mui/material/Button';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-const Task = ({taskSettings}) => {
-    const { uncorrect, correct } = useSelector((state) => state.DataReducer);
+const languages = {
+    'English': {
+        topLeftCharacter: '§',
+        keys: `qwertyuiop[]asdfghjkl;'zxcvbnm,./`
+    },
+    'Русский': {
+        topLeftCharacter: 'ё', 
+        keys: `йцукенгшщзхъфывапролджэёячсмитьбю/`
+    }
+  }
+
+const Task = ({taskSettings, goToTasks}) => {
+    const { uncorrect, correct, language } = useSelector((state) => state.DataReducer);
     const { seconds, minutes } = useSelector((state) => state.TimeReducer);
     const [typeSpeed, setTypeSpeed] = useState(0);
     const [isStringFinished, setIsStringFinished] = useState(false);
+    const dispatch = useDispatch();
+
+    const setLanguage = (language) => {
+        dispatch(set_language(language));
+        dispatch(set_language_keys(languages[language]))
+    }
 
     useEffect(() => {
         if (seconds !== 0) {
@@ -20,9 +41,12 @@ const Task = ({taskSettings}) => {
         }
     }, [seconds])
 
-
     return (
         <>
+            <Button 
+                variant="contained"
+                onClick={() => goToTasks()}
+            ><ArrowBackIcon/></Button>
             {isStringFinished && 
                 <ResultModalWindow
                     setIsStringFinished={setIsStringFinished}
@@ -51,6 +75,11 @@ const Task = ({taskSettings}) => {
                             <i className={`fa fa-solid fa-circle ${Style["fa-circle"]}`}></i>
                             <i className={`fa fa-solid fa-circle ${Style["fa-circle"]}`}></i>
                         </div>
+                        <Selector
+                            fields={['English', 'Русский']}
+                            onClickFunction={setLanguage}
+                            heading={language}
+                        />
                     </div>
                 </div>
                 <KeyboardWrapper
