@@ -3,54 +3,60 @@ import Style from "./Tasks.module.scss";
 import Task from "../../components/Task/Task"
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Card from "../../components/Card/Card";
-import BasicPagination from "../../components/Pagination/Pagination"
+import BasicPagination from "../../components/Pagination/Pagination";
 
-const initialTasks = JSON.parse(JSON.stringify([
-  {
-    "id": 1,
-    "level": 2,
-    "typeName": "База",
-    "type": "base",
-    "name": "ва ол",
-    "text": "ваол олва овал олол ваол олов овло"
-  },
-  {
-    "id": 2,
-    "level": 3,
-    "typeName": "База",
-    "type": "base",
-    "name": "ва ол",
-    "text": "ваол олва овал олол ваол олов овло"
-  },
-  {
-    "id": 3,
-    "level": 5,
-    "typeName": "слова",
-    "type": "words",
-    "name": "ва ол",
-    "text": "ваол олва овал олол ваол олов овло"
-  },
-  {
-    "id": 4,
-    "level": 4,
-    "typeName": "Знаки",
-    "type": "punctuation",
-    "name": "./ ,?",
-    "text": "ваол олва овал олол ваол олов овло"
-  },
-  {
-    "id": 5,
-    "level": 3,
-    "typeName": "Цифры",
-    "type": "numbers",
-    "name": "12 34",
-    "text": "ваол олва овал олол ваол олов овло"
-  },
-]));
+// const initialTasks = JSON.parse(JSON.stringify([
+//    // {
+//     //   "id":1,
+//     //   "level": 2,
+//     //   "typeName": "База",
+//     //   "type": "base",
+//     //   "name": "ва ол",
+//     //   "text": "ваол олва овал олол ваол олов овло",
+//     // "howManyToGenerate": 10
+//     // },
+//     // {
+//     //   "id":2,
+//     //   "level": 3,
+//     //   "typeName": "База",
+//     //   "type": "base",
+//     //   "name": "ва ол",
+//     //   "text": "ваол олва овал олол ваол олов овло",
+//     // "howManyToGenerate": 10
+//     // },
+//     {
+//       "id":3,
+//       "level": 5,
+//       "typeName": "слова",
+//       "type": "words",
+//       "name": "ва ол",
+//       "text": "ваол олва овал олол ваол олов овло",
+//       "howManyToGenerate": 5
+//     },
+    // {
+    //   "id":4,
+    //   "level": 4,
+    //   "typeName": "Знаки",
+    //   "type": "punctuation",
+    //   "name": "./ ,?",
+    //   "text": "ваол олва овал олол ваол олов овло",
+    //   "howManyToGenerate": 7
+    // },
+//     {
+//       "id":5,
+//       "level": 3,
+//       "typeName": "Цифры",
+//       "type": "numbers",
+//       "name": "12 34",
+//       "text": "ваол олва овал олол ваол олов овло",
+//       "howManyToGenerate": 10
+//     },
+// ]));
 
 const Tasks = () => {
   const [tasksOutputObj, setTasksOutputObj] = useState([]);
-
+  const [initialTasks, setInitialTasks] = useState([]);
+  const [taskOption, setTaskOption] = useState('');
   const [taskActive, setTaskActive] = useState(false);
   const [sort, setSort] = useState({value: 'desc', text: 'Сначала легкие'});
   const [base, setBase] = useState(true);
@@ -58,6 +64,21 @@ const Tasks = () => {
   const [punctuation, setPunctuation] = useState(true);
   const [numAndSymbols, setNumAndSymbols] = useState(true);
   const [selectState, setSelectState] = useState(true);
+
+
+  useEffect(() => {
+    const loadPost = async () => {
+    await fetch('https://kangaroo.zingery.ru/api/tasks')
+    .then(data => data.json())
+    .then(res => {
+      setInitialTasks(res.data)
+    }, (e) => {
+    })
+    }
+    loadPost() 
+  }, [])
+  
+
 
   const selectOpen = () => {
     setSelectState(!selectState)
@@ -68,30 +89,36 @@ const Tasks = () => {
     if (e) e.stopPropagation()
   };
 
-  const sortTasks = (a, b) => sort.value === "desc" ? a.level - b.level : b.level - a.level
+  const sortTasks = (a, b) => sort.value === "desc" ? a.difficulty - b.difficulty : b.difficulty - a.difficulty
 
   useEffect(() => {
     const filterTypes = []
-    if (base) filterTypes.push("base")
-    if (words) filterTypes.push("words")
-    if (punctuation) filterTypes.push("punctuation")
-    if (numAndSymbols) filterTypes.push("numbers")
-
+    // if (base) filterTypes.push("База")
+    if (words) filterTypes.push("Слова")
+    if (punctuation) filterTypes.push("Знаки")
+    if (numAndSymbols) filterTypes.push("Цифры")
     setTasksOutputObj([
         ...initialTasks
-        .filter(el => filterTypes.includes(el.type))
+        .filter(el => filterTypes.includes(el.task_type))
         .sort(sortTasks)
       ]
     )
-  }, [base, words, punctuation, numAndSymbols])
+  }, [base, words, punctuation, numAndSymbols, initialTasks])
 
   useEffect(() => {
     setTasksOutputObj(prev => [...prev.sort(sortTasks)])
   }, [sort])
 
   if (taskActive) {
+    const task = initialTasks.filter(el => el.task_type === taskOption)[0];
+    const taskSettings = {
+      type: taskOption,
+      amount: 7
+    }
     return (
-      <Task/>
+      <Task
+        taskSettings={taskSettings}
+      />
     );
   } else {
     return (
@@ -141,7 +168,14 @@ const Tasks = () => {
             </div>
           </form>
           <div className={`${Style["cards-box"]}`}>
-            {tasksOutputObj.map((el) => <Card {...el} key={el.id} myKey={el.id} state={setTaskActive}/>)}
+            {tasksOutputObj.map((el) => 
+              <Card 
+                {...el}
+                key={el.id}
+                myKey={el.id}
+                state={setTaskActive}
+                setTaskOption={setTaskOption}
+              />)}
           </div>
         </div>
         <div className={`${Style["Pagination"]} container`}>

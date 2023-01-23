@@ -3,13 +3,13 @@
 
 Цель спринта: сделать MVP (Минимально жизнеспособный продукт)
 
-Авторы:
-Сергей https://github.com/SveTi4
-Евгений https://github.com/EvgeniyKorshov
-Виталий https://github.com/ZingerXY
-Анастасия https://github.com/AnastasiyaVi
-Ирина https://github.com/irdolgopolova
-Владислав https://github.com/SHALFY007
+### Авторы:
+* Сергей https://github.com/SveTi4
+* Евгений https://github.com/EvgeniyKorshov
+* Виталий https://github.com/ZingerXY
+* Анастасия https://github.com/AnastasiyaVi
+* Ирина https://github.com/irdolgopolova
+* Владислав https://github.com/SHALFY007
 
 <hr/>
 
@@ -49,4 +49,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 * `/api/stats/%id записи в стасистике%` - получить запись в стасистике по id
 
 * `api/tasks?page=%id страницы%` - получить страницу с заданиями
-

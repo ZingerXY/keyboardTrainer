@@ -1,0 +1,49 @@
+import styles from './style.module.scss'
+import {useFormik} from "formik";
+import * as Yup from "yup";
+import React from "react";
+import {Button} from "@mui/material";
+import {CustomFormikTextField} from "../CustomFormikTextField/CustomFormikTextField";
+
+const usernameMinLength = 5
+const usernameMaxLength = 30
+
+export const RegistrationForm = () => {
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      email: "",
+      password: "",
+      passwordConfirmation: "",
+    },
+    validationSchema: Yup.object({
+      email: Yup.string()
+      .email('Введите валидную почту')
+      .required('Заполните поле для почты'),
+      username: Yup.string()
+      .required("Заполните поле с именем пользователя!")
+      .min(usernameMinLength, `Никнейм должен содержать больше ${usernameMinLength} символов!`)
+      .max(usernameMaxLength, `Никнейм должен содержать не больше ${usernameMaxLength} символов!`),
+      password: Yup.string()
+      .required("Заполните поле с паролем!")
+      .min(8, "Пароль короткий!"),
+      passwordConfirmation: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Пароли не совпадают")
+      .required("Подтвердите пароль!"),
+    }),
+    onSubmit: (values) => {
+      console.log({...values})
+    },
+  });
+
+
+  return <form className={styles.form} onSubmit={formik.handleSubmit}>
+    <CustomFormikTextField formik={formik} value={"username"} label={"Имя пользователя"}/>
+    <CustomFormikTextField formik={formik} value={"email"} label={"Email"} email/>
+    <CustomFormikTextField formik={formik} value={"password"} label={"Пароль"} password/>
+    <CustomFormikTextField formik={formik} value={"passwordConfirmation"} label={"Подтверждение пароля"} password/>
+    <Button className={styles.btn} variant="contained" type="submit" sx={{mt: 2}}>
+      Зарегестрироваться
+    </Button>
+  </form>
+}
