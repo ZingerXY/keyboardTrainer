@@ -47,3 +47,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 * `/api/stats` - получить всю статистику
 * `/api/stats/%id записи в стасистике%` - получить запись в стасистике по id
+
+* `api/tasks?page=%id страницы%` - получить страницу с заданиями
