@@ -1,46 +1,56 @@
-import React, { useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import Style from "./Profile.module.scss";
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import axios from 'axios';
 
 
 const Profile = () => {
-    const handleFileShow = () => {
-        axios
-            .get('http://localhost:8080/api/showAvatar')
-            .then(({ data }) => {
-                setImage(data);
+    const [currentUserId, setCurrentUserId] = useState(1);
+    const [isChange, setIsChange] = useState(false);
+    const [image, setImage] = useState('./img/avatar_default.png');
+    const [altImage, setAltImage] = useState((new Date()).getTime());
+
+    const showAvatar = async () => {
+        let formData = new FormData();
+        formData.append("user_id", 1);
+
+        console.log(currentUserId);
+        await fetch(`https://kangaroo.zingery.ru/api/showAvatar?user_id=${currentUserId}`, {
+                method: 'GET',
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                setImage(data.original);
             })
             .catch(() => {
                 setImage('./img/avatar_default.png');
-            })
+            });
     }
 
-    const [isChange, setIsChange] = useState(false);
-    const [image, setImage] = useState();
-    handleFileShow();
+    useEffect(() => {
+        showAvatar();
+    }, []);
 
     const switchIsChange = (e) => {
         setIsChange(!isChange);
     }
 
-    const handleFileChange = (e) => {
+
+    const handleFileChange = async (e) => {
         if (!e.target.files && !e.target.files[0]) {
             return;
         }
 
         let formData = new FormData();
+        formData.append("user_id", 1);
         formData.append("image", e.target.files[0]);
 
-        axios
-            .post('http://localhost:8080/api/saveAvatar', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            })
-            .then(({data}) => {
-                handleFileShow();
-            })
+       await fetch('https://kangaroo.zingery.ru/api/saveAvatar', {
+            method: 'POST',
+            body: formData
+        }).then((data) => {
+            showAvatar();
+        })
+        .catch((data) => console.log('error'));
     };
 
     return (
@@ -52,6 +62,7 @@ const Profile = () => {
                     <div className={`${Style["profile-avatar_box"]}`}>
                         <img
                             className={`${Style["profile-avatar_img"]}`}
+                            alt={altImage}
                             src={image}
                         />
                         <input

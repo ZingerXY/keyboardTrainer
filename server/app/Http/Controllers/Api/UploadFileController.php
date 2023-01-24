@@ -8,18 +8,18 @@ use Illuminate\Support\Facades\File;
 
 class UploadFileController extends Controller
 {
-    private $userAvatarsDir = '\user_avatar';
+    private $userAvatarsDir = 'user_avatar';
 
     public function saveFile(Request $request) {
         $file = $request->file('image');
+        $user_id = $request->user_id;
 
         if (!$file) {
             return new Response('file not sended', 502);
         }
 
-        // Здесь в последующем добавится id пользователя
         try {
-            $file->move(public_path() . $this->userAvatarsDir, "avatar.png");
+            $file->move(public_path() . "/{$this->userAvatarsDir}", "avatar_$user_id.png");
         } catch (\Throwable $e){
             return new Response($e->getMessage());
         }
@@ -29,9 +29,10 @@ class UploadFileController extends Controller
 
 
     public function getUrlFile(Request $request) {
-        return (File::exists(public_path() . $this->userAvatarsDir .'/avatar.png'))
-            ? new Response(url('user_avatar/avatar.png'))
-            : './img/avatar_default.png';
-    }
+        $user_id = $request->user_id;
 
+        return (File::exists(public_path() . "/$this->userAvatarsDir/avatar_$user_id.png"))
+            ? json_encode(new Response(url("/{$this->userAvatarsDir}/avatar_$user_id.png")))
+            : json_encode('./img/avatar_default.png');
+    }
 }
