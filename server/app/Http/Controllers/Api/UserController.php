@@ -5,13 +5,14 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return AnonymousResourceCollection
      */
     public function index()
     {
@@ -33,12 +34,12 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return UserResource
      */
-    public function show($id)
+    public function show($id): UserResource
     {
-        return new UserResource(User::findOrFail($id)) ;
+        return new UserResource(User::findOrFail($id));
     }
 
     /**
