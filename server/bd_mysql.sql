@@ -10,17 +10,6 @@
 -- "точность в процентах" можно заменить на количество ошибок, 
 -- а "скорость знаков в минуту" можно вообще убрать так как ее можно будет посчитать из количества времени потраченного на задания и количества набранных знаков
 
-DROP TABLE IF EXISTS `tasks`;
-
-CREATE TABLE `tasks` (
-  `id` mediumint(8) NOT NULL auto_increment,
-  `task` TEXT default NULL COMMENT 'задание', 
-  `task_description` TEXT default NULL COMMENT 'описание задания', 
-  `task_type` TEXT default NULL COMMENT 'тип задания',
-  `difficulty` mediumint default NULL COMMENT 'сложность задания',
-  PRIMARY KEY (`id`)
-) AUTO_INCREMENT=1;
-
 DROP TABLE IF EXISTS `statistics`;
 
 CREATE TABLE `statistics` (
@@ -36,8 +25,16 @@ CREATE TABLE `statistics` (
   PRIMARY KEY (`id`)
 ) AUTO_INCREMENT=1;
 
+DROP TABLE IF EXISTS `tasks`;
 
-INSERT INTO `statistics` (`player_id`,`task_id`,`time`,`typed_characters`,`number_of_errors`,`Accuracy`,`dial_speeds`)
+CREATE TABLE `tasks` (
+  `id` mediumint(8) NOT NULL auto_increment,
+  `task` TEXT default NULL COMMENT 'задание', 
+  `task_description` TEXT default NULL COMMENT 'описание задания', 
+  `task_type` TEXT default NULL COMMENT 'тип задания',
+  `difficulty` mediumint default NULL COMMENT 'сложность задания',
+  PRIMARY KEY (`id`)
+) AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `users`;
 
@@ -50,7 +47,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`)
 ) AUTO_INCREMENT=1;
 
-INSERT INTO `statistics` (`time`,`typed_characters`,`number_of_errors`,`player_id`,`task_id`)
+INSERT INTO `statistics` (`player_id`,`task_id`,`time`,`typed_characters`,`number_of_errors`,`Accuracy`,`dial_speeds`)
 
 VALUES
   (15,18,1718,280,820,4,664),
