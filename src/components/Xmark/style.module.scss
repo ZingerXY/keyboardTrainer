@@ -1,0 +1,13 @@
+.Xmark {
+  display: grid;
+  justify-content: end;
+}
+
+.X {
+  margin: 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+

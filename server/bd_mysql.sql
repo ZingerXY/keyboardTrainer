@@ -10,22 +10,6 @@
 -- "точность в процентах" можно заменить на количество ошибок, 
 -- а "скорость знаков в минуту" можно вообще убрать так как ее можно будет посчитать из количества времени потраченного на задания и количества набранных знаков
 
-DROP DATABASE IF EXISTS  kangaroo;
-CREATE DATABASE kangaroo;
-
-USE kangaroo;
-
-DROP TABLE IF EXISTS `users`;
-
-CREATE TABLE `users` (
-  `id` mediumint(8)  NOT NULL auto_increment,
-  `username` varchar(100) default NULL COMMENT 'имя пользователя', 
-  `email` varchar(100) default NULL COMMENT 'почта', 
-  `password` varchar(60) default NULL COMMENT 'пароль',
-  `created_at` varchar(100) COMMENT 'дата регистрации',
-  PRIMARY KEY (`id`)
-) AUTO_INCREMENT=1;
-
 DROP TABLE IF EXISTS `tasks`;
 
 CREATE TABLE `tasks` (
@@ -52,7 +36,22 @@ CREATE TABLE `statistics` (
   PRIMARY KEY (`id`)
 ) AUTO_INCREMENT=1;
 
+
 INSERT INTO `statistics` (`player_id`,`task_id`,`time`,`typed_characters`,`number_of_errors`,`Accuracy`,`dial_speeds`)
+
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE `users` (
+  `id` mediumint(8)  NOT NULL auto_increment,
+  `username` varchar(100) default NULL COMMENT 'имя пользователя', 
+  `email` varchar(100) default NULL COMMENT 'почта', 
+  `password` varchar(60) default NULL COMMENT 'пароль',
+  `created_at` varchar(100) COMMENT 'дата регистрации',
+  PRIMARY KEY (`id`)
+) AUTO_INCREMENT=1;
+
+INSERT INTO `statistics` (`time`,`typed_characters`,`number_of_errors`,`player_id`,`task_id`)
+
 VALUES
   (15,18,1718,280,820,4,664),
   (17,13,8408,840,138,18,640),
