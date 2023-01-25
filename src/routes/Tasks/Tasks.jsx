@@ -33,15 +33,15 @@ import BasicPagination from "../../components/Pagination/Pagination";
 //       "text": "ваол олва овал олол ваол олов овло",
 //       "howManyToGenerate": 5
 //     },
-    // {
-    //   "id":4,
-    //   "level": 4,
-    //   "typeName": "Знаки",
-    //   "type": "punctuation",
-    //   "name": "./ ,?",
-    //   "text": "ваол олва овал олол ваол олов овло",
-    //   "howManyToGenerate": 7
-    // },
+// {
+//   "id":4,
+//   "level": 4,
+//   "typeName": "Знаки",
+//   "type": "punctuation",
+//   "name": "./ ,?",
+//   "text": "ваол олва овал олол ваол олов овло",
+//   "howManyToGenerate": 7
+// },
 //     {
 //       "id":5,
 //       "level": 3,
@@ -68,16 +68,15 @@ const Tasks = () => {
 
   useEffect(() => {
     const loadPost = async () => {
-    await fetch('https://kangaroo.zingery.ru/api/tasks')
-    .then(data => data.json())
-    .then(res => {
-      setInitialTasks(res.data)
-    }, (e) => {
-    })
+      await fetch('https://kangaroo.zingery.ru/api/tasks')
+      .then(data => data.json())
+      .then(res => {
+        setInitialTasks(res.data)
+      }, (e) => {
+      })
     }
-    loadPost() 
+    loadPost()
   }, [])
-  
 
 
   const selectOpen = () => {
@@ -168,8 +167,8 @@ const Tasks = () => {
             </div>
           </form>
           <div className={`${Style["cards-box"]}`}>
-            {tasksOutputObj.map((el) => 
-              <Card 
+            {tasksOutputObj.map((el) =>
+              <Card
                 {...el}
                 key={el.id}
                 myKey={el.id}
@@ -179,7 +178,7 @@ const Tasks = () => {
           </div>
         </div>
         <div className={`${Style["Pagination"]} container`}>
-          <BasicPagination />
+          <BasicPagination/>
         </div>
       </div>
     )

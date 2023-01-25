@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import React from "react";
 import {Button} from "@mui/material";
 import {CustomFormikTextField} from "../CustomFormikTextField/CustomFormikTextField";
+import axios from "axios";
 
 const usernameMinLength = 5
 const usernameMaxLength = 30
@@ -11,7 +12,7 @@ const usernameMaxLength = 30
 export const RegistrationForm = () => {
   const formik = useFormik({
     initialValues: {
-      username: "",
+      name: "",
       email: "",
       password: "",
       passwordConfirmation: "",
@@ -20,7 +21,7 @@ export const RegistrationForm = () => {
       email: Yup.string()
       .email('Введите валидную почту')
       .required('Заполните поле для почты'),
-      username: Yup.string()
+      name: Yup.string()
       .required("Заполните поле с именем пользователя!")
       .min(usernameMinLength, `Никнейм должен содержать больше ${usernameMinLength} символов!`)
       .max(usernameMaxLength, `Никнейм должен содержать не больше ${usernameMaxLength} символов!`),
@@ -31,14 +32,18 @@ export const RegistrationForm = () => {
       .oneOf([Yup.ref("password"), null], "Пароли не совпадают")
       .required("Подтвердите пароль!"),
     }),
-    onSubmit: (values) => {
-      console.log({...values})
+    onSubmit: async (values) => {
+      try {
+        const res = await axios.post(`${process.env.REACT_APP_HOST_URL}/api/register`, {...values})
+        console.log(res.data)
+      } catch (e) {
+        console.error(e)
+      }
     },
   });
 
-
   return <form className={styles.form} onSubmit={formik.handleSubmit}>
-    <CustomFormikTextField formik={formik} value={"username"} label={"Имя пользователя"}/>
+    <CustomFormikTextField formik={formik} value={"name"} label={"Имя пользователя"}/>
     <CustomFormikTextField formik={formik} value={"email"} label={"Email"} email/>
     <CustomFormikTextField formik={formik} value={"password"} label={"Пароль"} password/>
     <CustomFormikTextField formik={formik} value={"passwordConfirmation"} label={"Подтверждение пароля"} password/>
