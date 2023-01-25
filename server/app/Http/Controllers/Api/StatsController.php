@@ -16,7 +16,7 @@ class StatsController extends Controller
      */
     public function index()
     {
-        return StatsResource::collection(Statistics::all()) ; 
+        return StatsResource::collection(Statistics::orderBy('dial_speeds','DESC')->get()) ; 
     }
 
     /**
