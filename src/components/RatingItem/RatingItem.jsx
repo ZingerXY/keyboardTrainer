@@ -8,8 +8,8 @@ const RatingItem = (props) => {
             <div className={`${Style["rating-position"]}`}>{props.position}</div>
             <div className={`${Style["rating-name"]}`}>{props.userName}</div>
             <div className={`${Style["rating-stats"]}`}>
-                <div className={`${Style["rating-percent"]}`}>-----%</div>
-                <div className={`${Style["rating-charMin"]}`}>----- зн/мин</div>
+                <div className={`${Style["rating-percent"]}`}>{props.accuracy} %</div>
+                <div className={`${Style["rating-charMin"]}`}>{props.speed} зн/мин</div>
             </div>
             </div>
         </>
