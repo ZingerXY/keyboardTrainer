@@ -31,7 +31,7 @@ const Card = (props) => {
   }, []);
 
   const handlerClick = () => {
-    props.setTaskOption(type);
+    props.setTaskOption(props.task_description);
     props.state(true);
   };
 

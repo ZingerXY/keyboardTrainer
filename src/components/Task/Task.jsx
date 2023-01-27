@@ -12,7 +12,6 @@ const Task = ({ taskSettings }) => {
     const [typeSpeed, setTypeSpeed] = useState(0);
     const [isStringFinished, setIsStringFinished] = useState(false);
 
-
     useEffect(() => {
         if (seconds !== 0) {
             setTypeSpeed(Math.floor(correct / (seconds / 60)));

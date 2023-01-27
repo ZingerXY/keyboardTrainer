@@ -97,7 +97,7 @@ const Tasks = () => {
     ];
 
     setFilteredTasks(newTasks);
-  }, [base, words, letters, punctuation, numAndSymbols]);
+  }, [base, words, letters, punctuation, numAndSymbols, sort]);
 
   useEffect(() => {
     if (!initialTasks.length) return;
@@ -116,12 +116,14 @@ const Tasks = () => {
   if (isLoading) return "Загрузка....";
 
   if (taskActive) {
-    const task = initialTasks.filter((el) => el.task_type === taskOption)[0];
-    const taskSettings = {
-      type: taskOption,
-      amount: 7,
-    };
-    return <Task taskSettings={taskSettings} />;
+    return (
+      <Task
+        taskSettings={{
+          description: taskOption,
+          amount: 7,
+        }}
+      />
+    );
   } else {
     return (
       <div className={`${Style["tasks-page"]}`}>
