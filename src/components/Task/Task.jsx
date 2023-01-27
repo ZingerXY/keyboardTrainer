@@ -6,11 +6,12 @@ import { useSelector } from "react-redux";
 import WarningDisplay from "../WarningDisplay/WarningDisplay";
 import ResultModalWindow from './ResultModalWindow.jsx/ResultModalWindow';
 
-const Task = ({taskSettings}) => {
+const Task = ({ taskSettings }) => {
     const { uncorrect, correct } = useSelector((state) => state.DataReducer);
     const { seconds, minutes } = useSelector((state) => state.TimeReducer);
     const [typeSpeed, setTypeSpeed] = useState(0);
     const [isStringFinished, setIsStringFinished] = useState(false);
+
 
     useEffect(() => {
         if (seconds !== 0) {
@@ -23,7 +24,7 @@ const Task = ({taskSettings}) => {
 
     return (
         <>
-            {isStringFinished && 
+            {isStringFinished &&
                 <ResultModalWindow
                     setIsStringFinished={setIsStringFinished}
                     typeSpeed={typeSpeed}
