@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useCallback } from "react";
 import Style from "./Keyboard.module.scss";
 
 const Keyboard = ({
@@ -40,14 +40,14 @@ const Keyboard = ({
     { name: 'г', value: 'г', classNames: `${Style["key"]} ${Style["key-pi"]}` },
     { name: 'ш', value: 'ш', classNames: `${Style["key"]} ${Style["key-or"]}` },
     { name: 'щ', value: 'щ', classNames: `${Style["key"]} ${Style["key-ye"]}` },
-    { name: 'з', value: 'з ', classNames: `${Style["key"]} ${Style["key-gr"]}` },
-    { name: 'х', value: 'х ', classNames: `${Style["key"]} ${Style["key-gr"]}` },
-    { name: 'ъ', value: 'ъ ', classNames: `${Style["key"]} ${Style["key-gr"]}` },
+    { name: 'з', value: 'з', classNames: `${Style["key"]} ${Style["key-gr"]}` },
+    { name: 'х', value: 'х', classNames: `${Style["key"]} ${Style["key-gr"]}` },
+    { name: 'ъ', value: 'ъ', classNames: `${Style["key"]} ${Style["key-gr"]}` },
     { name: ' /', value: '/', classNames: `${Style["key"]} ${Style["key-gr"]} ${Style["key-words"]} ${Style["backslash"]}` },
     { name: 'CapsLock', value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["capslock"]}` },
-    { name: 'ф', value: 'ф ', classNames: `${Style["key"]} ${Style["key-or"]}` },
-    { name: 'ы', value: 'ы ', classNames: `${Style["key"]} ${Style["key-ye"]}` },
-    { name: 'в', value: 'в ', classNames: `${Style["key"]} ${Style["key-gr"]}` },
+    { name: 'ф', value: 'ф', classNames: `${Style["key"]} ${Style["key-or"]}` },
+    { name: 'ы', value: 'ы', classNames: `${Style["key"]} ${Style["key-ye"]}` },
+    { name: 'в', value: 'в', classNames: `${Style["key"]} ${Style["key-gr"]}` },
     { name: 'а', value: 'а', classNames: `${Style["key"]} ${Style["key-bl"]}` },
     { name: 'п', value: 'п', classNames: `${Style["key"]} ${Style["key-bl"]}` },
     { name: 'р', value: 'р', classNames: `${Style["key"]} ${Style["key-pi"]}` },
@@ -77,14 +77,18 @@ const Keyboard = ({
     { name: '', value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["ctrl"]} ${Style["nonstyle"]}` },
     { name: 'Ctrl ', value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["ctrl"]}` },
   ];
-  const checkKeyIsActive = (name, value) => {
-    //Если текущий символ в верхнем регистре, подсвечиваем шифт! НЕ УДАЛЯТЬ ЗАКОМЕНТИРОВАННУЮ ОБЛАСТЬ НИЖЕ
-    // if (name === 'Shift' && currentKey?.trim()) {
-    //   return currentKey === currentKey.toUpperCase()
-    // }
+  const checkKeyIsActive = useCallback(
+    (name, value) => {
+      //Если текущий символ в верхнем регистре, подсвечиваем шифт! НЕ УДАЛЯТЬ ЗАКОМЕНТИРОВАННУЮ ОБЛАСТЬ НИЖЕ
+      if (name === "Shift" && typeof value == "number" && currentKey?.trim()) {
+        return currentKey === currentKey?.toUpperCase();
+      }
 
-    return currentKey?.toLowerCase() === value
-  }
+      return currentKey?.toLowerCase() === value;
+    },
+    [currentKey]
+  );
+
   return (
     <div className={`${Style["Keyboard"]} container`}>
       <div className={`${Style["hand"]}`}>

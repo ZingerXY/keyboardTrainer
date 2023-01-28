@@ -1,60 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Style from "./Rating.module.scss";
+import axios from "axios";
+import RatingItem from "../../components/RatingItem/RatingItem";
 
 const Rating = () => {
+  const [users, setUsers] = useState(null);
+  const userName = "Dalton Newton";
+  const URL_HOST = "https://kangaroo.zingery.ru";
+  useEffect(() => {
+    axios.get(`${URL_HOST}/api/users?id=1`).then((response) => {
+      setUsers(response.data.data);
+    });
+  }, []);
+
+  if (!users) return null;
+
   return (
     <div className={`${Style["rating-page"]}`}>
       <div className={`container ${Style["rating-container"]}`}>
         <h2 className={`${Style["rating-title"]}`}>Рейтинг пользователей</h2>
         <div className={`${Style["rating-box"]}`}>
-          <div className={`${Style["rating-item"]} ${Style["rating-item_first"]}`}>
-              <div className={`${Style["rating-position"]}`}>1</div>
-            <div className={`${Style["rating-name"]}`}>Иванов Иван</div>
-            <div className={`${Style["rating-stats"]}`}>
-              <div className={`${Style["rating-percent"]}`}>99.99%</div>
-              <div className={`${Style["rating-charMin"]}`}>400 зн/мин</div>
-            </div>
-          </div>
-          <div className={`${Style["rating-item"]}`}>
-            <div className={`${Style["rating-position"]}`}>196</div>
-            <div className={`${Style["rating-name"]}`}>Иванов Иван</div>
-            <div className={`${Style["rating-stats"]}`}>
-              <div className={`${Style["rating-percent"]}`}>99.99%</div>
-              <div className={`${Style["rating-charMin"]}`}>400 зн/мин</div>
-            </div>
-          </div>
-          <div className={`${Style["rating-item"]}`}>
-            <div className={`${Style["rating-position"]}`}>197</div>
-            <div className={`${Style["rating-name"]}`}>Иванов Иван</div>
-            <div className={`${Style["rating-stats"]}`}>
-              <div className={`${Style["rating-percent"]}`}>99.99%</div>
-              <div className={`${Style["rating-charMin"]}`}>400 зн/мин</div>
-            </div>
-          </div>
-          <div className={`${Style["rating-item"]} ${Style["rating-item_p"]}`}>
-            <div className={`${Style["rating-position"]}`}>198</div>
-            <div className={`${Style["rating-name"]}`}>Иванов Иван</div>
-            <div className={`${Style["rating-stats"]}`}>
-              <div className={`${Style["rating-percent"]}`}>99.99%</div>
-              <div className={`${Style["rating-charMin"]}`}>400 зн/мин</div>
-            </div>
-          </div>
-          <div className={`${Style["rating-item"]}`}>
-            <div className={`${Style["rating-position"]}`}>199</div>
-            <div className={`${Style["rating-name"]}`}>Иванов Иван</div>
-            <div className={`${Style["rating-stats"]}`}>
-              <div className={`${Style["rating-percent"]}`}>99.99%</div>
-              <div className={`${Style["rating-charMin"]}`}>400 зн/мин</div>
-            </div>
-          </div>
-          <div className={`${Style["rating-item"]}`}>
-            <div className={`${Style["rating-position"]}`}>200</div>
-            <div className={`${Style["rating-name"]}`}>Иванов Иван</div>
-            <div className={`${Style["rating-stats"]}`}>
-              <div className={`${Style["rating-percent"]}`}>99.99%</div>
-              <div className={`${Style["rating-charMin"]}`}>400 зн/мин</div>
-            </div>
-          </div>
+          {users.map((user, index) => {
+            let styleCard = ``;
+            if (user.id === 1) {
+              styleCard = Style["rating-item_first"];
+            } else if (user.username === userName) {
+              styleCard = Style["rating-item_p"];
+            }
+            return (
+              <RatingItem
+                style={styleCard}
+                userName={user.username}
+                position={user.id}
+                key={index}
+              />
+            )
+              
+          })}
         </div>
       </div>
     </div>
