@@ -28,7 +28,7 @@ const Reducer = createSlice({
             state.language_keys.keys = action.payload.keys;
         }
     }
-})
+});
 
 export const {
     add_uncorrect,

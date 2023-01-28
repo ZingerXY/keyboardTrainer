@@ -1,13 +1,24 @@
-import React, {useState} from 'react';
+import { ContactSupportOutlined } from '@mui/icons-material';
+import React, {useEffect, useState} from 'react';
 import Style from "./Selector.module.scss";
 
 
-const Selector = ({fields, onClickFunction, heading})  => {
-  const [selectState, setSelectState] = useState(true);
+const Selector = ({fields, onClickFunction, heading, setOpenedSelector, name, openedSelector})  => {
+  const [selectState, setSelectState] = useState(false);
+
 
   const selectOpen = () => {
-    setSelectState(!selectState)
+    setSelectState(!selectState);
+    setOpenedSelector(name);
   }
+
+  useEffect(() => {
+    console.log(openedSelector);
+    if (openedSelector === null) return;
+    if(openedSelector !== name){
+      setSelectState(false);
+    }
+  }, [openedSelector]);
 
   return (
     <div className={`${Style["__select"]} ${selectState ? Style["__select_active"] : ""}`}

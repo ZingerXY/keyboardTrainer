@@ -5,6 +5,8 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import Card from "../../components/Card/Card";
 import BasicPagination from "../../components/Pagination/Pagination";
 import Selector from '../../components/Selector/Selector';
+import { useSelector, useDispatch } from "react-redux";
+import { set_language, set_language_keys } from "../../store/data/dataSlice";
 
 const initialTasks = JSON.parse(JSON.stringify([
    // {
@@ -54,8 +56,21 @@ const initialTasks = JSON.parse(JSON.stringify([
     },
 ]));
 
+const languages = {
+  'English': {
+      topLeftCharacter: '§',
+      keys: `qwertyuiop[]asdfghjkl;'zxcvbnm,./`
+  },
+  'Русский': {
+      topLeftCharacter: 'ё', 
+      keys: `йцукенгшщзхъфывапролджэёячсмитьбю/`
+  }
+}
+
 const Tasks = () => {
   const [tasksOutputObj, setTasksOutputObj] = useState([]);
+  const { language } = useSelector((state) => state.DataReducer);
+  const dispatch = useDispatch();
 
   const [taskOption, setTaskOption] = useState('');
   const [taskActive, setTaskActive] = useState(false);
@@ -64,8 +79,14 @@ const Tasks = () => {
   const [words, setWords] = useState(true);
   const [punctuation, setPunctuation] = useState(true);
   const [numAndSymbols, setNumAndSymbols] = useState(true);
+  const [openedSelector, setOpenedSelector] = useState('');
 
   const sortTasks = (a, b) => sort === "Сначала легкие" ? a.level - b.level : b.level - a.level
+
+  const setLanguage = (language) => {
+    dispatch(set_language(language));
+    dispatch(set_language_keys(languages[language]))
+  }
 
   useEffect(() => {
     const filterTypes = []
@@ -135,6 +156,17 @@ const Tasks = () => {
                 fields={['Сначала легкие', 'Сначала сложные']}
                 onClickFunction={setSort}
                 heading={sort}
+                setOpenedSelector={setOpenedSelector}
+                name={'sorter'}
+                openedSelector={openedSelector}
+              />
+              <Selector
+                fields={['English', 'Русский']}
+                onClickFunction={setLanguage}
+                heading={language}
+                setOpenedSelector={setOpenedSelector}
+                name={'language'}
+                openedSelector={openedSelector}
               />
             </div>
           </form>
