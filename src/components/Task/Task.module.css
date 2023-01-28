@@ -1,3 +1,17 @@
+.back_button {
+  background: rgba(0, 168, 118, 0.6);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  min-width: auto;
+  position: fixed;
+  top: 130px;
+}
+
+.back_button:hover {
+  background: #00A876;
+}
+
 .task-page {
   width: 100%;
   padding-top: 112px;
@@ -71,6 +85,23 @@
 
 .fa-circle:nth-of-type(-n+2) {
   color: #00A876;
+}
+
+.result-btn {
+  display: inline-block;
+  cursor: pointer;
+  background: #00A876;
+  border: 2px solid #006D4C;
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px 25px;
+  -webkit-transition: all 250ms;
+  transition: all 250ms;
+}
+
+.result-btn:hover {
+  background: #fff;
+  color: #006D4C;
 }
 
 @media (max-width: 768px) {

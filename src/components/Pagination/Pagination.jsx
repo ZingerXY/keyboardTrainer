@@ -17,7 +17,6 @@ export default function BasicPagination({
     page,
     ...props
 }) {
-    console.log(totalItems, limit);
     return (
         <ThemeProvider theme={theme}>
             <Stack spacing={2}>
