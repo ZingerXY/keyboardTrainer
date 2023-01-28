@@ -12,7 +12,7 @@ const Rating = () => {
   
   const [ update, setUpdate ] = useState(false);
 
-  const myId = 9;
+  const myId = 11;
   const URL_HOST = "https://kangaroo.zingery.ru";
   
   const apiGetStats = async () => {
@@ -95,7 +95,7 @@ const Rating = () => {
             let styleCard = ``;
             if (position === 1) {
               styleCard = Style["rating-item_first"];
-              inTop = true;
+              if (position === myStats.position) inTop = true;
             } else if (position === myStats.position) {
               styleCard = Style["rating-item_p"];
               inTop = true;
