@@ -4,163 +4,150 @@ import axios from "axios";
 import RatingItem from "../../components/RatingItem/RatingItem";
 
 const Rating = () => {
-  const [ rating, setRating ] = useState([]);
+  const [ ratingList, setRatingList ] = useState([]);
+  const [ allUsers, setAllUsers ] = useState([]);
   const [ allStats, setAllStats ] = useState(null);
-  const [ count, setCount ] = useState(6);
-  const [ users, setUsers ] = useState([]);
+  const [ myStats, setMyStats] = useState({position: "---", username: "---", accuracy: "---", speed: "---"});
+  const [ range, setRange ] = useState(6);
+  
   const [ update, setUpdate ] = useState(false);
 
-  const myId = 15;
+  const myId = 9;
   const URL_HOST = "https://kangaroo.zingery.ru";
   
-  const apiGetStats = () => {
-    axios.get(`${URL_HOST}/api/stats`).then((response) => {
-      setAllStats([...response.data.data]);
+  const apiGetStats = async () => {
+    await axios.get(`${URL_HOST}/api/users`).then((response) => {
+      setAllUsers([...response.data.data]);
+      getMyName(response.data.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    await axios.get(`${URL_HOST}/api/stats`).then((response) => {
+      filterStats(response.data.data);
       handleScroll();
+    })
+    .catch(function (error) {
+      console.log(error);
     });
   };
-  const apiGetUserById = (id) => {
-    axios.get(`${URL_HOST}/api/stats/${id}`).then((response) => {
-      return response.data;
-    });
+  const getMyName = (data) => {
+    const myName = data.find(el => el.id === myId);
+    if (myName !== undefined)
+      setMyStats(prev => {
+        prev.username = myName.username;
+        return prev;
+      }); 
   };
-
-  const initContent = () => {
-    
-    if (allStats !== null) {
-      let usersId = [];
-      for (let i = 0; i < allStats.length; i++) {
-        if (usersId.length === 12) break;
-        const userId = allStats[i].player_id;
-        if (!usersId.includes(userId)) {
-          usersId = [...usersId, userId];
-        }
-      }
-      setRating([...usersId]);
-    }
+  const getMyStats = (data) => {
+    let myStats = data.find(el => el.player_id === myId);
+    if (myStats !== undefined)
+      setMyStats(prev => {
+        prev.speed = myStats.dial_speeds;
+        prev.accuracy = myStats.Accuracy;
+        prev.position = data.findIndex(el => el.player_id === myId) + 1;
+        return prev;
+      });
   }
-  useEffect(() => {
-    if (allStats === null) {
-      apiGetStats();
-    } else if (rating.length === 0) {
-      initContent();
-    } else if (update) {
-      setTimeout(() => setCount(prev => prev += 2), 300);
+  const filterStats = (data) => {
+    const newData = [];
+    for (let i = 0; i < data.length; i++) {
+      if (!(newData.filter(el => el.player_id === data[i].player_id).length >= 1)) {
+        newData.push(data[i]);
+      }
     }
-    document.addEventListener("scroll", handleScroll);
-    return window.removeEventListener("scroll", handleScroll);
-  }, [update]);
-
-  const writeCards = (cout) => {
-    const myArr = rating.slice(0, cout);
-    let position = 1;
-    return (
-      myArr.map((user, index) => {
-        let styleCard = ``;
-        if (position === 1) {
-          styleCard = Style["rating-item_first"];
-        } 
-        else if (position === 9) {
-          styleCard = Style["rating-item_p"];
-        }
-        return (
-          <RatingItem
-            style={styleCard}
-            // accuracy={checkAccuracy(user.stats)}
-            // speed={checkSpeed(user.stats)}
-            // userName={user.username}
-            position={position++}
-            key={index}
-          />
-        )
-      })
-    );
+    getMyStats(newData);
+    setAllStats(newData);
   };
-
-  //-----------------------------------------------------------------------------------------------
-
-  // const userName = "Cara Frazier"; // имя пользователя, который пользуется сайтом
-  
-
-  // const apiMethod = ({start, count}) => {
-  //   axios.get(`${URL_HOST}/api/users`).then((response) => {
-  //     const data = response.data.data.slice(start, start+count);
-  //     setUsers((prev) => [...prev, ...data]);
-  //   });
-  // };
-
-  // const initContent = () => {
-  //   axios.get(`${URL_HOST}/api/users`).then((response) => {
-  //     setUsers([...response.data.data.slice(0, 8)]);
-  //   });
-  // }
-
-  // useEffect(() => {
-  //   const total = 20;
-  //   if (users === null) {
-  //     initContent();
-  //   } else if(users.length < total && update) {
-  //     handleScroll();
-  //     setTimeout(() => apiMethod({ start: users.length, count: 8 }), 300);
-  //   }
-  //   document.addEventListener("scroll", handleScroll);
-  //   return window.removeEventListener("scroll", handleScroll);
-  // }, [update]);
+  const initRatingList = () => {
+    if (allStats !== null) {
+      setRatingList(() => {
+        const rating = [];
+        for (let i = 0; i < allStats.length; i++) {
+          if (rating.length === 12) break;
+          const username = allUsers.find(el => el.id === allStats[i].player_id).username;
+          rating.push(
+            {
+              id: allStats[i].player_id,
+              username: username,
+              speed: allStats[i].dial_speeds,
+              accuracy: allStats[i].Accuracy
+            }
+          );
+        }
+        return rating;
+      });
+    }
+  };
 
   const handleScroll = () => {
     setUpdate(window.pageYOffset + window.innerHeight === document.body.clientHeight);
   };
 
-  // const checkAccuracy = (stats) => {
-  //   let accuracy = 0;
-  //   stats.forEach(element => {
-  //     accuracy += element.Accuracy;
-  //   });
-  //   return Math. round(stats.length !== 0 ? accuracy / stats.length : 0);
-  // };
+  const writeCards = (range) => {
+    if (ratingList.length > 0) {
+      const usersid = ratingList.slice(0, range);
+      let position = 1;
+      let inTop = false;
+      return (
+        <>
+          {usersid.map((user, index) => {
+            let styleCard = ``;
+            if (position === 1) {
+              styleCard = Style["rating-item_first"];
+              inTop = true;
+            } else if (position === myStats.position) {
+              styleCard = Style["rating-item_p"];
+              inTop = true;
+            }
+            return (
+              <RatingItem
+                style={styleCard}
+                accuracy={user.accuracy}
+                speed={user.speed}
+                userName={user.username}
+                position={position++}
+                key={index}
+              />
+            )
+          })}
+          { inTop ? "" : 
+            <>
+              <hr className={`${Style["rating-barrier"]}`}/>
+              <RatingItem
+                style={Style["rating-item_p"]}
+                accuracy={myStats.accuracy}
+                speed={myStats.speed}
+                userName={myStats.username}
+                position={myStats.position}
+              />
+            </>
+          }
+        </>
+      );
+    } else {
+      return ("loading ...");
+    }
+  };
 
-  // const checkSpeed = (stats) => {
-  //   let speed = 0;
-  //   stats.forEach(element => {
-  //     speed += element.dial_speeds;
-  //   });
-  //   return Math. round(stats.length !== 0 ? speed / stats.length : 0);
-  // };
-
-  // if (!users) return null;
-
-  // const writeCards = () => {
-  //   return (
-  //     users.map((user, index) => {
-        
-  //       let styleCard = ``;
-  //       if (user.id === 1) {
-  //         styleCard = Style["rating-item_first"];
-  //       } else if (user.username === userName) {
-  //         styleCard = Style["rating-item_p"];
-  //       }
-  //       return (
-  //         <RatingItem
-  //           style={styleCard}
-  //           accuracy={checkAccuracy(user.stats)}
-  //           speed={checkSpeed(user.stats)}
-  //           userName={user.username}
-  //           position={user.id}
-  //           key={index}
-  //         />
-  //       )
-  //     })
-  //   );
-  // };
-
-  
+  useEffect(() => {
+    if (allStats === null) {
+      apiGetStats();
+    } else if (ratingList.length === 0) {
+      initRatingList();
+    } else if (update) {
+      setTimeout(() => setRange(prev => prev += 2), 300);
+    }
+    document.addEventListener("scroll", handleScroll);
+    return window.removeEventListener("scroll", handleScroll);
+  }, [update]);
 
   return (
     <div className={`${Style["rating-page"]}`}>
       <div className={`container ${Style["rating-container"]}`}>
         <h2 className={`${Style["rating-title"]}`}>Рейтинг пользователей</h2>
         <div className={`${Style["rating-box"]}`}>
-          {writeCards(count)}
+          {writeCards(range)}
         </div>
       </div>
     </div>
