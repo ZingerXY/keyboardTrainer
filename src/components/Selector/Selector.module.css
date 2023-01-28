@@ -17,6 +17,7 @@
   display: flex;
   width: 230px;
   height: 32px;
+  margin-top: 8px;
 }
 
 .__select_active .__select__title::before {
@@ -107,15 +108,12 @@
   background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   opacity: 0%;
+  z-index: 1;
 }
 
 .__select__input {
   display: none;
   pointer-events: none;
-}
-
-.__select__input:checked + label {
-  background: rgba(0, 168, 118, 0.2);
 }
 
 .__select__input:checked + label::after {
@@ -128,6 +126,7 @@
 }
 
 .__select__label {
+  background: rgba(0, 168, 118, 0.2);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -143,7 +142,10 @@
   cursor: pointer;
   font-size: 14px;
   line-height: 16px;
-  border: 1px solid #000000;
+  border-top: 1px solid #000000;
+  border-left: 1px solid #000000;
+  border-right: 1px solid #000000;
+  background: white;
 }
 
 .__select__label:first-of-type {
@@ -154,6 +156,7 @@
 .__select__label:last-of-type {
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+  border-bottom: 1px solid #000;
 }
 
 .__select__label + input + .__select__label {

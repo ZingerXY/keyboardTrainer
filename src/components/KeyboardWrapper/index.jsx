@@ -4,11 +4,14 @@ import Keyboard from "../Keyboard/Keyboard";
 import { generateStirng } from '../../lib/stringGenerators/index';
 import { useSelector } from "react-redux";
 
-
-export const KeyboardWrapper = ({isStringFinished, setIsStringFinished, taskSettings}) => {
-  const [startWord, setStartWord] = useState('');
-  const [prevLetter, setPrevLetter] = useState("")
-  const [currentLetter, setCurrentLetter] = useState("")
+export const KeyboardWrapper = ({
+  isStringFinished,
+  setIsStringFinished,
+  taskSettings,
+}) => {
+  const [startWord, setStartWord] = useState("");
+  const [prevLetter, setPrevLetter] = useState("");
+  const [currentLetter, setCurrentLetter] = useState("");
 
   const [lhfl_active, set_lhfl_active] = useState(false) // left hand little finger
   const [lhfr_active, set_lhfr_active] = useState(false) // left hand ring finger
@@ -21,57 +24,59 @@ export const KeyboardWrapper = ({isStringFinished, setIsStringFinished, taskSett
   const [rhft_active, set_rhft_active] = useState(false) // right hand thumb finger
   const { language } = useSelector((state) => state.DataReducer);
 
-  useEffect(() => {
-    if (!currentLetter) return
-    if ("ё12йфя".includes(currentLetter)) {
-      set_lhfl_active(true)
-    } else if ("3цыч".includes(currentLetter)) {
-      set_lhfr_active(true)
-    } else if ("4увс".includes(currentLetter)) {
-      set_lhfm_active(true)
-    } else if ("56кеапми".includes(currentLetter)) {
-      set_lhfi_active(true)
-    } else if ("7нгроть".includes(currentLetter)) {
-      set_rhfi_active(true)
-    } else if ("8шлб".includes(currentLetter)) {
-      set_rhfm_active(true)
-    } else if ("9щдю".includes(currentLetter)) {
-      set_rhfr_active(true)
-    } else if ("0-=зхъжэ.\\".includes(currentLetter)) {
-      set_rhfl_active(true)
-    } else if (currentLetter === " ") {
-      set_rhft_active(true)
-    }
-  }, [currentLetter])
 
   useEffect(() => {
-    if (!prevLetter) return
-    if ("ё12йфя".includes(prevLetter)) {
-      set_lhfl_active(false)
-    } else if ("3цыч".includes(prevLetter)) {
-      set_lhfr_active(false)
-    } else if ("4увс".includes(prevLetter)) {
-      set_lhfm_active(false)
-    } else if ("56кеапми".includes(prevLetter)) {
-      set_lhfi_active(false)
-    } else if ("7нгроть".includes(prevLetter)) {
-      set_rhfi_active(false)
-    } else if ("8шлб".includes(prevLetter)) {
-      set_rhfm_active(false)
-    } else if ("9щдю".includes(prevLetter)) {
-      set_rhfr_active(false)
-    } else if ("0-=зхъжэ.\\".includes(prevLetter)) {
-      set_rhfl_active(false)
+    if (!currentLetter) return;
+    if ("ё12йфя".includes(currentLetter)) {
+      set_lhfl_active(true);
+    } else if ("3цыч".includes(currentLetter)) {
+      set_lhfr_active(true);
+    } else if ("4увс".includes(currentLetter)) {
+      set_lhfm_active(true);
+    } else if ("56кеапми".includes(currentLetter)) {
+      set_lhfi_active(true);
+    } else if ("7нгроть".includes(currentLetter)) {
+      set_rhfi_active(true);
+    } else if ("8шлб".includes(currentLetter)) {
+      set_rhfm_active(true);
+    } else if ("9щдю".includes(currentLetter)) {
+      set_rhfr_active(true);
+    } else if ("0-=зхъжэ.\\".includes(currentLetter)) {
+      set_rhfl_active(true);
     } else if (currentLetter === " ") {
-      set_rhft_active(false)
+      set_rhft_active(true);
     }
-  }, [prevLetter])
+  }, [currentLetter]);
+
+  useEffect(() => {
+    if (!prevLetter) return;
+    if ("ё12йфя".includes(prevLetter)) {
+      set_lhfl_active(false);
+    } else if ("3цыч".includes(prevLetter)) {
+      set_lhfr_active(false);
+    } else if ("4увс".includes(prevLetter)) {
+      set_lhfm_active(false);
+    } else if ("56кеапми".includes(prevLetter)) {
+      set_lhfi_active(false);
+    } else if ("7нгроть".includes(prevLetter)) {
+      set_rhfi_active(false);
+    } else if ("8шлб".includes(prevLetter)) {
+      set_rhfm_active(false);
+    } else if ("9щдю".includes(prevLetter)) {
+      set_rhfr_active(false);
+    } else if ("0-=зхъжэ.\\".includes(prevLetter)) {
+      set_rhfl_active(false);
+    } else if (currentLetter === " ") {
+      set_rhft_active(false);
+    }
+  }, [prevLetter]);
 
   useEffect(() => {
     if (!isStringFinished){
       setStartWord(generateStirng(taskSettings.type, taskSettings.amount, language));
     } 
   }, [isStringFinished, language]);
+
 
   return (
     <>
@@ -96,5 +101,5 @@ export const KeyboardWrapper = ({isStringFinished, setIsStringFinished, taskSett
         startWord={startWord}
       />
     </>
-  )
-}
+  );
+};

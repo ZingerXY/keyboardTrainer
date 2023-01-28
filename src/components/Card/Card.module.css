@@ -36,6 +36,10 @@
   background: rgba(11, 95, 165, 0.1);
 }
 
+.card-head_letters {
+  background: rgba(11, 95, 165, 0.1);
+}
+
 .card-head_punctuation {
   background: rgba(255, 89, 0, 0.1);
 }
@@ -45,8 +49,7 @@
 }
 
 .card-name {
-  font-size: 60px;
-  line-height: 70px;
+  font-size: 35px;
   color: #000000;
 }
 
@@ -67,6 +70,10 @@
 
 .card-type_words {
   background: #0B5FA5;
+}
+
+.card-type_letters {
+  background: #00A876;
 }
 
 .card-type_punctuation {
@@ -113,7 +120,7 @@
 
 @media (max-width: 840px) {
   .card-name {
-    font-size: 48px;
+    font-size: 30px;
   }
   .card-level {
     font-size: 20px;

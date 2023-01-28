@@ -250,8 +250,6 @@
 }
 
 .nonstyle {
-  color: none;
-  background-color: none;
   opacity: 0;
   border: none;
 }

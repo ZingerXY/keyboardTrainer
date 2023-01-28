@@ -59,14 +59,14 @@ const RunningString = ({
       setEndWord(word => word.slice(1)); //Убирает первый символ endWord
     }
   };
-  
+
   const UncorrectInput = () => {
     stringId.current.classList.add(Style["shake"]); // Трясет строку в случае, если введено неправильное значение
-        setUnCorrect(unCorrect => unCorrect + 1);
+    setUnCorrect(unCorrect => unCorrect + 1);
 
-        setTimeout(() => {
-          stringId.current.classList.remove(Style["shake"]); //Убирает класс анимации
-        }, 800)
+    setTimeout(() => {
+      stringId.current.classList.remove(Style["shake"]); //Убирает класс анимации
+    }, 800)
   }
 
   const createTimer = () => {
@@ -79,7 +79,7 @@ const RunningString = ({
     }, 1000));
   }
   useEffect(() => { //Отслеживает нажатие на кнопку
-    if(!isStringFinished){
+    if (!isStringFinished) {
       if (startWord) {
         setCurrentLetter(startWord.substring(0, 1));
         dispatch(update_time({ seconds, minutes }));

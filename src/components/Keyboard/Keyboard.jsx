@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+
 import Style from "./Keyboard.module.scss";
 import { useSelector } from "react-redux";
 import {generateKeyboard} from '../../lib/keyboard/generateKeyboard';
@@ -88,7 +89,6 @@ const Keyboard = ({
     { name: '', value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["ctrl"]} ${Style["nonstyle"]}` },
     { name: 'Ctrl', value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["ctrl"]}` },
   ];
-
   const checkKeyIsActive = (name, value) => {
     //Если текущий символ в верхнем регистре, подсвечиваем шифт! НЕ УДАЛЯТЬ ЗАКОМЕНТИРОВАННУЮ ОБЛАСТЬ НИЖЕ
     // if (name === 'Shift' && currentKey?.trim()) {

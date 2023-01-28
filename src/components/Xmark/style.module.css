@@ -1,0 +1,16 @@
+.Xmark {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+}
+
+.X {
+  margin: 10px;
+}
+
+.X:hover {
+  cursor: pointer;
+}
+/*# sourceMappingURL=style.module.css.map */

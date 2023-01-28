@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Style from "./Tasks.module.scss";
 import Task from "../../components/Task/Task"
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -7,54 +7,6 @@ import BasicPagination from "../../components/Pagination/Pagination";
 import Selector from '../../components/Selector/Selector';
 import { useSelector, useDispatch } from "react-redux";
 import { set_language, set_language_keys } from "../../store/data/dataSlice";
-
-const initialTasks = JSON.parse(JSON.stringify([
-   // {
-    //   "id":1,
-    //   "level": 2,
-    //   "typeName": "База",
-    //   "type": "base",
-    //   "name": "ва ол",
-    //   "text": "ваол олва овал олол ваол олов овло",
-    // "howManyToGenerate": 10
-    // },
-    // {
-    //   "id":2,
-    //   "level": 3,
-    //   "typeName": "База",
-    //   "type": "base",
-    //   "name": "ва ол",
-    //   "text": "ваол олва овал олол ваол олов овло",
-    // "howManyToGenerate": 10
-    // },
-    {
-      "id":3,
-      "level": 5,
-      "typeName": "слова",
-      "type": "words",
-      "name": "ва ол",
-      "text": "ваол олва овал олол ваол олов овло",
-      "howManyToGenerate": 5
-    },
-    {
-      "id":4,
-      "level": 4,
-      "typeName": "Знаки",
-      "type": "punctuation",
-      "name": "./ ,?",
-      "text": "ваол олва овал олол ваол олов овло",
-      "howManyToGenerate": 7
-    },
-    {
-      "id":5,
-      "level": 3,
-      "typeName": "Цифры",
-      "type": "numbers",
-      "name": "12 34",
-      "text": "ваол олва овал олол ваол олов овло",
-      "howManyToGenerate": 10
-    },
-]));
 
 const languages = {
   'English': {
@@ -68,56 +20,135 @@ const languages = {
 }
 
 const Tasks = () => {
-  const [tasksOutputObj, setTasksOutputObj] = useState([]);
-  const { language } = useSelector((state) => state.DataReducer);
-  const dispatch = useDispatch();
-
-  const [taskOption, setTaskOption] = useState('');
+  const [initialTasks, setInitialTasks] = useState([]);
+  const [filteredTasks, setFilteredTasks] = useState([]);
+  const [taskOption, setTaskOption] = useState("");
   const [taskActive, setTaskActive] = useState(false);
   const [sort, setSort] = useState('Сначала легкие');
   const [base, setBase] = useState(true);
   const [words, setWords] = useState(true);
+  const [letters, setLetters] = useState(true);
   const [punctuation, setPunctuation] = useState(true);
   const [numAndSymbols, setNumAndSymbols] = useState(true);
   const [openedSelector, setOpenedSelector] = useState('');
+  const { language } = useSelector((state) => state.DataReducer);
+  const dispatch = useDispatch();
 
-  const sortTasks = (a, b) => sort === "Сначала легкие" ? a.level - b.level : b.level - a.level
 
   const setLanguage = (language) => {
     dispatch(set_language(language));
     dispatch(set_language_keys(languages[language]))
   }
+  const [isLoading, setLoading] = useState(false);
+  const [paginationInfo, setPaginationInfo] = useState({
+    limit: 10,
+    page: 1,
+    totalItems: 0,
+    sort: "asc",
+  });
+
+  const loadPost = async (page) => {
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `https://kangaroo.zingery.ru/api/tasks?page=${page}`
+      );
+      const json = await response.json();
+
+      const filterTypes = getCollectedFilters();
+
+      setInitialTasks(json.data);
+
+      setFilteredTasks(
+        json.data
+          .filter((el) => filterTypes.includes(el.task_type))
+          .sort(sortTasks)
+      );
+
+      setPaginationInfo({
+        ...paginationInfo,
+        page: json.meta.current_page,
+        totalItems: json.meta.total,
+        limit: json.meta.per_page,
+      });
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+  const selectChange = (newValue, newText, e) => {
+    setSort({ value: newValue, text: newText });
+    if (e) e.stopPropagation();
+  };
+
+  const sortTasks = (a, b) =>
+    sort === "Сначала легкие"
+      ? a.difficulty - b.difficulty
+      : b.difficulty - a.difficulty;
+
+  const getCollectedFilters = () => {
+    const filterTypes = [];
+    if (letters) filterTypes.push("Буквы");
+    if (words) filterTypes.push("Слова");
+    if (base) filterTypes.push("База");
+    if (punctuation) filterTypes.push("Пунктуация");
+    if (numAndSymbols) filterTypes.push("Цифры");
+
+    return filterTypes;
+  };
 
   useEffect(() => {
-    const filterTypes = []
-    if (base) filterTypes.push("base")
-    if (words) filterTypes.push("words")
-    if (punctuation) filterTypes.push("punctuation")
-    if (numAndSymbols) filterTypes.push("numbers")
-
-    setTasksOutputObj([
-        ...initialTasks
-        .filter(el => filterTypes.includes(el.type))
-        .sort(sortTasks)
-      ]
-    )
-  }, [base, words, punctuation, numAndSymbols])
+    loadPost(paginationInfo.page);
+  }, []);
 
   useEffect(() => {
-    setTasksOutputObj(prev => [...prev.sort(sortTasks)])
-  }, [sort])
+    if (!initialTasks.length) return;
+
+    const filterTypes = getCollectedFilters();
+
+    const newTasks = [
+      ...initialTasks
+        .filter((el) => filterTypes.includes(el.task_type))
+        .sort(sortTasks),
+    ];
+
+    setFilteredTasks(newTasks);
+  }, [base, words, letters, punctuation, numAndSymbols, sort]);
+
+  useEffect(() => {
+    if (!initialTasks.length) return;
+
+  // if (taskActive) {
+  //   const task = initialTasks.filter(el => el.type === taskOption)[0];
+  //   const taskSettings = {
+  //     type: taskOption,
+  //     amount: task.howManyToGenerate
+  //   }
+    setInitialTasks((prev) => [...prev.sort(sortTasks)]);
+  }, [sort]);
+
+  const handlePageChange = (event, page) => {
+    setPaginationInfo({
+      ...paginationInfo,
+      page,
+    });
+    loadPost(page);
+  };
+
+  if (isLoading) return "Загрузка....";
 
   if (taskActive) {
-    const task = initialTasks.filter(el => el.type === taskOption)[0];
-    const taskSettings = {
-      type: taskOption,
-      amount: task.howManyToGenerate
-    }
-
     return (
       <Task
-        taskSettings={taskSettings}
+        // taskSettings={taskSettings}
         goToTasks={() => setTaskActive(false)}
+        taskSettings={{
+          description: taskOption,
+          amount: 7,
+        }}
       />
     );
   } else {
@@ -129,23 +160,53 @@ const Tasks = () => {
               <h4 className={`${Style["filters-title"]}`}>Тип задания</h4>
               <div>
                 <div className={`${Style["filters-checkbox"]}`}>
-                  <input type="checkbox" className={`${Style["filters-checkbox_custom"]}`} id="base" checked={base}
-                         onChange={() => setBase(!base)}/>
+                  <input
+                    type="checkbox"
+                    className={`${Style["filters-checkbox_custom"]}`}
+                    id="base"
+                    checked={base}
+                    onChange={() => setBase(!base)}
+                  />
                   <label htmlFor="base">Базовые уроки</label>
                 </div>
                 <div className={`${Style["filters-checkbox"]}`}>
-                  <input type="checkbox" className={`${Style["filters-checkbox_custom"]}`} id="words" checked={words}
-                         onChange={() => setWords(!words)}/>
-                  <label htmlFor="words"> Слова</label>
+                  <input
+                    type="checkbox"
+                    className={`${Style["filters-checkbox_custom"]}`}
+                    id="words"
+                    checked={words}
+                    onChange={() => setWords(!words)}
+                  />
+                  <label htmlFor="words">Слова</label>
                 </div>
                 <div className={`${Style["filters-checkbox"]}`}>
-                  <input type="checkbox" className={`${Style["filters-checkbox_custom"]}`} id="punctuation"
-                         checked={punctuation} onChange={() => setPunctuation(!punctuation)}/>
+                  <input
+                    type="checkbox"
+                    className={`${Style["filters-checkbox_custom"]}`}
+                    id="letters"
+                    checked={letters}
+                    onChange={() => setLetters(!letters)}
+                  />
+                  <label htmlFor="letters">Буквы</label>
+                </div>
+                <div className={`${Style["filters-checkbox"]}`}>
+                  <input
+                    type="checkbox"
+                    className={`${Style["filters-checkbox_custom"]}`}
+                    id="punctuation"
+                    checked={punctuation}
+                    onChange={() => setPunctuation(!punctuation)}
+                  />
                   <label htmlFor="punctuation"> Знаки препинания</label>
                 </div>
                 <div className={`${Style["filters-checkbox"]}`}>
-                  <input type="checkbox" className={`${Style["filters-checkbox_custom"]}`} id="numbers"
-                         checked={numAndSymbols} onChange={() => setNumAndSymbols(!numAndSymbols)}/>
+                  <input
+                    type="checkbox"
+                    className={`${Style["filters-checkbox_custom"]}`}
+                    id="numbers"
+                    checked={numAndSymbols}
+                    onChange={() => setNumAndSymbols(!numAndSymbols)}
+                  />
                   <label htmlFor="numbers"> Цифры и символы</label>
                 </div>
               </div>
@@ -168,25 +229,67 @@ const Tasks = () => {
                 name={'language'}
                 openedSelector={openedSelector}
               />
+              {/* <div
+                className={`${Style["__select"]} ${selectState ? Style["__select_active"] : ""
+                  }`}
+                onClick={selectOpen}
+              >
+                <div className={`${Style["__select__title"]}`}>{sort.text}</div>
+                <div className={`${Style["__select__content"]}`}>
+                  <input
+                    id="singleSelect0"
+                    className={`${Style["__select__input"]}`}
+                    type="radio"
+                    name="singleSelect"
+                    defaultChecked={true}
+                  />
+                  <label
+                    htmlFor="singleSelect0"
+                    tabIndex="0"
+                    className={`${Style["__select__label"]}`}
+                    onClick={(e) => selectChange("desc", "Сначала легкие", e)}
+                  >
+                    Сначала легкие
+                  </label>
+                  <input
+                    id="singleSelect1"
+                    className={`${Style["__select__input"]}`}
+                    type="radio"
+                    name="singleSelect"
+                  />
+                  <label
+                    htmlFor="singleSelect1"
+                    tabIndex="0"
+                    className={`${Style["__select__label"]}`}
+                    onClick={(e) => selectChange("asc", "Сначала сложные", e)}
+                  >
+                    Сначала сложные
+                  </label>
+                </div>
+              </div> */}
             </div>
           </form>
           <div className={`${Style["cards-box"]}`}>
-            {tasksOutputObj.map((el) => 
-              <Card 
+            {filteredTasks.map((el) => (
+              <Card
                 {...el}
                 key={el.id}
                 myKey={el.id}
                 state={setTaskActive}
                 setTaskOption={setTaskOption}
-              />)}
+              />
+            ))}
           </div>
         </div>
         <div className={`${Style["Pagination"]} container`}>
-          <BasicPagination />
+          <BasicPagination
+            onPageChange={handlePageChange}
+            {...paginationInfo}
+          />
         </div>
       </div>
-    )
+    );
   }
-}
+};
 
-export default Tasks
+export default Tasks;

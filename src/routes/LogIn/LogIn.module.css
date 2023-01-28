@@ -8,22 +8,6 @@
           transform: translate(-50%, -50%);
 }
 
-.Xmark {
-  display: -ms-grid;
-  display: grid;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: end;
-}
-
-.X {
-  margin: 10px;
-}
-
-.X:hover {
-  cursor: pointer;
-}
-
 .input {
   outline: none;
 }
@@ -49,9 +33,7 @@
   min-height: 500px;
   width: 800px;
   border-radius: 10px;
-  margin: 0 auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px auto;
   -webkit-box-shadow: 0px 0px 18px 11px rgba(0, 168, 118, 0.2);
   box-shadow: 0px 0px 18px 11px rgba(0, 168, 118, 0.2);
 }

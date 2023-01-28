@@ -11,7 +11,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 
 const Task = ({taskSettings, goToTasks}) => {
-    const { uncorrect, correct} = useSelector((state) => state.DataReducer);
+    const { uncorrect, correct } = useSelector((state) => state.DataReducer);
     const { seconds, minutes } = useSelector((state) => state.TimeReducer);
     const [typeSpeed, setTypeSpeed] = useState(0);
     const [isStringFinished, setIsStringFinished] = useState(false);
@@ -26,7 +26,7 @@ const Task = ({taskSettings, goToTasks}) => {
 
     return (
         <>
-            {isStringFinished && 
+            {isStringFinished &&
                 <ResultModalWindow
                     setIsStringFinished={setIsStringFinished}
                     typeSpeed={typeSpeed}
