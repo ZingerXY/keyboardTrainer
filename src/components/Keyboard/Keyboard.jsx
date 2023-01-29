@@ -1,5 +1,8 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
+
 import Style from "./Keyboard.module.scss";
+import { useSelector } from "react-redux";
+import {generateKeyboard} from '../../lib/keyboard/generateKeyboard';
 
 const Keyboard = ({
   lhfl_active,
@@ -14,77 +17,94 @@ const Keyboard = ({
   startWord,
 }) => {
   const currentKey = startWord?.[0];
+  const [keys, setKeys] = useState({
+    firstLine: [],
+    secondLine: [],
+    thirdLine: [],
+    fourthLine: [],
+  });
+  const { language_keys, language } = useSelector((state) => state.DataReducer);
 
-  const keybordButtons = [
-    { name: 'ё', value: 'ё', classNames: `${Style["key"]} ${Style["key-or"]}` },
-    { name: '1', value: '1', classNames: `${Style["key"]} ${Style["key-or"]}` },
-    { name: '2', value: '2', classNames: `${Style["key"]} ${Style["key-or"]}` },
-    { name: '3', value: '3', classNames: `${Style["key"]} ${Style["key-ye"]}` },
-    { name: '4', value: '4', classNames: `${Style["key"]} ${Style["key-gr"]}` },
-    { name: '5', value: '5', classNames: `${Style["key"]} ${Style["key-bl"]}` },
-    { name: '6', value: '6', classNames: `${Style["key"]} ${Style["key-bl"]}` },
-    { name: '7', value: '7', classNames: `${Style["key"]} ${Style["key-pi"]}` },
-    { name: '8', value: '8', classNames: `${Style["key"]} ${Style["key-or"]}` },
-    { name: '9', value: '9', classNames: `${Style["key"]} ${Style["key-ye"]}` },
-    { name: '0', value: '0', classNames: `${Style["key"]} ${Style["key-gr"]}` },
-    { name: '-', value: '-', classNames: `${Style["key"]} ${Style["key-gr"]}` },
-    { name: '=', value: '=', classNames: `${Style["key"]} ${Style["key-gr"]}` },
+
+
+  const keybordKeys = [
+    { name: keys.firstLine[0], classNames: `${Style["key"]} ${Style["key-or"]}` },
+    { name: keys.firstLine[1], classNames: `${Style["key"]} ${Style["key-or"]}` },
+    { name: keys.firstLine[2], classNames: `${Style["key"]} ${Style["key-or"]}` },
+    { name: keys.firstLine[3], classNames: `${Style["key"]} ${Style["key-ye"]}` },
+    { name: keys.firstLine[4], classNames: `${Style["key"]} ${Style["key-gr"]}` },
+    { name: keys.firstLine[5], classNames: `${Style["key"]} ${Style["key-bl"]}` },
+    { name: keys.firstLine[6], classNames: `${Style["key"]} ${Style["key-bl"]}` },
+    { name: keys.firstLine[7], classNames: `${Style["key"]} ${Style["key-pi"]}` },
+    { name: keys.firstLine[8], classNames: `${Style["key"]} ${Style["key-or"]}` },
+    { name: keys.firstLine[9], classNames: `${Style["key"]} ${Style["key-ye"]}` },
+    { name: keys.firstLine[10], classNames: `${Style["key"]} ${Style["key-gr"]}` },
+    { name:keys.firstLine[11], classNames: `${Style["key"]} ${Style["key-gr"]}` },
+    { name:keys.firstLine[12], classNames: `${Style["key"]} ${Style["key-gr"]}` },
     { name: 'Backspace', value: 'Backspace', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["delete"]}` },
     { name: 'Tab', value: 'Tab', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["tab"]}` },
-    { name: 'й', value: 'й', classNames: `${Style["key"]} ${Style["key-or"]}` },
-    { name: 'ц', value: 'ц', classNames: `${Style["key"]} ${Style["key-ye"]}` },
-    { name: 'у', value: 'у', classNames: `${Style["key"]} ${Style["key-gr"]}` },
-    { name: 'к', value: 'к', classNames: `${Style["key"]} ${Style["key-bl"]}` },
-    { name: 'е', value: 'е', classNames: `${Style["key"]} ${Style["key-bl"]}` },
-    { name: 'н', value: 'н', classNames: `${Style["key"]} ${Style["key-pi"]}` },
-    { name: 'г', value: 'г', classNames: `${Style["key"]} ${Style["key-pi"]}` },
-    { name: 'ш', value: 'ш', classNames: `${Style["key"]} ${Style["key-or"]}` },
-    { name: 'щ', value: 'щ', classNames: `${Style["key"]} ${Style["key-ye"]}` },
-    { name: 'з', value: 'з ', classNames: `${Style["key"]} ${Style["key-gr"]}` },
-    { name: 'х', value: 'х ', classNames: `${Style["key"]} ${Style["key-gr"]}` },
-    { name: 'ъ', value: 'ъ ', classNames: `${Style["key"]} ${Style["key-gr"]}` },
-    { name: ' /', value: '/', classNames: `${Style["key"]} ${Style["key-gr"]} ${Style["key-words"]} ${Style["backslash"]}` },
+    { name: keys.secondLine[0], classNames: `${Style["key"]} ${Style["key-or"]}` },
+    { name: keys.secondLine[1], classNames: `${Style["key"]} ${Style["key-ye"]}` },
+    { name: keys.secondLine[2], classNames: `${Style["key"]} ${Style["key-gr"]}` },
+    { name: keys.secondLine[3], classNames: `${Style["key"]} ${Style["key-bl"]}` },
+    { name: keys.secondLine[4], classNames: `${Style["key"]} ${Style["key-bl"]}` },
+    { name: keys.secondLine[5], classNames: `${Style["key"]} ${Style["key-pi"]}` },
+    { name: keys.secondLine[6], classNames: `${Style["key"]} ${Style["key-pi"]}` },
+    { name: keys.secondLine[7], classNames: `${Style["key"]} ${Style["key-or"]}` },
+    { name: keys.secondLine[8], classNames: `${Style["key"]} ${Style["key-ye"]}` },
+    { name: keys.secondLine[9],  classNames: `${Style["key"]} ${Style["key-gr"]}` },
+    { name: keys.secondLine[10], classNames: `${Style["key"]} ${Style["key-gr"]}` },
+    { name: keys.secondLine[11], classNames: `${Style["key"]} ${Style["key-gr"]}` },
+    { name: '', value: '', classNames: `${Style["key"]} ${Style["ctrl"]} ${Style["key-words"]} ${Style["backslash"]}` },
     { name: 'CapsLock', value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["capslock"]}` },
-    { name: 'ф', value: 'ф ', classNames: `${Style["key"]} ${Style["key-or"]}` },
-    { name: 'ы', value: 'ы ', classNames: `${Style["key"]} ${Style["key-ye"]}` },
-    { name: 'в', value: 'в ', classNames: `${Style["key"]} ${Style["key-gr"]}` },
-    { name: 'а', value: 'а', classNames: `${Style["key"]} ${Style["key-bl"]}` },
-    { name: 'п', value: 'п', classNames: `${Style["key"]} ${Style["key-bl"]}` },
-    { name: 'р', value: 'р', classNames: `${Style["key"]} ${Style["key-pi"]}` },
-    { name: 'о', value: 'о', classNames: `${Style["key"]} ${Style["key-pi"]}` },
-    { name: 'л', value: 'л', classNames: `${Style["key"]} ${Style["key-or"]}` },
-    { name: 'д', value: 'д', classNames: `${Style["key"]} ${Style["key-ye"]}` },
-    { name: 'ж', value: 'ж', classNames: `${Style["key"]} ${Style["key-gr"]}` },
-    { name: 'э', value: 'э', classNames: `${Style["key"]} ${Style["key-gr"]}` },
+    { name: keys.thirdLine[0], classNames: `${Style["key"]} ${Style["key-or"]}` },
+    { name: keys.thirdLine[1], classNames: `${Style["key"]} ${Style["key-ye"]}` },
+    { name: keys.thirdLine[2], classNames: `${Style["key"]} ${Style["key-gr"]}` },
+    { name: keys.thirdLine[3], classNames: `${Style["key"]} ${Style["key-bl"]}` },
+    { name: keys.thirdLine[4], classNames: `${Style["key"]} ${Style["key-bl"]}` },
+    { name: keys.thirdLine[5], classNames: `${Style["key"]} ${Style["key-pi"]}` },
+    { name: keys.thirdLine[6], classNames: `${Style["key"]} ${Style["key-pi"]}` },
+    { name: keys.thirdLine[7], classNames: `${Style["key"]} ${Style["key-or"]}` },
+    { name: keys.thirdLine[8], classNames: `${Style["key"]} ${Style["key-ye"]}` },
+    { name: keys.thirdLine[9], classNames: `${Style["key"]} ${Style["key-gr"]}` },
+    { name: keys.thirdLine[10], classNames: `${Style["key"]} ${Style["key-gr"]}` },
     { name: 'Enter', value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["return"]}` },
-    { name: 'Shift ', value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["leftshift"]}` },
-    { name: 'я', value: 'я', classNames: `${Style["key"]} ${Style["key-or"]}` },
-    { name: 'ч', value: 'ч', classNames: `${Style["key"]} ${Style["key-ye"]}` },
-    { name: 'с', value: 'с', classNames: `${Style["key"]} ${Style["key-gr"]}` },
-    { name: 'м', value: 'м', classNames: `${Style["key"]} ${Style["key-bl"]}` },
-    { name: 'и', value: 'и', classNames: `${Style["key"]} ${Style["key-bl"]}` },
-    { name: 'т', value: 'т', classNames: `${Style["key"]} ${Style["key-pi"]}` },
-    { name: 'ь', value: 'ь', classNames: `${Style["key"]} ${Style["key-pi"]}` },
-    { name: 'б', value: 'б', classNames: `${Style["key"]} ${Style["key-or"]}` },
-    { name: 'ю', value: 'ю', classNames: `${Style["key"]} ${Style["key-ye"]}` },
-    { name: '.', value: '.', classNames: `${Style["key"]} ${Style["key-gr"]}` },
+    { name: 'Shift', value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["leftshift"]}` },
+    { name: keys.fourthLine[0], classNames: `${Style["key"]} ${Style["key-or"]}` },
+    { name: keys.fourthLine[1], classNames: `${Style["key"]} ${Style["key-ye"]}` },
+    { name: keys.fourthLine[2], classNames: `${Style["key"]} ${Style["key-gr"]}` },
+    { name: keys.fourthLine[3], classNames: `${Style["key"]} ${Style["key-bl"]}` },
+    { name: keys.fourthLine[4], classNames: `${Style["key"]} ${Style["key-bl"]}` },
+    { name: keys.fourthLine[5], classNames: `${Style["key"]} ${Style["key-pi"]}` },
+    { name: keys.fourthLine[6], classNames: `${Style["key"]} ${Style["key-pi"]}` },
+    { name: keys.fourthLine[7], classNames: `${Style["key"]} ${Style["key-or"]}` },
+    { name: keys.fourthLine[8], classNames: `${Style["key"]} ${Style["key-ye"]}` },
+    { name: keys.fourthLine[9], classNames: `${Style["key"]} ${Style["key-gr"]}` },
     { name: 'Shift', value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["rightshift"]}` },
-    { name: 'Ctrl', value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["ctrl"]}` },
-    { name: '`', value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["nonstyle"]}` },
-    { name: 'Alt ', value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["ctrl"]}` },
+    { name: "Ctrl", value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["ctrl"]}` },
+    { name: '', value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["nonstyle"]}` },
+    { name: 'Alt', value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["ctrl"]}` },
     { name: 'Space', value: ' ', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["space"]}` },
     { name: 'Alt', value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["ctrl"]}` },
     { name: '', value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["ctrl"]} ${Style["nonstyle"]}` },
-    { name: 'Ctrl ', value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["ctrl"]}` },
+    { name: 'Ctrl', value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["ctrl"]}` },
   ];
   const checkKeyIsActive = (name, value) => {
     //Если текущий символ в верхнем регистре, подсвечиваем шифт! НЕ УДАЛЯТЬ ЗАКОМЕНТИРОВАННУЮ ОБЛАСТЬ НИЖЕ
     // if (name === 'Shift' && currentKey?.trim()) {
     //   return currentKey === currentKey.toUpperCase()
     // }
+    const active = value ? value : name;
 
-    return currentKey?.toLowerCase() === value
+    return currentKey === active;
   }
+
+  useEffect(() => {
+    const keys = generateKeyboard(language_keys);
+   
+    setKeys(keys)
+  }, [language]);
+
   return (
     <div className={`${Style["Keyboard"]} container`}>
       <div className={`${Style["hand"]}`}>
@@ -95,9 +115,10 @@ const Keyboard = ({
         <div className={`${Style["lh_finger_idx"]} ${lhfi_active ? Style["key-bl"] : ""}`}></div>
       </div>
       <div className={`${Style["keyboard-base"]}`}>
-        {keybordButtons.map(
-          ({ name, value, classNames }) => <div
-            key={name}
+        {keybordKeys.map(
+          ({ name, value, classNames }, index) =>
+          <div
+            key={index}
             className={`${checkKeyIsActive(name, value) ? Style["active"] : ''} ${classNames}`}>
             {name}
           </div>)

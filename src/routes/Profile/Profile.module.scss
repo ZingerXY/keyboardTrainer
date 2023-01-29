@@ -35,7 +35,21 @@ $red: #FF5900;
     max-width: 300px;
 }
 
+.profile-avatar_img {
+    width: 280px;
+    height: 260px;
+    object-fit: cover;
+    object-position: 0 0;
+}
+
+.profile-avatar_input {
+    display: none;
+}
+
 .profile-avatar_box-download_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     max-width: 200px;
     height: 43px;

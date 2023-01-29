@@ -1,0 +1,15 @@
+.Xmark {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  transform: scale(1.5);
+}
+
+.X {
+  margin: 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+

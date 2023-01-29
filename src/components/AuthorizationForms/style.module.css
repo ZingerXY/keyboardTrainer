@@ -1,3 +1,13 @@
+.container {
+  width: 95vw;
+  z-index: 1;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
 .Xmark {
   display: -ms-grid;
   display: grid;
@@ -32,6 +42,8 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 100%;
+  font-weight: 300;
 }
 
 .margin {
@@ -39,12 +51,11 @@
 }
 
 .window {
+  background: white;
   min-height: 600px;
   width: 800px;
   border-radius: 10px;
-  margin: 0 auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px auto;
   -webkit-box-shadow: 0px 0px 18px 11px rgba(0, 168, 118, 0.2);
   box-shadow: 0px 0px 18px 11px rgba(0, 168, 118, 0.2);
 }
@@ -92,35 +103,21 @@ input {
 }
 
 .btn {
-  height: 50px;
-  width: 225px;
-  border-radius: 8px;
   background: -webkit-gradient(linear, left bottom, left top, from(#00A876), to(#00A876));
   background: linear-gradient(0deg, #00A876, #00A876);
   font-size: 16px;
   font-weight: 700;
   line-height: 18px;
-  letter-spacing: 0em;
+  letter-spacing: 0;
   text-align: center;
   color: #FFFFFF;
-}
-
-.btn:hover {
-  cursor: pointer;
-  background: -webkit-gradient(linear, left bottom, left top, from(#14523F), to(#14523F));
-  background: linear-gradient(0deg, #14523F, #14523F);
-}
-
-.btn:active {
-  background: -webkit-gradient(linear, left bottom, left top, from(#006D4C), to(#006D4C)), -webkit-gradient(linear, left bottom, left top, from(#FFFFFF), to(#FFFFFF));
-  background: linear-gradient(0deg, #006D4C, #006D4C), linear-gradient(0deg, #FFFFFF, #FFFFFF);
 }
 
 .input-text {
   font-size: 18px;
   font-weight: 400;
   line-height: 20px;
-  letter-spacing: 0em;
+  letter-spacing: 0;
   text-align: left;
   color: #207e62;
 }
@@ -158,7 +155,7 @@ input {
   }
   .form {
     width: 100%;
-    padding-right: 5%;
+    padding-right: 2%;
   }
   .form > label {
     width: 85vw;
@@ -185,4 +182,4 @@ input {
     line-height: 18px;
   }
 }
-/*# sourceMappingURL=Registration.module.css.map */
+/*# sourceMappingURL=style.module.css.map */

@@ -14,9 +14,14 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .footer {
@@ -28,5 +33,33 @@
   font-size: 20px;
   line-height: 23px;
   text-align: center;
+}
+
+.socialicons_links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 25px;
+  padding-top: 10px;
+}
+
+.socialicons_link_item {
+  display: inline-block;
+}
+
+.socialicons_link_svg {
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.socialicons_link_svg:hover {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
 }
 /*# sourceMappingURL=Footer.module.css.map */

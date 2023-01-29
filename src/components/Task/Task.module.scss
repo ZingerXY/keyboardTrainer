@@ -1,6 +1,20 @@
 $green: #00A876;
 $shadow: rgba(0, 168, 118, 0.2);
 
+.back_button {
+    background: rgba(0, 168, 118, 0.6) !important;
+    border-radius: 50% !important;
+    width: 50px !important;
+    height: 50px !important;
+    min-width: auto !important;
+    position: fixed !important;
+    top: 130px !important;
+
+    &:hover {
+        background: #00A876 !important;
+    }
+}
+
 .task-page {
     width: 100%;
     padding-top: 112px;
@@ -66,6 +80,22 @@ $shadow: rgba(0, 168, 118, 0.2);
 
 .fa-circle:nth-of-type(-n+2) {
     color: $green;
+}
+
+.result-btn {
+    display: inline-block;
+    cursor: pointer;
+    background: #00A876;
+    border: 2px solid #006D4C;
+    color: #fff;
+    border-radius: 8px;
+    padding: 8px 25px;
+    transition: all 250ms;
+
+    &:hover {
+        background: #fff;
+        color: #006D4C;
+    }
 }
 
 @media (max-width: 768px) {
