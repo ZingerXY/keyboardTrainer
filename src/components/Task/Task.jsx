@@ -10,7 +10,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 
 
-const Task = ({taskSettings, goToTasks}) => {
+const Task = ({ taskSettings, goToTasks }) => {
     const { uncorrect, correct } = useSelector((state) => state.DataReducer);
     const { seconds, minutes } = useSelector((state) => state.TimeReducer);
     const [typeSpeed, setTypeSpeed] = useState(0);
@@ -33,12 +33,12 @@ const Task = ({taskSettings, goToTasks}) => {
                 />
             }
             <div className={`${Style["task-page"]} container`}>
-                <Button 
+                <Button
                     variant="contained"
                     onClick={() => goToTasks()}
-                    className={Style.back_button}
+                    className={`${Style["back_button"]}`}
                 >
-                    <ArrowBackIcon/>
+                    <ArrowBackIcon />
                 </Button>
                 <WarningDisplay />
                 <div className={`${Style["task-card"]}`}>
