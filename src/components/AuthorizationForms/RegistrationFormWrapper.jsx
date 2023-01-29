@@ -8,7 +8,7 @@ export const RegistrationFormWrapper = ({onClose}) => {
     <div className={`container ${styles.container}`}>
       <div className={`${styles.window}`}>
         <Xmark onClose={onClose} />
-        <RegistrationForm />
+        <RegistrationForm onClose={onClose} />
       </div>
     </div>
   );

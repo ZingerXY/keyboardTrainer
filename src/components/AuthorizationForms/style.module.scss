@@ -9,26 +9,12 @@ $shadow: rgba(0, 168, 118, 0.2);
     transform: translate(-50%, -50%);
 }
 
-.Xmark {
-    display: grid;
-    justify-content: end;
-}
-
-.X {
-    margin: 10px;
-
-    &:hover {
-        cursor: pointer;
-    }
-}
-
 .input {
     outline: none;
 }
 
 .content {
     font-family: 'Arimo';
-
 }
 
 .form {
@@ -38,6 +24,8 @@ $shadow: rgba(0, 168, 118, 0.2);
     align-items: center;
     height: 100%;
     font-weight: 300;
+    max-width: 500px;
+    width: 100%;
 }
 
 .margin {
@@ -46,14 +34,15 @@ $shadow: rgba(0, 168, 118, 0.2);
 
 .window {
     background: white;
-    min-height: 600px;
-    width: 800px;
     border-radius: 10px;
     margin: 10px auto;
+    width: fit-content;
+    position: relative;
+    padding: 5%;
 
-    -webkit-box-shadow: 0px 0px 18px 11px $shadow;
-    -moz-box-shadow: 0px 0px 18px 11px $shadow;
-    box-shadow: 0px 0px 18px 11px $shadow;
+    -webkit-box-shadow: 0 0 18px 11px $shadow;
+    -moz-box-shadow: 0 0 18px 11px $shadow;
+    box-shadow: 0 0 18px 11px $shadow;
 }
 
 a {
@@ -122,6 +111,14 @@ input {
     letter-spacing: 0;
     text-align: left;
     color: rgba(32, 126, 98, 1);
+}
+
+.error {
+    margin-top: 12px;
+    color: red;
+    font-weight: 500;
+    font-size: 16px;
+    word-break: break-all;
 }
 
 @media (max-width: 860px) {
