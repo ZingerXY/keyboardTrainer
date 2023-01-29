@@ -31,3 +31,6 @@ Route::apiResources([
     'tasks' => TasksController::class,
     'stats' => StatsController::class,
 ]);
+
+Route::post('/saveAvatar', [UploadFileController::class, 'saveFile']);
+Route::get('/showAvatar', [UploadFileController::class, 'getUrlFile']);

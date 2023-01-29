@@ -1,14 +1,57 @@
-import React, { useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import Style from "./Profile.module.scss";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 
 const Profile = () => {
+    const [currentUserId, setCurrentUserId] = useState(1);
     const [isChange, setIsChange] = useState(false);
+    const [image, setImage] = useState('./img/avatar_default.png');
+    const [altImage, setAltImage] = useState((new Date()).getTime());
+
+    const showAvatar = async () => {
+        let formData = new FormData();
+        formData.append("user_id", 1);
+
+        console.log(currentUserId);
+        await fetch(`https://kangaroo.zingery.ru/api/showAvatar?user_id=${currentUserId}`, {
+                method: 'GET',
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                setImage(data.original);
+            })
+            .catch(() => {
+                setImage('./img/avatar_default.png');
+            });
+    }
+
+    useEffect(() => {
+        showAvatar();
+    }, []);
 
     const switchIsChange = (e) => {
         setIsChange(!isChange);
     }
+
+
+    const handleFileChange = async (e) => {
+        if (!e.target.files && !e.target.files[0]) {
+            return;
+        }
+
+        let formData = new FormData();
+        formData.append("user_id", 1);
+        formData.append("image", e.target.files[0]);
+
+       await fetch('https://kangaroo.zingery.ru/api/saveAvatar', {
+            method: 'POST',
+            body: formData
+        }).then((data) => {
+            showAvatar();
+        })
+        .catch((data) => console.log('error'));
+    };
 
     return (
         <div className={`${Style["profile-page"]}`}>
@@ -17,11 +60,23 @@ const Profile = () => {
 
                 <div className={`${Style["profile-box"]}`}>
                     <div className={`${Style["profile-avatar_box"]}`}>
-                        <img className={`${Style["profile-avatar_img"]}`} src="./img/avatar_default.png" />
-                        <button className={`${Style["profile-avatar_box-download_button"]}`}>
+                        <img
+                            className={`${Style["profile-avatar_img"]}`}
+                            alt={altImage}
+                            src={image}
+                        />
+                        <input
+                            id="input__file"
+                            className={`${Style["profile-avatar_input"]}`}
+                            type="file"
+                            accept=".png"
+                            onChange={handleFileChange}
+                        />
+                        <label for="input__file" className={`${Style["profile-avatar_box-download_button"]}`}>
                             <i className={`fa-solid fa-arrow-up-from-bracket ${Style["fa-arrow-up-from-bracket"]}`}></i>
-                            Загрузить
-                        </button>
+                            <span>Загрузить</span>
+                        </label>
+
                     </div>
                     <div className={`${Style["profile-form_box"]}`}>
                         {!isChange ? (
