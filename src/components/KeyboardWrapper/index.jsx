@@ -72,9 +72,12 @@ export const KeyboardWrapper = ({
   }, [prevLetter]);
 
   useEffect(() => {
-    if (!isStringFinished){
+    if (!isStringFinished && taskSettings.type) {
       setStartWord(generateStirng(taskSettings.type, taskSettings.amount, language));
-    } 
+    }
+    if (!isStringFinished && taskSettings.description) {
+      setStartWord(taskSettings.description);
+    }
   }, [isStringFinished, language]);
 
 
