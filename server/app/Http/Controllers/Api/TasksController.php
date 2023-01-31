@@ -5,6 +5,7 @@ use App\Models\Tasks;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\TasksResource;
+use Illuminate\Support\Facades\DB;
 
 class TasksController extends Controller
 {
@@ -16,7 +17,7 @@ class TasksController extends Controller
     public function index()
     {
         $tasks = Tasks::paginate(10);
-        return TasksResource::collection($tasks) ; 
+        return TasksResource::collection($tasks);
     }
 
     /**
@@ -38,7 +39,7 @@ class TasksController extends Controller
      */
     public function show($id)
     {
-        return new TasksResource(Tasks::findOrFail($id)) ; 
+        return new TasksResource(Tasks::findOrFail($id)) ;
     }
 
     /**
@@ -62,5 +63,12 @@ class TasksController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function sort($id)
+    {
+     $filter =DB::table('tasks')->select('task','task_description','task_type')
+     ->where('difficulty', '=', $id)
+     ->get();
+     return $filter;
     }
 }
