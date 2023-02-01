@@ -23,10 +23,10 @@ class User extends Authenticatable
         'password',
         'created_at',
     ];
-   
+
     public function stats()
     {
-        return $this->hasMany(Statistics::class,'player_id'); 
+        return $this->hasMany(Statistics::class,'player_id');
     }
     /**
      * The attributes that should be hidden for serialization.

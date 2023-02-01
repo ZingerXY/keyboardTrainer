@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\TasksController;
+
+
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\StatsController;
 use App\Http\Controllers\Api\TasksController;
@@ -7,7 +10,6 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\UploadFileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,11 +23,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+
+
 });
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout']);
 Route::post('register', [AuthController::class, 'register']);
+
 
 Route::apiResources([
     'users' => UserController::class,
@@ -33,5 +38,9 @@ Route::apiResources([
     'stats' => StatsController::class,
 ]);
 
+
+Route::get("tasks/sort/difficulty/{id}", [TasksController::class,'sort']);
+
 Route::post('/saveAvatar', [UploadFileController::class, 'saveFile']);
 Route::get('/showAvatar', [UploadFileController::class, 'getUrlFile']);
+

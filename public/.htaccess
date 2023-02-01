@@ -2,11 +2,13 @@ RewriteEngine On
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteCond %{SCRIPT_FILENAME} /api*
-RewriteRule ^(.*)$ /server/public/index.php?$1 [L,QSA]
+RewriteRule ^(.*)$ /server/public/index.php [L,QSA]
+
+RewriteCond %{REQUEST_URI} /user_avatar
+RewriteRule ^(.*)$ server/public/$1 [L]
 
 RewriteEngine On
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteCond %{SCRIPT_FILENAME} /*
-RewriteRule ^(.*)$ /index.html?$1 [L]
-
+RewriteRule ^(.*)$ /index.html [L]
