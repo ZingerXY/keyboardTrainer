@@ -22,9 +22,8 @@ $red: #FF5900;
 .profile-box {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    height: 400px;
 }
 
 .profile-avatar_box {
@@ -160,6 +159,13 @@ $red: #FF5900;
 
     .btn-default {
         margin: 0 0 0 20px;
+    }
+
+    .error-input {
+        text-transform: none;
+        font-size: 14px;
+        line-height: 16px;
+        color: $red;
     }
 }
 
