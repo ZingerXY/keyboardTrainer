@@ -121,12 +121,6 @@ const Tasks = () => {
   useEffect(() => {
     if (!initialTasks.length) return;
 
-  // if (taskActive) {
-  //   const task = initialTasks.filter(el => el.type === taskOption)[0];
-  //   const taskSettings = {
-  //     type: taskOption,
-  //     amount: task.howManyToGenerate
-  //   }
     setInitialTasks((prev) => [...prev.sort(sortTasks)]);
   }, [sort]);
 
@@ -143,7 +137,6 @@ const Tasks = () => {
   if (taskActive) {
     return (
       <Task
-        // taskSettings={taskSettings}
         goToTasks={() => setTaskActive(false)}
         taskSettings={{
           description: taskOption,
