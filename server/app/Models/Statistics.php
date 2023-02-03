@@ -15,7 +15,5 @@ class Statistics extends Model
         'typed_characters',
         'number_of_errors',
         'task_id',
-        
     ];
-   
 }

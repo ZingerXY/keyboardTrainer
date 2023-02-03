@@ -21,6 +21,8 @@ class StatsResource extends JsonResource
             'time' => $this->time,
             'typed_characters' => $this->typed_characters,
             'number_of_errors' => $this->number_of_errors,
+            'Accuracy' => $this->Accuracy,
+            'dial_speeds' => $this->dial_speeds,
         ];
     }
 }

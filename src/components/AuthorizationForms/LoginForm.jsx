@@ -5,8 +5,13 @@ import * as Yup from "yup";
 import styles from "./style.module.scss";
 import {Button} from "@mui/material";
 import {CustomFormikTextField} from "../CustomFormikTextField/CustomFormikTextField";
+import axios from "axios";
+import {setUser} from "../../store/user/userSlice";
+import {useDispatch} from "react-redux";
 
-export const LoginForm = ({goToRegistration}) => {
+export const LoginForm = ({goToRegistration, onClose}) => {
+  const dispatch = useDispatch()
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -20,8 +25,18 @@ export const LoginForm = ({goToRegistration}) => {
       .required("Заполните поле с паролем!")
       .min(8, "Пароль короткий!"),
     }),
-    onSubmit: (values) => {
-      console.log({...values})
+    onSubmit: async (values, {setStatus}) => {
+      try {
+        const res = await axios.post(`${process.env.REACT_APP_HOST_URL}/api/login`, {...values})
+        if (res.data['err']) {
+          setStatus(res.data['err'])
+        } else {
+          onClose()
+          dispatch(setUser(res.data))
+        }
+      } catch (e) {
+        console.error(e)
+      }
     },
   });
 
@@ -34,6 +49,7 @@ export const LoginForm = ({goToRegistration}) => {
         Вход
       </Button>
     </form>
+    <p className={styles.error}>{formik.status}</p>
     <p className={`${Style["reg-black"]} ${Style["margin"]}`}
     >Если у вас еще нет аккаунта
       <button

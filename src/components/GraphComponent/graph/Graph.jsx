@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,6 +10,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { faker } from '@faker-js/faker';
 
 
 ChartJS.register(
@@ -32,7 +33,23 @@ export const options = {
   maintainAspectRatio: false
 };
 
-const Graph = ({data}) => {
+const Graph = ({dataFromDB}) => {
+  const labels = Array(dataFromDB.length).fill('10.10.22'); 
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: 'Dataset 1',
+        data: dataFromDB,
+        borderColor: 'red',
+        backgroundColor: 'black',
+        borderWidth: 2,
+        tension: 0.4,
+      },
+    ],
+  };
+
   return (
     <Line 
       options={options}

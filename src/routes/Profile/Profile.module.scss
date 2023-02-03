@@ -22,9 +22,8 @@ $red: #FF5900;
 .profile-box {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    height: 400px;
 }
 
 .profile-avatar_box {
@@ -35,7 +34,21 @@ $red: #FF5900;
     max-width: 300px;
 }
 
+.profile-avatar_img {
+    width: 280px;
+    height: 260px;
+    object-fit: cover;
+    object-position: 0 0;
+}
+
+.profile-avatar_input {
+    display: none;
+}
+
 .profile-avatar_box-download_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     max-width: 200px;
     height: 43px;
@@ -146,6 +159,13 @@ $red: #FF5900;
 
     .btn-default {
         margin: 0 0 0 20px;
+    }
+
+    .error-input {
+        text-transform: none;
+        font-size: 14px;
+        line-height: 16px;
+        color: $red;
     }
 }
 

@@ -19,7 +19,13 @@
   flex-direction: column;
   align-items: center;
 }
-
+.rating-barrier {
+  width: 850px;
+  height: 2px;
+  margin: 0 0 20px 0;
+  background: rgb(196, 196, 196);
+  border: none;
+}
 .rating-item {
   background: #FFFFFF;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
