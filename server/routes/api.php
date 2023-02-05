@@ -1,8 +1,5 @@
 <?php
 
-use App\Http\Controllers\Api\TasksController;
-
-
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\StatsController;
 use App\Http\Controllers\Api\TasksController;
