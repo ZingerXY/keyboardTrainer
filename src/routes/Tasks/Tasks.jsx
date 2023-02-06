@@ -87,7 +87,7 @@ const Tasks = () => {
     if (letters) filterTypes.push("Буквы");
     if (words) filterTypes.push("Слова");
     if (base) filterTypes.push("База");
-    if (punctuation) filterTypes.push("Пунктуация");
+    if (punctuation) filterTypes.push("Знаки");
     if (numAndSymbols) filterTypes.push("Цифры");
 
     return filterTypes;
