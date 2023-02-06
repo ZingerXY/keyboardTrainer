@@ -50,6 +50,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 * `api/tasks?page=%id страницы%` - получить страницу с заданиями
 
-* `tasks/sort/difficulty/%id страницы%` - получить страницу с отсортированными заданиями по сложности
-
+*  `composer require spatie/laravel-query-builder` - сначала нужно установить пакет
+*  `api/tasks?filter[difficulty]=1&filter[task_type]=Слова` - получить страницу с отсортированными заданиями по сложности и типу
+    
 
