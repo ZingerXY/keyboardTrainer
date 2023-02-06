@@ -16,9 +16,6 @@ class TasksController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    // GET api/tasks?filter[difficulty]=1&filter[task_type]=Слова
-    //composer require spatie/laravel-query-builder
-
     public function index()
     {
         $filter = QueryBuilder::for(Tasks::class)
