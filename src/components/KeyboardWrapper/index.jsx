@@ -24,24 +24,34 @@ export const KeyboardWrapper = ({
   const [rhft_active, set_rhft_active] = useState(false) // right hand thumb finger
   const { language } = useSelector((state) => state.DataReducer);
 
+  // перенести буквы в редьюсер, добавить подгрузку в зависимости от языка
+  const lhfl_letters = "ё12йфя"
+  const lhfr_letters = "3цыч"
+  const lhfm_letters = "4увс"
+  const lhfi_letters = "56кеапми"
+  const rhfl_letters = "0-=зхъжэ.\\"
+  const rhfr_letters = "9щдю"
+  const rhfm_letters = "8шлб"
+  const rhfi_letters = "7нгроть"
+  const rhft_letters = ""
 
   useEffect(() => {
     if (!currentLetter) return;
-    if ("ё12йфя".includes(currentLetter)) {
+    if (lhfl_letters.includes(currentLetter)) {
       set_lhfl_active(true);
-    } else if ("3цыч".includes(currentLetter)) {
+    } else if (lhfr_letters.includes(currentLetter)) {
       set_lhfr_active(true);
-    } else if ("4увс".includes(currentLetter)) {
+    } else if (lhfm_letters.includes(currentLetter)) {
       set_lhfm_active(true);
-    } else if ("56кеапми".includes(currentLetter)) {
+    } else if (lhfi_letters.includes(currentLetter)) {
       set_lhfi_active(true);
-    } else if ("7нгроть".includes(currentLetter)) {
+    } else if (rhfi_letters.includes(currentLetter)) {
       set_rhfi_active(true);
-    } else if ("8шлб".includes(currentLetter)) {
+    } else if (rhfm_letters.includes(currentLetter)) {
       set_rhfm_active(true);
-    } else if ("9щдю".includes(currentLetter)) {
+    } else if (rhfr_letters.includes(currentLetter)) {
       set_rhfr_active(true);
-    } else if ("0-=зхъжэ.\\".includes(currentLetter)) {
+    } else if (rhfl_letters.includes(currentLetter)) {
       set_rhfl_active(true);
     } else if (currentLetter === " ") {
       set_rhft_active(true);
@@ -50,21 +60,21 @@ export const KeyboardWrapper = ({
 
   useEffect(() => {
     if (!prevLetter) return;
-    if ("ё12йфя".includes(prevLetter)) {
+    if (lhfl_letters.includes(prevLetter) && !lhfl_letters.includes(currentLetter)) {
       set_lhfl_active(false);
-    } else if ("3цыч".includes(prevLetter)) {
+    } else if (lhfr_letters.includes(prevLetter) && !lhfr_letters.includes(currentLetter)) {
       set_lhfr_active(false);
-    } else if ("4увс".includes(prevLetter)) {
+    } else if (lhfm_letters.includes(prevLetter) && !lhfm_letters.includes(currentLetter)) {
       set_lhfm_active(false);
-    } else if ("56кеапми".includes(prevLetter)) {
+    } else if (lhfi_letters.includes(prevLetter) && !lhfi_letters.includes(currentLetter)) {
       set_lhfi_active(false);
-    } else if ("7нгроть".includes(prevLetter)) {
+    } else if (rhfi_letters.includes(prevLetter) && !rhfi_letters.includes(currentLetter)) {
       set_rhfi_active(false);
-    } else if ("8шлб".includes(prevLetter)) {
+    } else if (rhfm_letters.includes(prevLetter) && !rhfm_letters.includes(currentLetter)) {
       set_rhfm_active(false);
-    } else if ("9щдю".includes(prevLetter)) {
+    } else if (rhfr_letters.includes(prevLetter)) {
       set_rhfr_active(false);
-    } else if ("0-=зхъжэ.\\".includes(prevLetter)) {
+    } else if (rhfl_letters.includes(prevLetter) && !rhfl_letters.includes(currentLetter)) {
       set_rhfl_active(false);
     } else if (currentLetter === " ") {
       set_rhft_active(false);
