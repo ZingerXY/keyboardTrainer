@@ -1,21 +1,32 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import GraphStyles from './Graph.module.scss';
 import Graph from "./graph/Graph";
 import {NavLink, useLocation} from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
-import {data as accuracyGraphData} from './graph/graphsData/accuracyGraph';
-import {data as errorGraphData} from './graph/graphsData/errorGraph';
-import {data as speedGraphData} from './graph/graphsData/speedGraph';
 import { useGetStatsData } from "../../hooks/useGetStatsData";
+import Selector from '../Selector/Selector';
+import { CircularProgress } from '@mui/material';
 
 const GraphComponent = () => {
     const location = useLocation();
     const {loading, data} = useGetStatsData();
+    const [datePeriod, setDatePeriod] = useState('За всё время');
+    const [openedSelector, setOpenedSelector] = useState('');
 
     return (
     <div className={GraphStyles.statistics_draw}>
         <h1 className={GraphStyles.statistics_draw_header}>Графики</h1>
         <div className={GraphStyles.statistics_draw_part}>
+            <div className={GraphStyles.selector_box}>
+                <Selector
+                    fields={['За всё время', 'За 3 месяца', 'За месяц']}
+                    onClickFunction={setDatePeriod}
+                    heading={datePeriod}
+                    setOpenedSelector={setOpenedSelector}
+                    name={'datePeriod'}
+                    openedSelector={openedSelector}
+                />
+            </div>
             <div className={GraphStyles.statistics_draw_selection}>
                 <NavLink
                     className={({ isActive }) =>
@@ -68,7 +79,9 @@ const GraphComponent = () => {
                             />
                         } />
                     </Routes > :
-                    null
+                    <CircularProgress style={{
+                        color: '#006D4C'
+                    }} />
                 }
                 
             </div>

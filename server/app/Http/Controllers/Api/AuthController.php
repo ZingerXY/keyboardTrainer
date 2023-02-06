@@ -34,9 +34,10 @@ class AuthController extends Controller
         } catch (\Illuminate\Database\QueryException $exception) {
             if ($exception->errorInfo[1] === 1062) {
                 return ['err' => 'Пользователь с этой почтой уже существует, попробуйте войти в аккаунт'];
-            };
+            }
+            return ['err' => 'Что-то пошло не так..'];
         }
-        return ['err' => 'Что-то пошло не так..'];
+        // return ['err' => 'Что-то пошло не так..'];
     }
 
     public function logout()
