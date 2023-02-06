@@ -14,9 +14,16 @@ class TasksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    // GET api/tasks?filter[difficulty]=1&filter[task_type]=Слова
+    //composer require spatie/laravel-query-builder
+
     public function index()
     {
-        return TasksResource::collection(Tasks::all());
+        $filter = QueryBuilder::for(Tasks::class)
+        ->allowedFilters(['difficulty','task_type'])
+        ->get();
+        return $filter;
     }
 
     /**
@@ -63,11 +70,5 @@ class TasksController extends Controller
     {
         //
     }
-    public function sort($id)
-    {
-     $filter =DB::table('tasks')->select('task','task_description','task_type')
-     ->where('difficulty', '=', $id)
-     ->get();
-     return $filter;
-    }
+
 }
