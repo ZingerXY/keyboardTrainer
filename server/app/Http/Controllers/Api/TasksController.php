@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\TasksResource;
 use Illuminate\Support\Facades\DB;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class TasksController extends Controller
 {
@@ -14,9 +15,13 @@ class TasksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        return TasksResource::collection(Tasks::all());
+        $filter = QueryBuilder::for(Tasks::class)
+        ->allowedFilters(['difficulty','task_type','lang'])
+        ->get();
+        return $filter;
     }
 
     /**
@@ -63,11 +68,5 @@ class TasksController extends Controller
     {
         //
     }
-    public function sort($id)
-    {
-     $filter =DB::table('tasks')->select('task','task_description','task_type')
-     ->where('difficulty', '=', $id)
-     ->get();
-     return $filter;
-    }
+
 }
