@@ -54,4 +54,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 *  `api/tasks?filter[difficulty]=1&filter[task_type]=Слова` - получить страницу с отсортированными заданиями по сложности и типу
 *  `api/tasks?filter[difficulty]=1` - получить страницу с отсортированными заданиями по сложности
-*  `api/tasks?filter[task_type]=Слова` - получить страницу с отсортированными заданиями по типу
+*  `api/tasks?filter[task_type]=Слова` - получить страницу с отсортированными заданиями по типу "Слова"
+*  `api/tasks?filter[lang]=eng` - получить страницу с отсортированными заданиями по английскому языку
