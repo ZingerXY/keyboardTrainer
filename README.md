@@ -44,10 +44,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 * `/api/users` - получить всех пользователей
 * `/api/users/%id пользователя%` - получить пользователя по id
 
-*  `api/users?filter[username]=Jamal&filter[id]=1&filter[email]=sed.sem.egestas@google.org&filter[created_at]=2022-07-03  ` - получить страницу с отсортированными пользователями по id,username,email,created_at 
-*  `api/users?filter[username]=Jamal` - получить страницу с отсортированными заданиями по сложности
-*  `api/users?filter[email]=sed.sem.egestas@google.org` - получить страницу с отсортированными пользователями по email
-*  `api/users?filter[created_at]=2022-07-03 19:42:02` - получить страницу с отсортированными пользователями по created_at
+*  `api/users?filter[username]=Jamal&filter[id]=1&filter[email]=sed.sem.egestas@google.org&filter[created_at]=2022-07-03  ` - получить страницу с отсортированным пользователем по id,username,email,created_at 
+*  `api/users?filter[username]=Jamal` - получить страницу с отсортированным пользователем по имени
+*  `api/users?filter[email]=sed.sem.egestas@google.org` - получить страницу с отсортированным пользователем по email
+*  `api/users?filter[created_at]=2022-07-03 19:42:02` - получить страницу с отсортированным пользователем по created_at
 
 
 * `/api/stats` - получить всю статистику
