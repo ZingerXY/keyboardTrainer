@@ -14,11 +14,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+
     public function index()
     {
         $filter = QueryBuilder::for(User::class)
-        ->allowedFilters(['username','email','created_at'])
+        ->allowedFilters(['id','username','email','created_at'])
         ->get();
         return UserResource::collection($filter);
     }
