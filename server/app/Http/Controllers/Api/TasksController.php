@@ -16,13 +16,18 @@ class TasksController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    // GET api/tasks?filter[difficulty]=1&filter[task_type]=Слова
+    // GET api/tasks?filter[lang]=eng&filter[task_type]=База
+    //composer require spatie/laravel-query-builder
+
     public function index()
     {
         $filter = QueryBuilder::for(Tasks::class)
         ->allowedFilters(['difficulty','task_type','lang'])
         ->get();
-        return $filter;
+        return TasksResource::collection($filter);
     }
+
 
     /**
      * Store a newly created resource in storage.
