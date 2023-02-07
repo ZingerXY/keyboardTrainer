@@ -30,6 +30,7 @@ const Task = ({ taskSettings, goToTasks }) => {
                 <ResultModalWindow
                     setIsStringFinished={setIsStringFinished}
                     typeSpeed={typeSpeed}
+                    goToTasks={goToTasks}
                 />
             }
             <div className={`${Style["task-page"]} container`}>
