@@ -19,7 +19,7 @@ class TasksController extends Controller
     public function index()
     {
         $filter = QueryBuilder::for(Tasks::class)
-        ->allowedFilters(['difficulty','task_type'])
+        ->allowedFilters(['difficulty','task_type','lang'])
         ->get();
         return $filter;
     }
