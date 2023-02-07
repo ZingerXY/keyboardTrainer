@@ -5,20 +5,23 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return AnonymousResourceCollection
+     * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
-        return UserResource::collection(User::all()) ;
+        $filter = QueryBuilder::for(User::class)
+        ->allowedFilters(['username','email','created_at'])
+        ->get();
+        return UserResource::collection($filter);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -27,18 +30,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param $id
-     * @return UserResource
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function show($id): UserResource
+    public function show($id)
     {
-        return new UserResource(User::findOrFail($id));
+        return new UserResource(User::findOrFail($id)) ;
     }
 
     /**
@@ -63,4 +66,5 @@ class UserController extends Controller
     {
         //
     }
+
 }
