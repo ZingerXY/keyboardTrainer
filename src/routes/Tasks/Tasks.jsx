@@ -49,7 +49,10 @@ const Tasks = () => {
   const loadPost = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`https://kangaroo.zingery.ru/api/tasks`);
+      const response = await fetch(
+        `https://kangaroo.zingery.ru/api/tasks?filter[lang]=${language === "English" ? "eng" : "ru"
+        }`
+      );
       const json = await response.json();
 
       const filterTypes = getCollectedFilters();
@@ -95,7 +98,7 @@ const Tasks = () => {
 
   useEffect(() => {
     loadPost();
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     if (!initialTasks.length) return;
@@ -276,24 +279,29 @@ const Tasks = () => {
               </div> */}
             </div>
           </form>
-          <div className={`${Style["cards-box"]}`}>
-            {tasksWithPagination.map((el) => (
-              <Card
-                {...el}
-                key={el.id}
-                myKey={el.id}
-                state={setTaskActive}
-                setTaskOption={setTaskOption}
-              />
-            ))}
-          </div>
+          {tasksWithPagination?.length ? (
+            <div className={`${Style["cards-box"]}`}>
+              {tasksWithPagination.map((el) => (
+                <Card
+                  {...el}
+                  key={el.id}
+                  myKey={el.id}
+                  state={setTaskActive}
+                  setTaskOption={setTaskOption}
+                />
+              ))}
+              <div className={`${Style["Pagination"]} container`}>
+                <BasicPagination
+                  onPageChange={handlePageChange}
+                  {...paginationInfo}
+                />
+              </div>
+            </div>
+          ) : (
+            <div className={`${Style["cards-box-empty"]}`}><p>Нет заданий</p></div>
+          )}
         </div>
-        <div className={`${Style["Pagination"]} container`}>
-          <BasicPagination
-            onPageChange={handlePageChange}
-            {...paginationInfo}
-          />
-        </div>
+
       </div>
     );
   }
