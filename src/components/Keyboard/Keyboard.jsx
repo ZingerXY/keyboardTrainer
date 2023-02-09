@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 
 import Style from "./Keyboard.module.scss";
 import { useSelector } from "react-redux";
-import {generateKeyboard} from '../../lib/keyboard/generateKeyboard';
+import { generateKeyboard } from '../../lib/keyboard/generateKeyboard';
 
 const Keyboard = ({
   lhfl_active,
@@ -39,8 +39,8 @@ const Keyboard = ({
     { name: keys.firstLine[8], classNames: `${Style["key"]} ${Style["key-or"]}` },
     { name: keys.firstLine[9], classNames: `${Style["key"]} ${Style["key-ye"]}` },
     { name: keys.firstLine[10], classNames: `${Style["key"]} ${Style["key-gr"]}` },
-    { name:keys.firstLine[11], classNames: `${Style["key"]} ${Style["key-gr"]}` },
-    { name:keys.firstLine[12], classNames: `${Style["key"]} ${Style["key-gr"]}` },
+    { name: keys.firstLine[11], classNames: `${Style["key"]} ${Style["key-gr"]}` },
+    { name: keys.firstLine[12], classNames: `${Style["key"]} ${Style["key-gr"]}` },
     { name: 'Backspace', value: 'Backspace', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["delete"]}` },
     { name: 'Tab', value: 'Tab', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["tab"]}` },
     { name: keys.secondLine[0], classNames: `${Style["key"]} ${Style["key-or"]}` },
@@ -52,10 +52,10 @@ const Keyboard = ({
     { name: keys.secondLine[6], classNames: `${Style["key"]} ${Style["key-pi"]}` },
     { name: keys.secondLine[7], classNames: `${Style["key"]} ${Style["key-or"]}` },
     { name: keys.secondLine[8], classNames: `${Style["key"]} ${Style["key-ye"]}` },
-    { name: keys.secondLine[9],  classNames: `${Style["key"]} ${Style["key-gr"]}` },
+    { name: keys.secondLine[9], classNames: `${Style["key"]} ${Style["key-gr"]}` },
     { name: keys.secondLine[10], classNames: `${Style["key"]} ${Style["key-gr"]}` },
     { name: keys.secondLine[11], classNames: `${Style["key"]} ${Style["key-gr"]}` },
-    { name: '', value: '', classNames: `${Style["key"]} ${Style["ctrl"]} ${Style["key-words"]} ${Style["backslash"]}` },
+    { name: '/', value: '/', classNames: `${Style["key"]} ${Style["ctrl"]} ${Style["key-words"]} ${Style["backslash"]}` },
     { name: 'CapsLock', value: '', classNames: `${Style["key"]} ${Style["key-words"]} ${Style["capslock"]}` },
     { name: keys.thirdLine[0], classNames: `${Style["key"]} ${Style["key-or"]}` },
     { name: keys.thirdLine[1], classNames: `${Style["key"]} ${Style["key-ye"]}` },
@@ -101,7 +101,7 @@ const Keyboard = ({
 
   useEffect(() => {
     const keys = generateKeyboard(language_keys);
-   
+
     setKeys(keys)
   }, [language]);
 
@@ -117,11 +117,11 @@ const Keyboard = ({
       <div className={`${Style["keyboard-base"]}`}>
         {keybordKeys.map(
           ({ name, value, classNames }, index) =>
-          <div
-            key={index}
-            className={`${checkKeyIsActive(name, value) ? Style["active"] : ''} ${classNames}`}>
-            {name}
-          </div>)
+            <div
+              key={index}
+              className={`${checkKeyIsActive(name, value) ? Style["active"] : ''} ${classNames}`}>
+              {name}
+            </div>)
         }
       </div>
       <div className={`${Style["hand"]}`}>
