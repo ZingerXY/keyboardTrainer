@@ -23,7 +23,7 @@ const Tasks = () => {
   const [initialTasks, setInitialTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [tasksWithPagination, setTasksWithPagination] = useState([]);
-  const [taskOption, setTaskOption] = useState("");
+  const [taskOption, setTaskOption] = useState({description: "", name: "Задание"});
   const [taskActive, setTaskActive] = useState(false);
   const [sort, setSort] = useState("Сначала легкие");
   const [base, setBase] = useState(true);
@@ -156,7 +156,8 @@ const Tasks = () => {
       <Task
         goToTasks={() => setTaskActive(false)}
         taskSettings={{
-          description: taskOption,
+          name: taskOption.name,
+          description: taskOption.description,
           amount: 7,
         }}
       />
@@ -287,6 +288,7 @@ const Tasks = () => {
                   key={el.id}
                   myKey={el.id}
                   state={setTaskActive}
+                  taskOption={taskOption}
                   setTaskOption={setTaskOption}
                 />
               ))}
