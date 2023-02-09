@@ -44,7 +44,7 @@ const Task = ({ taskSettings, goToTasks }) => {
                 <WarningDisplay />
                 <div className={`${Style["task-card"]}`}>
                     <div className={`${Style["task-card_leftpart"]}`}>
-                        <div className={`${Style["task-title"]}`}>Задание <span className={`${Style["task-title_number"]}`}>#1</span></div>
+                        <div className={`${Style["task-title"]}`}>{taskSettings.name}</div>
                         <div className={`${Style["task-info"]}`}><p>Количество ошибок:</p><span className={`${Style["task-info_mistakes"]}`}>{uncorrect}</span></div>
                         <div className={`${Style["task-info"]}`}><p>Текущая скорость:</p><span className={`${Style["task-info_speed"]}`}>{typeSpeed}</span></div>
                         <div className={`${Style["task-info"]}`}><p>Время:</p><span className={`${Style["task-info_time"]}`}>{minutes}:{`${seconds < 10 ? '0' : ''}`}{seconds}</span></div>

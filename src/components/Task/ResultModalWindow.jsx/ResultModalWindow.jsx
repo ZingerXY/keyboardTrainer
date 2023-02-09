@@ -8,7 +8,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 const ResultModalComponent = ({
     setIsStringFinished,
     typeSpeed,
-    goToTasks
+    goToTasks,
   }) => {
   const { uncorrect } = useSelector((state) => state.DataReducer);
   const { seconds, minutes } = useSelector((state) => state.TimeReducer);
@@ -16,7 +16,7 @@ const ResultModalComponent = ({
   return (
     <div className={`${ResultModalWindowStyles.container}`}>
         <ArrowBackIcon onClick={() => goToTasks()}/>
-        <div className={`${TaskStyle["task-title"]}`}>Задание <span className={`${TaskStyle["task-title_number"]}`}>#1</span></div>
+        <div className={`${TaskStyle["task-info"]}`}>Результаты</div>
         <div className={`${TaskStyle["task-info"]}`}><p>Количество ошибок:</p><span className={`${TaskStyle["task-info_mistakes"]}`}>{uncorrect}</span></div>
         <div className={`${TaskStyle["task-info"]}`}><p>Текущая скорость:</p><span className={`${TaskStyle["task-info_speed"]}`}>{typeSpeed}</span></div>
         <div className={`${TaskStyle["task-info"]}`}><p>Время:</p><span className={`${TaskStyle["task-info_time"]}`}>{minutes}:{`${seconds < 10 ? '0' : ''}`}{seconds}</span></div>
