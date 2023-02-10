@@ -6,11 +6,11 @@ import 'reactjs-popup/dist/index.css';
 
 
 const Footer = () => {
-
+  const today = new Date();
   return (
     <footer className={`${Style["App-footer"]} `}>
       <div className={`${Style["footer"]} container`}>
-        <p className={`${Style["footer_text"]}`}>2022&nbsp;&mdash; Дипломный проект &laquo;Клавиатурный&nbsp;тренажер&raquo;</p>
+        <p className={`${Style["footer_text"]}`}>{today.getFullYear()}&nbsp;&mdash; Дипломный проект &laquo;Клавиатурный&nbsp;тренажер&raquo;</p>
         <div className={`${Style["socialicons"]}`}>
           <div className={`${Style["socialicons_links"]}`}>
 
@@ -24,7 +24,6 @@ const Footer = () => {
                   boxShadow: "none",
                   left: "0px",
                   bottom: "1px",
-                  left: "0px",
                   width: "100%",
                   margin: "0 auto",
                   display: "flex",
@@ -69,5 +68,6 @@ const Footer = () => {
     </footer>
   );
 };
+
 
 export default Footer
