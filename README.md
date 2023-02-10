@@ -58,15 +58,18 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 * `/api/tasks?filter[task_type]=Слова` - получить страницу с отсортированными заданиями по типу "Слова"
 * `/api/tasks?filter[lang]=eng` - получить страницу с отсортированными заданиями по английскому языку
 
+<hr/>
+
 ## Регистрация :
 
 > Нужно откатить все пулы связанные с регистрацией ... чтобы все работало корректно
+
 ```
- composer require laravel/ui
- php artisan ui bootstrap
- php artisan ui bootstrap --auth
- npm install && npm run dev
- php artisan migrate
+composer require laravel/ui
+php artisan ui bootstrap
+php artisan ui bootstrap --auth
+npm install && npm run dev
+php artisan migrate
 ```
 * /register - регистрация
 * /login - вход
