@@ -61,9 +61,6 @@ CREATE TABLE `users` (
 INSERT INTO `statistics` (`player_id`,`task_id`,`time`,`typed_characters`,`number_of_errors`,`Accuracy`,`dial_speeds`,`created_at`)
 
 
-INSERT INTO `statistics` (`player_id`,`task_id`,`time`,`typed_characters`,`number_of_errors`,`Accuracy`,`dial_speeds`)
-
-
 VALUES
   (11,6,7145,225,362,57,896,"2022-05-06 13:43:11"),
   (8,16,9083,781,941,21,893,"2023-11-13 20:47:13"),
@@ -137,9 +134,6 @@ VALUES
 
   ("UPPERCASE letters",4,"Anna April Okhta Operation Y Volga Vitya ORT Lida Lithuania Joe Denis Fedya France Zhenya Zhiguli Eva Europe Nadia NATO Poland Prokhor Rome Raya Mir Mir Irtysh India Tikhvin TNT Katya KGB Greece GDR USA Borya Bucharest Ufa Uruguay Tsar Circus York Yod Schwartz Schubert Schors Shield Zuhra ZIL Kharkaov Elsa Ethiopia Yura South Africa Chelobrek PE Yasha Japan Alice Butthead Vasya Gleb Decl Elena Zhuk Zaporozhets Ivan Yoshkin The Cat Lisa Milen NTV Olga Petya Rimbaud CIS Tymutarakan Uryupinsk Germany Holmes Cent Charles Shishkin Pike Estonia Jupiter Yasen Donut Sergey","Буквы","eng");
 
-INSERT INTO `users` (`name`,`email`,`password`,`created_at`)
-
-  ("UPPERCASE letters",4,"Anna April Okhta Operation Y Volga Vitya ORT Lida Lithuania Joe Denis Fedya France Zhenya Zhiguli Eva Europe Nadia NATO Poland Prokhor Rome Raya Mir Mir Irtysh India Tikhvin TNT Katya KGB Greece GDR USA Borya Bucharest Ufa Uruguay Tsar Circus York Yod Schwartz Schubert Schors Shield Zuhra ZIL Kharkov Elsa Ethiopia Yura South Africa Chelobrek PE Yasha Japan Alice Butthead Vasya Gleb Decl Elena Zhuk Zaporozhets Ivan Yoshkin The Cat Lisa Milen NTV Olga Petya Rimbaud CIS Tymutarakan Uryupinsk Germany Holmes Cent Charles Shishkin Pike Estonia Jupiter Yasen Donut Sergey","Буквы","eng");
 
 INSERT INTO `users` (`username`,`email`,`password`,`created_at`)
 
