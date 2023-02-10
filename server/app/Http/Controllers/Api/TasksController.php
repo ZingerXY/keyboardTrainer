@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\TasksResource;
 use Illuminate\Support\Facades\DB;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class TasksController extends Controller
 {
@@ -14,11 +15,19 @@ class TasksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    // GET api/tasks?filter[difficulty]=1&filter[task_type]=Слова
+    // GET api/tasks?filter[lang]=eng&filter[task_type]=База
+    //composer require spatie/laravel-query-builder
+
     public function index()
     {
-        $tasks = Tasks::paginate(10);
-        return TasksResource::collection($tasks);
+        $filter = QueryBuilder::for(Tasks::class)
+        ->allowedFilters(['difficulty','task_type','lang'])
+        ->get();
+        return TasksResource::collection($filter);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -64,11 +73,5 @@ class TasksController extends Controller
     {
         //
     }
-    public function sort($id)
-    {
-     $filter =DB::table('tasks')->select('task','task_description','task_type')
-     ->where('difficulty', '=', $id)
-     ->get();
-     return $filter;
-    }
+
 }
