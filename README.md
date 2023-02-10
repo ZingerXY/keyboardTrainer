@@ -68,4 +68,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 * npm install && npm run dev
 * php artisan migrate
 
+* /register - регистрация
+* /login - вход
+* после регистрации или входа будет просиходить редирект на страницу /home нужно будет изменить на страницу(роут) например /
+
 * можешь столкнуться с ошибками в роутах ,исправь и все будет норм
