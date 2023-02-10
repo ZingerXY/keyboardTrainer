@@ -16,7 +16,19 @@ class StatsController extends Controller
      */
     public function index()
     {
-        return StatsResource::collection(Statistics::all()) ; 
+        $stats = StatsResource::collection( Statistics::orderBy('dial_speeds','DESC')->get() );
+        $avg_dial_speeds = Statistics::avg('dial_speeds') ;
+        $avg_accuracy = Statistics::avg('accuracy') ;
+        $avg_number_of_errors = Statistics::avg('number_of_errors') ;
+
+        return response()->json([
+            'status' => true,
+            'avg_dial_speeds' => round($avg_dial_speeds),
+            'avg_accuracy' => round($avg_accuracy),
+            'avg_number_of_errors' => round($avg_number_of_errors),
+            'stats' => $stats,
+        ]);
+        
     }
 
     /**
@@ -38,7 +50,7 @@ class StatsController extends Controller
      */
     public function show($id)
     {
-        return new StatsResource(Statistics::findOrFail($id)) ; 
+        return new StatsResource(Statistics::findOrFail($id)); 
     }
 
     /**

@@ -5,8 +5,12 @@ import { KeyboardWrapper } from "../KeyboardWrapper";
 import { useSelector } from "react-redux";
 import WarningDisplay from "../WarningDisplay/WarningDisplay";
 import ResultModalWindow from './ResultModalWindow.jsx/ResultModalWindow';
+import Button from '@mui/material/Button';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-const Task = ({taskSettings}) => {
+
+
+const Task = ({ taskSettings, goToTasks }) => {
     const { uncorrect, correct } = useSelector((state) => state.DataReducer);
     const { seconds, minutes } = useSelector((state) => state.TimeReducer);
     const [typeSpeed, setTypeSpeed] = useState(0);
@@ -20,16 +24,22 @@ const Task = ({taskSettings}) => {
         }
     }, [seconds])
 
-
     return (
         <>
-            {isStringFinished && 
+            {isStringFinished &&
                 <ResultModalWindow
                     setIsStringFinished={setIsStringFinished}
                     typeSpeed={typeSpeed}
                 />
             }
             <div className={`${Style["task-page"]} container`}>
+                <Button
+                    variant="contained"
+                    onClick={() => goToTasks()}
+                    className={`${Style["back_button"]}`}
+                >
+                    <ArrowBackIcon />
+                </Button>
                 <WarningDisplay />
                 <div className={`${Style["task-card"]}`}>
                     <div className={`${Style["task-card_leftpart"]}`}>

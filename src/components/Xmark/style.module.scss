@@ -1,6 +1,8 @@
 .Xmark {
-  display: grid;
-  justify-content: end;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  transform: scale(1.5);
 }
 
 .X {
