@@ -60,16 +60,16 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Регистрация :
 
-* Нужно откатить все пулы связанные с регистрацией ... чтобы все работало корректно
-
-* composer require laravel/ui
-* php artisan ui bootstrap
-* php artisan ui bootstrap --auth
-* npm install && npm run dev
-* php artisan migrate
-
+> Нужно откатить все пулы связанные с регистрацией ... чтобы все работало корректно
+```
+ composer require laravel/ui
+ php artisan ui bootstrap
+ php artisan ui bootstrap --auth
+ npm install && npm run dev
+ php artisan migrate
+```
 * /register - регистрация
 * /login - вход
 * после регистрации или входа будет просиходить редирект на страницу /home нужно будет изменить на страницу(роут) например /
 
-* можешь столкнуться с ошибками в роутах ,исправь и все будет норм
+> можешь столкнуться с ошибками в роутах ,исправь и все будет норм
