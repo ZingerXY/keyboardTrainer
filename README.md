@@ -57,3 +57,15 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 * `/api/tasks?filter[difficulty]=1` - получить страницу с отсортированными заданиями по сложности
 * `/api/tasks?filter[task_type]=Слова` - получить страницу с отсортированными заданиями по типу "Слова"
 * `/api/tasks?filter[lang]=eng` - получить страницу с отсортированными заданиями по английскому языку
+
+## Регистрация :
+
+* Нужно откатить все пулы связанные с регистрацией ... чтобы все работало корректно
+
+* composer require laravel/ui
+* php artisan ui bootstrap
+* php artisan ui bootstrap --auth
+* npm install && npm run dev
+* php artisan migrate
+
+* можешь столкнуться с ошибками в роутах ,исправь и все будет норм
