@@ -23,7 +23,7 @@ const Tasks = () => {
   const [initialTasks, setInitialTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [tasksWithPagination, setTasksWithPagination] = useState([]);
-  const [taskOption, setTaskOption] = useState({description: "", name: "Задание"});
+  const [taskOption, setTaskOption] = useState({ description: "", name: "Задание" });
   const [taskActive, setTaskActive] = useState(false);
   const [sort, setSort] = useState("Сначала легкие");
   const [base, setBase] = useState(true);
@@ -41,7 +41,7 @@ const Tasks = () => {
   };
   const [isLoading, setLoading] = useState(false);
   const [paginationInfo, setPaginationInfo] = useState({
-    limit: 6,
+    limit: 8,
     page: 1,
     totalItems: 0,
   });
