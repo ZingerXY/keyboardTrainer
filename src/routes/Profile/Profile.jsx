@@ -9,6 +9,7 @@ const Profile = () => {
     const [userId, setUserId] = useState(1); // далее будет корректный Id текущего пользователя
     const [userUsername, setUsername] = useState('');
     const [userEmail, setEmail] = useState('');
+    const [userCreatedAt, setCreatedAt] = useState('');
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
 
@@ -37,6 +38,7 @@ const Profile = () => {
                 setUserId(data.data.id);
                 setUsername(data.data.username);
                 setEmail(data.data.email);
+                setCreatedAt(new Date(data.data.created_at).toLocaleDateString());
                 setOldPassword('');
                 setNewPassword('');
             })
@@ -90,8 +92,6 @@ const Profile = () => {
     }
 
     const addError = (elem, errorMsg) => {
-        removeErrors();
-        
         let elemError = document.createElement('p');
         elemError.textContent = errorMsg;
         elemError.id = 'error-msg';
@@ -109,32 +109,59 @@ const Profile = () => {
         }
     }
 
-    const handleFormChange = (e) => {
-        e.preventDefault();
-        let profileForm = document.forms.profile;
-        let profileFormElements = profileForm.elements;
+    const validPassword = (password) => {
+        const pattern = new RegExp(`(?=.*[0-9])(?=.*[A-Za-z])[0-9a-zA-Z]{6,}`);
+
+        return pattern.test(password);
+    }
+
+    const formDataValidation = () => {
+        const profileFormElements = document.forms.profile.elements;
+
+        let valid = true;
+        let errorMessages = [];
 
         if (profileFormElements.newPassword.value) {
-            if (profileFormElements.oldPassword.value) {
-                // здесь должен быть запрос в бэк на провреку совпадения hash
-                // пока будет заглушка на то, что они не совпали
-                addError(
-                    profileFormElements.oldPassword,
-                    "не верный старый пароль"
-                );
+            if (!profileFormElements.oldPassword.value) {
+                valid = false;
+                errorMessages.push({
+                    target: profileFormElements.oldPassword,
+                    message: "Для смены пароля укажите старый"
+                });
+            }
 
-                return;
-            } else {
-                addError(
-                    profileFormElements.oldPassword,
-                    "для смены пароля введите старый"
-                );
-
-                return;
+            if (!validPassword(profileFormElements.newPassword.value)) {
+                valid = false;
+                errorMessages.push({
+                    target: profileFormElements.newPassword,
+                    message: "Пароль должен состоять минимум из 6 цифр и латинских букв"
+                });
             }
         }
 
-        switchIsChange();
+        return {
+            valid: valid,
+            errors: errorMessages
+        }
+    }
+
+    const handleFormChange = (e) => {
+        e.preventDefault();
+        removeErrors();
+
+        const validation = formDataValidation();
+
+        if (validation.valid) {
+            switchIsChange();
+            return;
+        }
+
+        validation.errors.forEach(element => {
+            addError(
+                element.target,
+                element.message
+            )
+        })
     }
 
     const handleFormChangeCancel = (e) => {
@@ -182,15 +209,8 @@ const Profile = () => {
                                         <p className={`${Style["profile-data"]}`}>{userEmail}</p>
                                     </div>
                                     <div className={`${Style["profile-user_info"]}`}>
-                                        <p className={`${Style["profile-label"]}`}>Пароль:</p>
-                                        <p className={`${Style["profile-data"]}`}>
-                                            <i className={`fa fa-solid fa-circle fa-xs ${Style["fa-circle"]}`}></i>
-                                            <i className={`fa fa-solid fa-circle fa-xs ${Style["fa-circle"]}`}></i>
-                                            <i className={`fa fa-solid fa-circle fa-xs ${Style["fa-circle"]}`}></i>
-                                            <i className={`fa fa-solid fa-circle fa-xs ${Style["fa-circle"]}`}></i>
-                                            <i className={`fa fa-solid fa-circle fa-xs ${Style["fa-circle"]}`}></i>
-                                            <i className={`fa fa-solid fa-circle fa-xs ${Style["fa-circle"]}`}></i>
-                                        </p>
+                                        <p className={`${Style["profile-label"]}`}>Дата регистрации:</p>
+                                        <p className={`${Style["profile-data"]}`}>{userCreatedAt}</p>
                                     </div>
                                 </div>
 
