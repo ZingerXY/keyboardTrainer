@@ -23,7 +23,7 @@ const Tasks = () => {
   const [initialTasks, setInitialTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [tasksWithPagination, setTasksWithPagination] = useState([]);
-  const [taskOption, setTaskOption] = useState({description: "", name: "Задание"});
+  const [taskOption, setTaskOption] = useState({description: "", name: "Задание", type: "База", level: 0});
   const [taskActive, setTaskActive] = useState(false);
   const [sort, setSort] = useState("Сначала легкие");
   const [base, setBase] = useState(true);
@@ -157,6 +157,8 @@ const Tasks = () => {
         goToTasks={() => setTaskActive(false)}
         taskSettings={{
           name: taskOption.name,
+          type: taskOption.type,
+          level: taskOption.level,
           description: taskOption.description,
           amount: 7,
         }}
@@ -240,44 +242,6 @@ const Tasks = () => {
                 name={"language"}
                 openedSelector={openedSelector}
               />
-              {/* <div
-                className={`${Style["__select"]} ${selectState ? Style["__select_active"] : ""
-                  }`}
-                onClick={selectOpen}
-              >
-                <div className={`${Style["__select__title"]}`}>{sort.text}</div>
-                <div className={`${Style["__select__content"]}`}>
-                  <input
-                    id="singleSelect0"
-                    className={`${Style["__select__input"]}`}
-                    type="radio"
-                    name="singleSelect"
-                    defaultChecked={true}
-                  />
-                  <label
-                    htmlFor="singleSelect0"
-                    tabIndex="0"
-                    className={`${Style["__select__label"]}`}
-                    onClick={(e) => selectChange("desc", "Сначала легкие", e)}
-                  >
-                    Сначала легкие
-                  </label>
-                  <input
-                    id="singleSelect1"
-                    className={`${Style["__select__input"]}`}
-                    type="radio"
-                    name="singleSelect"
-                  />
-                  <label
-                    htmlFor="singleSelect1"
-                    tabIndex="0"
-                    className={`${Style["__select__label"]}`}
-                    onClick={(e) => selectChange("asc", "Сначала сложные", e)}
-                  >
-                    Сначала сложные
-                  </label>
-                </div>
-              </div> */}
             </div>
           </form>
           {tasksWithPagination?.length ? (
