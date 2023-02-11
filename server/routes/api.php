@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\Api\TasksController;
-
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\StatsController;
@@ -37,9 +35,6 @@ Route::apiResources([
     'tasks' => TasksController::class,
     'stats' => StatsController::class,
 ]);
-
-
-Route::get("tasks/sort/difficulty/{id}", [TasksController::class,'sort']);
 
 Route::post('/saveAvatar', [UploadFileController::class, 'saveFile']);
 Route::get('/showAvatar', [UploadFileController::class, 'getUrlFile']);

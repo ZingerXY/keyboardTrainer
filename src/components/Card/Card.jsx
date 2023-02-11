@@ -1,13 +1,10 @@
 import React, { useEffect } from "react";
 import { useState } from 'react';
+import Level from "../Level/Level";
 import Style from "./Card.module.scss";
 
 const Card = (props) => {
-  let levelArr = [0, 0, 0, 0, 0];
   const [type, setType] = useState("");
-  for (let i = 0; i < props.difficulty; i++) {
-    levelArr[i] = 1;
-  }
   useEffect(() => {
     switch (props.task_type) {
       case "База":
@@ -31,7 +28,13 @@ const Card = (props) => {
   }, []);
 
   const handlerClick = () => {
-    props.setTaskOption(props.task_description);
+    let task = props.taskOption;
+    task.description = props.task_description;
+    task.name = props.task;
+    task.type = props.task_type;
+    task.level = props.difficulty;
+    
+    props.setTaskOption(task);
     props.state(true);
   };
 
@@ -49,18 +52,7 @@ const Card = (props) => {
       </div>
       <div className={`${Style["card-bottom"]}`}>
         <p className={`${Style["card-level"]}`}>Сложность</p>
-        <ul className={`${Style["card-level-box"]}`}>
-          {levelArr.map((el, id) =>
-            el === 1 ? (
-              <li
-                key={id}
-                className={`${Style["level-point"]} ${Style["level-active"]}`}
-              ></li>
-            ) : (
-              <li key={id} className={`${Style["level-point"]}`}></li>
-            )
-          )}
-        </ul>
+        <Level level={props.difficulty}/>
       </div>
     </div>
   );

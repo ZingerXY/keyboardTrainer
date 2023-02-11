@@ -1,57 +1,57 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import Style from "./Tasks.module.scss";
-import Task from "../../components/Task/Task"
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import Task from "../../components/Task/Task";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import Card from "../../components/Card/Card";
 import BasicPagination from "../../components/Pagination/Pagination";
-import Selector from '../../components/Selector/Selector';
+import Selector from "../../components/Selector/Selector";
 import { useSelector, useDispatch } from "react-redux";
 import { set_language, set_language_keys } from "../../store/data/dataSlice";
 
 const languages = {
-  'English': {
-      topLeftCharacter: '§',
-      keys: `qwertyuiop[]asdfghjkl;'zxcvbnm,./`
+  English: {
+    topLeftCharacter: "§",
+    keys: `qwertyuiop[]asdfghjkl;'zxcvbnm,./`,
   },
-  'Русский': {
-      topLeftCharacter: 'ё', 
-      keys: `йцукенгшщзхъфывапролджэёячсмитьбю/`
-  }
-}
+  Русский: {
+    topLeftCharacter: "ё",
+    keys: `йцукенгшщзхъфывапролджэёячсмитьбю/`,
+  },
+};
 
 const Tasks = () => {
   const [initialTasks, setInitialTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
-  const [taskOption, setTaskOption] = useState("");
+  const [tasksWithPagination, setTasksWithPagination] = useState([]);
+  const [taskOption, setTaskOption] = useState({description: "", name: "Задание", type: "База", level: 0});
   const [taskActive, setTaskActive] = useState(false);
-  const [sort, setSort] = useState('Сначала легкие');
+  const [sort, setSort] = useState("Сначала легкие");
   const [base, setBase] = useState(true);
   const [words, setWords] = useState(true);
   const [letters, setLetters] = useState(true);
   const [punctuation, setPunctuation] = useState(true);
   const [numAndSymbols, setNumAndSymbols] = useState(true);
-  const [openedSelector, setOpenedSelector] = useState('');
+  const [openedSelector, setOpenedSelector] = useState("");
   const { language } = useSelector((state) => state.DataReducer);
   const dispatch = useDispatch();
 
-
   const setLanguage = (language) => {
     dispatch(set_language(language));
-    dispatch(set_language_keys(languages[language]))
-  }
+    dispatch(set_language_keys(languages[language]));
+  };
   const [isLoading, setLoading] = useState(false);
   const [paginationInfo, setPaginationInfo] = useState({
-    limit: 10,
+    limit: 8,
     page: 1,
     totalItems: 0,
-    sort: "asc",
   });
 
-  const loadPost = async (page) => {
+  const loadPost = async () => {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://kangaroo.zingery.ru/api/tasks?page=${page}`
+        `https://kangaroo.zingery.ru/api/tasks?filter[lang]=${language === "English" ? "eng" : "ru"
+        }`
       );
       const json = await response.json();
 
@@ -59,17 +59,14 @@ const Tasks = () => {
 
       setInitialTasks(json.data);
 
-      setFilteredTasks(
-        json.data
-          .filter((el) => filterTypes.includes(el.task_type))
-          .sort(sortTasks)
-      );
+      const filteredTasks = json.data
+        .filter((el) => filterTypes.includes(el.task_type))
+        .sort(sortTasks);
+      setFilteredTasks(filteredTasks);
 
       setPaginationInfo({
         ...paginationInfo,
-        page: json.meta.current_page,
-        totalItems: json.meta.total,
-        limit: json.meta.per_page,
+        totalItems: json.data.length,
       });
     } catch (e) {
       console.log(e);
@@ -77,7 +74,6 @@ const Tasks = () => {
       setLoading(false);
     }
   };
-
 
   const selectChange = (newValue, newText, e) => {
     setSort({ value: newValue, text: newText });
@@ -94,15 +90,15 @@ const Tasks = () => {
     if (letters) filterTypes.push("Буквы");
     if (words) filterTypes.push("Слова");
     if (base) filterTypes.push("База");
-    if (punctuation) filterTypes.push("Пунктуация");
+    if (punctuation) filterTypes.push("Знаки");
     if (numAndSymbols) filterTypes.push("Цифры");
 
     return filterTypes;
   };
 
   useEffect(() => {
-    loadPost(paginationInfo.page);
-  }, []);
+    loadPost();
+  }, [language]);
 
   useEffect(() => {
     if (!initialTasks.length) return;
@@ -116,7 +112,27 @@ const Tasks = () => {
     ];
 
     setFilteredTasks(newTasks);
+    setPaginationInfo({
+      ...paginationInfo,
+      totalItems: newTasks.length,
+      page:
+        newTasks?.length + paginationInfo.limit <
+          paginationInfo.limit * paginationInfo.page
+          ? 1
+          : paginationInfo.page,
+    });
   }, [base, words, letters, punctuation, numAndSymbols, sort]);
+
+  useEffect(() => {
+    if (!filteredTasks.length) return setTasksWithPagination([]);
+
+    setTasksWithPagination(
+      filteredTasks.slice(
+        (paginationInfo.page - 1) * paginationInfo.limit,
+        paginationInfo.page * paginationInfo.limit
+      )
+    );
+  }, [paginationInfo]);
 
   useEffect(() => {
     if (!initialTasks.length) return;
@@ -124,12 +140,13 @@ const Tasks = () => {
     setInitialTasks((prev) => [...prev.sort(sortTasks)]);
   }, [sort]);
 
+  useEffect(() => { }, [openedSelector]);
+
   const handlePageChange = (event, page) => {
     setPaginationInfo({
       ...paginationInfo,
       page,
     });
-    loadPost(page);
   };
 
   if (isLoading) return "Загрузка....";
@@ -139,7 +156,10 @@ const Tasks = () => {
       <Task
         goToTasks={() => setTaskActive(false)}
         taskSettings={{
-          description: taskOption,
+          name: taskOption.name,
+          type: taskOption.type,
+          level: taskOption.level,
+          description: taskOption.description,
           amount: 7,
         }}
       />
@@ -207,79 +227,47 @@ const Tasks = () => {
             <div className={`${Style["form-selector"]}`}>
               <h4 className={`${Style["filters-title"]}`}>Сортировка</h4>
               <Selector
-                fields={['Сначала легкие', 'Сначала сложные']}
+                fields={["Сначала легкие", "Сначала сложные"]}
                 onClickFunction={setSort}
                 heading={sort}
                 setOpenedSelector={setOpenedSelector}
-                name={'sorter'}
+                name={"sorter"}
                 openedSelector={openedSelector}
               />
               <Selector
-                fields={['English', 'Русский']}
+                fields={["English", "Русский"]}
                 onClickFunction={setLanguage}
                 heading={language}
                 setOpenedSelector={setOpenedSelector}
-                name={'language'}
+                name={"language"}
                 openedSelector={openedSelector}
               />
-              {/* <div
-                className={`${Style["__select"]} ${selectState ? Style["__select_active"] : ""
-                  }`}
-                onClick={selectOpen}
-              >
-                <div className={`${Style["__select__title"]}`}>{sort.text}</div>
-                <div className={`${Style["__select__content"]}`}>
-                  <input
-                    id="singleSelect0"
-                    className={`${Style["__select__input"]}`}
-                    type="radio"
-                    name="singleSelect"
-                    defaultChecked={true}
-                  />
-                  <label
-                    htmlFor="singleSelect0"
-                    tabIndex="0"
-                    className={`${Style["__select__label"]}`}
-                    onClick={(e) => selectChange("desc", "Сначала легкие", e)}
-                  >
-                    Сначала легкие
-                  </label>
-                  <input
-                    id="singleSelect1"
-                    className={`${Style["__select__input"]}`}
-                    type="radio"
-                    name="singleSelect"
-                  />
-                  <label
-                    htmlFor="singleSelect1"
-                    tabIndex="0"
-                    className={`${Style["__select__label"]}`}
-                    onClick={(e) => selectChange("asc", "Сначала сложные", e)}
-                  >
-                    Сначала сложные
-                  </label>
-                </div>
-              </div> */}
             </div>
           </form>
-          <div className={`${Style["cards-box"]}`}>
-            {filteredTasks.map((el) => (
-              <Card
-                {...el}
-                key={el.id}
-                myKey={el.id}
-                state={setTaskActive}
-                setTaskOption={setTaskOption}
-              />
-            ))}
-          </div>
+          {tasksWithPagination?.length ? (
+            <div className={`${Style["cards-box"]}`}>
+              {tasksWithPagination.map((el) => (
+                <Card
+                  {...el}
+                  key={el.id}
+                  myKey={el.id}
+                  state={setTaskActive}
+                  taskOption={taskOption}
+                  setTaskOption={setTaskOption}
+                />
+              ))}
+              <div className={`${Style["Pagination"]} container`}>
+                <BasicPagination
+                  onPageChange={handlePageChange}
+                  {...paginationInfo}
+                />
+              </div>
+            </div>
+          ) : (
+            <div className={`${Style["cards-box-empty"]}`}><p>Нет заданий</p></div>
+          )}
         </div>
-        <div className={`${Style["Pagination"]} container`}>
-          <BasicPagination
-            onPageChange={handlePageChange}
-            {...paginationInfo}
-          />
-        </div>
+
       </div>
     );
   }
