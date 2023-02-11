@@ -24,6 +24,7 @@ const Rating = () => {
       console.log(error);
     });
     await axios.get(`${URL_HOST}/api/stats`).then((response) => {
+      console.log('requested');
       filterStats(response.data.stats);
       handleScroll();
     })

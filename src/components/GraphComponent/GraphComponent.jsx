@@ -65,17 +65,26 @@ const GraphComponent = () => {
                     <Routes>
                         <Route path="/accuracy" element={
                             <Graph
-                                dataFromDB={data.map(value => value.Accuracy)}
+                                dataFromDB={data}
+                                name="Accuracy"
+                                color='red'
+                                datePeriod={datePeriod}
                             />
                         } />
                         <Route path="/errors" element={
                             <Graph
-                                dataFromDB={data.map(value => value.number_of_errors)}
+                                dataFromDB={data}
+                                name='number_of_errors'
+                                color='green'
+                                datePeriod={datePeriod}
                             />
                         } />
                         <Route path="/*" element={
                             <Graph
-                                dataFromDB={data.map(value => value.dial_speeds)}
+                                dataFromDB={data}
+                                name='dial_speeds'
+                                color='blue'
+                                datePeriod={datePeriod}
                             />
                         } />
                     </Routes > :

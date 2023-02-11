@@ -42,6 +42,7 @@ const Selector = ({fields, onClickFunction, heading, setOpenedSelector, name, op
                 <label 
                   htmlFor="singleSelect0"
                   tabIndex="0"
+                  onClick={() => onClickFunction(field)}
                 >
                   {field}
                 </label>
