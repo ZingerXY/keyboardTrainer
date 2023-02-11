@@ -62,8 +62,16 @@ $shadow: rgba(0, 168, 118, 0.2);
     }
 }
 
+.filters-title {
+    padding-bottom: 14px;
+}
+
 .filters-checkbox:not(:last-of-type) {
     padding-bottom: 8px;
+}
+
+.form-checkboxs {
+    padding-bottom: 14px;
 }
 
 .form-control {

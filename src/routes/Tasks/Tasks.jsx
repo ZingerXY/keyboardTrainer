@@ -41,7 +41,7 @@ const Tasks = () => {
   };
   const [isLoading, setLoading] = useState(false);
   const [paginationInfo, setPaginationInfo] = useState({
-    limit: 6,
+    limit: 8,
     page: 1,
     totalItems: 0,
   });

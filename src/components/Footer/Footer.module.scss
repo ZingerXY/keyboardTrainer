@@ -14,22 +14,29 @@ $shadow: rgba(0, 168, 118, 0.2);
     z-index: 1;
     min-height: 93px;
     display: flex;
-    flex-wrap: wrap-reverse;
     align-items: center;
-    justify-content: center;
 }
 
+
 .footer {
+    width: 100%;
     padding: 0 20px;
     position: relative;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
 
     &_text {
+        display: block;
         font-weight: 400;
         font-size: 20px;
         line-height: 23px;
         text-align: center;
     }
 }
+
 
 
 .infoAccordion {
@@ -66,4 +73,10 @@ $shadow: rgba(0, 168, 118, 0.2);
 .button_info {
     border: none;
     background-color: #FFFFFF;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        justify-content: center;
+    }
 }
