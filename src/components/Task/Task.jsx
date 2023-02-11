@@ -7,8 +7,7 @@ import WarningDisplay from "../WarningDisplay/WarningDisplay";
 import ResultModalWindow from './ResultModalWindow.jsx/ResultModalWindow';
 import Button from '@mui/material/Button';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-
-
+import Level from "../Level/Level";
 
 const Task = ({ taskSettings, goToTasks }) => {
     const { uncorrect, correct } = useSelector((state) => state.DataReducer);
@@ -52,15 +51,11 @@ const Task = ({ taskSettings, goToTasks }) => {
                     <div className={`${Style["task-card_rightpart"]}`}>
                         <div className={`${Style["task-type"]}`}>
                             <div className={`${Style["task-type_title"]}`}>Тип задания</div>
-                            <span className={`${Style["task-type_title_item"]}`}>Базовый урок</span>
+                            <span className={`${Style["task-type_title_item"]}`}>{taskSettings.type}</span>
                         </div>
                         <div className={`${Style["task-type"]}`}>
                             <div className={`${Style["task-type_title"]}`}>Сложность</div>
-                            <i className={`fa fa-solid fa-circle ${Style["fa-circle"]}`}></i>
-                            <i className={`fa fa-solid fa-circle ${Style["fa-circle"]}`}></i>
-                            <i className={`fa fa-solid fa-circle ${Style["fa-circle"]}`}></i>
-                            <i className={`fa fa-solid fa-circle ${Style["fa-circle"]}`}></i>
-                            <i className={`fa fa-solid fa-circle ${Style["fa-circle"]}`}></i>
+                            <Level level={taskSettings.level}/>
                         </div>
                     </div>
                 </div>

@@ -88,24 +88,6 @@
   margin-bottom: 10px;
 }
 
-.card-level-box {
-  display: flex;
-  flex-direction: row;
-  list-style-type: none;
-}
-
-.level-point {
-  background: rgba(0, 168, 118, 0.1);
-  width: 24px;
-  height: 24px;
-  border-radius: 100%;
-  margin-right: 8px;
-}
-
-.level-active {
-  background: #00A876;
-}
-
 @media (max-width: 840px) {
   .card-name {
     font-size: 30px;
