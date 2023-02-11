@@ -1,8 +1,7 @@
-import Style from "../../routes/LogIn/LogIn.module.scss";
+import Style from "./style.module.scss";
 import React from "react";
 import {useFormik} from "formik";
 import * as Yup from "yup";
-import styles from "./style.module.scss";
 import {Button} from "@mui/material";
 import {CustomFormikTextField} from "../CustomFormikTextField/CustomFormikTextField";
 import axios from "axios";
@@ -11,7 +10,6 @@ import {useDispatch} from "react-redux";
 
 export const LoginForm = ({goToRegistration, onClose}) => {
   const dispatch = useDispatch()
-
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -40,22 +38,46 @@ export const LoginForm = ({goToRegistration, onClose}) => {
     },
   });
 
-  return <div className={`${Style.form}`}>
-    <form className={`${Style.form}`} onSubmit={formik.handleSubmit}>
-      <p className={`${Style["reg-text"]} ${Style["margin"]}`}>АВТОРИЗАЦИЯ</p>
-      <CustomFormikTextField formik={formik} value={"email"} label={"Email"} email/>
-      <CustomFormikTextField formik={formik} value={"password"} label={"Пароль"} password/>
-      <Button className={styles.btn} variant="contained" type="submit" sx={{mt: 2}}>
-        Вход
-      </Button>
-    </form>
-    <p className={styles.error}>{formik.status}</p>
-    <p className={`${Style["reg-black"]} ${Style["margin"]}`}
-    >Если у вас еще нет аккаунта
-      <button
-        onClick={() => goToRegistration()}
-        className={`${Style.redirect_button}`}
-      > зарегистрируйтесь в системе</button>
-    </p>
-  </div>
+  return (
+    <>
+      <div className={`${Style["form-wrapper"]}`}>
+        <form className={`${Style.form}`} onSubmit={formik.handleSubmit}>
+          <p className={`${Style["reg-text"]} ${Style["margin"]}`}>АВТОРИЗАЦИЯ</p>
+          <CustomFormikTextField 
+            formik={formik}
+            value={"email"}
+            label={"EMAIL"}
+            email/>
+          <CustomFormikTextField 
+            formik={formik}
+            value={"password"}
+            label={"ПАРОЛЬ"}
+            password/>
+          <Button 
+            className={Style.btn}
+            variant="contained"
+            type="submit"
+            sx={{
+              mt: "62px",
+              mb: "20px",
+              "@media (max-width:768px)" : {
+                mt: "48px",
+                mb: "16px",
+              }
+            }}
+            >
+              Вход
+          </Button>
+        </form>
+        <p className={Style.error}>{formik.status}</p>
+        <p className={`${Style["reg-black"]} ${Style["margin"]}`}
+        >Если у вас еще нет аккаунта
+          <button
+            onClick={() => goToRegistration()}
+            className={`${Style.redirect_button}`}
+          > зарегистрируйтесь в системе</button>
+        </p>
+      </div>
+    </>
+  );
 }
