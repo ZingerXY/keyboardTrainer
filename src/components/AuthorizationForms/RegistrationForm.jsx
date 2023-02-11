@@ -37,8 +37,9 @@ export const RegistrationForm = ({onClose}) => {
     }),
     onSubmit: async (values, {setErrors}) => {
       try {
-        const res = await axios.post(`/register`, {...values})
+        const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}register`, {...values})
         if (res.data['err']) {
+          console.log(res);
           setErrors({email: res.data['err']})
         } else {
           onClose()
