@@ -6,7 +6,7 @@ export const useGetStatsData = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get(process.env.REACT_APP_SERVER_URL + 'users/2')
+    axios.get(process.env.REACT_APP_SERVER_URL + '/users/2')
     .then((res) => {
       setData(res.data.data.stats);
     })

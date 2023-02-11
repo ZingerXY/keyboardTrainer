@@ -62,6 +62,8 @@ const Graph = ({dataFromDB, name, color, datePeriod}) => {
   }, [datePeriod]);
 
   const labels = filteredDates.map(date => date.toLocaleDateString());
+  console.log(labels, values);
+
 
   const data = {
     labels,
