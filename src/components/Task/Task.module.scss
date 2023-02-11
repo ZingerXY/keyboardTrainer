@@ -7,8 +7,8 @@ $shadow: rgba(0, 168, 118, 0.2);
     width: 50px !important;
     height: 50px !important;
     min-width: auto !important;
-    position: fixed !important;
-    top: 130px !important;
+    position: absolute !important;
+    top: 157px !important;
 
     &:hover {
         background: #00A876 !important;
@@ -17,8 +17,8 @@ $shadow: rgba(0, 168, 118, 0.2);
 
 .task-page {
     width: 100%;
-    padding-top: 112px;
-    padding-bottom: 80px;
+    padding-top: 45px;
+    padding-bottom: 10px;
     color: black;
     font-family: 'Arimo';
 }
@@ -26,14 +26,15 @@ $shadow: rgba(0, 168, 118, 0.2);
 .task-card {
     display: flex;
     justify-content: space-between;
-    padding-bottom: 77px;
+    padding-bottom: 40px;
 }
 
 .task-title {
     font-weight: 400;
     font-size: 64px;
     line-height: 74px;
-    padding-bottom: 54px;
+    padding-bottom: 30px;
+    padding-left: 70px;
 }
 
 .task-type_title {
@@ -99,6 +100,10 @@ $shadow: rgba(0, 168, 118, 0.2);
 }
 
 @media (max-width: 768px) {
+    .back_button {
+        top: 140px !important;
+    }
+
     .task-title {
         font-size: 32px;
         line-height: 37px;
@@ -134,5 +139,9 @@ $shadow: rgba(0, 168, 118, 0.2);
 @media (max-width: 375px) {
     .task-card {
         display: none;
+    }
+
+    .back_button {
+        display: none !important;
     }
 }
