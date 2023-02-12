@@ -27,7 +27,7 @@ class AuthController extends Controller
         $this->validateRegister($request);
         try {
             return User::create([
-                'username' => $request['name'],
+                'name' => $request['name'],
                 'email' => $request['email'],
                 'password' => Hash::make($request['password']),
             ]);
