@@ -11,6 +11,10 @@ const Authorization = () => {
     setIsLogInOpen(false)
     setIsRegistrationOpen(true);
   }
+  const goToLogIn = () => {
+    setIsLogInOpen(true)
+    setIsRegistrationOpen(false);
+  }
 
   return (
     <>
@@ -28,6 +32,7 @@ const Authorization = () => {
         isRegistrationOpen &&
         <Registration
           onClose={() => setIsRegistrationOpen(false)}
+          goToLogIn={goToLogIn}
         />
       }
     </>

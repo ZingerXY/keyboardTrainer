@@ -13,7 +13,6 @@ const Selector = ({fields, onClickFunction, heading, setOpenedSelector, name, op
   }
 
   useEffect(() => {
-    console.log(openedSelector);
     if (openedSelector === null) return;
     if(openedSelector !== name){
       setSelectState(false);
@@ -40,12 +39,7 @@ const Selector = ({fields, onClickFunction, heading, setOpenedSelector, name, op
                   name="singleSelect"
                   defaultChecked={true}
                 />
-                <label 
-                  htmlFor="singleSelect0"
-                  tabIndex="0"
-                >
-                  {field}
-                </label>
+                <p>{field}</p>
               </div>
             )
           })

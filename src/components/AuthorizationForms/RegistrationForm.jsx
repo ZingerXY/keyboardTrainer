@@ -1,4 +1,4 @@
-import styles from './style.module.scss'
+import Style from "./style.module.scss";
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import React from "react";
@@ -11,7 +11,7 @@ import {setUser} from "../../store/user/userSlice";
 const usernameMinLength = 5
 const usernameMaxLength = 30
 
-export const RegistrationForm = ({onClose}) => {
+export const RegistrationForm = ({onClose, goToLogIn}) => {
   const dispatch = useDispatch()
   const formik = useFormik({
     initialValues: {
@@ -37,8 +37,9 @@ export const RegistrationForm = ({onClose}) => {
     }),
     onSubmit: async (values, {setErrors}) => {
       try {
-        const res = await axios.post(`/register`, {...values})
+        const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}register`, {...values})
         if (res.data['err']) {
+          console.log(res);
           setErrors({email: res.data['err']})
         } else {
           onClose()
@@ -50,13 +51,55 @@ export const RegistrationForm = ({onClose}) => {
     },
   });
 
-  return <form className={styles.form} onSubmit={formik.handleSubmit}>
-    <CustomFormikTextField formik={formik} value={"name"} label={"Имя пользователя"}/>
-    <CustomFormikTextField formik={formik} value={"email"} label={"Email"} email/>
-    <CustomFormikTextField formik={formik} value={"password"} label={"Пароль"} password/>
-    <CustomFormikTextField formik={formik} value={"password_confirmation"} label={"Подтверждение пароля"} password/>
-    <Button className={styles.btn} variant="contained" type="submit" sx={{mt: 2}}>
-      Зарегестрироваться
-    </Button>
-  </form>
+  return (
+    <>
+      <div className={`${Style["form-wrapper"]}`}>
+        <form className={Style.form} onSubmit={formik.handleSubmit}>
+        <p className={`${Style["reg-text"]} ${Style["margin"]}`}>РЕГИСТРАЦИЯ</p>
+          <CustomFormikTextField  
+            formik={formik}
+            value={"name"}
+            label={"ИМЯ"}/>
+          <CustomFormikTextField 
+            formik={formik}
+            value={"email"}
+            label={"EMAIL"}
+            email/>
+          <CustomFormikTextField 
+            formik={formik}
+            value={"password"}
+            label={"ПАРОЛЬ"}
+            password/>
+          <CustomFormikTextField 
+            formik={formik}
+            value={"password_confirmation"}
+            label={"ПОДТВЕРЖДЕНИЕ"}
+            password/>
+          <Button 
+            className={Style.btn}
+            variant="contained"
+            type="submit"
+            sx={{
+              mt: "62px",
+              mb: "20px",
+              "@media (max-width:768px)" : {
+                mt: "48px",
+                mb: "16px",
+              }
+            }}
+            >
+              Зарегестрироваться
+          </Button>
+        </form>
+        <p className={Style.error}>{formik.status}</p>
+        <p className={`${Style["reg-black"]} ${Style["margin"]}`}
+        >Если у вас уже есть аккаунт воспользуйтесь 
+          <button
+            onClick={() => goToLogIn()}
+            className={`${Style.redirect_button}`}
+          > входом в систему</button>
+        </p>
+      </div>
+    </>
+  );
 }

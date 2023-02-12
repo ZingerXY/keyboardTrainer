@@ -41,15 +41,19 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 * `/api/tasks` - получить все задания
 * `/api/tasks/%id задания%` - получить задание по id
-
 * `/api/users` - получить всех пользователей
 * `/api/users/%id пользователя%` - получить пользователя по id
 
+*  `api/users?filter[username]=Jamal&filter[id]=1&filter[email]=sed.sem.egestas@google.org&filter[created_at]=2022-07-03  ` - получить страницу с отсортированным пользователем по id,username,email,created_at 
+*  `api/users?filter[username]=Jamal` - получить страницу с отсортированным пользователем по имени
+*  `api/users?filter[email]=sed.sem.egestas@google.org` - получить страницу с отсортированным пользователем по email
+*  `api/users?filter[created_at]=2022-07-03 19:42:02` - получить страницу с отсортированным пользователем по created_at
+
+
 * `/api/stats` - получить всю статистику
 * `/api/stats/%id записи в стасистике%` - получить запись в стасистике по id
-
-* `api/tasks?page=%id страницы%` - получить страницу с заданиями
-
-* `tasks/sort/difficulty/%id страницы%` - получить страницу с отсортированными заданиями по сложности
-
-
+* `/api/tasks?page=%id страницы%` - получить страницу с заданиями (пагинация удалена)
+* `/api/tasks?filter[difficulty]=1&filter[task_type]=Слова` - получить страницу с отсортированными заданиями по сложности и типу
+* `/api/tasks?filter[difficulty]=1` - получить страницу с отсортированными заданиями по сложности
+* `/api/tasks?filter[task_type]=Слова` - получить страницу с отсортированными заданиями по типу "Слова"
+* `/api/tasks?filter[lang]=eng` - получить страницу с отсортированными заданиями по английскому языку

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -33,16 +33,44 @@ export const options = {
   maintainAspectRatio: false
 };
 
-const Graph = ({dataFromDB}) => {
-  const labels = Array(dataFromDB.length).fill('10.10.22'); 
+const Graph = ({dataFromDB, name, color, datePeriod}) => {
+  const dates = [
+    new Date('01/02/2022'),
+    new Date('11/14/2022'),
+    new Date('02/10/2023'),
+    new Date('02/01/2023')];
+
+  const [filteredDates, setFilteredDates] = useState([...dates]);
+
+  let values = dataFromDB.map(value => value[`${name}`]).concat([120, 150]);
+
+  useEffect(() => {
+    switch(datePeriod){
+      case 'За всё время':
+        setFilteredDates([...dates]);
+        break;
+
+      case 'За 3 месяца': 
+        const dateTheeMonthsAgo = new Date(Date.now() - 1000*60*60*24*90).getTime();
+        setFilteredDates([...dates.filter(date => date.getTime() > dateTheeMonthsAgo)]);
+        break;
+      case 'За месяц': 
+        const dateOneMonthsAgo = new Date(Date.now() - 1000*60*60*24*30).getTime();
+        setFilteredDates([...dates.filter(date => date.getTime() > dateOneMonthsAgo)]);
+        break;
+    }
+  }, [datePeriod]);
+
+  const labels = filteredDates.map(date => date.toLocaleDateString());
+
 
   const data = {
     labels,
     datasets: [
       {
         label: 'Dataset 1',
-        data: dataFromDB,
-        borderColor: 'red',
+        data: values,
+        borderColor: color,
         backgroundColor: 'black',
         borderWidth: 2,
         tension: 0.4,

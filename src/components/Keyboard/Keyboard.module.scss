@@ -48,7 +48,6 @@ $purple-key: rgba(175, 175, 225, 1);
     grid-column: span 2;
     font-size: 22px;
     text-align: center;
-    padding: 5px 12px;
 }
 
 .key:hover {
@@ -276,6 +275,7 @@ $purple-key: rgba(175, 175, 225, 1);
 
     .key {
         font-size: 19px;
+        padding: 5px 12px;
     }
 
     .key-words {

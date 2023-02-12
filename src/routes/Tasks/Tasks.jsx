@@ -15,7 +15,7 @@ const languages = {
   },
   Русский: {
     topLeftCharacter: "ё",
-    keys: `йцукенгшщзхъфывапролджэёячсмитьбю/`,
+    keys: `йцукенгшщзхъфывапролджэячсмитьбю.`,
   },
 };
 
@@ -23,7 +23,7 @@ const Tasks = () => {
   const [initialTasks, setInitialTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [tasksWithPagination, setTasksWithPagination] = useState([]);
-  const [taskOption, setTaskOption] = useState("");
+  const [taskOption, setTaskOption] = useState({description: "", name: "Задание", type: "База", level: 0});
   const [taskActive, setTaskActive] = useState(false);
   const [sort, setSort] = useState("Сначала легкие");
   const [base, setBase] = useState(true);
@@ -41,7 +41,7 @@ const Tasks = () => {
   };
   const [isLoading, setLoading] = useState(false);
   const [paginationInfo, setPaginationInfo] = useState({
-    limit: 6,
+    limit: 8,
     page: 1,
     totalItems: 0,
   });
@@ -49,7 +49,10 @@ const Tasks = () => {
   const loadPost = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`https://kangaroo.zingery.ru/api/tasks`);
+      const response = await fetch(
+        `https://kangaroo.zingery.ru/api/tasks?filter[lang]=${language === "English" ? "eng" : "ru"
+        }`
+      );
       const json = await response.json();
 
       const filterTypes = getCollectedFilters();
@@ -87,7 +90,7 @@ const Tasks = () => {
     if (letters) filterTypes.push("Буквы");
     if (words) filterTypes.push("Слова");
     if (base) filterTypes.push("База");
-    if (punctuation) filterTypes.push("Пунктуация");
+    if (punctuation) filterTypes.push("Знаки");
     if (numAndSymbols) filterTypes.push("Цифры");
 
     return filterTypes;
@@ -95,7 +98,7 @@ const Tasks = () => {
 
   useEffect(() => {
     loadPost();
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     if (!initialTasks.length) return;
@@ -153,7 +156,10 @@ const Tasks = () => {
       <Task
         goToTasks={() => setTaskActive(false)}
         taskSettings={{
-          description: taskOption,
+          name: taskOption.name,
+          type: taskOption.type,
+          level: taskOption.level,
+          description: taskOption.description,
           amount: 7,
         }}
       />
@@ -236,64 +242,32 @@ const Tasks = () => {
                 name={"language"}
                 openedSelector={openedSelector}
               />
-              {/* <div
-                className={`${Style["__select"]} ${selectState ? Style["__select_active"] : ""
-                  }`}
-                onClick={selectOpen}
-              >
-                <div className={`${Style["__select__title"]}`}>{sort.text}</div>
-                <div className={`${Style["__select__content"]}`}>
-                  <input
-                    id="singleSelect0"
-                    className={`${Style["__select__input"]}`}
-                    type="radio"
-                    name="singleSelect"
-                    defaultChecked={true}
-                  />
-                  <label
-                    htmlFor="singleSelect0"
-                    tabIndex="0"
-                    className={`${Style["__select__label"]}`}
-                    onClick={(e) => selectChange("desc", "Сначала легкие", e)}
-                  >
-                    Сначала легкие
-                  </label>
-                  <input
-                    id="singleSelect1"
-                    className={`${Style["__select__input"]}`}
-                    type="radio"
-                    name="singleSelect"
-                  />
-                  <label
-                    htmlFor="singleSelect1"
-                    tabIndex="0"
-                    className={`${Style["__select__label"]}`}
-                    onClick={(e) => selectChange("asc", "Сначала сложные", e)}
-                  >
-                    Сначала сложные
-                  </label>
-                </div>
-              </div> */}
             </div>
           </form>
-          <div className={`${Style["cards-box"]}`}>
-            {tasksWithPagination.map((el) => (
-              <Card
-                {...el}
-                key={el.id}
-                myKey={el.id}
-                state={setTaskActive}
-                setTaskOption={setTaskOption}
-              />
-            ))}
-          </div>
+          {tasksWithPagination?.length ? (
+            <div className={`${Style["cards-box"]}`}>
+              {tasksWithPagination.map((el) => (
+                <Card
+                  {...el}
+                  key={el.id}
+                  myKey={el.id}
+                  state={setTaskActive}
+                  taskOption={taskOption}
+                  setTaskOption={setTaskOption}
+                />
+              ))}
+              <div className={`${Style["Pagination"]} container`}>
+                <BasicPagination
+                  onPageChange={handlePageChange}
+                  {...paginationInfo}
+                />
+              </div>
+            </div>
+          ) : (
+            <div className={`${Style["cards-box-empty"]}`}><p>Нет заданий</p></div>
+          )}
         </div>
-        <div className={`${Style["Pagination"]} container`}>
-          <BasicPagination
-            onPageChange={handlePageChange}
-            {...paginationInfo}
-          />
-        </div>
+
       </div>
     );
   }
