@@ -25,8 +25,6 @@ const Keyboard = ({
   });
   const { language_keys, language } = useSelector((state) => state.DataReducer);
 
-  console.log(keys.fourthLine);
-
   const keybordKeys = [
     { name: keys.firstLine[0], classNames: `${Style["key"]} ${Style["key-or"]}` },
     { name: keys.firstLine[1], classNames: `${Style["key"]} ${Style["key-or"]}` },
