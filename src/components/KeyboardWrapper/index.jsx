@@ -72,14 +72,14 @@ export const KeyboardWrapper = ({
       set_rhfi_active(false);
     } else if (rhfm_letters.includes(prevLetter) && !rhfm_letters.includes(currentLetter)) {
       set_rhfm_active(false);
-    } else if (rhfr_letters.includes(prevLetter)) {
+    } else if (rhfr_letters.includes(prevLetter) && !rhfr_letters.includes(currentLetter)) {
       set_rhfr_active(false);
     } else if (rhfl_letters.includes(prevLetter) && !rhfl_letters.includes(currentLetter)) {
       set_rhfl_active(false);
     } else if (currentLetter === " ") {
       set_rhft_active(false);
     }
-  }, [prevLetter]);
+  }, [prevLetter, currentLetter]);
 
   useEffect(() => {
     if (!isStringFinished && taskSettings.type) {

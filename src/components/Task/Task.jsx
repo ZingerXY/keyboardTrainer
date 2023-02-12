@@ -8,8 +8,6 @@ import ResultModalWindow from './ResultModalWindow.jsx/ResultModalWindow';
 import Button from '@mui/material/Button';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-
-
 const Task = ({ taskSettings, goToTasks }) => {
     const { uncorrect, correct } = useSelector((state) => state.DataReducer);
     const { seconds, minutes } = useSelector((state) => state.TimeReducer);
