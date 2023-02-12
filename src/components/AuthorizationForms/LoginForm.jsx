@@ -1,15 +1,17 @@
 import Style from "./style.module.scss";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserId } from "../../store/user/userSlice";
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import {Button} from "@mui/material";
 import {CustomFormikTextField} from "../CustomFormikTextField/CustomFormikTextField";
 import axios from "axios";
 import {setUser} from "../../store/user/userSlice";
-import {useDispatch} from "react-redux";
 
 export const LoginForm = ({goToRegistration, onClose}) => {
-  const dispatch = useDispatch()
+  const id = useSelector((state) => state.UserReducer.id);
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -25,12 +27,13 @@ export const LoginForm = ({goToRegistration, onClose}) => {
     }),
     onSubmit: async (values, {setStatus}) => {
       try {
-        const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/login`, {...values})
+        const res = await axios.post(`https://kangaroo.zingery.ru/api/login`, {...values})
         if (res.data['err']) {
           setStatus(res.data['err'])
         } else {
           onClose()
-          dispatch(setUser(res.data))
+          dispatch(setUser(res.data));
+          dispatch(setUserId(res.data.id));
         }
       } catch (e) {
         console.error(e)

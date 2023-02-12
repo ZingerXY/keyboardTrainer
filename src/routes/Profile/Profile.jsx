@@ -1,12 +1,15 @@
 import React, { useEffect, useState} from 'react';
+import { useSelector } from "react-redux";
 import Style from "./Profile.module.scss";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 
 const Profile = () => {
+    const id = useSelector((state) => state.UserReducer.id);
+
     const requestUrl = 'https://kangaroo.zingery.ru/api';
 
-    const [userId, setUserId] = useState(1); // далее будет корректный Id текущего пользователя
+    const [userId, setUserId] = useState(id); // далее будет корректный Id текущего пользователя
     const [userUsername, setUsername] = useState('');
     const [userEmail, setEmail] = useState('');
     const [userCreatedAt, setCreatedAt] = useState('');

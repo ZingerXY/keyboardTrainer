@@ -7,6 +7,7 @@ import Rating from "./Rating/Rating";
 import Statistics from "./Statistics/Statistics";
 import Profile from "./Profile/Profile";
 import {NotFound} from "./NotFound";
+import PrivateRoutes from "../components/hocs/PrivateRoutes";
 
 
 const Router = () => {
@@ -15,9 +16,12 @@ const Router = () => {
       <Route path="/" element={<Home/>}>
       </Route>
       <Route path="/tasks" element={<Tasks/>}></Route>
-      <Route path="/stats/*" element={<Statistics/>}></Route>
       <Route path="/rating" element={<Rating/>}></Route>
-      <Route path="/profile" element={<Profile/>}></Route>
+      <Route element={<PrivateRoutes />}>
+        <Route path="/stats/*" element={<Statistics/>}></Route>
+        <Route path="/profile" element={<Profile/>}></Route>
+        <Route path="*" element={<Home />} />
+      </Route>
       <Route path="/*" element={<NotFound/>}></Route>
     </Routes>
   )

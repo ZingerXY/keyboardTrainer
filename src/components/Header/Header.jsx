@@ -1,10 +1,13 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import Style from "./Header.module.scss";
 import { useState } from "react";
 import Authorization from '../../routes/Authorization/Authorization';
+import PrivateLink from "../hocs/PrivateLink";
 
 const Header = () => {
+  const auth = useSelector((state) => state.UserReducer.auth);
 
   const [visible, setVisible] = useState(false);
 
@@ -25,7 +28,7 @@ const Header = () => {
               <p className={`${Style["logo_title"]}`}>КЛАВИАТУРНЫЙ ТРЕНАЖЕР</p>
             </div>
           </Link>
-
+          
           {/* пока временно для демо версии */}
           <div className={`${Style["nav_links"]}`}>
             <NavLink
@@ -34,24 +37,28 @@ const Header = () => {
                 `${Style["nav_links_title"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
               }
             >Задания</NavLink>
-            <NavLink
-              to={"/stats"}
-              className={({ isActive }) =>
-                `${Style["nav_links_title"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
-              }
-            >Статистика</NavLink>
+            <PrivateLink>
+              <NavLink
+                to={"/stats"}
+                className={({ isActive }) =>
+                  `${Style["nav_links_title"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
+                }
+              >Статистика</NavLink>
+            </PrivateLink>
             <NavLink
               to={"/rating"}
               className={({ isActive }) =>
                 `${Style["nav_links_title"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
               }
             >Рейтинг</NavLink>
-            <NavLink
-              to={"/profile"}
-              className={({ isActive }) =>
-                `${Style["nav_links_title"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
-              }
-            >Профиль</NavLink>
+            <PrivateLink>
+              <NavLink
+                to={"/profile"}
+                className={({ isActive }) =>
+                  `${Style["nav_links_title"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
+                }
+              >Профиль</NavLink>
+            </PrivateLink>
             <Authorization />
           </div>
 
@@ -68,13 +75,15 @@ const Header = () => {
               }
               onClick={() => setVisible(!visible)}
             >Задания</NavLink>
-            <NavLink
-              to={"/stats"}
-              className={({ isActive }) =>
-                `${Style["burger_links"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
-              }
-              onClick={() => setVisible(!visible)}
-            >Статистика</NavLink>
+            <PrivateLink>
+              <NavLink
+                to={"/stats"}
+                className={({ isActive }) =>
+                  `${Style["burger_links"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
+                }
+                onClick={() => setVisible(!visible)}
+              >Статистика</NavLink>
+            </PrivateLink>
             <NavLink
               to={"/rating"}
               className={({ isActive }) =>
@@ -82,12 +91,14 @@ const Header = () => {
               }
               onClick={() => setVisible(!visible)}
             >Рейтинг</NavLink>
-            <NavLink 
-              to={"/profile"}
-              className={({ isActive }) => 
-                `${Style["burger_links"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
-              }
-            >Профиль</NavLink>
+            <PrivateLink>
+              <NavLink
+                to={"/profile"}
+                className={({ isActive }) =>
+                  `${Style["burger_links"]}${isActive ? ` ${Style["nav_links_title-active"]}` : ''}`
+                }
+              >Профиль</NavLink>
+            </PrivateLink>
             <Authorization />
           </div>
         </nav>
