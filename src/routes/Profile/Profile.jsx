@@ -16,15 +16,14 @@ const Profile = () => {
     const [isChange, setIsChange] = useState(false);
 
     const [image, setImage] = useState('./img/avatar_default.png');
-    const [altImage, setAltImage] = useState((new Date()).getTime());
 
-    const showAvatar = async () => {
-        await fetch(`${requestUrl}/showAvatar?user_id=${userId}`, {
+    const showAvatar = () => {
+        fetch(`${requestUrl}/showAvatar?user_id=${userId}`, {
                 method: 'GET',
             })
             .then((response) => response.json())
             .then((data) => {
-                setImage(data.original);
+                setImage(data.original ?? data);
             })
             .catch(() => {
                 setImage('./img/avatar_default.png');
@@ -61,7 +60,7 @@ const Profile = () => {
         }
 
         let formData = new FormData();
-        formData.append("user_id", 1);
+        formData.append("user_id", userId);
         formData.append("image", e.target.files[0]);
 
        await fetch(`${requestUrl}/saveAvatar`, {
@@ -180,7 +179,7 @@ const Profile = () => {
                     <div className={`${Style["profile-avatar_box"]}`}>
                         <img
                             className={`${Style["profile-avatar_img"]}`}
-                            alt={altImage}
+                            alt="Изображение не подгружено"
                             src={image}
                         />
                         <input
