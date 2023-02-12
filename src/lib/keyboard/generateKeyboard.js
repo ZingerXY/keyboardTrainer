@@ -3,6 +3,7 @@
 
 export const generateKeyboard = (language_keys) => {
   const LanguageKeysList = language_keys.keys.split('');
+  console.log(language_keys);
 
   const alphabetLines = {
     firstLine: [language_keys.topLeftCharacter, ...'1234567890-='.split('')],
