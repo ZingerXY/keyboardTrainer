@@ -25,6 +25,7 @@ class StatsResource extends JsonResource
             'Accuracy' => $this->Accuracy,
             'dial_speeds' => $this->dial_speeds,
             'created_at' => $this->created_at,
+
         ];
     }
 }

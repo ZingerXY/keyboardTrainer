@@ -1,4 +1,17 @@
 
+-- Основные проблемы в таблице в типах данных:
+-- Все строковые переменные заданы как varchar(255), но ни имя пользователя,
+-- ни email не бывают на 255 символов соответственно можно уменьшить размерность этих полей например до 50-100 символов.
+-- Пароль обычно хранится в базе данных в виде хеша фиксированной длинны поэтому для него надо решить какое хеширование мы будем использовать
+-- и задать соответствующий размер например php функция password_hash по алгоритму PASSWORD_BCRYPT всегда возвращает строку длинной 60 символов.
+
+-- Для поля "время потраченное на здание" не стоит использовать строку,
+-- лучше взять число и в дальнейшем его уже можно преобразовывать к удобному виду при выводе.
+-- Остальные поля в таблице statistics тоже лучше хранить в виде чисел,
+-- "точность в процентах" можно заменить на количество ошибок,
+-- а "скорость знаков в минуту" можно вообще убрать так как ее можно будет посчитать из количества времени потраченного на задания и количества набранных знаков
+
+
 DROP TABLE IF EXISTS `statistics`;
 
 CREATE TABLE `statistics` (
@@ -30,10 +43,13 @@ DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
   `id` mediumint(8)  NOT NULL auto_increment,
-  `username` varchar(100) default NULL COMMENT 'имя пользователя',
+  `name` varchar(100) default NULL COMMENT 'имя пользователя',
   `email` varchar(100) default NULL COMMENT 'почта',
+  `email_verified_at` varchar(100) default NULL COMMENT 'столбец для хранения даты и времени проверки адреса электронной почты пользователя',
   `password` varchar(60) default NULL COMMENT 'пароль',
+  `remember_token` varchar(100) default NULL COMMENT 'столбец с нулевым значением, который предназначен для хранения текущего токена аутентификации "запомнить меня":',
   `created_at` varchar(100) COMMENT 'дата регистрации',
+  `updated_at` varchar(100) default NULL COMMENT 'дата обновления',
   PRIMARY KEY (`id`)
 ) AUTO_INCREMENT=1;
 
@@ -60,7 +76,6 @@ VALUES
   (7,5,8465,306,379,22,137,"2022-03-01 16:14:31"),
   (12,1,8446,640,153,21,791,"2023-02-20 08:18:28"),
   (18,13,8403,95,586,91,317,"2023-11-06 15:52:35");
-
 
 INSERT INTO `tasks` (`task`,`difficulty`,`task_description`,`task_type`,`lang`)
 VALUES
@@ -109,9 +124,10 @@ VALUES
   ("Длинные слова",4,"вальс вьюга верхний тухлый йогурт будущий щедрый сыщик помощник щенят черный чудище чужой чемодан челюсть чертополох чепуха животное жираф жужжать жрица жалко железо жалюзи фюзеляж формула фабрика фальсификация форель фотоэффект фрагмент фрегат форсаж француз хризантема хрусталь халтура ханжа хижина хвойный худосочный хирург хмель хулиган художник хурма харчевня целомудрие цензура цистерна цивилизация циферблат шлейф шершень шутиха шхуна шуршунчик дюжина парашют сюрприз тюлень люстра любовь эшафот эмиграция эпицентр экран экстаз экзальтация экзамен экземпляр зебры звено заморозки якудза ябеда ящерица яркий ясный рейтузы разъярить жадину говядину столешница объедки объект ягодицы царицы","Слова","rus"),
   ("Long words",4,"waltz blizzard top rotten yogurt future generous detective assistant puppies black monster alien suitcase jaw thistle nonsense animal giraffe buzz priestess pity iron blinds fuselage formula factory falsification trout photo effect fragment frigate fast and furious frenchman chrysanthemum crystal hack hypocrite hut coniferous skinny surgeon hop hooligan artist persimmon tavern chastity censorship cistern civilization dial train hornet firecracker schooner rustler dozen parachute surprise seal chandelier love scaffold emigration epicenter screen ecstasy exaltation exam instance zebra link freezing yakuza sneak Lizard bright clear leggings enrage greedy beef tabletop scraps object buttocks of the queen","Слова","eng"),
   ("ПРОПИСНЫЕ буквы",4,"Анна Апрель Охта Операция Ы Волга Витя ОРТ Лида Литва Джо Денис Федя Франция Женя Жигули Ева Европа Надя НАТО Польша Прохор Рим Рая Миру Мир Иртыш Индия Тихвин ТНТ Катя КГБ Греция ГДР США Боря Бухарест Уфа Уругвай Царь Цирк Йорк Йод Шварц Шуберт Щорс Щит Зухра ЗИЛ Харьков Эльза Эфиопия Юра ЮАР Челобрек ЧП Яша Япония Алиса Батхед Вася Глеб Децл Елена Жук Запорожец Иван Йошкин Кот Лиза Милен НТВ Ольга Петя Рембо СНГ ТьмутараканЬ Урюпинск ФРГ Холмс Цент Чарльз Шишкин Щука Эстония Юпитер Ясен Пончик Сергей","Буквы","rus"),
-  ("UPPERCASE letters",4,"Anna April Okhta Operation Y Volga Vitya ORT Lida Lithuania Joe Denis Fedya France Zhenya Zhiguli Eva Europe Nadia NATO Poland Prokhor Rome Raya Mir Mir Irtysh India Tikhvin TNT Katya KGB Greece GDR USA Borya Bucharest Ufa Uruguay Tsar Circus York Yod Schwartz Schubert Schors Shield Zuhra ZIL Kharkov Elsa Ethiopia Yura South Africa Chelobrek PE Yasha Japan Alice Butthead Vasya Gleb Decl Elena Zhuk Zaporozhets Ivan Yoshkin The Cat Lisa Milen NTV Olga Petya Rimbaud CIS Tymutarakan Uryupinsk Germany Holmes Cent Charles Shishkin Pike Estonia Jupiter Yasen Donut Sergey","Буквы","eng");
+  ("UPPERCASE letters",4,"Anna April Okhta Operation Y Volga Vitya ORT Lida Lithuania Joe Denis Fedya France Zhenya Zhiguli Eva Europe Nadia NATO Poland Prokhor Rome Raya Mir Mir Irtysh India Tikhvin TNT Katya KGB Greece GDR USA Borya Bucharest Ufa Uruguay Tsar Circus York Yod Schwartz Schubert Schors Shield Zuhra ZIL Kharkaov Elsa Ethiopia Yura South Africa Chelobrek PE Yasha Japan Alice Butthead Vasya Gleb Decl Elena Zhuk Zaporozhets Ivan Yoshkin The Cat Lisa Milen NTV Olga Petya Rimbaud CIS Tymutarakan Uryupinsk Germany Holmes Cent Charles Shishkin Pike Estonia Jupiter Yasen Donut Sergey","Буквы","eng");
 
 INSERT INTO `users` (`username`,`email`,`password`,`created_at`)
+
 VALUES
   ("Jamal Estes","sed.sem.egestas@google.org","DDL77WHS3MN","2022-07-03 19:42:02"),
   ("Mariko Lucas","scelerisque.dui@yahoo.org","TQK22QPO6EO","2022-01-26 23:27:04"),
