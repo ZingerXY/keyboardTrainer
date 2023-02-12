@@ -18,7 +18,7 @@ class UserController extends Controller
     public function index()
     {
         $filter = QueryBuilder::for(User::class)
-        ->allowedFilters(['id','username','email','created_at'])
+        ->allowedFilters(['id','name','email','created_at'])
         ->get();
         return UserResource::collection($filter);
     }
