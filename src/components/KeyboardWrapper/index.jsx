@@ -3,6 +3,7 @@ import RunningString from "../RunningString/RunningString";
 import Keyboard from "../Keyboard/Keyboard";
 import { generateStirng } from '../../lib/stringGenerators/index';
 import { useSelector } from "react-redux";
+import {getKeyLetter} from "../../lib/keyboard/getKeyLetter";
 
 export const KeyboardWrapper = ({
   isStringFinished,
@@ -24,16 +25,16 @@ export const KeyboardWrapper = ({
   const [rhft_active, set_rhft_active] = useState(false) // right hand thumb finger
   const { language } = useSelector((state) => state.DataReducer);
 
-  // перенести буквы в редьюсер, добавить подгрузку в зависимости от языка
-  const lhfl_letters = "ё12йфя"
-  const lhfr_letters = "3цыч"
-  const lhfm_letters = "4увс"
-  const lhfi_letters = "56кеапми"
-  const rhfl_letters = "0-=зхъжэ.\\"
-  const rhfr_letters = "9щдю"
-  const rhfm_letters = "8шлб"
-  const rhfi_letters = "7нгроть"
-  const rhft_letters = ""
+  const letters = getKeyLetter(language)
+
+  const lhfl_letters = letters[0]
+  const lhfr_letters = letters[1]
+  const lhfm_letters = letters[2]
+  const lhfi_letters = letters[3]
+  const rhfl_letters = letters[4]
+  const rhfr_letters = letters[5]
+  const rhfm_letters = letters[6]
+  const rhfi_letters = letters[7]
 
   useEffect(() => {
     if (!currentLetter) return;
