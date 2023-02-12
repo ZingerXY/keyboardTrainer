@@ -25,7 +25,7 @@ export const LoginForm = ({goToRegistration, onClose}) => {
     }),
     onSubmit: async (values, {setStatus}) => {
       try {
-        const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}api/login`, {...values})
+        const res = await axios.post(`${process.env.REACT_APP_SERVER_URL}/login`, {...values})
         if (res.data['err']) {
           setStatus(res.data['err'])
         } else {
