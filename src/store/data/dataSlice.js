@@ -6,7 +6,7 @@ const initialState = {
     language: 'Русский',
     language_keys: {
         topLeftCharacter: 'ё',
-        keys: 'йцукенгшщзхъфывапролджэёячсмитьбю/'
+        keys: 'йцукенгшщзхъфывапролджэячсмитьбю.'
     }
 }
 
