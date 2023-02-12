@@ -39,13 +39,7 @@ const Selector = ({fields, onClickFunction, heading, setOpenedSelector, name, op
                   name="singleSelect"
                   defaultChecked={true}
                 />
-                <label 
-                  htmlFor="singleSelect0"
-                  tabIndex="0"
-                  onClick={() => onClickFunction(field)}
-                >
-                  {field}
-                </label>
+                <p>{field}</p>
               </div>
             )
           })
