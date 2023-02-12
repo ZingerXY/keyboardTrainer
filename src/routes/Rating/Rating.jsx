@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import Style from "./Rating.module.scss";
 import axios from "axios";
 import RatingItem from "../../components/RatingItem/RatingItem";
@@ -12,7 +13,8 @@ const Rating = () => {
   
   const [ update, setUpdate ] = useState(false);
 
-  const myId = 11;
+  const myId = useSelector((state) => state.UserReducer.id);
+
   const URL_HOST = "https://kangaroo.zingery.ru";
   
   const apiGetStats = async () => {

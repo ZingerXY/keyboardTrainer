@@ -3,7 +3,8 @@ import {useSelector} from "react-redux";
 import {useState, useEffect} from "react";
 import DataStyle from "./StatisticsData.module.scss";
 
-const StatisticsData = () => {
+const StatisticsData = ({id}) => {
+
   const {count, correct} = useSelector((state) => state.DataReducer);
   const {seconds} = useSelector((state) => state.TimeReducer);
   const [result, setResult] = useState(0);

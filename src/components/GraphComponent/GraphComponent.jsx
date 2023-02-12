@@ -7,7 +7,8 @@ import { useGetStatsData } from "../../hooks/useGetStatsData";
 import Selector from '../Selector/Selector';
 import { CircularProgress } from '@mui/material';
 
-const GraphComponent = () => {
+const GraphComponent = ({id}) => {
+
     const location = useLocation();
     const {loading, data} = useGetStatsData();
     const [datePeriod, setDatePeriod] = useState('За всё время');
