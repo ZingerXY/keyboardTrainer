@@ -59,21 +59,21 @@ export const RegistrationForm = ({onClose, goToLogIn}) => {
           <CustomFormikTextField  
             formik={formik}
             value={"name"}
-            label={"Имя пользователя"}/>
+            label={"ИМЯ"}/>
           <CustomFormikTextField 
             formik={formik}
             value={"email"}
-            label={"Email"}
+            label={"EMAIL"}
             email/>
           <CustomFormikTextField 
             formik={formik}
             value={"password"}
-            label={"Пароль"}
+            label={"ПАРОЛЬ"}
             password/>
           <CustomFormikTextField 
             formik={formik}
             value={"password_confirmation"}
-            label={"Подтверждение пароля"}
+            label={"ПОДТВЕРЖДЕНИЕ"}
             password/>
           <Button 
             className={Style.btn}
