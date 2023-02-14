@@ -126,7 +126,7 @@ VALUES
   ("ПРОПИСНЫЕ буквы",4,"Анна Апрель Охта Операция Ы Волга Витя ОРТ Лида Литва Джо Денис Федя Франция Женя Жигули Ева Европа Надя НАТО Польша Прохор Рим Рая Миру Мир Иртыш Индия Тихвин ТНТ Катя КГБ Греция ГДР США Боря Бухарест Уфа Уругвай Царь Цирк Йорк Йод Шварц Шуберт Щорс Щит Зухра ЗИЛ Харьков Эльза Эфиопия Юра ЮАР Челобрек ЧП Яша Япония Алиса Батхед Вася Глеб Децл Елена Жук Запорожец Иван Йошкин Кот Лиза Милен НТВ Ольга Петя Рембо СНГ ТьмутараканЬ Урюпинск ФРГ Холмс Цент Чарльз Шишкин Щука Эстония Юпитер Ясен Пончик Сергей","Буквы","rus"),
   ("UPPERCASE letters",4,"Anna April Okhta Operation Y Volga Vitya ORT Lida Lithuania Joe Denis Fedya France Zhenya Zhiguli Eva Europe Nadia NATO Poland Prokhor Rome Raya Mir Mir Irtysh India Tikhvin TNT Katya KGB Greece GDR USA Borya Bucharest Ufa Uruguay Tsar Circus York Yod Schwartz Schubert Schors Shield Zuhra ZIL Kharkaov Elsa Ethiopia Yura South Africa Chelobrek PE Yasha Japan Alice Butthead Vasya Gleb Decl Elena Zhuk Zaporozhets Ivan Yoshkin The Cat Lisa Milen NTV Olga Petya Rimbaud CIS Tymutarakan Uryupinsk Germany Holmes Cent Charles Shishkin Pike Estonia Jupiter Yasen Donut Sergey","Буквы","eng");
 
-INSERT INTO `users` (`username`,`email`,`password`,`created_at`)
+INSERT INTO `users` (`name`,`email`,`password`,`created_at`)
 
 VALUES
   ("Jamal Estes","sed.sem.egestas@google.org","DDL77WHS3MN","2022-07-03 19:42:02"),
